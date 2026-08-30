@@ -14,9 +14,9 @@ import (
 
 // A class representing a SuppressionList resource.
 //
-// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2026-03-18. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SuppressionList struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +28,7 @@ type SuppressionList struct {
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// The date the resource was last updated.
 	LastUpdatedTimeStamp pulumi.StringOutput `pulumi:"lastUpdatedTimeStamp"`
-	// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+	// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 	ListName pulumi.StringPtrOutput `pulumi:"listName"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -109,7 +109,7 @@ type suppressionListArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// The name of the EmailService resource.
 	EmailServiceName string `pulumi:"emailServiceName"`
-	// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+	// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 	ListName *string `pulumi:"listName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -123,7 +123,7 @@ type SuppressionListArgs struct {
 	DomainName pulumi.StringInput
 	// The name of the EmailService resource.
 	EmailServiceName pulumi.StringInput
-	// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+	// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 	ListName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -188,7 +188,7 @@ func (o SuppressionListOutput) LastUpdatedTimeStamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *SuppressionList) pulumi.StringOutput { return v.LastUpdatedTimeStamp }).(pulumi.StringOutput)
 }
 
-// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 func (o SuppressionListOutput) ListName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SuppressionList) pulumi.StringPtrOutput { return v.ListName }).(pulumi.StringPtrOutput)
 }

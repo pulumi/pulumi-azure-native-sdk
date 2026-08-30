@@ -13,9 +13,9 @@ import (
 
 // Get the CommunicationService and its properties.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2026-03-18.
 //
-// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCommunicationService(ctx *pulumi.Context, args *LookupCommunicationServiceArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommunicationServiceResult
@@ -39,11 +39,13 @@ type LookupCommunicationServiceResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the communication service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
+	// Disable local authentication for the CommunicationService.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// FQDN of the CommunicationService instance.
 	HostName string `pulumi:"hostName"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The immutable resource Id of the communication service.
 	ImmutableResourceId string `pulumi:"immutableResourceId"`
@@ -57,6 +59,8 @@ type LookupCommunicationServiceResult struct {
 	NotificationHubId string `pulumi:"notificationHubId"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -112,6 +116,11 @@ func (o LookupCommunicationServiceResultOutput) DataLocation() pulumi.StringOutp
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.DataLocation }).(pulumi.StringOutput)
 }
 
+// Disable local authentication for the CommunicationService.
+func (o LookupCommunicationServiceResultOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupCommunicationServiceResult) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
 // FQDN of the CommunicationService instance.
 func (o LookupCommunicationServiceResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.HostName }).(pulumi.StringOutput)
@@ -122,7 +131,7 @@ func (o LookupCommunicationServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o LookupCommunicationServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -155,6 +164,11 @@ func (o LookupCommunicationServiceResultOutput) NotificationHubId() pulumi.Strin
 // Provisioning state of the resource.
 func (o LookupCommunicationServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+func (o LookupCommunicationServiceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCommunicationServiceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -14,9 +14,9 @@ import (
 
 // Description of a namespace resource.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Namespace struct {
 	pulumi.CustomResourceState
 
@@ -30,16 +30,21 @@ type Namespace struct {
 	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// Properties of BYOK Encryption description
 	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
+	// Geo Data Replication settings for the namespace
+	GeoDataReplication GeoDataReplicationPropertiesResponsePtrOutput `pulumi:"geoDataReplication"`
 	// Properties of BYOK Identity description
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
-	// The Geo-location where the resource lives
+	// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+	IpAddressType pulumi.StringPtrOutput `pulumi:"ipAddressType"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier for Azure Insights metrics
 	MetricId pulumi.StringOutput `pulumi:"metricId"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
 	MinimumTlsVersion pulumi.StringPtrOutput `pulumi:"minimumTlsVersion"`
-	// Resource name
-	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the resource
+	Name                 pulumi.StringOutput                   `pulumi:"name"`
+	PlatformCapabilities PlatformCapabilitiesResponsePtrOutput `pulumi:"platformCapabilities"`
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions pulumi.IntPtrOutput `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
@@ -54,15 +59,15 @@ type Namespace struct {
 	Sku SBSkuResponsePtrOutput `pulumi:"sku"`
 	// Status of the namespace.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 	ZoneRedundant pulumi.BoolPtrOutput `pulumi:"zoneRedundant"`
 }
 
@@ -166,14 +171,19 @@ type namespaceArgs struct {
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of BYOK Encryption description
 	Encryption *Encryption `pulumi:"encryption"`
+	// Geo Data Replication settings for the namespace
+	GeoDataReplication *GeoDataReplicationProperties `pulumi:"geoDataReplication"`
 	// Properties of BYOK Identity description
 	Identity *Identity `pulumi:"identity"`
-	// The Geo-location where the resource lives
+	// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
-	// The namespace name.
-	NamespaceName *string `pulumi:"namespaceName"`
+	// The namespace name
+	NamespaceName        *string               `pulumi:"namespaceName"`
+	PlatformCapabilities *PlatformCapabilities `pulumi:"platformCapabilities"`
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions *int `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
@@ -185,9 +195,9 @@ type namespaceArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Properties of SKU
 	Sku *SBSku `pulumi:"sku"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
@@ -199,14 +209,19 @@ type NamespaceArgs struct {
 	DisableLocalAuth pulumi.BoolPtrInput
 	// Properties of BYOK Encryption description
 	Encryption EncryptionPtrInput
+	// Geo Data Replication settings for the namespace
+	GeoDataReplication GeoDataReplicationPropertiesPtrInput
 	// Properties of BYOK Identity description
 	Identity IdentityPtrInput
-	// The Geo-location where the resource lives
+	// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+	IpAddressType pulumi.StringPtrInput
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
 	MinimumTlsVersion pulumi.StringPtrInput
-	// The namespace name.
-	NamespaceName pulumi.StringPtrInput
+	// The namespace name
+	NamespaceName        pulumi.StringPtrInput
+	PlatformCapabilities PlatformCapabilitiesPtrInput
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions pulumi.IntPtrInput
 	// List of private endpoint connections.
@@ -218,9 +233,9 @@ type NamespaceArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Properties of SKU
 	Sku SBSkuPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
-	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 	ZoneRedundant pulumi.BoolPtrInput
 }
 
@@ -286,12 +301,22 @@ func (o NamespaceOutput) Encryption() EncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *Namespace) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
 }
 
+// Geo Data Replication settings for the namespace
+func (o NamespaceOutput) GeoDataReplication() GeoDataReplicationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Namespace) GeoDataReplicationPropertiesResponsePtrOutput { return v.GeoDataReplication }).(GeoDataReplicationPropertiesResponsePtrOutput)
+}
+
 // Properties of BYOK Identity description
 func (o NamespaceOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Namespace) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
-// The Geo-location where the resource lives
+// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+func (o NamespaceOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// The geo-location where the resource lives
 func (o NamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -306,9 +331,13 @@ func (o NamespaceOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.MinimumTlsVersion }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NamespaceOutput) PlatformCapabilities() PlatformCapabilitiesResponsePtrOutput {
+	return o.ApplyT(func(v *Namespace) PlatformCapabilitiesResponsePtrOutput { return v.PlatformCapabilities }).(PlatformCapabilitiesResponsePtrOutput)
 }
 
 // The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
@@ -346,17 +375,17 @@ func (o NamespaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o NamespaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NamespaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -366,7 +395,7 @@ func (o NamespaceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 func (o NamespaceOutput) ZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }

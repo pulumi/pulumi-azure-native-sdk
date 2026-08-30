@@ -13,9 +13,9 @@ import (
 
 // Gets a description for the specified namespace.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2026-01-01.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -45,18 +45,23 @@ type LookupNamespaceResult struct {
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Properties of BYOK Encryption description
 	Encryption *EncryptionResponse `pulumi:"encryption"`
-	// Resource Id
+	// Geo Data Replication settings for the namespace
+	GeoDataReplication *GeoDataReplicationPropertiesResponse `pulumi:"geoDataReplication"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Properties of BYOK Identity description
 	Identity *IdentityResponse `pulumi:"identity"`
-	// The Geo-location where the resource lives
+	// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Identifier for Azure Insights metrics
 	MetricId string `pulumi:"metricId"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
-	// Resource name
-	Name string `pulumi:"name"`
+	// The name of the resource
+	Name                 string                        `pulumi:"name"`
+	PlatformCapabilities *PlatformCapabilitiesResponse `pulumi:"platformCapabilities"`
 	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
 	PremiumMessagingPartitions *int `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
@@ -71,15 +76,15 @@ type LookupNamespaceResult struct {
 	Sku *SBSkuResponse `pulumi:"sku"`
 	// Status of the namespace.
 	Status string `pulumi:"status"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
@@ -157,7 +162,12 @@ func (o LookupNamespaceResultOutput) Encryption() EncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *EncryptionResponse { return v.Encryption }).(EncryptionResponsePtrOutput)
 }
 
-// Resource Id
+// Geo Data Replication settings for the namespace
+func (o LookupNamespaceResultOutput) GeoDataReplication() GeoDataReplicationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) *GeoDataReplicationPropertiesResponse { return v.GeoDataReplication }).(GeoDataReplicationPropertiesResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -167,7 +177,12 @@ func (o LookupNamespaceResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
-// The Geo-location where the resource lives
+// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+func (o LookupNamespaceResultOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// The geo-location where the resource lives
 func (o LookupNamespaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -182,9 +197,13 @@ func (o LookupNamespaceResultOutput) MinimumTlsVersion() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.MinimumTlsVersion }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceResultOutput) PlatformCapabilities() PlatformCapabilitiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) *PlatformCapabilitiesResponse { return v.PlatformCapabilities }).(PlatformCapabilitiesResponsePtrOutput)
 }
 
 // The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
@@ -222,17 +241,17 @@ func (o LookupNamespaceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupNamespaceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o LookupNamespaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -242,7 +261,7 @@ func (o LookupNamespaceResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 func (o LookupNamespaceResultOutput) ZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *bool { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }

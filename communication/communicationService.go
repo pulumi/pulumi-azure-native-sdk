@@ -14,9 +14,9 @@ import (
 
 // A class representing a CommunicationService resource.
 //
-// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
+// Uses Azure REST API version 2026-03-18. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
 //
-// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CommunicationService struct {
 	pulumi.CustomResourceState
 
@@ -24,9 +24,11 @@ type CommunicationService struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the communication service stores its data at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
+	// Disable local authentication for the CommunicationService.
+	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// FQDN of the CommunicationService instance.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The immutable resource Id of the communication service.
 	ImmutableResourceId pulumi.StringOutput `pulumi:"immutableResourceId"`
@@ -40,6 +42,8 @@ type CommunicationService struct {
 	NotificationHubId pulumi.StringOutput `pulumi:"notificationHubId"`
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -145,12 +149,16 @@ type communicationServiceArgs struct {
 	CommunicationServiceName *string `pulumi:"communicationServiceName"`
 	// The location where the communication service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// Disable local authentication for the CommunicationService.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// List of email Domain resource Ids.
 	LinkedDomains []string `pulumi:"linkedDomains"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -163,12 +171,16 @@ type CommunicationServiceArgs struct {
 	CommunicationServiceName pulumi.StringPtrInput
 	// The location where the communication service stores its data at rest.
 	DataLocation pulumi.StringInput
-	// Managed service identity (system assigned and/or user assigned identities)
+	// Disable local authentication for the CommunicationService.
+	DisableLocalAuth pulumi.BoolPtrInput
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
 	// List of email Domain resource Ids.
 	LinkedDomains pulumi.StringArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -222,12 +234,17 @@ func (o CommunicationServiceOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.DataLocation }).(pulumi.StringOutput)
 }
 
+// Disable local authentication for the CommunicationService.
+func (o CommunicationServiceOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CommunicationService) pulumi.BoolPtrOutput { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
 // FQDN of the CommunicationService instance.
 func (o CommunicationServiceOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o CommunicationServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *CommunicationService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -260,6 +277,11 @@ func (o CommunicationServiceOutput) NotificationHubId() pulumi.StringOutput {
 // Provisioning state of the resource.
 func (o CommunicationServiceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+func (o CommunicationServiceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommunicationService) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
