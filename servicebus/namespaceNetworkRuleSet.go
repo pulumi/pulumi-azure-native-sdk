@@ -55,9 +55,6 @@ func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.PublicNetworkAccess == nil {
-		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicebus/v20170401:NamespaceNetworkRuleSet"),

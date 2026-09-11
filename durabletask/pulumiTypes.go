@@ -13,6 +13,103 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The private endpoint resource.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
+}
+
 // The private endpoint resource.
 type PrivateEndpointResponse struct {
 	// The ARM identifier for private endpoint.
@@ -525,6 +622,8 @@ func (o RetentionPolicyPropertiesResponseOutput) RetentionPolicies() RetentionPo
 type SchedulerProperties struct {
 	// IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
 	IpAllowlist []string `pulumi:"ipAllowlist"`
+	// Allow or disallow public network access to durable task scheduler
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU of the durable task scheduler
 	Sku SchedulerSku `pulumi:"sku"`
 }
@@ -544,6 +643,8 @@ type SchedulerPropertiesInput interface {
 type SchedulerPropertiesArgs struct {
 	// IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
 	IpAllowlist pulumi.StringArrayInput `pulumi:"ipAllowlist"`
+	// Allow or disallow public network access to durable task scheduler
+	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// SKU of the durable task scheduler
 	Sku SchedulerSkuInput `pulumi:"sku"`
 }
@@ -631,6 +732,11 @@ func (o SchedulerPropertiesOutput) IpAllowlist() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SchedulerProperties) []string { return v.IpAllowlist }).(pulumi.StringArrayOutput)
 }
 
+// Allow or disallow public network access to durable task scheduler
+func (o SchedulerPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulerProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // SKU of the durable task scheduler
 func (o SchedulerPropertiesOutput) Sku() SchedulerSkuOutput {
 	return o.ApplyT(func(v SchedulerProperties) SchedulerSku { return v.Sku }).(SchedulerSkuOutput)
@@ -670,6 +776,16 @@ func (o SchedulerPropertiesPtrOutput) IpAllowlist() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow or disallow public network access to durable task scheduler
+func (o SchedulerPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchedulerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicNetworkAccess
+	}).(pulumi.StringPtrOutput)
+}
+
 // SKU of the durable task scheduler
 func (o SchedulerPropertiesPtrOutput) Sku() SchedulerSkuPtrOutput {
 	return o.ApplyT(func(v *SchedulerProperties) *SchedulerSku {
@@ -686,8 +802,12 @@ type SchedulerPropertiesResponse struct {
 	Endpoint string `pulumi:"endpoint"`
 	// IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
 	IpAllowlist []string `pulumi:"ipAllowlist"`
+	// The private endpoints exposed by this resource
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The status of the last operation
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Allow or disallow public network access to durable task scheduler
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU of the durable task scheduler
 	Sku SchedulerSkuResponse `pulumi:"sku"`
 }
@@ -717,9 +837,21 @@ func (o SchedulerPropertiesResponseOutput) IpAllowlist() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v SchedulerPropertiesResponse) []string { return v.IpAllowlist }).(pulumi.StringArrayOutput)
 }
 
+// The private endpoints exposed by this resource
+func (o SchedulerPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v SchedulerPropertiesResponse) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The status of the last operation
 func (o SchedulerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Allow or disallow public network access to durable task scheduler
+func (o SchedulerPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulerPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // SKU of the durable task scheduler
@@ -1021,6 +1153,8 @@ func (o TaskHubPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
