@@ -178,6 +178,174 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
+// Allow or disallow public network access to durable task scheduler
+type PublicNetworkAccess string
+
+const (
+	// The public network access is enabled
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// The public network access is disabled
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+func (PublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
+		return &v
+	}).(PublicNetworkAccessPtrOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
+	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkAccess
+		return ret
+	}).(PublicNetworkAccessOutput)
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
+//
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
+type PublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
+	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
+}
+
+var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+
+type PublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
+	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
+}
+
+type publicNetworkAccessPtr string
+
+func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
+	return (*publicNetworkAccessPtr)(&v)
+}
+
+func (*publicNetworkAccessPtr) ElementType() reflect.Type {
+	return publicNetworkAccessPtrType
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
+}
+
 // The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
 type PurgeableOrchestrationState string
 
@@ -352,9 +520,181 @@ func (in *purgeableOrchestrationStatePtr) ToPurgeableOrchestrationStatePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(PurgeableOrchestrationStatePtrOutput)
 }
 
+// The name of the SKU
+type SchedulerSkuName string
+
+const (
+	// Dedicated SKU
+	SchedulerSkuNameDedicated = SchedulerSkuName("Dedicated")
+	// Consumption SKU
+	SchedulerSkuNameConsumption = SchedulerSkuName("Consumption")
+)
+
+func (SchedulerSkuName) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerSkuName)(nil)).Elem()
+}
+
+func (e SchedulerSkuName) ToSchedulerSkuNameOutput() SchedulerSkuNameOutput {
+	return pulumi.ToOutput(e).(SchedulerSkuNameOutput)
+}
+
+func (e SchedulerSkuName) ToSchedulerSkuNameOutputWithContext(ctx context.Context) SchedulerSkuNameOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchedulerSkuNameOutput)
+}
+
+func (e SchedulerSkuName) ToSchedulerSkuNamePtrOutput() SchedulerSkuNamePtrOutput {
+	return e.ToSchedulerSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (e SchedulerSkuName) ToSchedulerSkuNamePtrOutputWithContext(ctx context.Context) SchedulerSkuNamePtrOutput {
+	return SchedulerSkuName(e).ToSchedulerSkuNameOutputWithContext(ctx).ToSchedulerSkuNamePtrOutputWithContext(ctx)
+}
+
+func (e SchedulerSkuName) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulerSkuName) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulerSkuName) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulerSkuName) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchedulerSkuNameOutput struct{ *pulumi.OutputState }
+
+func (SchedulerSkuNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerSkuName)(nil)).Elem()
+}
+
+func (o SchedulerSkuNameOutput) ToSchedulerSkuNameOutput() SchedulerSkuNameOutput {
+	return o
+}
+
+func (o SchedulerSkuNameOutput) ToSchedulerSkuNameOutputWithContext(ctx context.Context) SchedulerSkuNameOutput {
+	return o
+}
+
+func (o SchedulerSkuNameOutput) ToSchedulerSkuNamePtrOutput() SchedulerSkuNamePtrOutput {
+	return o.ToSchedulerSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (o SchedulerSkuNameOutput) ToSchedulerSkuNamePtrOutputWithContext(ctx context.Context) SchedulerSkuNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerSkuName) *SchedulerSkuName {
+		return &v
+	}).(SchedulerSkuNamePtrOutput)
+}
+
+func (o SchedulerSkuNameOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchedulerSkuNameOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulerSkuName) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchedulerSkuNameOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulerSkuNameOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulerSkuName) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchedulerSkuNamePtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulerSkuNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulerSkuName)(nil)).Elem()
+}
+
+func (o SchedulerSkuNamePtrOutput) ToSchedulerSkuNamePtrOutput() SchedulerSkuNamePtrOutput {
+	return o
+}
+
+func (o SchedulerSkuNamePtrOutput) ToSchedulerSkuNamePtrOutputWithContext(ctx context.Context) SchedulerSkuNamePtrOutput {
+	return o
+}
+
+func (o SchedulerSkuNamePtrOutput) Elem() SchedulerSkuNameOutput {
+	return o.ApplyT(func(v *SchedulerSkuName) SchedulerSkuName {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulerSkuName
+		return ret
+	}).(SchedulerSkuNameOutput)
+}
+
+func (o SchedulerSkuNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulerSkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchedulerSkuName) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchedulerSkuNameInput is an input type that accepts values of the SchedulerSkuName enum
+// A concrete instance of `SchedulerSkuNameInput` can be one of the following:
+//
+//	SchedulerSkuNameDedicated
+//	SchedulerSkuNameConsumption
+type SchedulerSkuNameInput interface {
+	pulumi.Input
+
+	ToSchedulerSkuNameOutput() SchedulerSkuNameOutput
+	ToSchedulerSkuNameOutputWithContext(context.Context) SchedulerSkuNameOutput
+}
+
+var schedulerSkuNamePtrType = reflect.TypeOf((**SchedulerSkuName)(nil)).Elem()
+
+type SchedulerSkuNamePtrInput interface {
+	pulumi.Input
+
+	ToSchedulerSkuNamePtrOutput() SchedulerSkuNamePtrOutput
+	ToSchedulerSkuNamePtrOutputWithContext(context.Context) SchedulerSkuNamePtrOutput
+}
+
+type schedulerSkuNamePtr string
+
+func SchedulerSkuNamePtr(v string) SchedulerSkuNamePtrInput {
+	return (*schedulerSkuNamePtr)(&v)
+}
+
+func (*schedulerSkuNamePtr) ElementType() reflect.Type {
+	return schedulerSkuNamePtrType
+}
+
+func (in *schedulerSkuNamePtr) ToSchedulerSkuNamePtrOutput() SchedulerSkuNamePtrOutput {
+	return pulumi.ToOutput(in).(SchedulerSkuNamePtrOutput)
+}
+
+func (in *schedulerSkuNamePtr) ToSchedulerSkuNamePtrOutputWithContext(ctx context.Context) SchedulerSkuNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchedulerSkuNamePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(PurgeableOrchestrationStateOutput{})
 	pulumi.RegisterOutputType(PurgeableOrchestrationStatePtrOutput{})
+	pulumi.RegisterOutputType(SchedulerSkuNameOutput{})
+	pulumi.RegisterOutputType(SchedulerSkuNamePtrOutput{})
 }
