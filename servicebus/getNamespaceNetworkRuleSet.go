@@ -23,7 +23,7 @@ func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNet
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupNamespaceNetworkRuleSetArgs struct {
@@ -59,18 +59,6 @@ type LookupNamespaceNetworkRuleSetResult struct {
 	VirtualNetworkRules []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
 }
 
-// Defaults sets the appropriate defaults for LookupNamespaceNetworkRuleSetResult
-func (val *LookupNamespaceNetworkRuleSetResult) Defaults() *LookupNamespaceNetworkRuleSetResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicNetworkAccess == nil {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
-	return &tmp
-}
 func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespaceNetworkRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceNetworkRuleSetResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceNetworkRuleSetResultOutput, error) {
