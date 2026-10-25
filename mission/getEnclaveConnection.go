@@ -66,12 +66,8 @@ type LookupEnclaveConnectionResult struct {
 }
 
 func LookupEnclaveConnectionOutput(ctx *pulumi.Context, args LookupEnclaveConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEnclaveConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnclaveConnectionResultOutput, error) {
-			args := v.(LookupEnclaveConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getEnclaveConnection", args, LookupEnclaveConnectionResultOutput{}, options).(LookupEnclaveConnectionResultOutput), nil
-		}).(LookupEnclaveConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getEnclaveConnection", args, LookupEnclaveConnectionResultOutput{}, options).(LookupEnclaveConnectionResultOutput)
 }
 
 type LookupEnclaveConnectionOutputArgs struct {

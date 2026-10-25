@@ -38,12 +38,8 @@ type GetDnsResourceReferenceByTarResourcesResult struct {
 }
 
 func GetDnsResourceReferenceByTarResourcesOutput(ctx *pulumi.Context, args GetDnsResourceReferenceByTarResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDnsResourceReferenceByTarResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDnsResourceReferenceByTarResourcesResultOutput, error) {
-			args := v.(GetDnsResourceReferenceByTarResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dns:getDnsResourceReferenceByTarResources", args, GetDnsResourceReferenceByTarResourcesResultOutput{}, options).(GetDnsResourceReferenceByTarResourcesResultOutput), nil
-		}).(GetDnsResourceReferenceByTarResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dns:getDnsResourceReferenceByTarResources", args, GetDnsResourceReferenceByTarResourcesResultOutput{}, options).(GetDnsResourceReferenceByTarResourcesResultOutput)
 }
 
 type GetDnsResourceReferenceByTarResourcesOutputArgs struct {

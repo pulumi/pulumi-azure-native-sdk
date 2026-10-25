@@ -72,12 +72,8 @@ type LookupSapVirtualInstanceResult struct {
 }
 
 func LookupSapVirtualInstanceOutput(ctx *pulumi.Context, args LookupSapVirtualInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSapVirtualInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSapVirtualInstanceResultOutput, error) {
-			args := v.(LookupSapVirtualInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstance", args, LookupSapVirtualInstanceResultOutput{}, options).(LookupSapVirtualInstanceResultOutput), nil
-		}).(LookupSapVirtualInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstance", args, LookupSapVirtualInstanceResultOutput{}, options).(LookupSapVirtualInstanceResultOutput)
 }
 
 type LookupSapVirtualInstanceOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupRegistrationAssignmentResult struct {
 }
 
 func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistrationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistrationAssignmentResultOutput, error) {
-			args := v.(LookupRegistrationAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managedservices:getRegistrationAssignment", args, LookupRegistrationAssignmentResultOutput{}, options).(LookupRegistrationAssignmentResultOutput), nil
-		}).(LookupRegistrationAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managedservices:getRegistrationAssignment", args, LookupRegistrationAssignmentResultOutput{}, options).(LookupRegistrationAssignmentResultOutput)
 }
 
 type LookupRegistrationAssignmentOutputArgs struct {

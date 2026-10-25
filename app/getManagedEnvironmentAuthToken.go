@@ -54,12 +54,8 @@ type GetManagedEnvironmentAuthTokenResult struct {
 }
 
 func GetManagedEnvironmentAuthTokenOutput(ctx *pulumi.Context, args GetManagedEnvironmentAuthTokenOutputArgs, opts ...pulumi.InvokeOption) GetManagedEnvironmentAuthTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetManagedEnvironmentAuthTokenResultOutput, error) {
-			args := v.(GetManagedEnvironmentAuthTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getManagedEnvironmentAuthToken", args, GetManagedEnvironmentAuthTokenResultOutput{}, options).(GetManagedEnvironmentAuthTokenResultOutput), nil
-		}).(GetManagedEnvironmentAuthTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getManagedEnvironmentAuthToken", args, GetManagedEnvironmentAuthTokenResultOutput{}, options).(GetManagedEnvironmentAuthTokenResultOutput)
 }
 
 type GetManagedEnvironmentAuthTokenOutputArgs struct {

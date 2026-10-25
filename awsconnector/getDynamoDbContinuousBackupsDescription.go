@@ -52,12 +52,8 @@ type LookupDynamoDbContinuousBackupsDescriptionResult struct {
 }
 
 func LookupDynamoDbContinuousBackupsDescriptionOutput(ctx *pulumi.Context, args LookupDynamoDbContinuousBackupsDescriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDynamoDbContinuousBackupsDescriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDynamoDbContinuousBackupsDescriptionResultOutput, error) {
-			args := v.(LookupDynamoDbContinuousBackupsDescriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getDynamoDbContinuousBackupsDescription", args, LookupDynamoDbContinuousBackupsDescriptionResultOutput{}, options).(LookupDynamoDbContinuousBackupsDescriptionResultOutput), nil
-		}).(LookupDynamoDbContinuousBackupsDescriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getDynamoDbContinuousBackupsDescription", args, LookupDynamoDbContinuousBackupsDescriptionResultOutput{}, options).(LookupDynamoDbContinuousBackupsDescriptionResultOutput)
 }
 
 type LookupDynamoDbContinuousBackupsDescriptionOutputArgs struct {

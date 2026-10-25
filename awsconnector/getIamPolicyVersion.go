@@ -52,12 +52,8 @@ type LookupIamPolicyVersionResult struct {
 }
 
 func LookupIamPolicyVersionOutput(ctx *pulumi.Context, args LookupIamPolicyVersionOutputArgs, opts ...pulumi.InvokeOption) LookupIamPolicyVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamPolicyVersionResultOutput, error) {
-			args := v.(LookupIamPolicyVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamPolicyVersion", args, LookupIamPolicyVersionResultOutput{}, options).(LookupIamPolicyVersionResultOutput), nil
-		}).(LookupIamPolicyVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamPolicyVersion", args, LookupIamPolicyVersionResultOutput{}, options).(LookupIamPolicyVersionResultOutput)
 }
 
 type LookupIamPolicyVersionOutputArgs struct {

@@ -42,12 +42,8 @@ type GetDomainEventSubscriptionFullUrlResult struct {
 }
 
 func GetDomainEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetDomainEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetDomainEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainEventSubscriptionFullUrlResultOutput, error) {
-			args := v.(GetDomainEventSubscriptionFullUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getDomainEventSubscriptionFullUrl", args, GetDomainEventSubscriptionFullUrlResultOutput{}, options).(GetDomainEventSubscriptionFullUrlResultOutput), nil
-		}).(GetDomainEventSubscriptionFullUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getDomainEventSubscriptionFullUrl", args, GetDomainEventSubscriptionFullUrlResultOutput{}, options).(GetDomainEventSubscriptionFullUrlResultOutput)
 }
 
 type GetDomainEventSubscriptionFullUrlOutputArgs struct {

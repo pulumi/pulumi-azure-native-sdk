@@ -58,12 +58,8 @@ type LookupSubscriptionDiagnosticSettingResult struct {
 }
 
 func LookupSubscriptionDiagnosticSettingOutput(ctx *pulumi.Context, args LookupSubscriptionDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionDiagnosticSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubscriptionDiagnosticSettingResultOutput, error) {
-			args := v.(LookupSubscriptionDiagnosticSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getSubscriptionDiagnosticSetting", args, LookupSubscriptionDiagnosticSettingResultOutput{}, options).(LookupSubscriptionDiagnosticSettingResultOutput), nil
-		}).(LookupSubscriptionDiagnosticSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getSubscriptionDiagnosticSetting", args, LookupSubscriptionDiagnosticSettingResultOutput{}, options).(LookupSubscriptionDiagnosticSettingResultOutput)
 }
 
 type LookupSubscriptionDiagnosticSettingOutputArgs struct {

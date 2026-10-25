@@ -62,12 +62,8 @@ type LookupManagedNetworkGroupResult struct {
 }
 
 func LookupManagedNetworkGroupOutput(ctx *pulumi.Context, args LookupManagedNetworkGroupOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedNetworkGroupResultOutput, error) {
-			args := v.(LookupManagedNetworkGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetwork:getManagedNetworkGroup", args, LookupManagedNetworkGroupResultOutput{}, options).(LookupManagedNetworkGroupResultOutput), nil
-		}).(LookupManagedNetworkGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetwork:getManagedNetworkGroup", args, LookupManagedNetworkGroupResultOutput{}, options).(LookupManagedNetworkGroupResultOutput)
 }
 
 type LookupManagedNetworkGroupOutputArgs struct {

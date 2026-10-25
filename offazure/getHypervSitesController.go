@@ -68,12 +68,8 @@ type LookupHypervSitesControllerResult struct {
 }
 
 func LookupHypervSitesControllerOutput(ctx *pulumi.Context, args LookupHypervSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupHypervSitesControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHypervSitesControllerResultOutput, error) {
-			args := v.(LookupHypervSitesControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getHypervSitesController", args, LookupHypervSitesControllerResultOutput{}, options).(LookupHypervSitesControllerResultOutput), nil
-		}).(LookupHypervSitesControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getHypervSitesController", args, LookupHypervSitesControllerResultOutput{}, options).(LookupHypervSitesControllerResultOutput)
 }
 
 type LookupHypervSitesControllerOutputArgs struct {

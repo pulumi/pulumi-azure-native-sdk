@@ -42,12 +42,8 @@ type ListIdentityProviderSecretsResult struct {
 }
 
 func ListIdentityProviderSecretsOutput(ctx *pulumi.Context, args ListIdentityProviderSecretsOutputArgs, opts ...pulumi.InvokeOption) ListIdentityProviderSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIdentityProviderSecretsResultOutput, error) {
-			args := v.(ListIdentityProviderSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listIdentityProviderSecrets", args, ListIdentityProviderSecretsResultOutput{}, options).(ListIdentityProviderSecretsResultOutput), nil
-		}).(ListIdentityProviderSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listIdentityProviderSecrets", args, ListIdentityProviderSecretsResultOutput{}, options).(ListIdentityProviderSecretsResultOutput)
 }
 
 type ListIdentityProviderSecretsOutputArgs struct {

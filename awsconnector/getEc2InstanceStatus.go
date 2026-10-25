@@ -52,12 +52,8 @@ type LookupEc2InstanceStatusResult struct {
 }
 
 func LookupEc2InstanceStatusOutput(ctx *pulumi.Context, args LookupEc2InstanceStatusOutputArgs, opts ...pulumi.InvokeOption) LookupEc2InstanceStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2InstanceStatusResultOutput, error) {
-			args := v.(LookupEc2InstanceStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2InstanceStatus", args, LookupEc2InstanceStatusResultOutput{}, options).(LookupEc2InstanceStatusResultOutput), nil
-		}).(LookupEc2InstanceStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2InstanceStatus", args, LookupEc2InstanceStatusResultOutput{}, options).(LookupEc2InstanceStatusResultOutput)
 }
 
 type LookupEc2InstanceStatusOutputArgs struct {

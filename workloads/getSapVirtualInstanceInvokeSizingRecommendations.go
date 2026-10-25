@@ -54,12 +54,8 @@ type GetSapVirtualInstanceInvokeSizingRecommendationsResult struct {
 }
 
 func GetSapVirtualInstanceInvokeSizingRecommendationsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceInvokeSizingRecommendationsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput, error) {
-			args := v.(GetSapVirtualInstanceInvokeSizingRecommendationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeSizingRecommendations", args, GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput{}, options).(GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput), nil
-		}).(GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeSizingRecommendations", args, GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput{}, options).(GetSapVirtualInstanceInvokeSizingRecommendationsResultOutput)
 }
 
 type GetSapVirtualInstanceInvokeSizingRecommendationsOutputArgs struct {

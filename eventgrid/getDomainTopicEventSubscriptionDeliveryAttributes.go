@@ -44,12 +44,8 @@ type GetDomainTopicEventSubscriptionDeliveryAttributesResult struct {
 }
 
 func GetDomainTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetDomainTopicEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput, error) {
-			args := v.(GetDomainTopicEventSubscriptionDeliveryAttributesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getDomainTopicEventSubscriptionDeliveryAttributes", args, GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput), nil
-		}).(GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getDomainTopicEventSubscriptionDeliveryAttributes", args, GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetDomainTopicEventSubscriptionDeliveryAttributesResultOutput)
 }
 
 type GetDomainTopicEventSubscriptionDeliveryAttributesOutputArgs struct {

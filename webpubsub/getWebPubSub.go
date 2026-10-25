@@ -138,12 +138,8 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 	return &tmp
 }
 func LookupWebPubSubOutput(ctx *pulumi.Context, args LookupWebPubSubOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubResultOutput, error) {
-			args := v.(LookupWebPubSubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSub", args, LookupWebPubSubResultOutput{}, options).(LookupWebPubSubResultOutput), nil
-		}).(LookupWebPubSubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSub", args, LookupWebPubSubResultOutput{}, options).(LookupWebPubSubResultOutput)
 }
 
 type LookupWebPubSubOutputArgs struct {

@@ -112,12 +112,8 @@ func (val *LookupAppServiceCertificateOrderResult) Defaults() *LookupAppServiceC
 	return &tmp
 }
 func LookupAppServiceCertificateOrderOutput(ctx *pulumi.Context, args LookupAppServiceCertificateOrderOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceCertificateOrderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppServiceCertificateOrderResultOutput, error) {
-			args := v.(LookupAppServiceCertificateOrderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:certificateregistration:getAppServiceCertificateOrder", args, LookupAppServiceCertificateOrderResultOutput{}, options).(LookupAppServiceCertificateOrderResultOutput), nil
-		}).(LookupAppServiceCertificateOrderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:certificateregistration:getAppServiceCertificateOrder", args, LookupAppServiceCertificateOrderResultOutput{}, options).(LookupAppServiceCertificateOrderResultOutput)
 }
 
 type LookupAppServiceCertificateOrderOutputArgs struct {

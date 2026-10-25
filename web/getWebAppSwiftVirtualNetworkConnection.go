@@ -54,12 +54,8 @@ type LookupWebAppSwiftVirtualNetworkConnectionResult struct {
 }
 
 func LookupWebAppSwiftVirtualNetworkConnectionOutput(ctx *pulumi.Context, args LookupWebAppSwiftVirtualNetworkConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSwiftVirtualNetworkConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSwiftVirtualNetworkConnectionResultOutput, error) {
-			args := v.(LookupWebAppSwiftVirtualNetworkConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppSwiftVirtualNetworkConnection", args, LookupWebAppSwiftVirtualNetworkConnectionResultOutput{}, options).(LookupWebAppSwiftVirtualNetworkConnectionResultOutput), nil
-		}).(LookupWebAppSwiftVirtualNetworkConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppSwiftVirtualNetworkConnection", args, LookupWebAppSwiftVirtualNetworkConnectionResultOutput{}, options).(LookupWebAppSwiftVirtualNetworkConnectionResultOutput)
 }
 
 type LookupWebAppSwiftVirtualNetworkConnectionOutputArgs struct {

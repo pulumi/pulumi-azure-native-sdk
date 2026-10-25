@@ -86,12 +86,8 @@ func (val *LookupBackupResult) Defaults() *LookupBackupResult {
 	return &tmp
 }
 func LookupBackupOutput(ctx *pulumi.Context, args LookupBackupOutputArgs, opts ...pulumi.InvokeOption) LookupBackupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackupResultOutput, error) {
-			args := v.(LookupBackupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getBackup", args, LookupBackupResultOutput{}, options).(LookupBackupResultOutput), nil
-		}).(LookupBackupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getBackup", args, LookupBackupResultOutput{}, options).(LookupBackupResultOutput)
 }
 
 type LookupBackupOutputArgs struct {

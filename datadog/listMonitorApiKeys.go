@@ -42,12 +42,8 @@ type ListMonitorApiKeysResult struct {
 }
 
 func ListMonitorApiKeysOutput(ctx *pulumi.Context, args ListMonitorApiKeysOutputArgs, opts ...pulumi.InvokeOption) ListMonitorApiKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListMonitorApiKeysResultOutput, error) {
-			args := v.(ListMonitorApiKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datadog:listMonitorApiKeys", args, ListMonitorApiKeysResultOutput{}, options).(ListMonitorApiKeysResultOutput), nil
-		}).(ListMonitorApiKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datadog:listMonitorApiKeys", args, ListMonitorApiKeysResultOutput{}, options).(ListMonitorApiKeysResultOutput)
 }
 
 type ListMonitorApiKeysOutputArgs struct {

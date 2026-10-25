@@ -62,12 +62,8 @@ type LookupResourceSyncRuleResult struct {
 }
 
 func LookupResourceSyncRuleOutput(ctx *pulumi.Context, args LookupResourceSyncRuleOutputArgs, opts ...pulumi.InvokeOption) LookupResourceSyncRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourceSyncRuleResultOutput, error) {
-			args := v.(LookupResourceSyncRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:extendedlocation:getResourceSyncRule", args, LookupResourceSyncRuleResultOutput{}, options).(LookupResourceSyncRuleResultOutput), nil
-		}).(LookupResourceSyncRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:extendedlocation:getResourceSyncRule", args, LookupResourceSyncRuleResultOutput{}, options).(LookupResourceSyncRuleResultOutput)
 }
 
 type LookupResourceSyncRuleOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupDevOpsConfigurationResult struct {
 }
 
 func LookupDevOpsConfigurationOutput(ctx *pulumi.Context, args LookupDevOpsConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDevOpsConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDevOpsConfigurationResultOutput, error) {
-			args := v.(LookupDevOpsConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getDevOpsConfiguration", args, LookupDevOpsConfigurationResultOutput{}, options).(LookupDevOpsConfigurationResultOutput), nil
-		}).(LookupDevOpsConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getDevOpsConfiguration", args, LookupDevOpsConfigurationResultOutput{}, options).(LookupDevOpsConfigurationResultOutput)
 }
 
 type LookupDevOpsConfigurationOutputArgs struct {

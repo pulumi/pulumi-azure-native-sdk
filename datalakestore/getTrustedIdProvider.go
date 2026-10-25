@@ -48,12 +48,8 @@ type LookupTrustedIdProviderResult struct {
 }
 
 func LookupTrustedIdProviderOutput(ctx *pulumi.Context, args LookupTrustedIdProviderOutputArgs, opts ...pulumi.InvokeOption) LookupTrustedIdProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTrustedIdProviderResultOutput, error) {
-			args := v.(LookupTrustedIdProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datalakestore:getTrustedIdProvider", args, LookupTrustedIdProviderResultOutput{}, options).(LookupTrustedIdProviderResultOutput), nil
-		}).(LookupTrustedIdProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datalakestore:getTrustedIdProvider", args, LookupTrustedIdProviderResultOutput{}, options).(LookupTrustedIdProviderResultOutput)
 }
 
 type LookupTrustedIdProviderOutputArgs struct {

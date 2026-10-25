@@ -62,12 +62,8 @@ type LookupMigrationConfigResult struct {
 }
 
 func LookupMigrationConfigOutput(ctx *pulumi.Context, args LookupMigrationConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMigrationConfigResultOutput, error) {
-			args := v.(LookupMigrationConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicebus:getMigrationConfig", args, LookupMigrationConfigResultOutput{}, options).(LookupMigrationConfigResultOutput), nil
-		}).(LookupMigrationConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicebus:getMigrationConfig", args, LookupMigrationConfigResultOutput{}, options).(LookupMigrationConfigResultOutput)
 }
 
 type LookupMigrationConfigOutputArgs struct {

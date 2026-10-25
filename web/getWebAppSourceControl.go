@@ -64,12 +64,8 @@ type LookupWebAppSourceControlResult struct {
 }
 
 func LookupWebAppSourceControlOutput(ctx *pulumi.Context, args LookupWebAppSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSourceControlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSourceControlResultOutput, error) {
-			args := v.(LookupWebAppSourceControlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppSourceControl", args, LookupWebAppSourceControlResultOutput{}, options).(LookupWebAppSourceControlResultOutput), nil
-		}).(LookupWebAppSourceControlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppSourceControl", args, LookupWebAppSourceControlResultOutput{}, options).(LookupWebAppSourceControlResultOutput)
 }
 
 type LookupWebAppSourceControlOutputArgs struct {

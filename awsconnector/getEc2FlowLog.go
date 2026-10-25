@@ -52,12 +52,8 @@ type LookupEc2FlowLogResult struct {
 }
 
 func LookupEc2FlowLogOutput(ctx *pulumi.Context, args LookupEc2FlowLogOutputArgs, opts ...pulumi.InvokeOption) LookupEc2FlowLogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2FlowLogResultOutput, error) {
-			args := v.(LookupEc2FlowLogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2FlowLog", args, LookupEc2FlowLogResultOutput{}, options).(LookupEc2FlowLogResultOutput), nil
-		}).(LookupEc2FlowLogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2FlowLog", args, LookupEc2FlowLogResultOutput{}, options).(LookupEc2FlowLogResultOutput)
 }
 
 type LookupEc2FlowLogOutputArgs struct {

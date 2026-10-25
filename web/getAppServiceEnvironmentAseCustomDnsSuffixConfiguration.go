@@ -58,12 +58,8 @@ type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult struct {
 }
 
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput, error) {
-			args := v.(LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getAppServiceEnvironmentAseCustomDnsSuffixConfiguration", args, LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput{}, options).(LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput), nil
-		}).(LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getAppServiceEnvironmentAseCustomDnsSuffixConfiguration", args, LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput{}, options).(LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput)
 }
 
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs struct {

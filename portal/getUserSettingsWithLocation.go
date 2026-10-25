@@ -40,12 +40,8 @@ type LookupUserSettingsWithLocationResult struct {
 }
 
 func LookupUserSettingsWithLocationOutput(ctx *pulumi.Context, args LookupUserSettingsWithLocationOutputArgs, opts ...pulumi.InvokeOption) LookupUserSettingsWithLocationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserSettingsWithLocationResultOutput, error) {
-			args := v.(LookupUserSettingsWithLocationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:portal:getUserSettingsWithLocation", args, LookupUserSettingsWithLocationResultOutput{}, options).(LookupUserSettingsWithLocationResultOutput), nil
-		}).(LookupUserSettingsWithLocationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:portal:getUserSettingsWithLocation", args, LookupUserSettingsWithLocationResultOutput{}, options).(LookupUserSettingsWithLocationResultOutput)
 }
 
 type LookupUserSettingsWithLocationOutputArgs struct {

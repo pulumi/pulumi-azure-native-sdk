@@ -104,12 +104,8 @@ type LookupRegisteredServerResult struct {
 }
 
 func LookupRegisteredServerOutput(ctx *pulumi.Context, args LookupRegisteredServerOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegisteredServerResultOutput, error) {
-			args := v.(LookupRegisteredServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagesync:getRegisteredServer", args, LookupRegisteredServerResultOutput{}, options).(LookupRegisteredServerResultOutput), nil
-		}).(LookupRegisteredServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagesync:getRegisteredServer", args, LookupRegisteredServerResultOutput{}, options).(LookupRegisteredServerResultOutput)
 }
 
 type LookupRegisteredServerOutputArgs struct {

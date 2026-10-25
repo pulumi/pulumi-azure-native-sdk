@@ -64,12 +64,8 @@ type LookupPipelineResult struct {
 }
 
 func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineResultOutput, error) {
-			args := v.(LookupPipelineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsdataprocessor:getPipeline", args, LookupPipelineResultOutput{}, options).(LookupPipelineResultOutput), nil
-		}).(LookupPipelineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsdataprocessor:getPipeline", args, LookupPipelineResultOutput{}, options).(LookupPipelineResultOutput)
 }
 
 type LookupPipelineOutputArgs struct {

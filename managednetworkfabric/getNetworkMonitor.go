@@ -74,12 +74,8 @@ func (val *LookupNetworkMonitorResult) Defaults() *LookupNetworkMonitorResult {
 	return &tmp
 }
 func LookupNetworkMonitorOutput(ctx *pulumi.Context, args LookupNetworkMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkMonitorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkMonitorResultOutput, error) {
-			args := v.(LookupNetworkMonitorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkMonitor", args, LookupNetworkMonitorResultOutput{}, options).(LookupNetworkMonitorResultOutput), nil
-		}).(LookupNetworkMonitorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkMonitor", args, LookupNetworkMonitorResultOutput{}, options).(LookupNetworkMonitorResultOutput)
 }
 
 type LookupNetworkMonitorOutputArgs struct {

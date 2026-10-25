@@ -52,12 +52,8 @@ type LookupApplicationLiveViewResult struct {
 }
 
 func LookupApplicationLiveViewOutput(ctx *pulumi.Context, args LookupApplicationLiveViewOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationLiveViewResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApplicationLiveViewResultOutput, error) {
-			args := v.(LookupApplicationLiveViewArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getApplicationLiveView", args, LookupApplicationLiveViewResultOutput{}, options).(LookupApplicationLiveViewResultOutput), nil
-		}).(LookupApplicationLiveViewResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getApplicationLiveView", args, LookupApplicationLiveViewResultOutput{}, options).(LookupApplicationLiveViewResultOutput)
 }
 
 type LookupApplicationLiveViewOutputArgs struct {

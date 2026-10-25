@@ -64,12 +64,8 @@ func (val *LookupApplicationAcceleratorResult) Defaults() *LookupApplicationAcce
 	return &tmp
 }
 func LookupApplicationAcceleratorOutput(ctx *pulumi.Context, args LookupApplicationAcceleratorOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationAcceleratorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApplicationAcceleratorResultOutput, error) {
-			args := v.(LookupApplicationAcceleratorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getApplicationAccelerator", args, LookupApplicationAcceleratorResultOutput{}, options).(LookupApplicationAcceleratorResultOutput), nil
-		}).(LookupApplicationAcceleratorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getApplicationAccelerator", args, LookupApplicationAcceleratorResultOutput{}, options).(LookupApplicationAcceleratorResultOutput)
 }
 
 type LookupApplicationAcceleratorOutputArgs struct {

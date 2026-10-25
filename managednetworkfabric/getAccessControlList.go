@@ -84,12 +84,8 @@ func (val *LookupAccessControlListResult) Defaults() *LookupAccessControlListRes
 	return &tmp
 }
 func LookupAccessControlListOutput(ctx *pulumi.Context, args LookupAccessControlListOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessControlListResultOutput, error) {
-			args := v.(LookupAccessControlListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getAccessControlList", args, LookupAccessControlListResultOutput{}, options).(LookupAccessControlListResultOutput), nil
-		}).(LookupAccessControlListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getAccessControlList", args, LookupAccessControlListResultOutput{}, options).(LookupAccessControlListResultOutput)
 }
 
 type LookupAccessControlListOutputArgs struct {

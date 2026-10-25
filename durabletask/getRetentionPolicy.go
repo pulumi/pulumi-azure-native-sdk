@@ -50,12 +50,8 @@ type LookupRetentionPolicyResult struct {
 }
 
 func LookupRetentionPolicyOutput(ctx *pulumi.Context, args LookupRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRetentionPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRetentionPolicyResultOutput, error) {
-			args := v.(LookupRetentionPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:durabletask:getRetentionPolicy", args, LookupRetentionPolicyResultOutput{}, options).(LookupRetentionPolicyResultOutput), nil
-		}).(LookupRetentionPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:durabletask:getRetentionPolicy", args, LookupRetentionPolicyResultOutput{}, options).(LookupRetentionPolicyResultOutput)
 }
 
 type LookupRetentionPolicyOutputArgs struct {

@@ -78,12 +78,8 @@ type LookupContainerAppsSessionPoolResult struct {
 }
 
 func LookupContainerAppsSessionPoolOutput(ctx *pulumi.Context, args LookupContainerAppsSessionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppsSessionPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerAppsSessionPoolResultOutput, error) {
-			args := v.(LookupContainerAppsSessionPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getContainerAppsSessionPool", args, LookupContainerAppsSessionPoolResultOutput{}, options).(LookupContainerAppsSessionPoolResultOutput), nil
-		}).(LookupContainerAppsSessionPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getContainerAppsSessionPool", args, LookupContainerAppsSessionPoolResultOutput{}, options).(LookupContainerAppsSessionPoolResultOutput)
 }
 
 type LookupContainerAppsSessionPoolOutputArgs struct {

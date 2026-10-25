@@ -49,12 +49,8 @@ type LookupGroupQuotaResult struct {
 }
 
 func LookupGroupQuotaOutput(ctx *pulumi.Context, args LookupGroupQuotaOutputArgs, opts ...pulumi.InvokeOption) LookupGroupQuotaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupQuotaResultOutput, error) {
-			args := v.(LookupGroupQuotaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:quota:getGroupQuota", args, LookupGroupQuotaResultOutput{}, options).(LookupGroupQuotaResultOutput), nil
-		}).(LookupGroupQuotaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:quota:getGroupQuota", args, LookupGroupQuotaResultOutput{}, options).(LookupGroupQuotaResultOutput)
 }
 
 type LookupGroupQuotaOutputArgs struct {

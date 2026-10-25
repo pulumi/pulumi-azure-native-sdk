@@ -72,12 +72,8 @@ func (val *LookupBrokerAuthorizationResult) Defaults() *LookupBrokerAuthorizatio
 	return &tmp
 }
 func LookupBrokerAuthorizationOutput(ctx *pulumi.Context, args LookupBrokerAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupBrokerAuthorizationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBrokerAuthorizationResultOutput, error) {
-			args := v.(LookupBrokerAuthorizationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsmq:getBrokerAuthorization", args, LookupBrokerAuthorizationResultOutput{}, options).(LookupBrokerAuthorizationResultOutput), nil
-		}).(LookupBrokerAuthorizationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsmq:getBrokerAuthorization", args, LookupBrokerAuthorizationResultOutput{}, options).(LookupBrokerAuthorizationResultOutput)
 }
 
 type LookupBrokerAuthorizationOutputArgs struct {

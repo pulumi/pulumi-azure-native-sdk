@@ -61,12 +61,8 @@ type LookupCacheRuleResult struct {
 }
 
 func LookupCacheRuleOutput(ctx *pulumi.Context, args LookupCacheRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCacheRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCacheRuleResultOutput, error) {
-			args := v.(LookupCacheRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getCacheRule", args, LookupCacheRuleResultOutput{}, options).(LookupCacheRuleResultOutput), nil
-		}).(LookupCacheRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getCacheRule", args, LookupCacheRuleResultOutput{}, options).(LookupCacheRuleResultOutput)
 }
 
 type LookupCacheRuleOutputArgs struct {

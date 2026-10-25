@@ -65,12 +65,13 @@ type ListInferenceGroupDeltaModelsAsyncResult struct {
 }
 
 func ListInferenceGroupDeltaModelsAsyncOutput(ctx *pulumi.Context, args ListInferenceGroupDeltaModelsAsyncOutputArgs, opts ...pulumi.InvokeOption) ListInferenceGroupDeltaModelsAsyncResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListInferenceGroupDeltaModelsAsyncResultOutput, error) {
+	outputArgs := pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) *ListInferenceGroupDeltaModelsAsyncArgs {
 			args := v.(ListInferenceGroupDeltaModelsAsyncArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listInferenceGroupDeltaModelsAsync", args.Defaults(), ListInferenceGroupDeltaModelsAsyncResultOutput{}, options).(ListInferenceGroupDeltaModelsAsyncResultOutput), nil
-		}).(ListInferenceGroupDeltaModelsAsyncResultOutput)
+			return args.Defaults()
+		})
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listInferenceGroupDeltaModelsAsync", outputArgs, ListInferenceGroupDeltaModelsAsyncResultOutput{}, options).(ListInferenceGroupDeltaModelsAsyncResultOutput)
 }
 
 type ListInferenceGroupDeltaModelsAsyncOutputArgs struct {

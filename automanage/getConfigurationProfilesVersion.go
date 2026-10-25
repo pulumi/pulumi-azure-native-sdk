@@ -56,12 +56,8 @@ type LookupConfigurationProfilesVersionResult struct {
 }
 
 func LookupConfigurationProfilesVersionOutput(ctx *pulumi.Context, args LookupConfigurationProfilesVersionOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfilesVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationProfilesVersionResultOutput, error) {
-			args := v.(LookupConfigurationProfilesVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfilesVersion", args, LookupConfigurationProfilesVersionResultOutput{}, options).(LookupConfigurationProfilesVersionResultOutput), nil
-		}).(LookupConfigurationProfilesVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfilesVersion", args, LookupConfigurationProfilesVersionResultOutput{}, options).(LookupConfigurationProfilesVersionResultOutput)
 }
 
 type LookupConfigurationProfilesVersionOutputArgs struct {

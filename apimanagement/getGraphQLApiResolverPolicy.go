@@ -70,12 +70,8 @@ func (val *LookupGraphQLApiResolverPolicyResult) Defaults() *LookupGraphQLApiRes
 	return &tmp
 }
 func LookupGraphQLApiResolverPolicyOutput(ctx *pulumi.Context, args LookupGraphQLApiResolverPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGraphQLApiResolverPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGraphQLApiResolverPolicyResultOutput, error) {
-			args := v.(LookupGraphQLApiResolverPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getGraphQLApiResolverPolicy", args, LookupGraphQLApiResolverPolicyResultOutput{}, options).(LookupGraphQLApiResolverPolicyResultOutput), nil
-		}).(LookupGraphQLApiResolverPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getGraphQLApiResolverPolicy", args, LookupGraphQLApiResolverPolicyResultOutput{}, options).(LookupGraphQLApiResolverPolicyResultOutput)
 }
 
 type LookupGraphQLApiResolverPolicyOutputArgs struct {

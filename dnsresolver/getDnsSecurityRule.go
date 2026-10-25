@@ -66,12 +66,8 @@ type LookupDnsSecurityRuleResult struct {
 }
 
 func LookupDnsSecurityRuleOutput(ctx *pulumi.Context, args LookupDnsSecurityRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDnsSecurityRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsSecurityRuleResultOutput, error) {
-			args := v.(LookupDnsSecurityRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getDnsSecurityRule", args, LookupDnsSecurityRuleResultOutput{}, options).(LookupDnsSecurityRuleResultOutput), nil
-		}).(LookupDnsSecurityRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getDnsSecurityRule", args, LookupDnsSecurityRuleResultOutput{}, options).(LookupDnsSecurityRuleResultOutput)
 }
 
 type LookupDnsSecurityRuleOutputArgs struct {

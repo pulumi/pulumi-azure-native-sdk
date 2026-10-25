@@ -50,12 +50,8 @@ type LookupConfigurationReferenceResult struct {
 }
 
 func LookupConfigurationReferenceOutput(ctx *pulumi.Context, args LookupConfigurationReferenceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationReferenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationReferenceResultOutput, error) {
-			args := v.(LookupConfigurationReferenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getConfigurationReference", args, LookupConfigurationReferenceResultOutput{}, options).(LookupConfigurationReferenceResultOutput), nil
-		}).(LookupConfigurationReferenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getConfigurationReference", args, LookupConfigurationReferenceResultOutput{}, options).(LookupConfigurationReferenceResultOutput)
 }
 
 type LookupConfigurationReferenceOutputArgs struct {

@@ -64,12 +64,8 @@ type LookupWorkloadNetworkDnsZoneResult struct {
 }
 
 func LookupWorkloadNetworkDnsZoneOutput(ctx *pulumi.Context, args LookupWorkloadNetworkDnsZoneOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkDnsZoneResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadNetworkDnsZoneResultOutput, error) {
-			args := v.(LookupWorkloadNetworkDnsZoneArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getWorkloadNetworkDnsZone", args, LookupWorkloadNetworkDnsZoneResultOutput{}, options).(LookupWorkloadNetworkDnsZoneResultOutput), nil
-		}).(LookupWorkloadNetworkDnsZoneResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getWorkloadNetworkDnsZone", args, LookupWorkloadNetworkDnsZoneResultOutput{}, options).(LookupWorkloadNetworkDnsZoneResultOutput)
 }
 
 type LookupWorkloadNetworkDnsZoneOutputArgs struct {

@@ -76,12 +76,8 @@ type LookupMetricAlertResult struct {
 }
 
 func LookupMetricAlertOutput(ctx *pulumi.Context, args LookupMetricAlertOutputArgs, opts ...pulumi.InvokeOption) LookupMetricAlertResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMetricAlertResultOutput, error) {
-			args := v.(LookupMetricAlertArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getMetricAlert", args, LookupMetricAlertResultOutput{}, options).(LookupMetricAlertResultOutput), nil
-		}).(LookupMetricAlertResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getMetricAlert", args, LookupMetricAlertResultOutput{}, options).(LookupMetricAlertResultOutput)
 }
 
 type LookupMetricAlertOutputArgs struct {

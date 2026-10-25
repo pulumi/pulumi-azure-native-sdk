@@ -75,12 +75,8 @@ type LookupReportResult struct {
 }
 
 func LookupReportOutput(ctx *pulumi.Context, args LookupReportOutputArgs, opts ...pulumi.InvokeOption) LookupReportResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReportResultOutput, error) {
-			args := v.(LookupReportArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appcomplianceautomation:getReport", args, LookupReportResultOutput{}, options).(LookupReportResultOutput), nil
-		}).(LookupReportResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appcomplianceautomation:getReport", args, LookupReportResultOutput{}, options).(LookupReportResultOutput)
 }
 
 type LookupReportOutputArgs struct {

@@ -50,12 +50,8 @@ type ListWebAppMetadataSlotResult struct {
 }
 
 func ListWebAppMetadataSlotOutput(ctx *pulumi.Context, args ListWebAppMetadataSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppMetadataSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppMetadataSlotResultOutput, error) {
-			args := v.(ListWebAppMetadataSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppMetadataSlot", args, ListWebAppMetadataSlotResultOutput{}, options).(ListWebAppMetadataSlotResultOutput), nil
-		}).(ListWebAppMetadataSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppMetadataSlot", args, ListWebAppMetadataSlotResultOutput{}, options).(ListWebAppMetadataSlotResultOutput)
 }
 
 type ListWebAppMetadataSlotOutputArgs struct {

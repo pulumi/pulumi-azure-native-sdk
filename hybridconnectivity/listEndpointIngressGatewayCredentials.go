@@ -60,12 +60,8 @@ type ListEndpointIngressGatewayCredentialsResult struct {
 }
 
 func ListEndpointIngressGatewayCredentialsOutput(ctx *pulumi.Context, args ListEndpointIngressGatewayCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointIngressGatewayCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListEndpointIngressGatewayCredentialsResultOutput, error) {
-			args := v.(ListEndpointIngressGatewayCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointIngressGatewayCredentials", args, ListEndpointIngressGatewayCredentialsResultOutput{}, options).(ListEndpointIngressGatewayCredentialsResultOutput), nil
-		}).(ListEndpointIngressGatewayCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointIngressGatewayCredentials", args, ListEndpointIngressGatewayCredentialsResultOutput{}, options).(ListEndpointIngressGatewayCredentialsResultOutput)
 }
 
 type ListEndpointIngressGatewayCredentialsOutputArgs struct {

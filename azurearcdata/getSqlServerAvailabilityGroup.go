@@ -56,12 +56,8 @@ type LookupSqlServerAvailabilityGroupResult struct {
 }
 
 func LookupSqlServerAvailabilityGroupOutput(ctx *pulumi.Context, args LookupSqlServerAvailabilityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerAvailabilityGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlServerAvailabilityGroupResultOutput, error) {
-			args := v.(LookupSqlServerAvailabilityGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerAvailabilityGroup", args, LookupSqlServerAvailabilityGroupResultOutput{}, options).(LookupSqlServerAvailabilityGroupResultOutput), nil
-		}).(LookupSqlServerAvailabilityGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerAvailabilityGroup", args, LookupSqlServerAvailabilityGroupResultOutput{}, options).(LookupSqlServerAvailabilityGroupResultOutput)
 }
 
 type LookupSqlServerAvailabilityGroupOutputArgs struct {

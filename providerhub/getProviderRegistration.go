@@ -61,12 +61,8 @@ func (val *LookupProviderRegistrationResult) Defaults() *LookupProviderRegistrat
 	return &tmp
 }
 func LookupProviderRegistrationOutput(ctx *pulumi.Context, args LookupProviderRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupProviderRegistrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProviderRegistrationResultOutput, error) {
-			args := v.(LookupProviderRegistrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getProviderRegistration", args, LookupProviderRegistrationResultOutput{}, options).(LookupProviderRegistrationResultOutput), nil
-		}).(LookupProviderRegistrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getProviderRegistration", args, LookupProviderRegistrationResultOutput{}, options).(LookupProviderRegistrationResultOutput)
 }
 
 type LookupProviderRegistrationOutputArgs struct {

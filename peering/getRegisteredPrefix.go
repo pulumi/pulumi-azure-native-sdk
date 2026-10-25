@@ -58,12 +58,8 @@ type LookupRegisteredPrefixResult struct {
 }
 
 func LookupRegisteredPrefixOutput(ctx *pulumi.Context, args LookupRegisteredPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredPrefixResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegisteredPrefixResultOutput, error) {
-			args := v.(LookupRegisteredPrefixArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:peering:getRegisteredPrefix", args, LookupRegisteredPrefixResultOutput{}, options).(LookupRegisteredPrefixResultOutput), nil
-		}).(LookupRegisteredPrefixResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:peering:getRegisteredPrefix", args, LookupRegisteredPrefixResultOutput{}, options).(LookupRegisteredPrefixResultOutput)
 }
 
 type LookupRegisteredPrefixOutputArgs struct {

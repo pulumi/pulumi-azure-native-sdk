@@ -64,12 +64,8 @@ type ListContainerAppCustomHostNameAnalysisResult struct {
 }
 
 func ListContainerAppCustomHostNameAnalysisOutput(ctx *pulumi.Context, args ListContainerAppCustomHostNameAnalysisOutputArgs, opts ...pulumi.InvokeOption) ListContainerAppCustomHostNameAnalysisResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListContainerAppCustomHostNameAnalysisResultOutput, error) {
-			args := v.(ListContainerAppCustomHostNameAnalysisArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:listContainerAppCustomHostNameAnalysis", args, ListContainerAppCustomHostNameAnalysisResultOutput{}, options).(ListContainerAppCustomHostNameAnalysisResultOutput), nil
-		}).(ListContainerAppCustomHostNameAnalysisResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:listContainerAppCustomHostNameAnalysis", args, ListContainerAppCustomHostNameAnalysisResultOutput{}, options).(ListContainerAppCustomHostNameAnalysisResultOutput)
 }
 
 type ListContainerAppCustomHostNameAnalysisOutputArgs struct {

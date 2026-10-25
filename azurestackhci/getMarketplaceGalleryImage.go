@@ -70,12 +70,8 @@ type LookupMarketplaceGalleryImageResult struct {
 }
 
 func LookupMarketplaceGalleryImageOutput(ctx *pulumi.Context, args LookupMarketplaceGalleryImageOutputArgs, opts ...pulumi.InvokeOption) LookupMarketplaceGalleryImageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMarketplaceGalleryImageResultOutput, error) {
-			args := v.(LookupMarketplaceGalleryImageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getMarketplaceGalleryImage", args, LookupMarketplaceGalleryImageResultOutput{}, options).(LookupMarketplaceGalleryImageResultOutput), nil
-		}).(LookupMarketplaceGalleryImageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getMarketplaceGalleryImage", args, LookupMarketplaceGalleryImageResultOutput{}, options).(LookupMarketplaceGalleryImageResultOutput)
 }
 
 type LookupMarketplaceGalleryImageOutputArgs struct {
