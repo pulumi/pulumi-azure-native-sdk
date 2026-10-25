@@ -13,9 +13,9 @@ import (
 
 // Retrieve an scheduled query rule definition.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2026-03-01.
 //
-// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupScheduledQueryRule(ctx *pulumi.Context, args *LookupScheduledQueryRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledQueryRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledQueryRuleResult
@@ -46,18 +46,18 @@ type LookupScheduledQueryRuleResult struct {
 	// The api-version used when creating this alert rule
 	CreatedWithApiVersion string `pulumi:"createdWithApiVersion"`
 	// The rule criteria that defines the conditions of the scheduled query rule.
-	Criteria *ScheduledQueryRuleCriteriaResponse `pulumi:"criteria"`
+	Criteria ScheduledQueryRuleCriteriaResponse `pulumi:"criteria"`
 	// The description of the scheduled query rule.
 	Description *string `pulumi:"description"`
 	// The display name of the alert rule
 	DisplayName *string `pulumi:"displayName"`
 	// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-	Enabled *bool `pulumi:"enabled"`
-	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+	Enabled bool `pulumi:"enabled"`
+	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag string `pulumi:"etag"`
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency *string `pulumi:"evaluationFrequency"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
@@ -83,7 +83,7 @@ type LookupScheduledQueryRuleResult struct {
 	Severity *float64 `pulumi:"severity"`
 	// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
 	SkipQueryValidation *bool `pulumi:"skipQueryValidation"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// SystemData of ScheduledQueryRule.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -156,8 +156,8 @@ func (o LookupScheduledQueryRuleResultOutput) CreatedWithApiVersion() pulumi.Str
 }
 
 // The rule criteria that defines the conditions of the scheduled query rule.
-func (o LookupScheduledQueryRuleResultOutput) Criteria() ScheduledQueryRuleCriteriaResponsePtrOutput {
-	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *ScheduledQueryRuleCriteriaResponse { return v.Criteria }).(ScheduledQueryRuleCriteriaResponsePtrOutput)
+func (o LookupScheduledQueryRuleResultOutput) Criteria() ScheduledQueryRuleCriteriaResponseOutput {
+	return o.ApplyT(func(v LookupScheduledQueryRuleResult) ScheduledQueryRuleCriteriaResponse { return v.Criteria }).(ScheduledQueryRuleCriteriaResponseOutput)
 }
 
 // The description of the scheduled query rule.
@@ -171,11 +171,11 @@ func (o LookupScheduledQueryRuleResultOutput) DisplayName() pulumi.StringPtrOutp
 }
 
 // The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-func (o LookupScheduledQueryRuleResultOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o LookupScheduledQueryRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduledQueryRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o LookupScheduledQueryRuleResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -185,7 +185,7 @@ func (o LookupScheduledQueryRuleResultOutput) EvaluationFrequency() pulumi.Strin
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *string { return v.EvaluationFrequency }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScheduledQueryRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -252,7 +252,7 @@ func (o LookupScheduledQueryRuleResultOutput) SkipQueryValidation() pulumi.BoolP
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *bool { return v.SkipQueryValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// SystemData of ScheduledQueryRule.
 func (o LookupScheduledQueryRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
