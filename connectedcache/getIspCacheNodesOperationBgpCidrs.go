@@ -54,12 +54,8 @@ type GetIspCacheNodesOperationBgpCidrsResult struct {
 }
 
 func GetIspCacheNodesOperationBgpCidrsOutput(ctx *pulumi.Context, args GetIspCacheNodesOperationBgpCidrsOutputArgs, opts ...pulumi.InvokeOption) GetIspCacheNodesOperationBgpCidrsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIspCacheNodesOperationBgpCidrsResultOutput, error) {
-			args := v.(GetIspCacheNodesOperationBgpCidrsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getIspCacheNodesOperationBgpCidrs", args, GetIspCacheNodesOperationBgpCidrsResultOutput{}, options).(GetIspCacheNodesOperationBgpCidrsResultOutput), nil
-		}).(GetIspCacheNodesOperationBgpCidrsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getIspCacheNodesOperationBgpCidrs", args, GetIspCacheNodesOperationBgpCidrsResultOutput{}, options).(GetIspCacheNodesOperationBgpCidrsResultOutput)
 }
 
 type GetIspCacheNodesOperationBgpCidrsOutputArgs struct {

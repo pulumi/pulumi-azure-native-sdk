@@ -66,12 +66,8 @@ func (val *LookupDataControllerResult) Defaults() *LookupDataControllerResult {
 	return &tmp
 }
 func LookupDataControllerOutput(ctx *pulumi.Context, args LookupDataControllerOutputArgs, opts ...pulumi.InvokeOption) LookupDataControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataControllerResultOutput, error) {
-			args := v.(LookupDataControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getDataController", args, LookupDataControllerResultOutput{}, options).(LookupDataControllerResultOutput), nil
-		}).(LookupDataControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getDataController", args, LookupDataControllerResultOutput{}, options).(LookupDataControllerResultOutput)
 }
 
 type LookupDataControllerOutputArgs struct {

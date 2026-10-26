@@ -52,12 +52,8 @@ type LookupRoute53ResourceRecordSetResult struct {
 }
 
 func LookupRoute53ResourceRecordSetOutput(ctx *pulumi.Context, args LookupRoute53ResourceRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupRoute53ResourceRecordSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoute53ResourceRecordSetResultOutput, error) {
-			args := v.(LookupRoute53ResourceRecordSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRoute53ResourceRecordSet", args, LookupRoute53ResourceRecordSetResultOutput{}, options).(LookupRoute53ResourceRecordSetResultOutput), nil
-		}).(LookupRoute53ResourceRecordSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRoute53ResourceRecordSet", args, LookupRoute53ResourceRecordSetResultOutput{}, options).(LookupRoute53ResourceRecordSetResultOutput)
 }
 
 type LookupRoute53ResourceRecordSetOutputArgs struct {

@@ -71,12 +71,8 @@ type LookupCosmosDbDataConnectionResult struct {
 }
 
 func LookupCosmosDbDataConnectionOutput(ctx *pulumi.Context, args LookupCosmosDbDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCosmosDbDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCosmosDbDataConnectionResultOutput, error) {
-			args := v.(LookupCosmosDbDataConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getCosmosDbDataConnection", args, LookupCosmosDbDataConnectionResultOutput{}, options).(LookupCosmosDbDataConnectionResultOutput), nil
-		}).(LookupCosmosDbDataConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getCosmosDbDataConnection", args, LookupCosmosDbDataConnectionResultOutput{}, options).(LookupCosmosDbDataConnectionResultOutput)
 }
 
 type LookupCosmosDbDataConnectionOutputArgs struct {

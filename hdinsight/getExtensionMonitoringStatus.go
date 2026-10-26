@@ -44,12 +44,8 @@ type LookupExtensionMonitoringStatusResult struct {
 }
 
 func LookupExtensionMonitoringStatusOutput(ctx *pulumi.Context, args LookupExtensionMonitoringStatusOutputArgs, opts ...pulumi.InvokeOption) LookupExtensionMonitoringStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExtensionMonitoringStatusResultOutput, error) {
-			args := v.(LookupExtensionMonitoringStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hdinsight:getExtensionMonitoringStatus", args, LookupExtensionMonitoringStatusResultOutput{}, options).(LookupExtensionMonitoringStatusResultOutput), nil
-		}).(LookupExtensionMonitoringStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hdinsight:getExtensionMonitoringStatus", args, LookupExtensionMonitoringStatusResultOutput{}, options).(LookupExtensionMonitoringStatusResultOutput)
 }
 
 type LookupExtensionMonitoringStatusOutputArgs struct {

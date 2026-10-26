@@ -42,12 +42,8 @@ type ListDnsResolverPolicyByVirtualNetworkResult struct {
 }
 
 func ListDnsResolverPolicyByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsResolverPolicyByVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) ListDnsResolverPolicyByVirtualNetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDnsResolverPolicyByVirtualNetworkResultOutput, error) {
-			args := v.(ListDnsResolverPolicyByVirtualNetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:listDnsResolverPolicyByVirtualNetwork", args, ListDnsResolverPolicyByVirtualNetworkResultOutput{}, options).(ListDnsResolverPolicyByVirtualNetworkResultOutput), nil
-		}).(ListDnsResolverPolicyByVirtualNetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:listDnsResolverPolicyByVirtualNetwork", args, ListDnsResolverPolicyByVirtualNetworkResultOutput{}, options).(ListDnsResolverPolicyByVirtualNetworkResultOutput)
 }
 
 type ListDnsResolverPolicyByVirtualNetworkOutputArgs struct {

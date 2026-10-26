@@ -52,12 +52,8 @@ type LookupWebAppFtpAllowedResult struct {
 }
 
 func LookupWebAppFtpAllowedOutput(ctx *pulumi.Context, args LookupWebAppFtpAllowedOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppFtpAllowedResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppFtpAllowedResultOutput, error) {
-			args := v.(LookupWebAppFtpAllowedArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppFtpAllowed", args, LookupWebAppFtpAllowedResultOutput{}, options).(LookupWebAppFtpAllowedResultOutput), nil
-		}).(LookupWebAppFtpAllowedResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppFtpAllowed", args, LookupWebAppFtpAllowedResultOutput{}, options).(LookupWebAppFtpAllowedResultOutput)
 }
 
 type LookupWebAppFtpAllowedOutputArgs struct {

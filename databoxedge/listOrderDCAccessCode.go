@@ -40,12 +40,8 @@ type ListOrderDCAccessCodeResult struct {
 }
 
 func ListOrderDCAccessCodeOutput(ctx *pulumi.Context, args ListOrderDCAccessCodeOutputArgs, opts ...pulumi.InvokeOption) ListOrderDCAccessCodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListOrderDCAccessCodeResultOutput, error) {
-			args := v.(ListOrderDCAccessCodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:listOrderDCAccessCode", args, ListOrderDCAccessCodeResultOutput{}, options).(ListOrderDCAccessCodeResultOutput), nil
-		}).(ListOrderDCAccessCodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:listOrderDCAccessCode", args, ListOrderDCAccessCodeResultOutput{}, options).(ListOrderDCAccessCodeResultOutput)
 }
 
 type ListOrderDCAccessCodeOutputArgs struct {

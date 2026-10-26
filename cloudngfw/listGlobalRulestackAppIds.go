@@ -43,12 +43,8 @@ type ListGlobalRulestackAppIdsResult struct {
 }
 
 func ListGlobalRulestackAppIdsOutput(ctx *pulumi.Context, args ListGlobalRulestackAppIdsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackAppIdsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGlobalRulestackAppIdsResultOutput, error) {
-			args := v.(ListGlobalRulestackAppIdsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackAppIds", args, ListGlobalRulestackAppIdsResultOutput{}, options).(ListGlobalRulestackAppIdsResultOutput), nil
-		}).(ListGlobalRulestackAppIdsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackAppIds", args, ListGlobalRulestackAppIdsResultOutput{}, options).(ListGlobalRulestackAppIdsResultOutput)
 }
 
 type ListGlobalRulestackAppIdsOutputArgs struct {

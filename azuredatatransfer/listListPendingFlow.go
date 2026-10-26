@@ -42,12 +42,8 @@ type ListListPendingFlowResult struct {
 }
 
 func ListListPendingFlowOutput(ctx *pulumi.Context, args ListListPendingFlowOutputArgs, opts ...pulumi.InvokeOption) ListListPendingFlowResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListListPendingFlowResultOutput, error) {
-			args := v.(ListListPendingFlowArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:listListPendingFlow", args, ListListPendingFlowResultOutput{}, options).(ListListPendingFlowResultOutput), nil
-		}).(ListListPendingFlowResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:listListPendingFlow", args, ListListPendingFlowResultOutput{}, options).(ListListPendingFlowResultOutput)
 }
 
 type ListListPendingFlowOutputArgs struct {

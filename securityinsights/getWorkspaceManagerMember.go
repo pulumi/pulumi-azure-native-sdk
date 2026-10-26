@@ -56,12 +56,8 @@ type LookupWorkspaceManagerMemberResult struct {
 }
 
 func LookupWorkspaceManagerMemberOutput(ctx *pulumi.Context, args LookupWorkspaceManagerMemberOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceManagerMemberResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceManagerMemberResultOutput, error) {
-			args := v.(LookupWorkspaceManagerMemberArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getWorkspaceManagerMember", args, LookupWorkspaceManagerMemberResultOutput{}, options).(LookupWorkspaceManagerMemberResultOutput), nil
-		}).(LookupWorkspaceManagerMemberResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getWorkspaceManagerMember", args, LookupWorkspaceManagerMemberResultOutput{}, options).(LookupWorkspaceManagerMemberResultOutput)
 }
 
 type LookupWorkspaceManagerMemberOutputArgs struct {

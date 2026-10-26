@@ -52,12 +52,8 @@ type GetEntityInsightsResult struct {
 }
 
 func GetEntityInsightsOutput(ctx *pulumi.Context, args GetEntityInsightsOutputArgs, opts ...pulumi.InvokeOption) GetEntityInsightsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEntityInsightsResultOutput, error) {
-			args := v.(GetEntityInsightsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getEntityInsights", args, GetEntityInsightsResultOutput{}, options).(GetEntityInsightsResultOutput), nil
-		}).(GetEntityInsightsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getEntityInsights", args, GetEntityInsightsResultOutput{}, options).(GetEntityInsightsResultOutput)
 }
 
 type GetEntityInsightsOutputArgs struct {

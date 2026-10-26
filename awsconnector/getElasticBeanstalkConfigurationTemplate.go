@@ -52,12 +52,8 @@ type LookupElasticBeanstalkConfigurationTemplateResult struct {
 }
 
 func LookupElasticBeanstalkConfigurationTemplateOutput(ctx *pulumi.Context, args LookupElasticBeanstalkConfigurationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupElasticBeanstalkConfigurationTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticBeanstalkConfigurationTemplateResultOutput, error) {
-			args := v.(LookupElasticBeanstalkConfigurationTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getElasticBeanstalkConfigurationTemplate", args, LookupElasticBeanstalkConfigurationTemplateResultOutput{}, options).(LookupElasticBeanstalkConfigurationTemplateResultOutput), nil
-		}).(LookupElasticBeanstalkConfigurationTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getElasticBeanstalkConfigurationTemplate", args, LookupElasticBeanstalkConfigurationTemplateResultOutput{}, options).(LookupElasticBeanstalkConfigurationTemplateResultOutput)
 }
 
 type LookupElasticBeanstalkConfigurationTemplateOutputArgs struct {

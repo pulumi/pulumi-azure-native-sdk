@@ -52,12 +52,8 @@ type LookupTargetResult struct {
 }
 
 func LookupTargetOutput(ctx *pulumi.Context, args LookupTargetOutputArgs, opts ...pulumi.InvokeOption) LookupTargetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTargetResultOutput, error) {
-			args := v.(LookupTargetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databasewatcher:getTarget", args, LookupTargetResultOutput{}, options).(LookupTargetResultOutput), nil
-		}).(LookupTargetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databasewatcher:getTarget", args, LookupTargetResultOutput{}, options).(LookupTargetResultOutput)
 }
 
 type LookupTargetOutputArgs struct {

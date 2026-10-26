@@ -62,12 +62,8 @@ func (val *LookupEc2KeyPairResult) Defaults() *LookupEc2KeyPairResult {
 	return &tmp
 }
 func LookupEc2KeyPairOutput(ctx *pulumi.Context, args LookupEc2KeyPairOutputArgs, opts ...pulumi.InvokeOption) LookupEc2KeyPairResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2KeyPairResultOutput, error) {
-			args := v.(LookupEc2KeyPairArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2KeyPair", args, LookupEc2KeyPairResultOutput{}, options).(LookupEc2KeyPairResultOutput), nil
-		}).(LookupEc2KeyPairResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2KeyPair", args, LookupEc2KeyPairResultOutput{}, options).(LookupEc2KeyPairResultOutput)
 }
 
 type LookupEc2KeyPairOutputArgs struct {

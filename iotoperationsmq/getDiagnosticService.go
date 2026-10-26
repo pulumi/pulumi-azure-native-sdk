@@ -104,12 +104,8 @@ func (val *LookupDiagnosticServiceResult) Defaults() *LookupDiagnosticServiceRes
 	return &tmp
 }
 func LookupDiagnosticServiceOutput(ctx *pulumi.Context, args LookupDiagnosticServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiagnosticServiceResultOutput, error) {
-			args := v.(LookupDiagnosticServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsmq:getDiagnosticService", args, LookupDiagnosticServiceResultOutput{}, options).(LookupDiagnosticServiceResultOutput), nil
-		}).(LookupDiagnosticServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsmq:getDiagnosticService", args, LookupDiagnosticServiceResultOutput{}, options).(LookupDiagnosticServiceResultOutput)
 }
 
 type LookupDiagnosticServiceOutputArgs struct {

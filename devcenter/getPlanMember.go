@@ -62,12 +62,8 @@ type LookupPlanMemberResult struct {
 }
 
 func LookupPlanMemberOutput(ctx *pulumi.Context, args LookupPlanMemberOutputArgs, opts ...pulumi.InvokeOption) LookupPlanMemberResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPlanMemberResultOutput, error) {
-			args := v.(LookupPlanMemberArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getPlanMember", args, LookupPlanMemberResultOutput{}, options).(LookupPlanMemberResultOutput), nil
-		}).(LookupPlanMemberResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getPlanMember", args, LookupPlanMemberResultOutput{}, options).(LookupPlanMemberResultOutput)
 }
 
 type LookupPlanMemberOutputArgs struct {

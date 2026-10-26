@@ -42,12 +42,8 @@ type ListFluidRelayServerKeysResult struct {
 }
 
 func ListFluidRelayServerKeysOutput(ctx *pulumi.Context, args ListFluidRelayServerKeysOutputArgs, opts ...pulumi.InvokeOption) ListFluidRelayServerKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListFluidRelayServerKeysResultOutput, error) {
-			args := v.(ListFluidRelayServerKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fluidrelay:listFluidRelayServerKeys", args, ListFluidRelayServerKeysResultOutput{}, options).(ListFluidRelayServerKeysResultOutput), nil
-		}).(ListFluidRelayServerKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fluidrelay:listFluidRelayServerKeys", args, ListFluidRelayServerKeysResultOutput{}, options).(ListFluidRelayServerKeysResultOutput)
 }
 
 type ListFluidRelayServerKeysOutputArgs struct {

@@ -42,12 +42,8 @@ type ListWebAppSiteBackupsResult struct {
 }
 
 func ListWebAppSiteBackupsOutput(ctx *pulumi.Context, args ListWebAppSiteBackupsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSiteBackupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppSiteBackupsResultOutput, error) {
-			args := v.(ListWebAppSiteBackupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppSiteBackups", args, ListWebAppSiteBackupsResultOutput{}, options).(ListWebAppSiteBackupsResultOutput), nil
-		}).(ListWebAppSiteBackupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppSiteBackups", args, ListWebAppSiteBackupsResultOutput{}, options).(ListWebAppSiteBackupsResultOutput)
 }
 
 type ListWebAppSiteBackupsOutputArgs struct {

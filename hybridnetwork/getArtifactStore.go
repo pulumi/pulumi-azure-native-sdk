@@ -56,12 +56,8 @@ type LookupArtifactStoreResult struct {
 }
 
 func LookupArtifactStoreOutput(ctx *pulumi.Context, args LookupArtifactStoreOutputArgs, opts ...pulumi.InvokeOption) LookupArtifactStoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupArtifactStoreResultOutput, error) {
-			args := v.(LookupArtifactStoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:getArtifactStore", args, LookupArtifactStoreResultOutput{}, options).(LookupArtifactStoreResultOutput), nil
-		}).(LookupArtifactStoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:getArtifactStore", args, LookupArtifactStoreResultOutput{}, options).(LookupArtifactStoreResultOutput)
 }
 
 type LookupArtifactStoreOutputArgs struct {

@@ -74,12 +74,8 @@ type LookupExtensionResult struct {
 }
 
 func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupExtensionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExtensionResultOutput, error) {
-			args := v.(LookupExtensionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getExtension", args, LookupExtensionResultOutput{}, options).(LookupExtensionResultOutput), nil
-		}).(LookupExtensionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getExtension", args, LookupExtensionResultOutput{}, options).(LookupExtensionResultOutput)
 }
 
 type LookupExtensionOutputArgs struct {

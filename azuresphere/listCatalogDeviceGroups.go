@@ -50,12 +50,8 @@ type ListCatalogDeviceGroupsResult struct {
 }
 
 func ListCatalogDeviceGroupsOutput(ctx *pulumi.Context, args ListCatalogDeviceGroupsOutputArgs, opts ...pulumi.InvokeOption) ListCatalogDeviceGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListCatalogDeviceGroupsResultOutput, error) {
-			args := v.(ListCatalogDeviceGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuresphere:listCatalogDeviceGroups", args, ListCatalogDeviceGroupsResultOutput{}, options).(ListCatalogDeviceGroupsResultOutput), nil
-		}).(ListCatalogDeviceGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuresphere:listCatalogDeviceGroups", args, ListCatalogDeviceGroupsResultOutput{}, options).(ListCatalogDeviceGroupsResultOutput)
 }
 
 type ListCatalogDeviceGroupsOutputArgs struct {

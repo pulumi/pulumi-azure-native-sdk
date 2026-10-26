@@ -44,12 +44,8 @@ type GetBusinessCaseOperationReportDownloadUrlResult struct {
 }
 
 func GetBusinessCaseOperationReportDownloadUrlOutput(ctx *pulumi.Context, args GetBusinessCaseOperationReportDownloadUrlOutputArgs, opts ...pulumi.InvokeOption) GetBusinessCaseOperationReportDownloadUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBusinessCaseOperationReportDownloadUrlResultOutput, error) {
-			args := v.(GetBusinessCaseOperationReportDownloadUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getBusinessCaseOperationReportDownloadUrl", args, GetBusinessCaseOperationReportDownloadUrlResultOutput{}, options).(GetBusinessCaseOperationReportDownloadUrlResultOutput), nil
-		}).(GetBusinessCaseOperationReportDownloadUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getBusinessCaseOperationReportDownloadUrl", args, GetBusinessCaseOperationReportDownloadUrlResultOutput{}, options).(GetBusinessCaseOperationReportDownloadUrlResultOutput)
 }
 
 type GetBusinessCaseOperationReportDownloadUrlOutputArgs struct {

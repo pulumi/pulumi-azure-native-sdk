@@ -64,12 +64,8 @@ type LookupEdgeActionVersionResult struct {
 }
 
 func LookupEdgeActionVersionOutput(ctx *pulumi.Context, args LookupEdgeActionVersionOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeActionVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEdgeActionVersionResultOutput, error) {
-			args := v.(LookupEdgeActionVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getEdgeActionVersion", args, LookupEdgeActionVersionResultOutput{}, options).(LookupEdgeActionVersionResultOutput), nil
-		}).(LookupEdgeActionVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getEdgeActionVersion", args, LookupEdgeActionVersionResultOutput{}, options).(LookupEdgeActionVersionResultOutput)
 }
 
 type LookupEdgeActionVersionOutputArgs struct {

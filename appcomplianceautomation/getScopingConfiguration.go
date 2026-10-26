@@ -50,12 +50,8 @@ type LookupScopingConfigurationResult struct {
 }
 
 func LookupScopingConfigurationOutput(ctx *pulumi.Context, args LookupScopingConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupScopingConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScopingConfigurationResultOutput, error) {
-			args := v.(LookupScopingConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appcomplianceautomation:getScopingConfiguration", args, LookupScopingConfigurationResultOutput{}, options).(LookupScopingConfigurationResultOutput), nil
-		}).(LookupScopingConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appcomplianceautomation:getScopingConfiguration", args, LookupScopingConfigurationResultOutput{}, options).(LookupScopingConfigurationResultOutput)
 }
 
 type LookupScopingConfigurationOutputArgs struct {

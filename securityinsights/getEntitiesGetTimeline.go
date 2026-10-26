@@ -52,12 +52,8 @@ type GetEntitiesGetTimelineResult struct {
 }
 
 func GetEntitiesGetTimelineOutput(ctx *pulumi.Context, args GetEntitiesGetTimelineOutputArgs, opts ...pulumi.InvokeOption) GetEntitiesGetTimelineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEntitiesGetTimelineResultOutput, error) {
-			args := v.(GetEntitiesGetTimelineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getEntitiesGetTimeline", args, GetEntitiesGetTimelineResultOutput{}, options).(GetEntitiesGetTimelineResultOutput), nil
-		}).(GetEntitiesGetTimelineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getEntitiesGetTimeline", args, GetEntitiesGetTimelineResultOutput{}, options).(GetEntitiesGetTimelineResultOutput)
 }
 
 type GetEntitiesGetTimelineOutputArgs struct {

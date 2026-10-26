@@ -68,12 +68,8 @@ func (val *LookupFlowProfileResult) Defaults() *LookupFlowProfileResult {
 	return &tmp
 }
 func LookupFlowProfileOutput(ctx *pulumi.Context, args LookupFlowProfileOutputArgs, opts ...pulumi.InvokeOption) LookupFlowProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlowProfileResultOutput, error) {
-			args := v.(LookupFlowProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowProfile", args, LookupFlowProfileResultOutput{}, options).(LookupFlowProfileResultOutput), nil
-		}).(LookupFlowProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowProfile", args, LookupFlowProfileResultOutput{}, options).(LookupFlowProfileResultOutput)
 }
 
 type LookupFlowProfileOutputArgs struct {

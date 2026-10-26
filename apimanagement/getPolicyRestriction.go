@@ -64,12 +64,8 @@ func (val *LookupPolicyRestrictionResult) Defaults() *LookupPolicyRestrictionRes
 	return &tmp
 }
 func LookupPolicyRestrictionOutput(ctx *pulumi.Context, args LookupPolicyRestrictionOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyRestrictionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPolicyRestrictionResultOutput, error) {
-			args := v.(LookupPolicyRestrictionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getPolicyRestriction", args, LookupPolicyRestrictionResultOutput{}, options).(LookupPolicyRestrictionResultOutput), nil
-		}).(LookupPolicyRestrictionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getPolicyRestriction", args, LookupPolicyRestrictionResultOutput{}, options).(LookupPolicyRestrictionResultOutput)
 }
 
 type LookupPolicyRestrictionOutputArgs struct {

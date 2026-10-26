@@ -62,12 +62,8 @@ type LookupTransitHubResult struct {
 }
 
 func LookupTransitHubOutput(ctx *pulumi.Context, args LookupTransitHubOutputArgs, opts ...pulumi.InvokeOption) LookupTransitHubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTransitHubResultOutput, error) {
-			args := v.(LookupTransitHubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getTransitHub", args, LookupTransitHubResultOutput{}, options).(LookupTransitHubResultOutput), nil
-		}).(LookupTransitHubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getTransitHub", args, LookupTransitHubResultOutput{}, options).(LookupTransitHubResultOutput)
 }
 
 type LookupTransitHubOutputArgs struct {

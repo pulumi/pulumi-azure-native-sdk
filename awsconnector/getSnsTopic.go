@@ -52,12 +52,8 @@ type LookupSnsTopicResult struct {
 }
 
 func LookupSnsTopicOutput(ctx *pulumi.Context, args LookupSnsTopicOutputArgs, opts ...pulumi.InvokeOption) LookupSnsTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSnsTopicResultOutput, error) {
-			args := v.(LookupSnsTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSnsTopic", args, LookupSnsTopicResultOutput{}, options).(LookupSnsTopicResultOutput), nil
-		}).(LookupSnsTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSnsTopic", args, LookupSnsTopicResultOutput{}, options).(LookupSnsTopicResultOutput)
 }
 
 type LookupSnsTopicOutputArgs struct {

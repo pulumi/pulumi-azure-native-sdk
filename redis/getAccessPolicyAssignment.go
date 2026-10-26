@@ -58,12 +58,8 @@ type LookupAccessPolicyAssignmentResult struct {
 }
 
 func LookupAccessPolicyAssignmentOutput(ctx *pulumi.Context, args LookupAccessPolicyAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessPolicyAssignmentResultOutput, error) {
-			args := v.(LookupAccessPolicyAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getAccessPolicyAssignment", args, LookupAccessPolicyAssignmentResultOutput{}, options).(LookupAccessPolicyAssignmentResultOutput), nil
-		}).(LookupAccessPolicyAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getAccessPolicyAssignment", args, LookupAccessPolicyAssignmentResultOutput{}, options).(LookupAccessPolicyAssignmentResultOutput)
 }
 
 type LookupAccessPolicyAssignmentOutputArgs struct {

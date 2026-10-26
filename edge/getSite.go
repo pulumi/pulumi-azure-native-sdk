@@ -50,12 +50,8 @@ type LookupSiteResult struct {
 }
 
 func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pulumi.InvokeOption) LookupSiteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSiteResultOutput, error) {
-			args := v.(LookupSiteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSite", args, LookupSiteResultOutput{}, options).(LookupSiteResultOutput), nil
-		}).(LookupSiteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSite", args, LookupSiteResultOutput{}, options).(LookupSiteResultOutput)
 }
 
 type LookupSiteOutputArgs struct {

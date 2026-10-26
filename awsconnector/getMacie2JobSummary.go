@@ -52,12 +52,8 @@ type LookupMacie2JobSummaryResult struct {
 }
 
 func LookupMacie2JobSummaryOutput(ctx *pulumi.Context, args LookupMacie2JobSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupMacie2JobSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMacie2JobSummaryResultOutput, error) {
-			args := v.(LookupMacie2JobSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getMacie2JobSummary", args, LookupMacie2JobSummaryResultOutput{}, options).(LookupMacie2JobSummaryResultOutput), nil
-		}).(LookupMacie2JobSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getMacie2JobSummary", args, LookupMacie2JobSummaryResultOutput{}, options).(LookupMacie2JobSummaryResultOutput)
 }
 
 type LookupMacie2JobSummaryOutputArgs struct {

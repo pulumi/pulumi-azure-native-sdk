@@ -59,12 +59,8 @@ type LookupCloudEdgeManagementRoleResult struct {
 }
 
 func LookupCloudEdgeManagementRoleOutput(ctx *pulumi.Context, args LookupCloudEdgeManagementRoleOutputArgs, opts ...pulumi.InvokeOption) LookupCloudEdgeManagementRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudEdgeManagementRoleResultOutput, error) {
-			args := v.(LookupCloudEdgeManagementRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:getCloudEdgeManagementRole", args, LookupCloudEdgeManagementRoleResultOutput{}, options).(LookupCloudEdgeManagementRoleResultOutput), nil
-		}).(LookupCloudEdgeManagementRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:getCloudEdgeManagementRole", args, LookupCloudEdgeManagementRoleResultOutput{}, options).(LookupCloudEdgeManagementRoleResultOutput)
 }
 
 type LookupCloudEdgeManagementRoleOutputArgs struct {

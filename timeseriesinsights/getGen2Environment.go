@@ -71,12 +71,8 @@ type LookupGen2EnvironmentResult struct {
 }
 
 func LookupGen2EnvironmentOutput(ctx *pulumi.Context, args LookupGen2EnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupGen2EnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGen2EnvironmentResultOutput, error) {
-			args := v.(LookupGen2EnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:timeseriesinsights:getGen2Environment", args, LookupGen2EnvironmentResultOutput{}, options).(LookupGen2EnvironmentResultOutput), nil
-		}).(LookupGen2EnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:timeseriesinsights:getGen2Environment", args, LookupGen2EnvironmentResultOutput{}, options).(LookupGen2EnvironmentResultOutput)
 }
 
 type LookupGen2EnvironmentOutputArgs struct {

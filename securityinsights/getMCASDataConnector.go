@@ -57,12 +57,8 @@ type LookupMCASDataConnectorResult struct {
 }
 
 func LookupMCASDataConnectorOutput(ctx *pulumi.Context, args LookupMCASDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMCASDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMCASDataConnectorResultOutput, error) {
-			args := v.(LookupMCASDataConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getMCASDataConnector", args, LookupMCASDataConnectorResultOutput{}, options).(LookupMCASDataConnectorResultOutput), nil
-		}).(LookupMCASDataConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getMCASDataConnector", args, LookupMCASDataConnectorResultOutput{}, options).(LookupMCASDataConnectorResultOutput)
 }
 
 type LookupMCASDataConnectorOutputArgs struct {

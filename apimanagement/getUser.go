@@ -76,12 +76,8 @@ func (val *LookupUserResult) Defaults() *LookupUserResult {
 	return &tmp
 }
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserResultOutput, error) {
-			args := v.(LookupUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getUser", args, LookupUserResultOutput{}, options).(LookupUserResultOutput), nil
-		}).(LookupUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getUser", args, LookupUserResultOutput{}, options).(LookupUserResultOutput)
 }
 
 type LookupUserOutputArgs struct {

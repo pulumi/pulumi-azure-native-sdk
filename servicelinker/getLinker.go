@@ -66,12 +66,8 @@ type LookupLinkerResult struct {
 }
 
 func LookupLinkerOutput(ctx *pulumi.Context, args LookupLinkerOutputArgs, opts ...pulumi.InvokeOption) LookupLinkerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLinkerResultOutput, error) {
-			args := v.(LookupLinkerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicelinker:getLinker", args, LookupLinkerResultOutput{}, options).(LookupLinkerResultOutput), nil
-		}).(LookupLinkerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicelinker:getLinker", args, LookupLinkerResultOutput{}, options).(LookupLinkerResultOutput)
 }
 
 type LookupLinkerOutputArgs struct {

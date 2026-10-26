@@ -52,12 +52,8 @@ type LookupEc2VpcResult struct {
 }
 
 func LookupEc2VpcOutput(ctx *pulumi.Context, args LookupEc2VpcOutputArgs, opts ...pulumi.InvokeOption) LookupEc2VpcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2VpcResultOutput, error) {
-			args := v.(LookupEc2VpcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Vpc", args, LookupEc2VpcResultOutput{}, options).(LookupEc2VpcResultOutput), nil
-		}).(LookupEc2VpcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2Vpc", args, LookupEc2VpcResultOutput{}, options).(LookupEc2VpcResultOutput)
 }
 
 type LookupEc2VpcOutputArgs struct {

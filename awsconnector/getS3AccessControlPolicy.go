@@ -52,12 +52,8 @@ type LookupS3AccessControlPolicyResult struct {
 }
 
 func LookupS3AccessControlPolicyOutput(ctx *pulumi.Context, args LookupS3AccessControlPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupS3AccessControlPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupS3AccessControlPolicyResultOutput, error) {
-			args := v.(LookupS3AccessControlPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getS3AccessControlPolicy", args, LookupS3AccessControlPolicyResultOutput{}, options).(LookupS3AccessControlPolicyResultOutput), nil
-		}).(LookupS3AccessControlPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getS3AccessControlPolicy", args, LookupS3AccessControlPolicyResultOutput{}, options).(LookupS3AccessControlPolicyResultOutput)
 }
 
 type LookupS3AccessControlPolicyOutputArgs struct {

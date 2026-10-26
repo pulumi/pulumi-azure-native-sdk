@@ -59,12 +59,8 @@ type ListWebAppSitePushSettingsSlotResult struct {
 }
 
 func ListWebAppSitePushSettingsSlotOutput(ctx *pulumi.Context, args ListWebAppSitePushSettingsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSitePushSettingsSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppSitePushSettingsSlotResultOutput, error) {
-			args := v.(ListWebAppSitePushSettingsSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppSitePushSettingsSlot", args, ListWebAppSitePushSettingsSlotResultOutput{}, options).(ListWebAppSitePushSettingsSlotResultOutput), nil
-		}).(ListWebAppSitePushSettingsSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppSitePushSettingsSlot", args, ListWebAppSitePushSettingsSlotResultOutput{}, options).(ListWebAppSitePushSettingsSlotResultOutput)
 }
 
 type ListWebAppSitePushSettingsSlotOutputArgs struct {

@@ -40,12 +40,8 @@ type ListBotSecretsResult struct {
 }
 
 func ListBotSecretsOutput(ctx *pulumi.Context, args ListBotSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBotSecretsResultOutput, error) {
-			args := v.(ListBotSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:healthbot:listBotSecrets", args, ListBotSecretsResultOutput{}, options).(ListBotSecretsResultOutput), nil
-		}).(ListBotSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:healthbot:listBotSecrets", args, ListBotSecretsResultOutput{}, options).(ListBotSecretsResultOutput)
 }
 
 type ListBotSecretsOutputArgs struct {

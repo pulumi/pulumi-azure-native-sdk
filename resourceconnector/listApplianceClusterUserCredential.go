@@ -42,12 +42,8 @@ type ListApplianceClusterUserCredentialResult struct {
 }
 
 func ListApplianceClusterUserCredentialOutput(ctx *pulumi.Context, args ListApplianceClusterUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListApplianceClusterUserCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListApplianceClusterUserCredentialResultOutput, error) {
-			args := v.(ListApplianceClusterUserCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:resourceconnector:listApplianceClusterUserCredential", args, ListApplianceClusterUserCredentialResultOutput{}, options).(ListApplianceClusterUserCredentialResultOutput), nil
-		}).(ListApplianceClusterUserCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:resourceconnector:listApplianceClusterUserCredential", args, ListApplianceClusterUserCredentialResultOutput{}, options).(ListApplianceClusterUserCredentialResultOutput)
 }
 
 type ListApplianceClusterUserCredentialOutputArgs struct {

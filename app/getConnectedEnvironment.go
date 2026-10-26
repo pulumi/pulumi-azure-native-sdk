@@ -66,12 +66,8 @@ type LookupConnectedEnvironmentResult struct {
 }
 
 func LookupConnectedEnvironmentOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectedEnvironmentResultOutput, error) {
-			args := v.(LookupConnectedEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getConnectedEnvironment", args, LookupConnectedEnvironmentResultOutput{}, options).(LookupConnectedEnvironmentResultOutput), nil
-		}).(LookupConnectedEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getConnectedEnvironment", args, LookupConnectedEnvironmentResultOutput{}, options).(LookupConnectedEnvironmentResultOutput)
 }
 
 type LookupConnectedEnvironmentOutputArgs struct {

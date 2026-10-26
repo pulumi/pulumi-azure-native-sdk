@@ -53,12 +53,8 @@ type LookupResourceGuardResult struct {
 }
 
 func LookupResourceGuardOutput(ctx *pulumi.Context, args LookupResourceGuardOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGuardResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourceGuardResultOutput, error) {
-			args := v.(LookupResourceGuardArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dataprotection:getResourceGuard", args, LookupResourceGuardResultOutput{}, options).(LookupResourceGuardResultOutput), nil
-		}).(LookupResourceGuardResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dataprotection:getResourceGuard", args, LookupResourceGuardResultOutput{}, options).(LookupResourceGuardResultOutput)
 }
 
 type LookupResourceGuardOutputArgs struct {
