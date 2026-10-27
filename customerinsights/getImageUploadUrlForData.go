@@ -48,12 +48,8 @@ type GetImageUploadUrlForDataResult struct {
 }
 
 func GetImageUploadUrlForDataOutput(ctx *pulumi.Context, args GetImageUploadUrlForDataOutputArgs, opts ...pulumi.InvokeOption) GetImageUploadUrlForDataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetImageUploadUrlForDataResultOutput, error) {
-			args := v.(GetImageUploadUrlForDataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:customerinsights:getImageUploadUrlForData", args, GetImageUploadUrlForDataResultOutput{}, options).(GetImageUploadUrlForDataResultOutput), nil
-		}).(GetImageUploadUrlForDataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:customerinsights:getImageUploadUrlForData", args, GetImageUploadUrlForDataResultOutput{}, options).(GetImageUploadUrlForDataResultOutput)
 }
 
 type GetImageUploadUrlForDataOutputArgs struct {

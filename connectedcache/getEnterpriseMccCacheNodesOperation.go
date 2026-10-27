@@ -56,12 +56,8 @@ type LookupEnterpriseMccCacheNodesOperationResult struct {
 }
 
 func LookupEnterpriseMccCacheNodesOperationOutput(ctx *pulumi.Context, args LookupEnterpriseMccCacheNodesOperationOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseMccCacheNodesOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnterpriseMccCacheNodesOperationResultOutput, error) {
-			args := v.(LookupEnterpriseMccCacheNodesOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperation", args, LookupEnterpriseMccCacheNodesOperationResultOutput{}, options).(LookupEnterpriseMccCacheNodesOperationResultOutput), nil
-		}).(LookupEnterpriseMccCacheNodesOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperation", args, LookupEnterpriseMccCacheNodesOperationResultOutput{}, options).(LookupEnterpriseMccCacheNodesOperationResultOutput)
 }
 
 type LookupEnterpriseMccCacheNodesOperationOutputArgs struct {

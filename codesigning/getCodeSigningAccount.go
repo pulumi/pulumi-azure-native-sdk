@@ -58,12 +58,8 @@ type LookupCodeSigningAccountResult struct {
 }
 
 func LookupCodeSigningAccountOutput(ctx *pulumi.Context, args LookupCodeSigningAccountOutputArgs, opts ...pulumi.InvokeOption) LookupCodeSigningAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCodeSigningAccountResultOutput, error) {
-			args := v.(LookupCodeSigningAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:codesigning:getCodeSigningAccount", args, LookupCodeSigningAccountResultOutput{}, options).(LookupCodeSigningAccountResultOutput), nil
-		}).(LookupCodeSigningAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:codesigning:getCodeSigningAccount", args, LookupCodeSigningAccountResultOutput{}, options).(LookupCodeSigningAccountResultOutput)
 }
 
 type LookupCodeSigningAccountOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupMoveCollectionResult struct {
 }
 
 func LookupMoveCollectionOutput(ctx *pulumi.Context, args LookupMoveCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMoveCollectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMoveCollectionResultOutput, error) {
-			args := v.(LookupMoveCollectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getMoveCollection", args, LookupMoveCollectionResultOutput{}, options).(LookupMoveCollectionResultOutput), nil
-		}).(LookupMoveCollectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getMoveCollection", args, LookupMoveCollectionResultOutput{}, options).(LookupMoveCollectionResultOutput)
 }
 
 type LookupMoveCollectionOutputArgs struct {

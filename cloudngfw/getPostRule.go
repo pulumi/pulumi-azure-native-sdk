@@ -99,12 +99,8 @@ func (val *LookupPostRuleResult) Defaults() *LookupPostRuleResult {
 	return &tmp
 }
 func LookupPostRuleOutput(ctx *pulumi.Context, args LookupPostRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPostRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostRuleResultOutput, error) {
-			args := v.(LookupPostRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getPostRule", args, LookupPostRuleResultOutput{}, options).(LookupPostRuleResultOutput), nil
-		}).(LookupPostRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getPostRule", args, LookupPostRuleResultOutput{}, options).(LookupPostRuleResultOutput)
 }
 
 type LookupPostRuleOutputArgs struct {

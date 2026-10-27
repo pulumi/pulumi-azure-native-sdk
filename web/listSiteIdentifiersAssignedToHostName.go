@@ -40,12 +40,8 @@ type ListSiteIdentifiersAssignedToHostNameResult struct {
 }
 
 func ListSiteIdentifiersAssignedToHostNameOutput(ctx *pulumi.Context, args ListSiteIdentifiersAssignedToHostNameOutputArgs, opts ...pulumi.InvokeOption) ListSiteIdentifiersAssignedToHostNameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSiteIdentifiersAssignedToHostNameResultOutput, error) {
-			args := v.(ListSiteIdentifiersAssignedToHostNameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listSiteIdentifiersAssignedToHostName", args, ListSiteIdentifiersAssignedToHostNameResultOutput{}, options).(ListSiteIdentifiersAssignedToHostNameResultOutput), nil
-		}).(ListSiteIdentifiersAssignedToHostNameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listSiteIdentifiersAssignedToHostName", args, ListSiteIdentifiersAssignedToHostNameResultOutput{}, options).(ListSiteIdentifiersAssignedToHostNameResultOutput)
 }
 
 type ListSiteIdentifiersAssignedToHostNameOutputArgs struct {

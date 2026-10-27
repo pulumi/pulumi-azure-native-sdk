@@ -36,12 +36,8 @@ type ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult struct {
 }
 
 func ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput, error) {
-			args := v.(ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationCloudManagerTenants", args, ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput), nil
-		}).(ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationCloudManagerTenants", args, ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResultOutput)
 }
 
 type ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsOutputArgs struct {

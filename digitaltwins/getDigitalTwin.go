@@ -64,12 +64,8 @@ type LookupDigitalTwinResult struct {
 }
 
 func LookupDigitalTwinOutput(ctx *pulumi.Context, args LookupDigitalTwinOutputArgs, opts ...pulumi.InvokeOption) LookupDigitalTwinResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDigitalTwinResultOutput, error) {
-			args := v.(LookupDigitalTwinArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:digitaltwins:getDigitalTwin", args, LookupDigitalTwinResultOutput{}, options).(LookupDigitalTwinResultOutput), nil
-		}).(LookupDigitalTwinResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:digitaltwins:getDigitalTwin", args, LookupDigitalTwinResultOutput{}, options).(LookupDigitalTwinResultOutput)
 }
 
 type LookupDigitalTwinOutputArgs struct {

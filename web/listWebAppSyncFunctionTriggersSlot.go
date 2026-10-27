@@ -44,12 +44,8 @@ type ListWebAppSyncFunctionTriggersSlotResult struct {
 }
 
 func ListWebAppSyncFunctionTriggersSlotOutput(ctx *pulumi.Context, args ListWebAppSyncFunctionTriggersSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSyncFunctionTriggersSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppSyncFunctionTriggersSlotResultOutput, error) {
-			args := v.(ListWebAppSyncFunctionTriggersSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppSyncFunctionTriggersSlot", args, ListWebAppSyncFunctionTriggersSlotResultOutput{}, options).(ListWebAppSyncFunctionTriggersSlotResultOutput), nil
-		}).(ListWebAppSyncFunctionTriggersSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppSyncFunctionTriggersSlot", args, ListWebAppSyncFunctionTriggersSlotResultOutput{}, options).(ListWebAppSyncFunctionTriggersSlotResultOutput)
 }
 
 type ListWebAppSyncFunctionTriggersSlotOutputArgs struct {

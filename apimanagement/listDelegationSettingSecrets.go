@@ -40,12 +40,8 @@ type ListDelegationSettingSecretsResult struct {
 }
 
 func ListDelegationSettingSecretsOutput(ctx *pulumi.Context, args ListDelegationSettingSecretsOutputArgs, opts ...pulumi.InvokeOption) ListDelegationSettingSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDelegationSettingSecretsResultOutput, error) {
-			args := v.(ListDelegationSettingSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listDelegationSettingSecrets", args, ListDelegationSettingSecretsResultOutput{}, options).(ListDelegationSettingSecretsResultOutput), nil
-		}).(ListDelegationSettingSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listDelegationSettingSecrets", args, ListDelegationSettingSecretsResultOutput{}, options).(ListDelegationSettingSecretsResultOutput)
 }
 
 type ListDelegationSettingSecretsOutputArgs struct {

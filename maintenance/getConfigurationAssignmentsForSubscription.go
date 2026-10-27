@@ -54,12 +54,8 @@ type LookupConfigurationAssignmentsForSubscriptionResult struct {
 }
 
 func LookupConfigurationAssignmentsForSubscriptionOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentsForSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentsForSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationAssignmentsForSubscriptionResultOutput, error) {
-			args := v.(LookupConfigurationAssignmentsForSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:maintenance:getConfigurationAssignmentsForSubscription", args, LookupConfigurationAssignmentsForSubscriptionResultOutput{}, options).(LookupConfigurationAssignmentsForSubscriptionResultOutput), nil
-		}).(LookupConfigurationAssignmentsForSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:maintenance:getConfigurationAssignmentsForSubscription", args, LookupConfigurationAssignmentsForSubscriptionResultOutput{}, options).(LookupConfigurationAssignmentsForSubscriptionResultOutput)
 }
 
 type LookupConfigurationAssignmentsForSubscriptionOutputArgs struct {

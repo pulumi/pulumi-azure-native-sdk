@@ -61,12 +61,8 @@ type LookupWebAppRelayServiceConnectionSlotResult struct {
 }
 
 func LookupWebAppRelayServiceConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppRelayServiceConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppRelayServiceConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppRelayServiceConnectionSlotResultOutput, error) {
-			args := v.(LookupWebAppRelayServiceConnectionSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppRelayServiceConnectionSlot", args, LookupWebAppRelayServiceConnectionSlotResultOutput{}, options).(LookupWebAppRelayServiceConnectionSlotResultOutput), nil
-		}).(LookupWebAppRelayServiceConnectionSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppRelayServiceConnectionSlot", args, LookupWebAppRelayServiceConnectionSlotResultOutput{}, options).(LookupWebAppRelayServiceConnectionSlotResultOutput)
 }
 
 type LookupWebAppRelayServiceConnectionSlotOutputArgs struct {

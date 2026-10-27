@@ -52,12 +52,8 @@ type LookupAccessAnalyzerAnalyzerResult struct {
 }
 
 func LookupAccessAnalyzerAnalyzerOutput(ctx *pulumi.Context, args LookupAccessAnalyzerAnalyzerOutputArgs, opts ...pulumi.InvokeOption) LookupAccessAnalyzerAnalyzerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessAnalyzerAnalyzerResultOutput, error) {
-			args := v.(LookupAccessAnalyzerAnalyzerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getAccessAnalyzerAnalyzer", args, LookupAccessAnalyzerAnalyzerResultOutput{}, options).(LookupAccessAnalyzerAnalyzerResultOutput), nil
-		}).(LookupAccessAnalyzerAnalyzerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getAccessAnalyzerAnalyzer", args, LookupAccessAnalyzerAnalyzerResultOutput{}, options).(LookupAccessAnalyzerAnalyzerResultOutput)
 }
 
 type LookupAccessAnalyzerAnalyzerOutputArgs struct {

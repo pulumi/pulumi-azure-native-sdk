@@ -62,12 +62,8 @@ type LookupContainerAppsAuthConfigResult struct {
 }
 
 func LookupContainerAppsAuthConfigOutput(ctx *pulumi.Context, args LookupContainerAppsAuthConfigOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppsAuthConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerAppsAuthConfigResultOutput, error) {
-			args := v.(LookupContainerAppsAuthConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getContainerAppsAuthConfig", args, LookupContainerAppsAuthConfigResultOutput{}, options).(LookupContainerAppsAuthConfigResultOutput), nil
-		}).(LookupContainerAppsAuthConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getContainerAppsAuthConfig", args, LookupContainerAppsAuthConfigResultOutput{}, options).(LookupContainerAppsAuthConfigResultOutput)
 }
 
 type LookupContainerAppsAuthConfigOutputArgs struct {

@@ -110,12 +110,8 @@ func (val *LookupStreamingJobResult) Defaults() *LookupStreamingJobResult {
 	return &tmp
 }
 func LookupStreamingJobOutput(ctx *pulumi.Context, args LookupStreamingJobOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamingJobResultOutput, error) {
-			args := v.(LookupStreamingJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:streamanalytics:getStreamingJob", args, LookupStreamingJobResultOutput{}, options).(LookupStreamingJobResultOutput), nil
-		}).(LookupStreamingJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:streamanalytics:getStreamingJob", args, LookupStreamingJobResultOutput{}, options).(LookupStreamingJobResultOutput)
 }
 
 type LookupStreamingJobOutputArgs struct {

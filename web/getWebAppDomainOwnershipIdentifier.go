@@ -54,12 +54,8 @@ type LookupWebAppDomainOwnershipIdentifierResult struct {
 }
 
 func LookupWebAppDomainOwnershipIdentifierOutput(ctx *pulumi.Context, args LookupWebAppDomainOwnershipIdentifierOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDomainOwnershipIdentifierResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDomainOwnershipIdentifierResultOutput, error) {
-			args := v.(LookupWebAppDomainOwnershipIdentifierArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppDomainOwnershipIdentifier", args, LookupWebAppDomainOwnershipIdentifierResultOutput{}, options).(LookupWebAppDomainOwnershipIdentifierResultOutput), nil
-		}).(LookupWebAppDomainOwnershipIdentifierResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppDomainOwnershipIdentifier", args, LookupWebAppDomainOwnershipIdentifierResultOutput{}, options).(LookupWebAppDomainOwnershipIdentifierResultOutput)
 }
 
 type LookupWebAppDomainOwnershipIdentifierOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupRaiToolLabelResult struct {
 }
 
 func LookupRaiToolLabelOutput(ctx *pulumi.Context, args LookupRaiToolLabelOutputArgs, opts ...pulumi.InvokeOption) LookupRaiToolLabelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRaiToolLabelResultOutput, error) {
-			args := v.(LookupRaiToolLabelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiToolLabel", args, LookupRaiToolLabelResultOutput{}, options).(LookupRaiToolLabelResultOutput), nil
-		}).(LookupRaiToolLabelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiToolLabel", args, LookupRaiToolLabelResultOutput{}, options).(LookupRaiToolLabelResultOutput)
 }
 
 type LookupRaiToolLabelOutputArgs struct {

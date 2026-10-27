@@ -54,12 +54,8 @@ type ListWebAppHybridConnectionKeysResult struct {
 }
 
 func ListWebAppHybridConnectionKeysOutput(ctx *pulumi.Context, args ListWebAppHybridConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHybridConnectionKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppHybridConnectionKeysResultOutput, error) {
-			args := v.(ListWebAppHybridConnectionKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppHybridConnectionKeys", args, ListWebAppHybridConnectionKeysResultOutput{}, options).(ListWebAppHybridConnectionKeysResultOutput), nil
-		}).(ListWebAppHybridConnectionKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppHybridConnectionKeys", args, ListWebAppHybridConnectionKeysResultOutput{}, options).(ListWebAppHybridConnectionKeysResultOutput)
 }
 
 type ListWebAppHybridConnectionKeysOutputArgs struct {

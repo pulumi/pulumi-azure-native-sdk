@@ -52,12 +52,8 @@ type LookupDataConnectorResult struct {
 }
 
 func LookupDataConnectorOutput(ctx *pulumi.Context, args LookupDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataConnectorResultOutput, error) {
-			args := v.(LookupDataConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:agfoodplatform:getDataConnector", args, LookupDataConnectorResultOutput{}, options).(LookupDataConnectorResultOutput), nil
-		}).(LookupDataConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:agfoodplatform:getDataConnector", args, LookupDataConnectorResultOutput{}, options).(LookupDataConnectorResultOutput)
 }
 
 type LookupDataConnectorOutputArgs struct {

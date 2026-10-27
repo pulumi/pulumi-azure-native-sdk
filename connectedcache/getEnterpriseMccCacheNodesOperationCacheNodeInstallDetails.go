@@ -54,12 +54,8 @@ type GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult struct {
 }
 
 func GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutput(ctx *pulumi.Context, args GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput, error) {
-			args := v.(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails", args, GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput{}, options).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput), nil
-		}).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails", args, GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput{}, options).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput)
 }
 
 type GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutputArgs struct {

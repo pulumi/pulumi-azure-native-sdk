@@ -42,12 +42,8 @@ type GetChannelFullUrlResult struct {
 }
 
 func GetChannelFullUrlOutput(ctx *pulumi.Context, args GetChannelFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetChannelFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetChannelFullUrlResultOutput, error) {
-			args := v.(GetChannelFullUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getChannelFullUrl", args, GetChannelFullUrlResultOutput{}, options).(GetChannelFullUrlResultOutput), nil
-		}).(GetChannelFullUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getChannelFullUrl", args, GetChannelFullUrlResultOutput{}, options).(GetChannelFullUrlResultOutput)
 }
 
 type GetChannelFullUrlOutputArgs struct {

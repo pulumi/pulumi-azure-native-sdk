@@ -61,12 +61,8 @@ type LookupPolicyAssignmentArtifactResult struct {
 }
 
 func LookupPolicyAssignmentArtifactOutput(ctx *pulumi.Context, args LookupPolicyAssignmentArtifactOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyAssignmentArtifactResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPolicyAssignmentArtifactResultOutput, error) {
-			args := v.(LookupPolicyAssignmentArtifactArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:blueprint:getPolicyAssignmentArtifact", args, LookupPolicyAssignmentArtifactResultOutput{}, options).(LookupPolicyAssignmentArtifactResultOutput), nil
-		}).(LookupPolicyAssignmentArtifactResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:blueprint:getPolicyAssignmentArtifact", args, LookupPolicyAssignmentArtifactResultOutput{}, options).(LookupPolicyAssignmentArtifactResultOutput)
 }
 
 type LookupPolicyAssignmentArtifactOutputArgs struct {

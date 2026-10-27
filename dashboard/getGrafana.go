@@ -68,12 +68,8 @@ func (val *LookupGrafanaResult) Defaults() *LookupGrafanaResult {
 	return &tmp
 }
 func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts ...pulumi.InvokeOption) LookupGrafanaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGrafanaResultOutput, error) {
-			args := v.(LookupGrafanaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dashboard:getGrafana", args, LookupGrafanaResultOutput{}, options).(LookupGrafanaResultOutput), nil
-		}).(LookupGrafanaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dashboard:getGrafana", args, LookupGrafanaResultOutput{}, options).(LookupGrafanaResultOutput)
 }
 
 type LookupGrafanaOutputArgs struct {

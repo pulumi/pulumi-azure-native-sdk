@@ -54,12 +54,8 @@ type LookupPrivateEndpointConnectionsForMIPPolicySyncResult struct {
 }
 
 func LookupPrivateEndpointConnectionsForMIPPolicySyncOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsForMIPPolicySyncOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionsForMIPPolicySyncArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForMIPPolicySync", args, LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput{}, options).(LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput), nil
-		}).(LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForMIPPolicySync", args, LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput{}, options).(LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput)
 }
 
 type LookupPrivateEndpointConnectionsForMIPPolicySyncOutputArgs struct {

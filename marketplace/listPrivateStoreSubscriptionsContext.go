@@ -37,12 +37,8 @@ type ListPrivateStoreSubscriptionsContextResult struct {
 }
 
 func ListPrivateStoreSubscriptionsContextOutput(ctx *pulumi.Context, args ListPrivateStoreSubscriptionsContextOutputArgs, opts ...pulumi.InvokeOption) ListPrivateStoreSubscriptionsContextResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPrivateStoreSubscriptionsContextResultOutput, error) {
-			args := v.(ListPrivateStoreSubscriptionsContextArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:marketplace:listPrivateStoreSubscriptionsContext", args, ListPrivateStoreSubscriptionsContextResultOutput{}, options).(ListPrivateStoreSubscriptionsContextResultOutput), nil
-		}).(ListPrivateStoreSubscriptionsContextResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:marketplace:listPrivateStoreSubscriptionsContext", args, ListPrivateStoreSubscriptionsContextResultOutput{}, options).(ListPrivateStoreSubscriptionsContextResultOutput)
 }
 
 type ListPrivateStoreSubscriptionsContextOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupUsagePlanResult struct {
 }
 
 func LookupUsagePlanOutput(ctx *pulumi.Context, args LookupUsagePlanOutputArgs, opts ...pulumi.InvokeOption) LookupUsagePlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUsagePlanResultOutput, error) {
-			args := v.(LookupUsagePlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getUsagePlan", args, LookupUsagePlanResultOutput{}, options).(LookupUsagePlanResultOutput), nil
-		}).(LookupUsagePlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getUsagePlan", args, LookupUsagePlanResultOutput{}, options).(LookupUsagePlanResultOutput)
 }
 
 type LookupUsagePlanOutputArgs struct {

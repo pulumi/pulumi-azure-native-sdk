@@ -52,12 +52,8 @@ type LookupManagedEnvironmentsStorageResult struct {
 }
 
 func LookupManagedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupManagedEnvironmentsStorageOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentsStorageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedEnvironmentsStorageResultOutput, error) {
-			args := v.(LookupManagedEnvironmentsStorageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getManagedEnvironmentsStorage", args, LookupManagedEnvironmentsStorageResultOutput{}, options).(LookupManagedEnvironmentsStorageResultOutput), nil
-		}).(LookupManagedEnvironmentsStorageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getManagedEnvironmentsStorage", args, LookupManagedEnvironmentsStorageResultOutput{}, options).(LookupManagedEnvironmentsStorageResultOutput)
 }
 
 type LookupManagedEnvironmentsStorageOutputArgs struct {

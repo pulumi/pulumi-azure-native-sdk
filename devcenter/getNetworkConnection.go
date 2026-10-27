@@ -70,12 +70,8 @@ type LookupNetworkConnectionResult struct {
 }
 
 func LookupNetworkConnectionOutput(ctx *pulumi.Context, args LookupNetworkConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkConnectionResultOutput, error) {
-			args := v.(LookupNetworkConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getNetworkConnection", args, LookupNetworkConnectionResultOutput{}, options).(LookupNetworkConnectionResultOutput), nil
-		}).(LookupNetworkConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getNetworkConnection", args, LookupNetworkConnectionResultOutput{}, options).(LookupNetworkConnectionResultOutput)
 }
 
 type LookupNetworkConnectionOutputArgs struct {

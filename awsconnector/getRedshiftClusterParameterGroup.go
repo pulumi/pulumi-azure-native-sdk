@@ -52,12 +52,8 @@ type LookupRedshiftClusterParameterGroupResult struct {
 }
 
 func LookupRedshiftClusterParameterGroupOutput(ctx *pulumi.Context, args LookupRedshiftClusterParameterGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRedshiftClusterParameterGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedshiftClusterParameterGroupResultOutput, error) {
-			args := v.(LookupRedshiftClusterParameterGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRedshiftClusterParameterGroup", args, LookupRedshiftClusterParameterGroupResultOutput{}, options).(LookupRedshiftClusterParameterGroupResultOutput), nil
-		}).(LookupRedshiftClusterParameterGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRedshiftClusterParameterGroup", args, LookupRedshiftClusterParameterGroupResultOutput{}, options).(LookupRedshiftClusterParameterGroupResultOutput)
 }
 
 type LookupRedshiftClusterParameterGroupOutputArgs struct {

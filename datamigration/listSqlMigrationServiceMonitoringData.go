@@ -42,12 +42,8 @@ type ListSqlMigrationServiceMonitoringDataResult struct {
 }
 
 func ListSqlMigrationServiceMonitoringDataOutput(ctx *pulumi.Context, args ListSqlMigrationServiceMonitoringDataOutputArgs, opts ...pulumi.InvokeOption) ListSqlMigrationServiceMonitoringDataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSqlMigrationServiceMonitoringDataResultOutput, error) {
-			args := v.(ListSqlMigrationServiceMonitoringDataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datamigration:listSqlMigrationServiceMonitoringData", args, ListSqlMigrationServiceMonitoringDataResultOutput{}, options).(ListSqlMigrationServiceMonitoringDataResultOutput), nil
-		}).(ListSqlMigrationServiceMonitoringDataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datamigration:listSqlMigrationServiceMonitoringData", args, ListSqlMigrationServiceMonitoringDataResultOutput{}, options).(ListSqlMigrationServiceMonitoringDataResultOutput)
 }
 
 type ListSqlMigrationServiceMonitoringDataOutputArgs struct {

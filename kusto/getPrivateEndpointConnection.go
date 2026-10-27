@@ -58,12 +58,8 @@ type LookupPrivateEndpointConnectionResult struct {
 }
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getPrivateEndpointConnection", args, LookupPrivateEndpointConnectionResultOutput{}, options).(LookupPrivateEndpointConnectionResultOutput), nil
-		}).(LookupPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getPrivateEndpointConnection", args, LookupPrivateEndpointConnectionResultOutput{}, options).(LookupPrivateEndpointConnectionResultOutput)
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {

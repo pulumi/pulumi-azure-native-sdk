@@ -50,12 +50,8 @@ type LookupSliResult struct {
 }
 
 func LookupSliOutput(ctx *pulumi.Context, args LookupSliOutputArgs, opts ...pulumi.InvokeOption) LookupSliResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSliResultOutput, error) {
-			args := v.(LookupSliArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getSli", args, LookupSliResultOutput{}, options).(LookupSliResultOutput), nil
-		}).(LookupSliResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getSli", args, LookupSliResultOutput{}, options).(LookupSliResultOutput)
 }
 
 type LookupSliOutputArgs struct {

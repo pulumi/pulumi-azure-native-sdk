@@ -130,12 +130,8 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 	return &tmp
 }
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceResultOutput, error) {
-			args := v.(LookupWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getWorkspace", args, LookupWorkspaceResultOutput{}, options).(LookupWorkspaceResultOutput), nil
-		}).(LookupWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getWorkspace", args, LookupWorkspaceResultOutput{}, options).(LookupWorkspaceResultOutput)
 }
 
 type LookupWorkspaceOutputArgs struct {

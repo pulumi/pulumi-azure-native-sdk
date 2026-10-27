@@ -44,12 +44,8 @@ type ListBatchEndpointKeysResult struct {
 }
 
 func ListBatchEndpointKeysOutput(ctx *pulumi.Context, args ListBatchEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListBatchEndpointKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBatchEndpointKeysResultOutput, error) {
-			args := v.(ListBatchEndpointKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listBatchEndpointKeys", args, ListBatchEndpointKeysResultOutput{}, options).(ListBatchEndpointKeysResultOutput), nil
-		}).(ListBatchEndpointKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listBatchEndpointKeys", args, ListBatchEndpointKeysResultOutput{}, options).(ListBatchEndpointKeysResultOutput)
 }
 
 type ListBatchEndpointKeysOutputArgs struct {

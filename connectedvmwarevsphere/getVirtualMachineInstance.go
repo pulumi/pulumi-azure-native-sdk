@@ -70,12 +70,8 @@ type LookupVirtualMachineInstanceResult struct {
 }
 
 func LookupVirtualMachineInstanceOutput(ctx *pulumi.Context, args LookupVirtualMachineInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineInstanceResultOutput, error) {
-			args := v.(LookupVirtualMachineInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVirtualMachineInstance", args, LookupVirtualMachineInstanceResultOutput{}, options).(LookupVirtualMachineInstanceResultOutput), nil
-		}).(LookupVirtualMachineInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVirtualMachineInstance", args, LookupVirtualMachineInstanceResultOutput{}, options).(LookupVirtualMachineInstanceResultOutput)
 }
 
 type LookupVirtualMachineInstanceOutputArgs struct {

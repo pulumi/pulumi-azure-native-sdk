@@ -72,12 +72,8 @@ type LookupOpenShiftClusterResult struct {
 }
 
 func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenShiftClusterResultOutput, error) {
-			args := v.(LookupOpenShiftClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redhatopenshift:getOpenShiftCluster", args, LookupOpenShiftClusterResultOutput{}, options).(LookupOpenShiftClusterResultOutput), nil
-		}).(LookupOpenShiftClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redhatopenshift:getOpenShiftCluster", args, LookupOpenShiftClusterResultOutput{}, options).(LookupOpenShiftClusterResultOutput)
 }
 
 type LookupOpenShiftClusterOutputArgs struct {

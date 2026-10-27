@@ -66,12 +66,8 @@ func (val *LookupNodePoolResult) Defaults() *LookupNodePoolResult {
 	return &tmp
 }
 func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, opts ...pulumi.InvokeOption) LookupNodePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNodePoolResultOutput, error) {
-			args := v.(LookupNodePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getNodePool", args, LookupNodePoolResultOutput{}, options).(LookupNodePoolResultOutput), nil
-		}).(LookupNodePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getNodePool", args, LookupNodePoolResultOutput{}, options).(LookupNodePoolResultOutput)
 }
 
 type LookupNodePoolOutputArgs struct {

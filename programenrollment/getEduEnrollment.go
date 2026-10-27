@@ -52,12 +52,8 @@ type LookupEduEnrollmentResult struct {
 }
 
 func LookupEduEnrollmentOutput(ctx *pulumi.Context, args LookupEduEnrollmentOutputArgs, opts ...pulumi.InvokeOption) LookupEduEnrollmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEduEnrollmentResultOutput, error) {
-			args := v.(LookupEduEnrollmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:programenrollment:getEduEnrollment", args, LookupEduEnrollmentResultOutput{}, options).(LookupEduEnrollmentResultOutput), nil
-		}).(LookupEduEnrollmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:programenrollment:getEduEnrollment", args, LookupEduEnrollmentResultOutput{}, options).(LookupEduEnrollmentResultOutput)
 }
 
 type LookupEduEnrollmentOutputArgs struct {

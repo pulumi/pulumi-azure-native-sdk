@@ -48,12 +48,8 @@ type ListEndpointManagedProxyDetailsResult struct {
 }
 
 func ListEndpointManagedProxyDetailsOutput(ctx *pulumi.Context, args ListEndpointManagedProxyDetailsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointManagedProxyDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListEndpointManagedProxyDetailsResultOutput, error) {
-			args := v.(ListEndpointManagedProxyDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointManagedProxyDetails", args, ListEndpointManagedProxyDetailsResultOutput{}, options).(ListEndpointManagedProxyDetailsResultOutput), nil
-		}).(ListEndpointManagedProxyDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointManagedProxyDetails", args, ListEndpointManagedProxyDetailsResultOutput{}, options).(ListEndpointManagedProxyDetailsResultOutput)
 }
 
 type ListEndpointManagedProxyDetailsOutputArgs struct {

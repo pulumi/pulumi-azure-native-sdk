@@ -76,12 +76,8 @@ type LookupElasticSanResult struct {
 }
 
 func LookupElasticSanOutput(ctx *pulumi.Context, args LookupElasticSanOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticSanResultOutput, error) {
-			args := v.(LookupElasticSanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elasticsan:getElasticSan", args, LookupElasticSanResultOutput{}, options).(LookupElasticSanResultOutput), nil
-		}).(LookupElasticSanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elasticsan:getElasticSan", args, LookupElasticSanResultOutput{}, options).(LookupElasticSanResultOutput)
 }
 
 type LookupElasticSanOutputArgs struct {

@@ -64,12 +64,8 @@ func (val *LookupAlertProcessingRuleByNameResult) Defaults() *LookupAlertProcess
 	return &tmp
 }
 func LookupAlertProcessingRuleByNameOutput(ctx *pulumi.Context, args LookupAlertProcessingRuleByNameOutputArgs, opts ...pulumi.InvokeOption) LookupAlertProcessingRuleByNameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertProcessingRuleByNameResultOutput, error) {
-			args := v.(LookupAlertProcessingRuleByNameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:alertsmanagement:getAlertProcessingRuleByName", args, LookupAlertProcessingRuleByNameResultOutput{}, options).(LookupAlertProcessingRuleByNameResultOutput), nil
-		}).(LookupAlertProcessingRuleByNameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:alertsmanagement:getAlertProcessingRuleByName", args, LookupAlertProcessingRuleByNameResultOutput{}, options).(LookupAlertProcessingRuleByNameResultOutput)
 }
 
 type LookupAlertProcessingRuleByNameOutputArgs struct {

@@ -44,12 +44,8 @@ type ListWebhookEventsResult struct {
 }
 
 func ListWebhookEventsOutput(ctx *pulumi.Context, args ListWebhookEventsOutputArgs, opts ...pulumi.InvokeOption) ListWebhookEventsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebhookEventsResultOutput, error) {
-			args := v.(ListWebhookEventsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:listWebhookEvents", args, ListWebhookEventsResultOutput{}, options).(ListWebhookEventsResultOutput), nil
-		}).(ListWebhookEventsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:listWebhookEvents", args, ListWebhookEventsResultOutput{}, options).(ListWebhookEventsResultOutput)
 }
 
 type ListWebhookEventsOutputArgs struct {

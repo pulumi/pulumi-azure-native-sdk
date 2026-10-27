@@ -74,12 +74,8 @@ type LookupCloudConnectorResult struct {
 }
 
 func LookupCloudConnectorOutput(ctx *pulumi.Context, args LookupCloudConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCloudConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudConnectorResultOutput, error) {
-			args := v.(LookupCloudConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:costmanagement:getCloudConnector", args, LookupCloudConnectorResultOutput{}, options).(LookupCloudConnectorResultOutput), nil
-		}).(LookupCloudConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:costmanagement:getCloudConnector", args, LookupCloudConnectorResultOutput{}, options).(LookupCloudConnectorResultOutput)
 }
 
 type LookupCloudConnectorOutputArgs struct {

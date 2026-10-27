@@ -62,12 +62,8 @@ type LookupDataManagerForAgricultureResourceResult struct {
 }
 
 func LookupDataManagerForAgricultureResourceOutput(ctx *pulumi.Context, args LookupDataManagerForAgricultureResourceOutputArgs, opts ...pulumi.InvokeOption) LookupDataManagerForAgricultureResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataManagerForAgricultureResourceResultOutput, error) {
-			args := v.(LookupDataManagerForAgricultureResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:agfoodplatform:getDataManagerForAgricultureResource", args, LookupDataManagerForAgricultureResourceResultOutput{}, options).(LookupDataManagerForAgricultureResourceResultOutput), nil
-		}).(LookupDataManagerForAgricultureResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:agfoodplatform:getDataManagerForAgricultureResource", args, LookupDataManagerForAgricultureResourceResultOutput{}, options).(LookupDataManagerForAgricultureResourceResultOutput)
 }
 
 type LookupDataManagerForAgricultureResourceOutputArgs struct {

@@ -53,12 +53,8 @@ type ListNotificationHubKeysResult struct {
 }
 
 func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListNotificationHubKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNotificationHubKeysResultOutput, error) {
-			args := v.(ListNotificationHubKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:notificationhubs:listNotificationHubKeys", args, ListNotificationHubKeysResultOutput{}, options).(ListNotificationHubKeysResultOutput), nil
-		}).(ListNotificationHubKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:notificationhubs:listNotificationHubKeys", args, ListNotificationHubKeysResultOutput{}, options).(ListNotificationHubKeysResultOutput)
 }
 
 type ListNotificationHubKeysOutputArgs struct {

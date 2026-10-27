@@ -52,12 +52,8 @@ type LookupDatastoreResult struct {
 }
 
 func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatastoreResultOutput, error) {
-			args := v.(LookupDatastoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getDatastore", args, LookupDatastoreResultOutput{}, options).(LookupDatastoreResultOutput), nil
-		}).(LookupDatastoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getDatastore", args, LookupDatastoreResultOutput{}, options).(LookupDatastoreResultOutput)
 }
 
 type LookupDatastoreOutputArgs struct {

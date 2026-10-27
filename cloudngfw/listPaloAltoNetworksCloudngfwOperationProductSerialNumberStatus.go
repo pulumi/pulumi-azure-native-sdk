@@ -38,12 +38,8 @@ type ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult struc
 }
 
 func ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput, error) {
-			args := v.(ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus", args, ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput), nil
-		}).(ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus", args, ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResultOutput)
 }
 
 type ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusOutputArgs struct {

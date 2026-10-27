@@ -65,12 +65,8 @@ type LookupReadWriteDatabaseResult struct {
 }
 
 func LookupReadWriteDatabaseOutput(ctx *pulumi.Context, args LookupReadWriteDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupReadWriteDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReadWriteDatabaseResultOutput, error) {
-			args := v.(LookupReadWriteDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getReadWriteDatabase", args, LookupReadWriteDatabaseResultOutput{}, options).(LookupReadWriteDatabaseResultOutput), nil
-		}).(LookupReadWriteDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getReadWriteDatabase", args, LookupReadWriteDatabaseResultOutput{}, options).(LookupReadWriteDatabaseResultOutput)
 }
 
 type LookupReadWriteDatabaseOutputArgs struct {

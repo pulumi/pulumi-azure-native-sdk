@@ -42,12 +42,8 @@ type ListWebAppSyncFunctionTriggersResult struct {
 }
 
 func ListWebAppSyncFunctionTriggersOutput(ctx *pulumi.Context, args ListWebAppSyncFunctionTriggersOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSyncFunctionTriggersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppSyncFunctionTriggersResultOutput, error) {
-			args := v.(ListWebAppSyncFunctionTriggersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppSyncFunctionTriggers", args, ListWebAppSyncFunctionTriggersResultOutput{}, options).(ListWebAppSyncFunctionTriggersResultOutput), nil
-		}).(ListWebAppSyncFunctionTriggersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppSyncFunctionTriggers", args, ListWebAppSyncFunctionTriggersResultOutput{}, options).(ListWebAppSyncFunctionTriggersResultOutput)
 }
 
 type ListWebAppSyncFunctionTriggersOutputArgs struct {

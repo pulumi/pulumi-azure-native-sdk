@@ -56,12 +56,8 @@ type LookupTableResourceTableRoleDefinitionResult struct {
 }
 
 func LookupTableResourceTableRoleDefinitionOutput(ctx *pulumi.Context, args LookupTableResourceTableRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupTableResourceTableRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTableResourceTableRoleDefinitionResultOutput, error) {
-			args := v.(LookupTableResourceTableRoleDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getTableResourceTableRoleDefinition", args, LookupTableResourceTableRoleDefinitionResultOutput{}, options).(LookupTableResourceTableRoleDefinitionResultOutput), nil
-		}).(LookupTableResourceTableRoleDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getTableResourceTableRoleDefinition", args, LookupTableResourceTableRoleDefinitionResultOutput{}, options).(LookupTableResourceTableRoleDefinitionResultOutput)
 }
 
 type LookupTableResourceTableRoleDefinitionOutputArgs struct {

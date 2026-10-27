@@ -62,12 +62,8 @@ type LookupWorkspaceApiSchemaResult struct {
 }
 
 func LookupWorkspaceApiSchemaOutput(ctx *pulumi.Context, args LookupWorkspaceApiSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceApiSchemaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceApiSchemaResultOutput, error) {
-			args := v.(LookupWorkspaceApiSchemaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceApiSchema", args, LookupWorkspaceApiSchemaResultOutput{}, options).(LookupWorkspaceApiSchemaResultOutput), nil
-		}).(LookupWorkspaceApiSchemaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceApiSchema", args, LookupWorkspaceApiSchemaResultOutput{}, options).(LookupWorkspaceApiSchemaResultOutput)
 }
 
 type LookupWorkspaceApiSchemaOutputArgs struct {

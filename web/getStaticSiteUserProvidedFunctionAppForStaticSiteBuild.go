@@ -60,12 +60,8 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult struct {
 }
 
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput(ctx *pulumi.Context, args LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput, error) {
-			args := v.(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput{}, options).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput), nil
-		}).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput{}, options).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput)
 }
 
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs struct {

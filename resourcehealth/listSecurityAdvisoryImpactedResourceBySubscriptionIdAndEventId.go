@@ -42,12 +42,8 @@ type ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult struct
 }
 
 func ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutput(ctx *pulumi.Context, args ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutputArgs, opts ...pulumi.InvokeOption) ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput, error) {
-			args := v.(ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId", args, ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput{}, options).(ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput), nil
-		}).(ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId", args, ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput{}, options).(ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput)
 }
 
 type ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutputArgs struct {

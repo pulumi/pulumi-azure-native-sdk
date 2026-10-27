@@ -65,12 +65,8 @@ type LookupAgentPoolResult struct {
 }
 
 func LookupAgentPoolOutput(ctx *pulumi.Context, args LookupAgentPoolOutputArgs, opts ...pulumi.InvokeOption) LookupAgentPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAgentPoolResultOutput, error) {
-			args := v.(LookupAgentPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getAgentPool", args, LookupAgentPoolResultOutput{}, options).(LookupAgentPoolResultOutput), nil
-		}).(LookupAgentPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getAgentPool", args, LookupAgentPoolResultOutput{}, options).(LookupAgentPoolResultOutput)
 }
 
 type LookupAgentPoolOutputArgs struct {

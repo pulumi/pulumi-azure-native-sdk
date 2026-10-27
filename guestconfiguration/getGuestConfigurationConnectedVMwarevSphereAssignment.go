@@ -64,12 +64,8 @@ func (val *LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) Defau
 	return &tmp
 }
 func LookupGuestConfigurationConnectedVMwarevSphereAssignmentOutput(ctx *pulumi.Context, args LookupGuestConfigurationConnectedVMwarevSphereAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput, error) {
-			args := v.(LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:guestconfiguration:getGuestConfigurationConnectedVMwarevSphereAssignment", args, LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput{}, options).(LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput), nil
-		}).(LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:guestconfiguration:getGuestConfigurationConnectedVMwarevSphereAssignment", args, LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput{}, options).(LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput)
 }
 
 type LookupGuestConfigurationConnectedVMwarevSphereAssignmentOutputArgs struct {
