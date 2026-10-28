@@ -44,12 +44,8 @@ type ListNotebookWorkspaceConnectionInfoResult struct {
 }
 
 func ListNotebookWorkspaceConnectionInfoOutput(ctx *pulumi.Context, args ListNotebookWorkspaceConnectionInfoOutputArgs, opts ...pulumi.InvokeOption) ListNotebookWorkspaceConnectionInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNotebookWorkspaceConnectionInfoResultOutput, error) {
-			args := v.(ListNotebookWorkspaceConnectionInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:listNotebookWorkspaceConnectionInfo", args, ListNotebookWorkspaceConnectionInfoResultOutput{}, options).(ListNotebookWorkspaceConnectionInfoResultOutput), nil
-		}).(ListNotebookWorkspaceConnectionInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:listNotebookWorkspaceConnectionInfo", args, ListNotebookWorkspaceConnectionInfoResultOutput{}, options).(ListNotebookWorkspaceConnectionInfoResultOutput)
 }
 
 type ListNotebookWorkspaceConnectionInfoOutputArgs struct {

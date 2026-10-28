@@ -52,12 +52,8 @@ type LookupEfsMountTargetResult struct {
 }
 
 func LookupEfsMountTargetOutput(ctx *pulumi.Context, args LookupEfsMountTargetOutputArgs, opts ...pulumi.InvokeOption) LookupEfsMountTargetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEfsMountTargetResultOutput, error) {
-			args := v.(LookupEfsMountTargetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEfsMountTarget", args, LookupEfsMountTargetResultOutput{}, options).(LookupEfsMountTargetResultOutput), nil
-		}).(LookupEfsMountTargetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEfsMountTarget", args, LookupEfsMountTargetResultOutput{}, options).(LookupEfsMountTargetResultOutput)
 }
 
 type LookupEfsMountTargetOutputArgs struct {

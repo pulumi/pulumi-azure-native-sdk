@@ -66,12 +66,8 @@ type LookupVolumeGroupResult struct {
 }
 
 func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVolumeGroupResultOutput, error) {
-			args := v.(LookupVolumeGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elasticsan:getVolumeGroup", args, LookupVolumeGroupResultOutput{}, options).(LookupVolumeGroupResultOutput), nil
-		}).(LookupVolumeGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elasticsan:getVolumeGroup", args, LookupVolumeGroupResultOutput{}, options).(LookupVolumeGroupResultOutput)
 }
 
 type LookupVolumeGroupOutputArgs struct {

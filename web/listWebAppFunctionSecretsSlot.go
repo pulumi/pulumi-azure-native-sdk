@@ -46,12 +46,8 @@ type ListWebAppFunctionSecretsSlotResult struct {
 }
 
 func ListWebAppFunctionSecretsSlotOutput(ctx *pulumi.Context, args ListWebAppFunctionSecretsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionSecretsSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppFunctionSecretsSlotResultOutput, error) {
-			args := v.(ListWebAppFunctionSecretsSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppFunctionSecretsSlot", args, ListWebAppFunctionSecretsSlotResultOutput{}, options).(ListWebAppFunctionSecretsSlotResultOutput), nil
-		}).(ListWebAppFunctionSecretsSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppFunctionSecretsSlot", args, ListWebAppFunctionSecretsSlotResultOutput{}, options).(ListWebAppFunctionSecretsSlotResultOutput)
 }
 
 type ListWebAppFunctionSecretsSlotOutputArgs struct {

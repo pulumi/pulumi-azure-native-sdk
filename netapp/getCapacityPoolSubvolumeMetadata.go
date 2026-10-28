@@ -70,12 +70,8 @@ type GetCapacityPoolSubvolumeMetadataResult struct {
 }
 
 func GetCapacityPoolSubvolumeMetadataOutput(ctx *pulumi.Context, args GetCapacityPoolSubvolumeMetadataOutputArgs, opts ...pulumi.InvokeOption) GetCapacityPoolSubvolumeMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCapacityPoolSubvolumeMetadataResultOutput, error) {
-			args := v.(GetCapacityPoolSubvolumeMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSubvolumeMetadata", args, GetCapacityPoolSubvolumeMetadataResultOutput{}, options).(GetCapacityPoolSubvolumeMetadataResultOutput), nil
-		}).(GetCapacityPoolSubvolumeMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSubvolumeMetadata", args, GetCapacityPoolSubvolumeMetadataResultOutput{}, options).(GetCapacityPoolSubvolumeMetadataResultOutput)
 }
 
 type GetCapacityPoolSubvolumeMetadataOutputArgs struct {

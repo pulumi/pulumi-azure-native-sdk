@@ -82,12 +82,8 @@ type LookupFreeServiceResult struct {
 }
 
 func LookupFreeServiceOutput(ctx *pulumi.Context, args LookupFreeServiceOutputArgs, opts ...pulumi.InvokeOption) LookupFreeServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFreeServiceResultOutput, error) {
-			args := v.(LookupFreeServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingbenefits:getFreeService", args, LookupFreeServiceResultOutput{}, options).(LookupFreeServiceResultOutput), nil
-		}).(LookupFreeServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingbenefits:getFreeService", args, LookupFreeServiceResultOutput{}, options).(LookupFreeServiceResultOutput)
 }
 
 type LookupFreeServiceOutputArgs struct {

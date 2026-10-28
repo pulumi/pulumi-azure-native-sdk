@@ -64,12 +64,8 @@ type LookupDedicatedHubResult struct {
 }
 
 func LookupDedicatedHubOutput(ctx *pulumi.Context, args LookupDedicatedHubOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedHubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDedicatedHubResultOutput, error) {
-			args := v.(LookupDedicatedHubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getDedicatedHub", args, LookupDedicatedHubResultOutput{}, options).(LookupDedicatedHubResultOutput), nil
-		}).(LookupDedicatedHubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getDedicatedHub", args, LookupDedicatedHubResultOutput{}, options).(LookupDedicatedHubResultOutput)
 }
 
 type LookupDedicatedHubOutputArgs struct {

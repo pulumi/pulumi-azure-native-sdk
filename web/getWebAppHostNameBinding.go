@@ -70,12 +70,8 @@ type LookupWebAppHostNameBindingResult struct {
 }
 
 func LookupWebAppHostNameBindingOutput(ctx *pulumi.Context, args LookupWebAppHostNameBindingOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHostNameBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppHostNameBindingResultOutput, error) {
-			args := v.(LookupWebAppHostNameBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppHostNameBinding", args, LookupWebAppHostNameBindingResultOutput{}, options).(LookupWebAppHostNameBindingResultOutput), nil
-		}).(LookupWebAppHostNameBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppHostNameBinding", args, LookupWebAppHostNameBindingResultOutput{}, options).(LookupWebAppHostNameBindingResultOutput)
 }
 
 type LookupWebAppHostNameBindingOutputArgs struct {

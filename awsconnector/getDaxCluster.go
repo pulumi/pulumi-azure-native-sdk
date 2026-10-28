@@ -52,12 +52,8 @@ type LookupDaxClusterResult struct {
 }
 
 func LookupDaxClusterOutput(ctx *pulumi.Context, args LookupDaxClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDaxClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDaxClusterResultOutput, error) {
-			args := v.(LookupDaxClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getDaxCluster", args, LookupDaxClusterResultOutput{}, options).(LookupDaxClusterResultOutput), nil
-		}).(LookupDaxClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getDaxCluster", args, LookupDaxClusterResultOutput{}, options).(LookupDaxClusterResultOutput)
 }
 
 type LookupDaxClusterOutputArgs struct {

@@ -133,12 +133,8 @@ type LookupSqlAssessmentV2OperationResult struct {
 }
 
 func LookupSqlAssessmentV2OperationOutput(ctx *pulumi.Context, args LookupSqlAssessmentV2OperationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlAssessmentV2OperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlAssessmentV2OperationResultOutput, error) {
-			args := v.(LookupSqlAssessmentV2OperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getSqlAssessmentV2Operation", args, LookupSqlAssessmentV2OperationResultOutput{}, options).(LookupSqlAssessmentV2OperationResultOutput), nil
-		}).(LookupSqlAssessmentV2OperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getSqlAssessmentV2Operation", args, LookupSqlAssessmentV2OperationResultOutput{}, options).(LookupSqlAssessmentV2OperationResultOutput)
 }
 
 type LookupSqlAssessmentV2OperationOutputArgs struct {

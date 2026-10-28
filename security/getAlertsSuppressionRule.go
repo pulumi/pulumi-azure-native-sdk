@@ -58,12 +58,8 @@ type LookupAlertsSuppressionRuleResult struct {
 }
 
 func LookupAlertsSuppressionRuleOutput(ctx *pulumi.Context, args LookupAlertsSuppressionRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertsSuppressionRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertsSuppressionRuleResultOutput, error) {
-			args := v.(LookupAlertsSuppressionRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getAlertsSuppressionRule", args, LookupAlertsSuppressionRuleResultOutput{}, options).(LookupAlertsSuppressionRuleResultOutput), nil
-		}).(LookupAlertsSuppressionRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getAlertsSuppressionRule", args, LookupAlertsSuppressionRuleResultOutput{}, options).(LookupAlertsSuppressionRuleResultOutput)
 }
 
 type LookupAlertsSuppressionRuleOutputArgs struct {

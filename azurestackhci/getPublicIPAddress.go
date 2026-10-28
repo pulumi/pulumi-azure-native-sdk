@@ -56,12 +56,8 @@ type LookupPublicIPAddressResult struct {
 }
 
 func LookupPublicIPAddressOutput(ctx *pulumi.Context, args LookupPublicIPAddressOutputArgs, opts ...pulumi.InvokeOption) LookupPublicIPAddressResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPublicIPAddressResultOutput, error) {
-			args := v.(LookupPublicIPAddressArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getPublicIPAddress", args, LookupPublicIPAddressResultOutput{}, options).(LookupPublicIPAddressResultOutput), nil
-		}).(LookupPublicIPAddressResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getPublicIPAddress", args, LookupPublicIPAddressResultOutput{}, options).(LookupPublicIPAddressResultOutput)
 }
 
 type LookupPublicIPAddressOutputArgs struct {

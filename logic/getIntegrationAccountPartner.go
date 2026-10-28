@@ -62,12 +62,8 @@ type LookupIntegrationAccountPartnerResult struct {
 }
 
 func LookupIntegrationAccountPartnerOutput(ctx *pulumi.Context, args LookupIntegrationAccountPartnerOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountPartnerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountPartnerResultOutput, error) {
-			args := v.(LookupIntegrationAccountPartnerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountPartner", args, LookupIntegrationAccountPartnerResultOutput{}, options).(LookupIntegrationAccountPartnerResultOutput), nil
-		}).(LookupIntegrationAccountPartnerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountPartner", args, LookupIntegrationAccountPartnerResultOutput{}, options).(LookupIntegrationAccountPartnerResultOutput)
 }
 
 type LookupIntegrationAccountPartnerOutputArgs struct {

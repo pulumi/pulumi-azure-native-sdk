@@ -54,12 +54,8 @@ type LookupOutboundRuleResult struct {
 }
 
 func LookupOutboundRuleOutput(ctx *pulumi.Context, args LookupOutboundRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOutboundRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOutboundRuleResultOutput, error) {
-			args := v.(LookupOutboundRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getOutboundRule", args, LookupOutboundRuleResultOutput{}, options).(LookupOutboundRuleResultOutput), nil
-		}).(LookupOutboundRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getOutboundRule", args, LookupOutboundRuleResultOutput{}, options).(LookupOutboundRuleResultOutput)
 }
 
 type LookupOutboundRuleOutputArgs struct {

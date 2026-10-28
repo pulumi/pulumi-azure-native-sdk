@@ -58,12 +58,8 @@ type LookupBulkActionResult struct {
 }
 
 func LookupBulkActionOutput(ctx *pulumi.Context, args LookupBulkActionOutputArgs, opts ...pulumi.InvokeOption) LookupBulkActionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBulkActionResultOutput, error) {
-			args := v.(LookupBulkActionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:computebulkactions:getBulkAction", args, LookupBulkActionResultOutput{}, options).(LookupBulkActionResultOutput), nil
-		}).(LookupBulkActionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:computebulkactions:getBulkAction", args, LookupBulkActionResultOutput{}, options).(LookupBulkActionResultOutput)
 }
 
 type LookupBulkActionOutputArgs struct {

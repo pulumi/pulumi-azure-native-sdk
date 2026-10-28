@@ -62,12 +62,8 @@ type LookupAlertResult struct {
 }
 
 func LookupAlertOutput(ctx *pulumi.Context, args LookupAlertOutputArgs, opts ...pulumi.InvokeOption) LookupAlertResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertResultOutput, error) {
-			args := v.(LookupAlertArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getAlert", args, LookupAlertResultOutput{}, options).(LookupAlertResultOutput), nil
-		}).(LookupAlertResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getAlert", args, LookupAlertResultOutput{}, options).(LookupAlertResultOutput)
 }
 
 type LookupAlertOutputArgs struct {

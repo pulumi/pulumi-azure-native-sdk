@@ -78,12 +78,8 @@ type LookupBookmarkResult struct {
 }
 
 func LookupBookmarkOutput(ctx *pulumi.Context, args LookupBookmarkOutputArgs, opts ...pulumi.InvokeOption) LookupBookmarkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBookmarkResultOutput, error) {
-			args := v.(LookupBookmarkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getBookmark", args, LookupBookmarkResultOutput{}, options).(LookupBookmarkResultOutput), nil
-		}).(LookupBookmarkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getBookmark", args, LookupBookmarkResultOutput{}, options).(LookupBookmarkResultOutput)
 }
 
 type LookupBookmarkOutputArgs struct {

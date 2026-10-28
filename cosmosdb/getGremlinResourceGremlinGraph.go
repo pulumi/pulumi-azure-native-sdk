@@ -66,12 +66,8 @@ func (val *LookupGremlinResourceGremlinGraphResult) Defaults() *LookupGremlinRes
 	return &tmp
 }
 func LookupGremlinResourceGremlinGraphOutput(ctx *pulumi.Context, args LookupGremlinResourceGremlinGraphOutputArgs, opts ...pulumi.InvokeOption) LookupGremlinResourceGremlinGraphResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinGraphResultOutput, error) {
-			args := v.(LookupGremlinResourceGremlinGraphArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getGremlinResourceGremlinGraph", args, LookupGremlinResourceGremlinGraphResultOutput{}, options).(LookupGremlinResourceGremlinGraphResultOutput), nil
-		}).(LookupGremlinResourceGremlinGraphResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getGremlinResourceGremlinGraph", args, LookupGremlinResourceGremlinGraphResultOutput{}, options).(LookupGremlinResourceGremlinGraphResultOutput)
 }
 
 type LookupGremlinResourceGremlinGraphOutputArgs struct {

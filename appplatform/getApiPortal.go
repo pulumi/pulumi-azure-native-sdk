@@ -66,12 +66,8 @@ func (val *LookupApiPortalResult) Defaults() *LookupApiPortalResult {
 	return &tmp
 }
 func LookupApiPortalOutput(ctx *pulumi.Context, args LookupApiPortalOutputArgs, opts ...pulumi.InvokeOption) LookupApiPortalResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiPortalResultOutput, error) {
-			args := v.(LookupApiPortalArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getApiPortal", args, LookupApiPortalResultOutput{}, options).(LookupApiPortalResultOutput), nil
-		}).(LookupApiPortalResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getApiPortal", args, LookupApiPortalResultOutput{}, options).(LookupApiPortalResultOutput)
 }
 
 type LookupApiPortalOutputArgs struct {

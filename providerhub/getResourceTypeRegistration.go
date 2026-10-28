@@ -63,12 +63,8 @@ func (val *LookupResourceTypeRegistrationResult) Defaults() *LookupResourceTypeR
 	return &tmp
 }
 func LookupResourceTypeRegistrationOutput(ctx *pulumi.Context, args LookupResourceTypeRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupResourceTypeRegistrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourceTypeRegistrationResultOutput, error) {
-			args := v.(LookupResourceTypeRegistrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getResourceTypeRegistration", args, LookupResourceTypeRegistrationResultOutput{}, options).(LookupResourceTypeRegistrationResultOutput), nil
-		}).(LookupResourceTypeRegistrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getResourceTypeRegistration", args, LookupResourceTypeRegistrationResultOutput{}, options).(LookupResourceTypeRegistrationResultOutput)
 }
 
 type LookupResourceTypeRegistrationOutputArgs struct {

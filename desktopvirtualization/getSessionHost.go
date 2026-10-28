@@ -94,12 +94,8 @@ type LookupSessionHostResult struct {
 }
 
 func LookupSessionHostOutput(ctx *pulumi.Context, args LookupSessionHostOutputArgs, opts ...pulumi.InvokeOption) LookupSessionHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSessionHostResultOutput, error) {
-			args := v.(LookupSessionHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:getSessionHost", args, LookupSessionHostResultOutput{}, options).(LookupSessionHostResultOutput), nil
-		}).(LookupSessionHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:getSessionHost", args, LookupSessionHostResultOutput{}, options).(LookupSessionHostResultOutput)
 }
 
 type LookupSessionHostOutputArgs struct {

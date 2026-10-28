@@ -40,12 +40,8 @@ type ListKustoPoolLanguageExtensionsResult struct {
 }
 
 func ListKustoPoolLanguageExtensionsOutput(ctx *pulumi.Context, args ListKustoPoolLanguageExtensionsOutputArgs, opts ...pulumi.InvokeOption) ListKustoPoolLanguageExtensionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListKustoPoolLanguageExtensionsResultOutput, error) {
-			args := v.(ListKustoPoolLanguageExtensionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:listKustoPoolLanguageExtensions", args, ListKustoPoolLanguageExtensionsResultOutput{}, options).(ListKustoPoolLanguageExtensionsResultOutput), nil
-		}).(ListKustoPoolLanguageExtensionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:listKustoPoolLanguageExtensions", args, ListKustoPoolLanguageExtensionsResultOutput{}, options).(ListKustoPoolLanguageExtensionsResultOutput)
 }
 
 type ListKustoPoolLanguageExtensionsOutputArgs struct {

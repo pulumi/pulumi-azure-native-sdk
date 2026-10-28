@@ -70,12 +70,8 @@ type LookupVmmServerResult struct {
 }
 
 func LookupVmmServerOutput(ctx *pulumi.Context, args LookupVmmServerOutputArgs, opts ...pulumi.InvokeOption) LookupVmmServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVmmServerResultOutput, error) {
-			args := v.(LookupVmmServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:scvmm:getVmmServer", args, LookupVmmServerResultOutput{}, options).(LookupVmmServerResultOutput), nil
-		}).(LookupVmmServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:scvmm:getVmmServer", args, LookupVmmServerResultOutput{}, options).(LookupVmmServerResultOutput)
 }
 
 type LookupVmmServerOutputArgs struct {

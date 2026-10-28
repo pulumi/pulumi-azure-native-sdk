@@ -52,12 +52,8 @@ type LookupProjectConnectionResult struct {
 }
 
 func LookupProjectConnectionOutput(ctx *pulumi.Context, args LookupProjectConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupProjectConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectConnectionResultOutput, error) {
-			args := v.(LookupProjectConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getProjectConnection", args, LookupProjectConnectionResultOutput{}, options).(LookupProjectConnectionResultOutput), nil
-		}).(LookupProjectConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getProjectConnection", args, LookupProjectConnectionResultOutput{}, options).(LookupProjectConnectionResultOutput)
 }
 
 type LookupProjectConnectionOutputArgs struct {

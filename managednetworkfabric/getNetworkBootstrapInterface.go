@@ -72,12 +72,8 @@ type LookupNetworkBootstrapInterfaceResult struct {
 }
 
 func LookupNetworkBootstrapInterfaceOutput(ctx *pulumi.Context, args LookupNetworkBootstrapInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkBootstrapInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkBootstrapInterfaceResultOutput, error) {
-			args := v.(LookupNetworkBootstrapInterfaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkBootstrapInterface", args, LookupNetworkBootstrapInterfaceResultOutput{}, options).(LookupNetworkBootstrapInterfaceResultOutput), nil
-		}).(LookupNetworkBootstrapInterfaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkBootstrapInterface", args, LookupNetworkBootstrapInterfaceResultOutput{}, options).(LookupNetworkBootstrapInterfaceResultOutput)
 }
 
 type LookupNetworkBootstrapInterfaceOutputArgs struct {

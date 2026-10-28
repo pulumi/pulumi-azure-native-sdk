@@ -58,12 +58,8 @@ type LookupPrivateEndpointConnectionByHostPoolResult struct {
 }
 
 func LookupPrivateEndpointConnectionByHostPoolOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionByHostPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionByHostPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByHostPoolResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionByHostPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:getPrivateEndpointConnectionByHostPool", args, LookupPrivateEndpointConnectionByHostPoolResultOutput{}, options).(LookupPrivateEndpointConnectionByHostPoolResultOutput), nil
-		}).(LookupPrivateEndpointConnectionByHostPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:getPrivateEndpointConnectionByHostPool", args, LookupPrivateEndpointConnectionByHostPoolResultOutput{}, options).(LookupPrivateEndpointConnectionByHostPoolResultOutput)
 }
 
 type LookupPrivateEndpointConnectionByHostPoolOutputArgs struct {

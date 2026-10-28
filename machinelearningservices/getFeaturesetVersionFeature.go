@@ -62,12 +62,8 @@ func (val *GetFeaturesetVersionFeatureResult) Defaults() *GetFeaturesetVersionFe
 	return &tmp
 }
 func GetFeaturesetVersionFeatureOutput(ctx *pulumi.Context, args GetFeaturesetVersionFeatureOutputArgs, opts ...pulumi.InvokeOption) GetFeaturesetVersionFeatureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFeaturesetVersionFeatureResultOutput, error) {
-			args := v.(GetFeaturesetVersionFeatureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturesetVersionFeature", args, GetFeaturesetVersionFeatureResultOutput{}, options).(GetFeaturesetVersionFeatureResultOutput), nil
-		}).(GetFeaturesetVersionFeatureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturesetVersionFeature", args, GetFeaturesetVersionFeatureResultOutput{}, options).(GetFeaturesetVersionFeatureResultOutput)
 }
 
 type GetFeaturesetVersionFeatureOutputArgs struct {

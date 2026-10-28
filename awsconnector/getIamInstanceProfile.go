@@ -52,12 +52,8 @@ type LookupIamInstanceProfileResult struct {
 }
 
 func LookupIamInstanceProfileOutput(ctx *pulumi.Context, args LookupIamInstanceProfileOutputArgs, opts ...pulumi.InvokeOption) LookupIamInstanceProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamInstanceProfileResultOutput, error) {
-			args := v.(LookupIamInstanceProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamInstanceProfile", args, LookupIamInstanceProfileResultOutput{}, options).(LookupIamInstanceProfileResultOutput), nil
-		}).(LookupIamInstanceProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamInstanceProfile", args, LookupIamInstanceProfileResultOutput{}, options).(LookupIamInstanceProfileResultOutput)
 }
 
 type LookupIamInstanceProfileOutputArgs struct {

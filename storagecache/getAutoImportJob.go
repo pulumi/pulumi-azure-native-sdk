@@ -126,12 +126,8 @@ func (val *LookupAutoImportJobResult) Defaults() *LookupAutoImportJobResult {
 	return &tmp
 }
 func LookupAutoImportJobOutput(ctx *pulumi.Context, args LookupAutoImportJobOutputArgs, opts ...pulumi.InvokeOption) LookupAutoImportJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAutoImportJobResultOutput, error) {
-			args := v.(LookupAutoImportJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagecache:getAutoImportJob", args, LookupAutoImportJobResultOutput{}, options).(LookupAutoImportJobResultOutput), nil
-		}).(LookupAutoImportJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagecache:getAutoImportJob", args, LookupAutoImportJobResultOutput{}, options).(LookupAutoImportJobResultOutput)
 }
 
 type LookupAutoImportJobOutputArgs struct {

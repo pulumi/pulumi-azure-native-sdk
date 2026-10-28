@@ -44,12 +44,8 @@ type GetEnvironmentDefinitionErrorDetailsResult struct {
 }
 
 func GetEnvironmentDefinitionErrorDetailsOutput(ctx *pulumi.Context, args GetEnvironmentDefinitionErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentDefinitionErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentDefinitionErrorDetailsResultOutput, error) {
-			args := v.(GetEnvironmentDefinitionErrorDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getEnvironmentDefinitionErrorDetails", args, GetEnvironmentDefinitionErrorDetailsResultOutput{}, options).(GetEnvironmentDefinitionErrorDetailsResultOutput), nil
-		}).(GetEnvironmentDefinitionErrorDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getEnvironmentDefinitionErrorDetails", args, GetEnvironmentDefinitionErrorDetailsResultOutput{}, options).(GetEnvironmentDefinitionErrorDetailsResultOutput)
 }
 
 type GetEnvironmentDefinitionErrorDetailsOutputArgs struct {

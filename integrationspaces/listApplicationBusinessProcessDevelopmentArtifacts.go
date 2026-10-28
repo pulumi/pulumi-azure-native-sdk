@@ -40,12 +40,8 @@ type ListApplicationBusinessProcessDevelopmentArtifactsResult struct {
 }
 
 func ListApplicationBusinessProcessDevelopmentArtifactsOutput(ctx *pulumi.Context, args ListApplicationBusinessProcessDevelopmentArtifactsOutputArgs, opts ...pulumi.InvokeOption) ListApplicationBusinessProcessDevelopmentArtifactsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListApplicationBusinessProcessDevelopmentArtifactsResultOutput, error) {
-			args := v.(ListApplicationBusinessProcessDevelopmentArtifactsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:integrationspaces:listApplicationBusinessProcessDevelopmentArtifacts", args, ListApplicationBusinessProcessDevelopmentArtifactsResultOutput{}, options).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput), nil
-		}).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:integrationspaces:listApplicationBusinessProcessDevelopmentArtifacts", args, ListApplicationBusinessProcessDevelopmentArtifactsResultOutput{}, options).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput)
 }
 
 type ListApplicationBusinessProcessDevelopmentArtifactsOutputArgs struct {

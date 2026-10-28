@@ -58,12 +58,8 @@ type LookupMongoMIResourceMongoMIRoleAssignmentResult struct {
 }
 
 func LookupMongoMIResourceMongoMIRoleAssignmentOutput(ctx *pulumi.Context, args LookupMongoMIResourceMongoMIRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupMongoMIResourceMongoMIRoleAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongoMIResourceMongoMIRoleAssignmentResultOutput, error) {
-			args := v.(LookupMongoMIResourceMongoMIRoleAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getMongoMIResourceMongoMIRoleAssignment", args, LookupMongoMIResourceMongoMIRoleAssignmentResultOutput{}, options).(LookupMongoMIResourceMongoMIRoleAssignmentResultOutput), nil
-		}).(LookupMongoMIResourceMongoMIRoleAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getMongoMIResourceMongoMIRoleAssignment", args, LookupMongoMIResourceMongoMIRoleAssignmentResultOutput{}, options).(LookupMongoMIResourceMongoMIRoleAssignmentResultOutput)
 }
 
 type LookupMongoMIResourceMongoMIRoleAssignmentOutputArgs struct {

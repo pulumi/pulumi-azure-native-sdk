@@ -78,12 +78,8 @@ func (val *LookupOrderItemResult) Defaults() *LookupOrderItemResult {
 	return &tmp
 }
 func LookupOrderItemOutput(ctx *pulumi.Context, args LookupOrderItemOutputArgs, opts ...pulumi.InvokeOption) LookupOrderItemResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrderItemResultOutput, error) {
-			args := v.(LookupOrderItemArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edgeorder:getOrderItem", args, LookupOrderItemResultOutput{}, options).(LookupOrderItemResultOutput), nil
-		}).(LookupOrderItemResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edgeorder:getOrderItem", args, LookupOrderItemResultOutput{}, options).(LookupOrderItemResultOutput)
 }
 
 type LookupOrderItemOutputArgs struct {

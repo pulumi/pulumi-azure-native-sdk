@@ -56,12 +56,8 @@ type LookupWebPubSubCustomDomainResult struct {
 }
 
 func LookupWebPubSubCustomDomainOutput(ctx *pulumi.Context, args LookupWebPubSubCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubCustomDomainResultOutput, error) {
-			args := v.(LookupWebPubSubCustomDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSubCustomDomain", args, LookupWebPubSubCustomDomainResultOutput{}, options).(LookupWebPubSubCustomDomainResultOutput), nil
-		}).(LookupWebPubSubCustomDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSubCustomDomain", args, LookupWebPubSubCustomDomainResultOutput{}, options).(LookupWebPubSubCustomDomainResultOutput)
 }
 
 type LookupWebPubSubCustomDomainOutputArgs struct {

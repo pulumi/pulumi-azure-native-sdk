@@ -60,12 +60,8 @@ type LookupKnowledgeSourceResult struct {
 }
 
 func LookupKnowledgeSourceOutput(ctx *pulumi.Context, args LookupKnowledgeSourceOutputArgs, opts ...pulumi.InvokeOption) LookupKnowledgeSourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKnowledgeSourceResultOutput, error) {
-			args := v.(LookupKnowledgeSourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getKnowledgeSource", args, LookupKnowledgeSourceResultOutput{}, options).(LookupKnowledgeSourceResultOutput), nil
-		}).(LookupKnowledgeSourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getKnowledgeSource", args, LookupKnowledgeSourceResultOutput{}, options).(LookupKnowledgeSourceResultOutput)
 }
 
 type LookupKnowledgeSourceOutputArgs struct {

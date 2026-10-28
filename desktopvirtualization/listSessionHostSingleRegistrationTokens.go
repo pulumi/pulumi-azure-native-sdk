@@ -46,12 +46,8 @@ type ListSessionHostSingleRegistrationTokensResult struct {
 }
 
 func ListSessionHostSingleRegistrationTokensOutput(ctx *pulumi.Context, args ListSessionHostSingleRegistrationTokensOutputArgs, opts ...pulumi.InvokeOption) ListSessionHostSingleRegistrationTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSessionHostSingleRegistrationTokensResultOutput, error) {
-			args := v.(ListSessionHostSingleRegistrationTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:listSessionHostSingleRegistrationTokens", args, ListSessionHostSingleRegistrationTokensResultOutput{}, options).(ListSessionHostSingleRegistrationTokensResultOutput), nil
-		}).(ListSessionHostSingleRegistrationTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:listSessionHostSingleRegistrationTokens", args, ListSessionHostSingleRegistrationTokensResultOutput{}, options).(ListSessionHostSingleRegistrationTokensResultOutput)
 }
 
 type ListSessionHostSingleRegistrationTokensOutputArgs struct {

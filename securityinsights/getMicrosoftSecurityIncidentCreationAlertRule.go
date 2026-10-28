@@ -71,12 +71,8 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleResult struct {
 }
 
 func LookupMicrosoftSecurityIncidentCreationAlertRuleOutput(ctx *pulumi.Context, args LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput, error) {
-			args := v.(LookupMicrosoftSecurityIncidentCreationAlertRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getMicrosoftSecurityIncidentCreationAlertRule", args, LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput{}, options).(LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput), nil
-		}).(LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getMicrosoftSecurityIncidentCreationAlertRule", args, LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput{}, options).(LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput)
 }
 
 type LookupMicrosoftSecurityIncidentCreationAlertRuleOutputArgs struct {

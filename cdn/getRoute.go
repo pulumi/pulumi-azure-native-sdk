@@ -99,12 +99,8 @@ func (val *LookupRouteResult) Defaults() *LookupRouteResult {
 	return &tmp
 }
 func LookupRouteOutput(ctx *pulumi.Context, args LookupRouteOutputArgs, opts ...pulumi.InvokeOption) LookupRouteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRouteResultOutput, error) {
-			args := v.(LookupRouteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getRoute", args, LookupRouteResultOutput{}, options).(LookupRouteResultOutput), nil
-		}).(LookupRouteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getRoute", args, LookupRouteResultOutput{}, options).(LookupRouteResultOutput)
 }
 
 type LookupRouteOutputArgs struct {

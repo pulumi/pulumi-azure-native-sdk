@@ -40,12 +40,8 @@ type ListListAssociatedTrafficFilterResult struct {
 }
 
 func ListListAssociatedTrafficFilterOutput(ctx *pulumi.Context, args ListListAssociatedTrafficFilterOutputArgs, opts ...pulumi.InvokeOption) ListListAssociatedTrafficFilterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListListAssociatedTrafficFilterResultOutput, error) {
-			args := v.(ListListAssociatedTrafficFilterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:listListAssociatedTrafficFilter", args, ListListAssociatedTrafficFilterResultOutput{}, options).(ListListAssociatedTrafficFilterResultOutput), nil
-		}).(ListListAssociatedTrafficFilterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:listListAssociatedTrafficFilter", args, ListListAssociatedTrafficFilterResultOutput{}, options).(ListListAssociatedTrafficFilterResultOutput)
 }
 
 type ListListAssociatedTrafficFilterOutputArgs struct {

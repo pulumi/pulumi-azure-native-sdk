@@ -67,12 +67,8 @@ type LookupBlobContainerDataSetMappingResult struct {
 }
 
 func LookupBlobContainerDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobContainerDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobContainerDataSetMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBlobContainerDataSetMappingResultOutput, error) {
-			args := v.(LookupBlobContainerDataSetMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getBlobContainerDataSetMapping", args, LookupBlobContainerDataSetMappingResultOutput{}, options).(LookupBlobContainerDataSetMappingResultOutput), nil
-		}).(LookupBlobContainerDataSetMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getBlobContainerDataSetMapping", args, LookupBlobContainerDataSetMappingResultOutput{}, options).(LookupBlobContainerDataSetMappingResultOutput)
 }
 
 type LookupBlobContainerDataSetMappingOutputArgs struct {

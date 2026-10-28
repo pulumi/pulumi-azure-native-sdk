@@ -42,12 +42,8 @@ type ListListFlowsByPipelineResult struct {
 }
 
 func ListListFlowsByPipelineOutput(ctx *pulumi.Context, args ListListFlowsByPipelineOutputArgs, opts ...pulumi.InvokeOption) ListListFlowsByPipelineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListListFlowsByPipelineResultOutput, error) {
-			args := v.(ListListFlowsByPipelineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:listListFlowsByPipeline", args, ListListFlowsByPipelineResultOutput{}, options).(ListListFlowsByPipelineResultOutput), nil
-		}).(ListListFlowsByPipelineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:listListFlowsByPipeline", args, ListListFlowsByPipelineResultOutput{}, options).(ListListFlowsByPipelineResultOutput)
 }
 
 type ListListFlowsByPipelineOutputArgs struct {

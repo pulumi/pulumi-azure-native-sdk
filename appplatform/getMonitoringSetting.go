@@ -50,12 +50,8 @@ type LookupMonitoringSettingResult struct {
 }
 
 func LookupMonitoringSettingOutput(ctx *pulumi.Context, args LookupMonitoringSettingOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoringSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitoringSettingResultOutput, error) {
-			args := v.(LookupMonitoringSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getMonitoringSetting", args, LookupMonitoringSettingResultOutput{}, options).(LookupMonitoringSettingResultOutput), nil
-		}).(LookupMonitoringSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getMonitoringSetting", args, LookupMonitoringSettingResultOutput{}, options).(LookupMonitoringSettingResultOutput)
 }
 
 type LookupMonitoringSettingOutputArgs struct {

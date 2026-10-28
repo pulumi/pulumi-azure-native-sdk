@@ -52,12 +52,8 @@ type LookupAddonResult struct {
 }
 
 func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAddonResultOutput, error) {
-			args := v.(LookupAddonArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getAddon", args, LookupAddonResultOutput{}, options).(LookupAddonResultOutput), nil
-		}).(LookupAddonResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getAddon", args, LookupAddonResultOutput{}, options).(LookupAddonResultOutput)
 }
 
 type LookupAddonOutputArgs struct {

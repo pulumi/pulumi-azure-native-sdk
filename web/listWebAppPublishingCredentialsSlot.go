@@ -60,12 +60,8 @@ type ListWebAppPublishingCredentialsSlotResult struct {
 }
 
 func ListWebAppPublishingCredentialsSlotOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppPublishingCredentialsSlotResultOutput, error) {
-			args := v.(ListWebAppPublishingCredentialsSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppPublishingCredentialsSlot", args, ListWebAppPublishingCredentialsSlotResultOutput{}, options).(ListWebAppPublishingCredentialsSlotResultOutput), nil
-		}).(ListWebAppPublishingCredentialsSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppPublishingCredentialsSlot", args, ListWebAppPublishingCredentialsSlotResultOutput{}, options).(ListWebAppPublishingCredentialsSlotResultOutput)
 }
 
 type ListWebAppPublishingCredentialsSlotOutputArgs struct {

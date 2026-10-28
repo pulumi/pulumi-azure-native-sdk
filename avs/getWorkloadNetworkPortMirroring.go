@@ -64,12 +64,8 @@ type LookupWorkloadNetworkPortMirroringResult struct {
 }
 
 func LookupWorkloadNetworkPortMirroringOutput(ctx *pulumi.Context, args LookupWorkloadNetworkPortMirroringOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkPortMirroringResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadNetworkPortMirroringResultOutput, error) {
-			args := v.(LookupWorkloadNetworkPortMirroringArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getWorkloadNetworkPortMirroring", args, LookupWorkloadNetworkPortMirroringResultOutput{}, options).(LookupWorkloadNetworkPortMirroringResultOutput), nil
-		}).(LookupWorkloadNetworkPortMirroringResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getWorkloadNetworkPortMirroring", args, LookupWorkloadNetworkPortMirroringResultOutput{}, options).(LookupWorkloadNetworkPortMirroringResultOutput)
 }
 
 type LookupWorkloadNetworkPortMirroringOutputArgs struct {

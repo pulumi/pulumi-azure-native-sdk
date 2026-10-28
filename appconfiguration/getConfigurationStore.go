@@ -96,12 +96,8 @@ func (val *LookupConfigurationStoreResult) Defaults() *LookupConfigurationStoreR
 	return &tmp
 }
 func LookupConfigurationStoreOutput(ctx *pulumi.Context, args LookupConfigurationStoreOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationStoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationStoreResultOutput, error) {
-			args := v.(LookupConfigurationStoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appconfiguration:getConfigurationStore", args, LookupConfigurationStoreResultOutput{}, options).(LookupConfigurationStoreResultOutput), nil
-		}).(LookupConfigurationStoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appconfiguration:getConfigurationStore", args, LookupConfigurationStoreResultOutput{}, options).(LookupConfigurationStoreResultOutput)
 }
 
 type LookupConfigurationStoreOutputArgs struct {

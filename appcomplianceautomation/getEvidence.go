@@ -58,12 +58,8 @@ type LookupEvidenceResult struct {
 }
 
 func LookupEvidenceOutput(ctx *pulumi.Context, args LookupEvidenceOutputArgs, opts ...pulumi.InvokeOption) LookupEvidenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEvidenceResultOutput, error) {
-			args := v.(LookupEvidenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appcomplianceautomation:getEvidence", args, LookupEvidenceResultOutput{}, options).(LookupEvidenceResultOutput), nil
-		}).(LookupEvidenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appcomplianceautomation:getEvidence", args, LookupEvidenceResultOutput{}, options).(LookupEvidenceResultOutput)
 }
 
 type LookupEvidenceOutputArgs struct {

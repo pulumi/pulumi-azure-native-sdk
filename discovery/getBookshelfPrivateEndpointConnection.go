@@ -52,12 +52,8 @@ type LookupBookshelfPrivateEndpointConnectionResult struct {
 }
 
 func LookupBookshelfPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupBookshelfPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupBookshelfPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBookshelfPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupBookshelfPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getBookshelfPrivateEndpointConnection", args, LookupBookshelfPrivateEndpointConnectionResultOutput{}, options).(LookupBookshelfPrivateEndpointConnectionResultOutput), nil
-		}).(LookupBookshelfPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getBookshelfPrivateEndpointConnection", args, LookupBookshelfPrivateEndpointConnectionResultOutput{}, options).(LookupBookshelfPrivateEndpointConnectionResultOutput)
 }
 
 type LookupBookshelfPrivateEndpointConnectionOutputArgs struct {

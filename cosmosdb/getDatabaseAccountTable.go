@@ -52,12 +52,8 @@ type LookupDatabaseAccountTableResult struct {
 }
 
 func LookupDatabaseAccountTableOutput(ctx *pulumi.Context, args LookupDatabaseAccountTableOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAccountTableResultOutput, error) {
-			args := v.(LookupDatabaseAccountTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountTable", args, LookupDatabaseAccountTableResultOutput{}, options).(LookupDatabaseAccountTableResultOutput), nil
-		}).(LookupDatabaseAccountTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountTable", args, LookupDatabaseAccountTableResultOutput{}, options).(LookupDatabaseAccountTableResultOutput)
 }
 
 type LookupDatabaseAccountTableOutputArgs struct {

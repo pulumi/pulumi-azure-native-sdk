@@ -50,12 +50,8 @@ type ListPolicyFragmentReferencesResult struct {
 }
 
 func ListPolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListPolicyFragmentReferencesOutputArgs, opts ...pulumi.InvokeOption) ListPolicyFragmentReferencesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPolicyFragmentReferencesResultOutput, error) {
-			args := v.(ListPolicyFragmentReferencesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listPolicyFragmentReferences", args, ListPolicyFragmentReferencesResultOutput{}, options).(ListPolicyFragmentReferencesResultOutput), nil
-		}).(ListPolicyFragmentReferencesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listPolicyFragmentReferences", args, ListPolicyFragmentReferencesResultOutput{}, options).(ListPolicyFragmentReferencesResultOutput)
 }
 
 type ListPolicyFragmentReferencesOutputArgs struct {

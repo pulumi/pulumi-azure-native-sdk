@@ -56,12 +56,8 @@ type LookupMachineExtensionResult struct {
 }
 
 func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupMachineExtensionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMachineExtensionResultOutput, error) {
-			args := v.(LookupMachineExtensionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcompute:getMachineExtension", args, LookupMachineExtensionResultOutput{}, options).(LookupMachineExtensionResultOutput), nil
-		}).(LookupMachineExtensionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcompute:getMachineExtension", args, LookupMachineExtensionResultOutput{}, options).(LookupMachineExtensionResultOutput)
 }
 
 type LookupMachineExtensionOutputArgs struct {

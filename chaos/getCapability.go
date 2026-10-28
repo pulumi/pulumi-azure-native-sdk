@@ -58,12 +58,8 @@ type LookupCapabilityResult struct {
 }
 
 func LookupCapabilityOutput(ctx *pulumi.Context, args LookupCapabilityOutputArgs, opts ...pulumi.InvokeOption) LookupCapabilityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapabilityResultOutput, error) {
-			args := v.(LookupCapabilityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:chaos:getCapability", args, LookupCapabilityResultOutput{}, options).(LookupCapabilityResultOutput), nil
-		}).(LookupCapabilityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:chaos:getCapability", args, LookupCapabilityResultOutput{}, options).(LookupCapabilityResultOutput)
 }
 
 type LookupCapabilityOutputArgs struct {

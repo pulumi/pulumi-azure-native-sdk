@@ -112,12 +112,8 @@ func (val *LookupMaccResult) Defaults() *LookupMaccResult {
 	return &tmp
 }
 func LookupMaccOutput(ctx *pulumi.Context, args LookupMaccOutputArgs, opts ...pulumi.InvokeOption) LookupMaccResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMaccResultOutput, error) {
-			args := v.(LookupMaccArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingbenefits:getMacc", args, LookupMaccResultOutput{}, options).(LookupMaccResultOutput), nil
-		}).(LookupMaccResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingbenefits:getMacc", args, LookupMaccResultOutput{}, options).(LookupMaccResultOutput)
 }
 
 type LookupMaccOutputArgs struct {

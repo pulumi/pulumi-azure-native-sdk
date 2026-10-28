@@ -56,12 +56,8 @@ type LookupFleetAnalyticResult struct {
 }
 
 func LookupFleetAnalyticOutput(ctx *pulumi.Context, args LookupFleetAnalyticOutputArgs, opts ...pulumi.InvokeOption) LookupFleetAnalyticResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFleetAnalyticResultOutput, error) {
-			args := v.(LookupFleetAnalyticArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getFleetAnalytic", args, LookupFleetAnalyticResultOutput{}, options).(LookupFleetAnalyticResultOutput), nil
-		}).(LookupFleetAnalyticResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getFleetAnalytic", args, LookupFleetAnalyticResultOutput{}, options).(LookupFleetAnalyticResultOutput)
 }
 
 type LookupFleetAnalyticOutputArgs struct {

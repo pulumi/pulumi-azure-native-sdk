@@ -46,12 +46,8 @@ type ListProductsAndConfigurationProductFamiliesResult struct {
 }
 
 func ListProductsAndConfigurationProductFamiliesOutput(ctx *pulumi.Context, args ListProductsAndConfigurationProductFamiliesOutputArgs, opts ...pulumi.InvokeOption) ListProductsAndConfigurationProductFamiliesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListProductsAndConfigurationProductFamiliesResultOutput, error) {
-			args := v.(ListProductsAndConfigurationProductFamiliesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edgeorder:listProductsAndConfigurationProductFamilies", args, ListProductsAndConfigurationProductFamiliesResultOutput{}, options).(ListProductsAndConfigurationProductFamiliesResultOutput), nil
-		}).(ListProductsAndConfigurationProductFamiliesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edgeorder:listProductsAndConfigurationProductFamilies", args, ListProductsAndConfigurationProductFamiliesResultOutput{}, options).(ListProductsAndConfigurationProductFamiliesResultOutput)
 }
 
 type ListProductsAndConfigurationProductFamiliesOutputArgs struct {

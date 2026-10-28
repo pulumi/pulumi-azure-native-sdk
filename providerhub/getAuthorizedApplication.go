@@ -47,12 +47,8 @@ type LookupAuthorizedApplicationResult struct {
 }
 
 func LookupAuthorizedApplicationOutput(ctx *pulumi.Context, args LookupAuthorizedApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizedApplicationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizedApplicationResultOutput, error) {
-			args := v.(LookupAuthorizedApplicationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getAuthorizedApplication", args, LookupAuthorizedApplicationResultOutput{}, options).(LookupAuthorizedApplicationResultOutput), nil
-		}).(LookupAuthorizedApplicationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getAuthorizedApplication", args, LookupAuthorizedApplicationResultOutput{}, options).(LookupAuthorizedApplicationResultOutput)
 }
 
 type LookupAuthorizedApplicationOutputArgs struct {

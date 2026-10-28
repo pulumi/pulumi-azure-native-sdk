@@ -58,12 +58,8 @@ type LookupPrefixListGlobalRulestackResult struct {
 }
 
 func LookupPrefixListGlobalRulestackOutput(ctx *pulumi.Context, args LookupPrefixListGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupPrefixListGlobalRulestackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrefixListGlobalRulestackResultOutput, error) {
-			args := v.(LookupPrefixListGlobalRulestackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getPrefixListGlobalRulestack", args, LookupPrefixListGlobalRulestackResultOutput{}, options).(LookupPrefixListGlobalRulestackResultOutput), nil
-		}).(LookupPrefixListGlobalRulestackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getPrefixListGlobalRulestack", args, LookupPrefixListGlobalRulestackResultOutput{}, options).(LookupPrefixListGlobalRulestackResultOutput)
 }
 
 type LookupPrefixListGlobalRulestackOutputArgs struct {

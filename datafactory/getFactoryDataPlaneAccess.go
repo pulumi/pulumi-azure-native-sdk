@@ -52,12 +52,8 @@ type GetFactoryDataPlaneAccessResult struct {
 }
 
 func GetFactoryDataPlaneAccessOutput(ctx *pulumi.Context, args GetFactoryDataPlaneAccessOutputArgs, opts ...pulumi.InvokeOption) GetFactoryDataPlaneAccessResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFactoryDataPlaneAccessResultOutput, error) {
-			args := v.(GetFactoryDataPlaneAccessArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getFactoryDataPlaneAccess", args, GetFactoryDataPlaneAccessResultOutput{}, options).(GetFactoryDataPlaneAccessResultOutput), nil
-		}).(GetFactoryDataPlaneAccessResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getFactoryDataPlaneAccess", args, GetFactoryDataPlaneAccessResultOutput{}, options).(GetFactoryDataPlaneAccessResultOutput)
 }
 
 type GetFactoryDataPlaneAccessOutputArgs struct {

@@ -54,12 +54,8 @@ type ListSourceControlRepositoriesResult struct {
 }
 
 func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceControlRepositoriesOutputArgs, opts ...pulumi.InvokeOption) ListSourceControlRepositoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSourceControlRepositoriesResultOutput, error) {
-			args := v.(ListSourceControlRepositoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:listSourceControlRepositories", args, ListSourceControlRepositoriesResultOutput{}, options).(ListSourceControlRepositoriesResultOutput), nil
-		}).(ListSourceControlRepositoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:listSourceControlRepositories", args, ListSourceControlRepositoriesResultOutput{}, options).(ListSourceControlRepositoriesResultOutput)
 }
 
 type ListSourceControlRepositoriesOutputArgs struct {

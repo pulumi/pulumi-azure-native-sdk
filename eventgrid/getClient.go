@@ -76,12 +76,8 @@ func (val *LookupClientResult) Defaults() *LookupClientResult {
 	return &tmp
 }
 func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClientResultOutput, error) {
-			args := v.(LookupClientArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getClient", args, LookupClientResultOutput{}, options).(LookupClientResultOutput), nil
-		}).(LookupClientResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getClient", args, LookupClientResultOutput{}, options).(LookupClientResultOutput)
 }
 
 type LookupClientOutputArgs struct {

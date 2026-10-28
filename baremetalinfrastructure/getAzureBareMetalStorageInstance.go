@@ -58,12 +58,8 @@ type LookupAzureBareMetalStorageInstanceResult struct {
 }
 
 func LookupAzureBareMetalStorageInstanceOutput(ctx *pulumi.Context, args LookupAzureBareMetalStorageInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureBareMetalStorageInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureBareMetalStorageInstanceResultOutput, error) {
-			args := v.(LookupAzureBareMetalStorageInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:baremetalinfrastructure:getAzureBareMetalStorageInstance", args, LookupAzureBareMetalStorageInstanceResultOutput{}, options).(LookupAzureBareMetalStorageInstanceResultOutput), nil
-		}).(LookupAzureBareMetalStorageInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:baremetalinfrastructure:getAzureBareMetalStorageInstance", args, LookupAzureBareMetalStorageInstanceResultOutput{}, options).(LookupAzureBareMetalStorageInstanceResultOutput)
 }
 
 type LookupAzureBareMetalStorageInstanceOutputArgs struct {

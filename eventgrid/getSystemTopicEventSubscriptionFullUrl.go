@@ -42,12 +42,8 @@ type GetSystemTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetSystemTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetSystemTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetSystemTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSystemTopicEventSubscriptionFullUrlResultOutput, error) {
-			args := v.(GetSystemTopicEventSubscriptionFullUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getSystemTopicEventSubscriptionFullUrl", args, GetSystemTopicEventSubscriptionFullUrlResultOutput{}, options).(GetSystemTopicEventSubscriptionFullUrlResultOutput), nil
-		}).(GetSystemTopicEventSubscriptionFullUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getSystemTopicEventSubscriptionFullUrl", args, GetSystemTopicEventSubscriptionFullUrlResultOutput{}, options).(GetSystemTopicEventSubscriptionFullUrlResultOutput)
 }
 
 type GetSystemTopicEventSubscriptionFullUrlOutputArgs struct {

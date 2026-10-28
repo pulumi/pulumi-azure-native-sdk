@@ -48,12 +48,8 @@ type GetSapVirtualInstanceInvokeDiskConfigurationsResult struct {
 }
 
 func GetSapVirtualInstanceInvokeDiskConfigurationsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceInvokeDiskConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput, error) {
-			args := v.(GetSapVirtualInstanceInvokeDiskConfigurationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeDiskConfigurations", args, GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput{}, options).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput), nil
-		}).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeDiskConfigurations", args, GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput{}, options).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput)
 }
 
 type GetSapVirtualInstanceInvokeDiskConfigurationsOutputArgs struct {

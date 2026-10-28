@@ -42,12 +42,8 @@ type ListVMHostResult struct {
 }
 
 func ListVMHostOutput(ctx *pulumi.Context, args ListVMHostOutputArgs, opts ...pulumi.InvokeOption) ListVMHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListVMHostResultOutput, error) {
-			args := v.(ListVMHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:listVMHost", args, ListVMHostResultOutput{}, options).(ListVMHostResultOutput), nil
-		}).(ListVMHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:listVMHost", args, ListVMHostResultOutput{}, options).(ListVMHostResultOutput)
 }
 
 type ListVMHostOutputArgs struct {

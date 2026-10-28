@@ -63,12 +63,8 @@ func (val *GetInferenceGroupStatusResult) Defaults() *GetInferenceGroupStatusRes
 	return &tmp
 }
 func GetInferenceGroupStatusOutput(ctx *pulumi.Context, args GetInferenceGroupStatusOutputArgs, opts ...pulumi.InvokeOption) GetInferenceGroupStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInferenceGroupStatusResultOutput, error) {
-			args := v.(GetInferenceGroupStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceGroupStatus", args, GetInferenceGroupStatusResultOutput{}, options).(GetInferenceGroupStatusResultOutput), nil
-		}).(GetInferenceGroupStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceGroupStatus", args, GetInferenceGroupStatusResultOutput{}, options).(GetInferenceGroupStatusResultOutput)
 }
 
 type GetInferenceGroupStatusOutputArgs struct {

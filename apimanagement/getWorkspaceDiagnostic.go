@@ -70,12 +70,8 @@ type LookupWorkspaceDiagnosticResult struct {
 }
 
 func LookupWorkspaceDiagnosticOutput(ctx *pulumi.Context, args LookupWorkspaceDiagnosticOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceDiagnosticResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceDiagnosticResultOutput, error) {
-			args := v.(LookupWorkspaceDiagnosticArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceDiagnostic", args, LookupWorkspaceDiagnosticResultOutput{}, options).(LookupWorkspaceDiagnosticResultOutput), nil
-		}).(LookupWorkspaceDiagnosticResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceDiagnostic", args, LookupWorkspaceDiagnosticResultOutput{}, options).(LookupWorkspaceDiagnosticResultOutput)
 }
 
 type LookupWorkspaceDiagnosticOutputArgs struct {

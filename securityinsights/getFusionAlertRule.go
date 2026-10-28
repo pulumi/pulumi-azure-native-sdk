@@ -69,12 +69,8 @@ type LookupFusionAlertRuleResult struct {
 }
 
 func LookupFusionAlertRuleOutput(ctx *pulumi.Context, args LookupFusionAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFusionAlertRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFusionAlertRuleResultOutput, error) {
-			args := v.(LookupFusionAlertRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getFusionAlertRule", args, LookupFusionAlertRuleResultOutput{}, options).(LookupFusionAlertRuleResultOutput), nil
-		}).(LookupFusionAlertRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getFusionAlertRule", args, LookupFusionAlertRuleResultOutput{}, options).(LookupFusionAlertRuleResultOutput)
 }
 
 type LookupFusionAlertRuleOutputArgs struct {

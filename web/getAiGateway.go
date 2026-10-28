@@ -54,12 +54,8 @@ type LookupAiGatewayResult struct {
 }
 
 func LookupAiGatewayOutput(ctx *pulumi.Context, args LookupAiGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAiGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiGatewayResultOutput, error) {
-			args := v.(LookupAiGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getAiGateway", args, LookupAiGatewayResultOutput{}, options).(LookupAiGatewayResultOutput), nil
-		}).(LookupAiGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getAiGateway", args, LookupAiGatewayResultOutput{}, options).(LookupAiGatewayResultOutput)
 }
 
 type LookupAiGatewayOutputArgs struct {

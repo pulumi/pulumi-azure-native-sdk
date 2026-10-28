@@ -39,12 +39,8 @@ type ListWorkspaceCollectionAccessKeysResult struct {
 }
 
 func ListWorkspaceCollectionAccessKeysOutput(ctx *pulumi.Context, args ListWorkspaceCollectionAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceCollectionAccessKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceCollectionAccessKeysResultOutput, error) {
-			args := v.(ListWorkspaceCollectionAccessKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:powerbi:listWorkspaceCollectionAccessKeys", args, ListWorkspaceCollectionAccessKeysResultOutput{}, options).(ListWorkspaceCollectionAccessKeysResultOutput), nil
-		}).(ListWorkspaceCollectionAccessKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:powerbi:listWorkspaceCollectionAccessKeys", args, ListWorkspaceCollectionAccessKeysResultOutput{}, options).(ListWorkspaceCollectionAccessKeysResultOutput)
 }
 
 type ListWorkspaceCollectionAccessKeysOutputArgs struct {

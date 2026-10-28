@@ -48,12 +48,8 @@ type ListServiceTestKeysResult struct {
 }
 
 func ListServiceTestKeysOutput(ctx *pulumi.Context, args ListServiceTestKeysOutputArgs, opts ...pulumi.InvokeOption) ListServiceTestKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListServiceTestKeysResultOutput, error) {
-			args := v.(ListServiceTestKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:listServiceTestKeys", args, ListServiceTestKeysResultOutput{}, options).(ListServiceTestKeysResultOutput), nil
-		}).(ListServiceTestKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:listServiceTestKeys", args, ListServiceTestKeysResultOutput{}, options).(ListServiceTestKeysResultOutput)
 }
 
 type ListServiceTestKeysOutputArgs struct {

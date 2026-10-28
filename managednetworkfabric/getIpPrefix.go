@@ -62,12 +62,8 @@ type LookupIpPrefixResult struct {
 }
 
 func LookupIpPrefixOutput(ctx *pulumi.Context, args LookupIpPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupIpPrefixResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIpPrefixResultOutput, error) {
-			args := v.(LookupIpPrefixArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getIpPrefix", args, LookupIpPrefixResultOutput{}, options).(LookupIpPrefixResultOutput), nil
-		}).(LookupIpPrefixResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getIpPrefix", args, LookupIpPrefixResultOutput{}, options).(LookupIpPrefixResultOutput)
 }
 
 type LookupIpPrefixOutputArgs struct {

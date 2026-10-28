@@ -50,12 +50,8 @@ type LookupConfigServerResult struct {
 }
 
 func LookupConfigServerOutput(ctx *pulumi.Context, args LookupConfigServerOutputArgs, opts ...pulumi.InvokeOption) LookupConfigServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigServerResultOutput, error) {
-			args := v.(LookupConfigServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getConfigServer", args, LookupConfigServerResultOutput{}, options).(LookupConfigServerResultOutput), nil
-		}).(LookupConfigServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getConfigServer", args, LookupConfigServerResultOutput{}, options).(LookupConfigServerResultOutput)
 }
 
 type LookupConfigServerOutputArgs struct {

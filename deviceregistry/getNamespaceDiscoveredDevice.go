@@ -76,12 +76,8 @@ type LookupNamespaceDiscoveredDeviceResult struct {
 }
 
 func LookupNamespaceDiscoveredDeviceOutput(ctx *pulumi.Context, args LookupNamespaceDiscoveredDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceDiscoveredDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceDiscoveredDeviceResultOutput, error) {
-			args := v.(LookupNamespaceDiscoveredDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceDiscoveredDevice", args, LookupNamespaceDiscoveredDeviceResultOutput{}, options).(LookupNamespaceDiscoveredDeviceResultOutput), nil
-		}).(LookupNamespaceDiscoveredDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceDiscoveredDevice", args, LookupNamespaceDiscoveredDeviceResultOutput{}, options).(LookupNamespaceDiscoveredDeviceResultOutput)
 }
 
 type LookupNamespaceDiscoveredDeviceOutputArgs struct {

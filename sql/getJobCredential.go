@@ -52,12 +52,8 @@ type LookupJobCredentialResult struct {
 }
 
 func LookupJobCredentialOutput(ctx *pulumi.Context, args LookupJobCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupJobCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobCredentialResultOutput, error) {
-			args := v.(LookupJobCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getJobCredential", args, LookupJobCredentialResultOutput{}, options).(LookupJobCredentialResultOutput), nil
-		}).(LookupJobCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getJobCredential", args, LookupJobCredentialResultOutput{}, options).(LookupJobCredentialResultOutput)
 }
 
 type LookupJobCredentialOutputArgs struct {

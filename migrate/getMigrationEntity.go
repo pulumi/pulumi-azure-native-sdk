@@ -54,12 +54,8 @@ type LookupMigrationEntityResult struct {
 }
 
 func LookupMigrationEntityOutput(ctx *pulumi.Context, args LookupMigrationEntityOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationEntityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMigrationEntityResultOutput, error) {
-			args := v.(LookupMigrationEntityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getMigrationEntity", args, LookupMigrationEntityResultOutput{}, options).(LookupMigrationEntityResultOutput), nil
-		}).(LookupMigrationEntityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getMigrationEntity", args, LookupMigrationEntityResultOutput{}, options).(LookupMigrationEntityResultOutput)
 }
 
 type LookupMigrationEntityOutputArgs struct {

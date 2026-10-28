@@ -62,12 +62,8 @@ func (val *LookupLabelingJobResult) Defaults() *LookupLabelingJobResult {
 	return &tmp
 }
 func LookupLabelingJobOutput(ctx *pulumi.Context, args LookupLabelingJobOutputArgs, opts ...pulumi.InvokeOption) LookupLabelingJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLabelingJobResultOutput, error) {
-			args := v.(LookupLabelingJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getLabelingJob", args, LookupLabelingJobResultOutput{}, options).(LookupLabelingJobResultOutput), nil
-		}).(LookupLabelingJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getLabelingJob", args, LookupLabelingJobResultOutput{}, options).(LookupLabelingJobResultOutput)
 }
 
 type LookupLabelingJobOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupCapacityPoolSubvolumeResult struct {
 }
 
 func LookupCapacityPoolSubvolumeOutput(ctx *pulumi.Context, args LookupCapacityPoolSubvolumeOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityPoolSubvolumeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapacityPoolSubvolumeResultOutput, error) {
-			args := v.(LookupCapacityPoolSubvolumeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSubvolume", args, LookupCapacityPoolSubvolumeResultOutput{}, options).(LookupCapacityPoolSubvolumeResultOutput), nil
-		}).(LookupCapacityPoolSubvolumeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSubvolume", args, LookupCapacityPoolSubvolumeResultOutput{}, options).(LookupCapacityPoolSubvolumeResultOutput)
 }
 
 type LookupCapacityPoolSubvolumeOutputArgs struct {
