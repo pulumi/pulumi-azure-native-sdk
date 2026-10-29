@@ -52,12 +52,8 @@ type LookupLambdaFunctionResult struct {
 }
 
 func LookupLambdaFunctionOutput(ctx *pulumi.Context, args LookupLambdaFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupLambdaFunctionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLambdaFunctionResultOutput, error) {
-			args := v.(LookupLambdaFunctionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getLambdaFunction", args, LookupLambdaFunctionResultOutput{}, options).(LookupLambdaFunctionResultOutput), nil
-		}).(LookupLambdaFunctionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getLambdaFunction", args, LookupLambdaFunctionResultOutput{}, options).(LookupLambdaFunctionResultOutput)
 }
 
 type LookupLambdaFunctionOutputArgs struct {

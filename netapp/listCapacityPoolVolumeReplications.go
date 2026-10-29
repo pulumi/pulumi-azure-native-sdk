@@ -44,12 +44,8 @@ type ListCapacityPoolVolumeReplicationsResult struct {
 }
 
 func ListCapacityPoolVolumeReplicationsOutput(ctx *pulumi.Context, args ListCapacityPoolVolumeReplicationsOutputArgs, opts ...pulumi.InvokeOption) ListCapacityPoolVolumeReplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListCapacityPoolVolumeReplicationsResultOutput, error) {
-			args := v.(ListCapacityPoolVolumeReplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolVolumeReplications", args, ListCapacityPoolVolumeReplicationsResultOutput{}, options).(ListCapacityPoolVolumeReplicationsResultOutput), nil
-		}).(ListCapacityPoolVolumeReplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolVolumeReplications", args, ListCapacityPoolVolumeReplicationsResultOutput{}, options).(ListCapacityPoolVolumeReplicationsResultOutput)
 }
 
 type ListCapacityPoolVolumeReplicationsOutputArgs struct {

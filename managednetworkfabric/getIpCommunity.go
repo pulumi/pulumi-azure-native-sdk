@@ -62,12 +62,8 @@ type LookupIpCommunityResult struct {
 }
 
 func LookupIpCommunityOutput(ctx *pulumi.Context, args LookupIpCommunityOutputArgs, opts ...pulumi.InvokeOption) LookupIpCommunityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIpCommunityResultOutput, error) {
-			args := v.(LookupIpCommunityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getIpCommunity", args, LookupIpCommunityResultOutput{}, options).(LookupIpCommunityResultOutput), nil
-		}).(LookupIpCommunityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getIpCommunity", args, LookupIpCommunityResultOutput{}, options).(LookupIpCommunityResultOutput)
 }
 
 type LookupIpCommunityOutputArgs struct {

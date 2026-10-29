@@ -52,12 +52,8 @@ type LookupRulesEngineResult struct {
 }
 
 func LookupRulesEngineOutput(ctx *pulumi.Context, args LookupRulesEngineOutputArgs, opts ...pulumi.InvokeOption) LookupRulesEngineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRulesEngineResultOutput, error) {
-			args := v.(LookupRulesEngineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:frontdoor:getRulesEngine", args, LookupRulesEngineResultOutput{}, options).(LookupRulesEngineResultOutput), nil
-		}).(LookupRulesEngineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:frontdoor:getRulesEngine", args, LookupRulesEngineResultOutput{}, options).(LookupRulesEngineResultOutput)
 }
 
 type LookupRulesEngineOutputArgs struct {

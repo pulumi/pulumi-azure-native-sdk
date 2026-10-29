@@ -58,12 +58,8 @@ type LookupHybridRunbookWorkerGroupResult struct {
 }
 
 func LookupHybridRunbookWorkerGroupOutput(ctx *pulumi.Context, args LookupHybridRunbookWorkerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupHybridRunbookWorkerGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHybridRunbookWorkerGroupResultOutput, error) {
-			args := v.(LookupHybridRunbookWorkerGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getHybridRunbookWorkerGroup", args, LookupHybridRunbookWorkerGroupResultOutput{}, options).(LookupHybridRunbookWorkerGroupResultOutput), nil
-		}).(LookupHybridRunbookWorkerGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getHybridRunbookWorkerGroup", args, LookupHybridRunbookWorkerGroupResultOutput{}, options).(LookupHybridRunbookWorkerGroupResultOutput)
 }
 
 type LookupHybridRunbookWorkerGroupOutputArgs struct {

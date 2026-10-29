@@ -44,12 +44,8 @@ type GetEdgeActionVersionCodeResult struct {
 }
 
 func GetEdgeActionVersionCodeOutput(ctx *pulumi.Context, args GetEdgeActionVersionCodeOutputArgs, opts ...pulumi.InvokeOption) GetEdgeActionVersionCodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEdgeActionVersionCodeResultOutput, error) {
-			args := v.(GetEdgeActionVersionCodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getEdgeActionVersionCode", args, GetEdgeActionVersionCodeResultOutput{}, options).(GetEdgeActionVersionCodeResultOutput), nil
-		}).(GetEdgeActionVersionCodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getEdgeActionVersionCode", args, GetEdgeActionVersionCodeResultOutput{}, options).(GetEdgeActionVersionCodeResultOutput)
 }
 
 type GetEdgeActionVersionCodeOutputArgs struct {

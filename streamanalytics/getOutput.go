@@ -60,12 +60,8 @@ type LookupOutputResult struct {
 }
 
 func LookupOutputOutput(ctx *pulumi.Context, args LookupOutputOutputArgs, opts ...pulumi.InvokeOption) LookupOutputResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOutputResultOutput, error) {
-			args := v.(LookupOutputArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:streamanalytics:getOutput", args, LookupOutputResultOutput{}, options).(LookupOutputResultOutput), nil
-		}).(LookupOutputResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:streamanalytics:getOutput", args, LookupOutputResultOutput{}, options).(LookupOutputResultOutput)
 }
 
 type LookupOutputOutputArgs struct {

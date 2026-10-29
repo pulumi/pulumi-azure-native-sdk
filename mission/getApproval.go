@@ -74,12 +74,8 @@ func (val *LookupApprovalResult) Defaults() *LookupApprovalResult {
 	return &tmp
 }
 func LookupApprovalOutput(ctx *pulumi.Context, args LookupApprovalOutputArgs, opts ...pulumi.InvokeOption) LookupApprovalResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApprovalResultOutput, error) {
-			args := v.(LookupApprovalArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getApproval", args, LookupApprovalResultOutput{}, options).(LookupApprovalResultOutput), nil
-		}).(LookupApprovalResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getApproval", args, LookupApprovalResultOutput{}, options).(LookupApprovalResultOutput)
 }
 
 type LookupApprovalOutputArgs struct {

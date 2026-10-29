@@ -53,12 +53,8 @@ type LookupMigrateAgentResult struct {
 }
 
 func LookupMigrateAgentOutput(ctx *pulumi.Context, args LookupMigrateAgentOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMigrateAgentResultOutput, error) {
-			args := v.(LookupMigrateAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getMigrateAgent", args, LookupMigrateAgentResultOutput{}, options).(LookupMigrateAgentResultOutput), nil
-		}).(LookupMigrateAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getMigrateAgent", args, LookupMigrateAgentResultOutput{}, options).(LookupMigrateAgentResultOutput)
 }
 
 type LookupMigrateAgentOutputArgs struct {

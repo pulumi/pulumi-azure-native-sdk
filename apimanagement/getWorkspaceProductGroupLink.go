@@ -54,12 +54,8 @@ type LookupWorkspaceProductGroupLinkResult struct {
 }
 
 func LookupWorkspaceProductGroupLinkOutput(ctx *pulumi.Context, args LookupWorkspaceProductGroupLinkOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceProductGroupLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceProductGroupLinkResultOutput, error) {
-			args := v.(LookupWorkspaceProductGroupLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceProductGroupLink", args, LookupWorkspaceProductGroupLinkResultOutput{}, options).(LookupWorkspaceProductGroupLinkResultOutput), nil
-		}).(LookupWorkspaceProductGroupLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceProductGroupLink", args, LookupWorkspaceProductGroupLinkResultOutput{}, options).(LookupWorkspaceProductGroupLinkResultOutput)
 }
 
 type LookupWorkspaceProductGroupLinkOutputArgs struct {

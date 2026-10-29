@@ -56,12 +56,8 @@ type LookupElasticSnapshotResult struct {
 }
 
 func LookupElasticSnapshotOutput(ctx *pulumi.Context, args LookupElasticSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticSnapshotResultOutput, error) {
-			args := v.(LookupElasticSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getElasticSnapshot", args, LookupElasticSnapshotResultOutput{}, options).(LookupElasticSnapshotResultOutput), nil
-		}).(LookupElasticSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getElasticSnapshot", args, LookupElasticSnapshotResultOutput{}, options).(LookupElasticSnapshotResultOutput)
 }
 
 type LookupElasticSnapshotOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupWebAppSwiftVirtualNetworkConnectionSlotResult struct {
 }
 
 func LookupWebAppSwiftVirtualNetworkConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppSwiftVirtualNetworkConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput, error) {
-			args := v.(LookupWebAppSwiftVirtualNetworkConnectionSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppSwiftVirtualNetworkConnectionSlot", args, LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput{}, options).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput), nil
-		}).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppSwiftVirtualNetworkConnectionSlot", args, LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput{}, options).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput)
 }
 
 type LookupWebAppSwiftVirtualNetworkConnectionSlotOutputArgs struct {

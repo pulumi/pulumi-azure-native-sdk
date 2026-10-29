@@ -62,12 +62,8 @@ func (val *LookupActiveDirectoryConnectorResult) Defaults() *LookupActiveDirecto
 	return &tmp
 }
 func LookupActiveDirectoryConnectorOutput(ctx *pulumi.Context, args LookupActiveDirectoryConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupActiveDirectoryConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActiveDirectoryConnectorResultOutput, error) {
-			args := v.(LookupActiveDirectoryConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getActiveDirectoryConnector", args, LookupActiveDirectoryConnectorResultOutput{}, options).(LookupActiveDirectoryConnectorResultOutput), nil
-		}).(LookupActiveDirectoryConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getActiveDirectoryConnector", args, LookupActiveDirectoryConnectorResultOutput{}, options).(LookupActiveDirectoryConnectorResultOutput)
 }
 
 type LookupActiveDirectoryConnectorOutputArgs struct {

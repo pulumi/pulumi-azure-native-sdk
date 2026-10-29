@@ -55,12 +55,8 @@ type LookupDatabaseMigrationsSqlVmResult struct {
 }
 
 func LookupDatabaseMigrationsSqlVmOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsSqlVmOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsSqlVmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMigrationsSqlVmResultOutput, error) {
-			args := v.(LookupDatabaseMigrationsSqlVmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datamigration:getDatabaseMigrationsSqlVm", args, LookupDatabaseMigrationsSqlVmResultOutput{}, options).(LookupDatabaseMigrationsSqlVmResultOutput), nil
-		}).(LookupDatabaseMigrationsSqlVmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datamigration:getDatabaseMigrationsSqlVm", args, LookupDatabaseMigrationsSqlVmResultOutput{}, options).(LookupDatabaseMigrationsSqlVmResultOutput)
 }
 
 type LookupDatabaseMigrationsSqlVmOutputArgs struct {

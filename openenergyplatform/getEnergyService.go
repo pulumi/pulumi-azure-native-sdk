@@ -50,12 +50,8 @@ type LookupEnergyServiceResult struct {
 }
 
 func LookupEnergyServiceOutput(ctx *pulumi.Context, args LookupEnergyServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEnergyServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnergyServiceResultOutput, error) {
-			args := v.(LookupEnergyServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:openenergyplatform:getEnergyService", args, LookupEnergyServiceResultOutput{}, options).(LookupEnergyServiceResultOutput), nil
-		}).(LookupEnergyServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:openenergyplatform:getEnergyService", args, LookupEnergyServiceResultOutput{}, options).(LookupEnergyServiceResultOutput)
 }
 
 type LookupEnergyServiceOutputArgs struct {

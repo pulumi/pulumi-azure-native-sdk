@@ -43,12 +43,8 @@ type ListGlobalRulestackAdvancedSecurityObjectsResult struct {
 }
 
 func ListGlobalRulestackAdvancedSecurityObjectsOutput(ctx *pulumi.Context, args ListGlobalRulestackAdvancedSecurityObjectsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackAdvancedSecurityObjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGlobalRulestackAdvancedSecurityObjectsResultOutput, error) {
-			args := v.(ListGlobalRulestackAdvancedSecurityObjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackAdvancedSecurityObjects", args, ListGlobalRulestackAdvancedSecurityObjectsResultOutput{}, options).(ListGlobalRulestackAdvancedSecurityObjectsResultOutput), nil
-		}).(ListGlobalRulestackAdvancedSecurityObjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackAdvancedSecurityObjects", args, ListGlobalRulestackAdvancedSecurityObjectsResultOutput{}, options).(ListGlobalRulestackAdvancedSecurityObjectsResultOutput)
 }
 
 type ListGlobalRulestackAdvancedSecurityObjectsOutputArgs struct {

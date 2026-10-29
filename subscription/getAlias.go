@@ -48,12 +48,8 @@ type LookupAliasResult struct {
 }
 
 func LookupAliasOutput(ctx *pulumi.Context, args LookupAliasOutputArgs, opts ...pulumi.InvokeOption) LookupAliasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAliasResultOutput, error) {
-			args := v.(LookupAliasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:subscription:getAlias", args, LookupAliasResultOutput{}, options).(LookupAliasResultOutput), nil
-		}).(LookupAliasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:subscription:getAlias", args, LookupAliasResultOutput{}, options).(LookupAliasResultOutput)
 }
 
 type LookupAliasOutputArgs struct {

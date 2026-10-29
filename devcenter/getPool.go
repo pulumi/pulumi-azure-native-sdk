@@ -80,12 +80,8 @@ type LookupPoolResult struct {
 }
 
 func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPoolResultOutput, error) {
-			args := v.(LookupPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getPool", args, LookupPoolResultOutput{}, options).(LookupPoolResultOutput), nil
-		}).(LookupPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getPool", args, LookupPoolResultOutput{}, options).(LookupPoolResultOutput)
 }
 
 type LookupPoolOutputArgs struct {

@@ -40,12 +40,8 @@ type ListDatabaseAccountConnectionStringsResult struct {
 }
 
 func ListDatabaseAccountConnectionStringsOutput(ctx *pulumi.Context, args ListDatabaseAccountConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseAccountConnectionStringsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDatabaseAccountConnectionStringsResultOutput, error) {
-			args := v.(ListDatabaseAccountConnectionStringsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:listDatabaseAccountConnectionStrings", args, ListDatabaseAccountConnectionStringsResultOutput{}, options).(ListDatabaseAccountConnectionStringsResultOutput), nil
-		}).(ListDatabaseAccountConnectionStringsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:listDatabaseAccountConnectionStrings", args, ListDatabaseAccountConnectionStringsResultOutput{}, options).(ListDatabaseAccountConnectionStringsResultOutput)
 }
 
 type ListDatabaseAccountConnectionStringsOutputArgs struct {

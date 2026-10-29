@@ -66,12 +66,8 @@ type LookupDatabasePrincipalAssignmentResult struct {
 }
 
 func LookupDatabasePrincipalAssignmentOutput(ctx *pulumi.Context, args LookupDatabasePrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupDatabasePrincipalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabasePrincipalAssignmentResultOutput, error) {
-			args := v.(LookupDatabasePrincipalAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getDatabasePrincipalAssignment", args, LookupDatabasePrincipalAssignmentResultOutput{}, options).(LookupDatabasePrincipalAssignmentResultOutput), nil
-		}).(LookupDatabasePrincipalAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getDatabasePrincipalAssignment", args, LookupDatabasePrincipalAssignmentResultOutput{}, options).(LookupDatabasePrincipalAssignmentResultOutput)
 }
 
 type LookupDatabasePrincipalAssignmentOutputArgs struct {

@@ -62,12 +62,8 @@ func (val *LookupDevToolPortalResult) Defaults() *LookupDevToolPortalResult {
 	return &tmp
 }
 func LookupDevToolPortalOutput(ctx *pulumi.Context, args LookupDevToolPortalOutputArgs, opts ...pulumi.InvokeOption) LookupDevToolPortalResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDevToolPortalResultOutput, error) {
-			args := v.(LookupDevToolPortalArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getDevToolPortal", args, LookupDevToolPortalResultOutput{}, options).(LookupDevToolPortalResultOutput), nil
-		}).(LookupDevToolPortalResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getDevToolPortal", args, LookupDevToolPortalResultOutput{}, options).(LookupDevToolPortalResultOutput)
 }
 
 type LookupDevToolPortalOutputArgs struct {

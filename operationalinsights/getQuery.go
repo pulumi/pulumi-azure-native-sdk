@@ -68,12 +68,8 @@ type LookupQueryResult struct {
 }
 
 func LookupQueryOutput(ctx *pulumi.Context, args LookupQueryOutputArgs, opts ...pulumi.InvokeOption) LookupQueryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQueryResultOutput, error) {
-			args := v.(LookupQueryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationalinsights:getQuery", args, LookupQueryResultOutput{}, options).(LookupQueryResultOutput), nil
-		}).(LookupQueryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationalinsights:getQuery", args, LookupQueryResultOutput{}, options).(LookupQueryResultOutput)
 }
 
 type LookupQueryOutputArgs struct {

@@ -52,12 +52,8 @@ type GetNodeTypeFaultSimulationResult struct {
 }
 
 func GetNodeTypeFaultSimulationOutput(ctx *pulumi.Context, args GetNodeTypeFaultSimulationOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeFaultSimulationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodeTypeFaultSimulationResultOutput, error) {
-			args := v.(GetNodeTypeFaultSimulationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicefabric:getNodeTypeFaultSimulation", args, GetNodeTypeFaultSimulationResultOutput{}, options).(GetNodeTypeFaultSimulationResultOutput), nil
-		}).(GetNodeTypeFaultSimulationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicefabric:getNodeTypeFaultSimulation", args, GetNodeTypeFaultSimulationResultOutput{}, options).(GetNodeTypeFaultSimulationResultOutput)
 }
 
 type GetNodeTypeFaultSimulationOutputArgs struct {

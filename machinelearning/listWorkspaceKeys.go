@@ -40,12 +40,8 @@ type ListWorkspaceKeysResult struct {
 }
 
 func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceKeysResultOutput, error) {
-			args := v.(ListWorkspaceKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearning:listWorkspaceKeys", args, ListWorkspaceKeysResultOutput{}, options).(ListWorkspaceKeysResultOutput), nil
-		}).(ListWorkspaceKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearning:listWorkspaceKeys", args, ListWorkspaceKeysResultOutput{}, options).(ListWorkspaceKeysResultOutput)
 }
 
 type ListWorkspaceKeysOutputArgs struct {

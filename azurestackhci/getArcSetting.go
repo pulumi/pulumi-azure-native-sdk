@@ -70,12 +70,8 @@ type LookupArcSettingResult struct {
 }
 
 func LookupArcSettingOutput(ctx *pulumi.Context, args LookupArcSettingOutputArgs, opts ...pulumi.InvokeOption) LookupArcSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupArcSettingResultOutput, error) {
-			args := v.(LookupArcSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getArcSetting", args, LookupArcSettingResultOutput{}, options).(LookupArcSettingResultOutput), nil
-		}).(LookupArcSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getArcSetting", args, LookupArcSettingResultOutput{}, options).(LookupArcSettingResultOutput)
 }
 
 type LookupArcSettingOutputArgs struct {

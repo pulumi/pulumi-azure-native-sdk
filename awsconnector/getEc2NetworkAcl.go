@@ -52,12 +52,8 @@ type LookupEc2NetworkAclResult struct {
 }
 
 func LookupEc2NetworkAclOutput(ctx *pulumi.Context, args LookupEc2NetworkAclOutputArgs, opts ...pulumi.InvokeOption) LookupEc2NetworkAclResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2NetworkAclResultOutput, error) {
-			args := v.(LookupEc2NetworkAclArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2NetworkAcl", args, LookupEc2NetworkAclResultOutput{}, options).(LookupEc2NetworkAclResultOutput), nil
-		}).(LookupEc2NetworkAclResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2NetworkAcl", args, LookupEc2NetworkAclResultOutput{}, options).(LookupEc2NetworkAclResultOutput)
 }
 
 type LookupEc2NetworkAclOutputArgs struct {

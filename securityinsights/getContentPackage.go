@@ -98,12 +98,8 @@ type LookupContentPackageResult struct {
 }
 
 func LookupContentPackageOutput(ctx *pulumi.Context, args LookupContentPackageOutputArgs, opts ...pulumi.InvokeOption) LookupContentPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContentPackageResultOutput, error) {
-			args := v.(LookupContentPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getContentPackage", args, LookupContentPackageResultOutput{}, options).(LookupContentPackageResultOutput), nil
-		}).(LookupContentPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getContentPackage", args, LookupContentPackageResultOutput{}, options).(LookupContentPackageResultOutput)
 }
 
 type LookupContentPackageOutputArgs struct {

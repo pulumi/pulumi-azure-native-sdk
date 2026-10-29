@@ -52,12 +52,8 @@ type ListDeploymentInfoResult struct {
 }
 
 func ListDeploymentInfoOutput(ctx *pulumi.Context, args ListDeploymentInfoOutputArgs, opts ...pulumi.InvokeOption) ListDeploymentInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDeploymentInfoResultOutput, error) {
-			args := v.(ListDeploymentInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:listDeploymentInfo", args, ListDeploymentInfoResultOutput{}, options).(ListDeploymentInfoResultOutput), nil
-		}).(ListDeploymentInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:listDeploymentInfo", args, ListDeploymentInfoResultOutput{}, options).(ListDeploymentInfoResultOutput)
 }
 
 type ListDeploymentInfoOutputArgs struct {

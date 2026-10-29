@@ -64,12 +64,8 @@ type LookupBuildResult struct {
 }
 
 func LookupBuildOutput(ctx *pulumi.Context, args LookupBuildOutputArgs, opts ...pulumi.InvokeOption) LookupBuildResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBuildResultOutput, error) {
-			args := v.(LookupBuildArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getBuild", args, LookupBuildResultOutput{}, options).(LookupBuildResultOutput), nil
-		}).(LookupBuildResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getBuild", args, LookupBuildResultOutput{}, options).(LookupBuildResultOutput)
 }
 
 type LookupBuildOutputArgs struct {

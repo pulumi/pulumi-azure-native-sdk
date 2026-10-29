@@ -52,12 +52,8 @@ type LookupIamAccessKeyMetadataInfoResult struct {
 }
 
 func LookupIamAccessKeyMetadataInfoOutput(ctx *pulumi.Context, args LookupIamAccessKeyMetadataInfoOutputArgs, opts ...pulumi.InvokeOption) LookupIamAccessKeyMetadataInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamAccessKeyMetadataInfoResultOutput, error) {
-			args := v.(LookupIamAccessKeyMetadataInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamAccessKeyMetadataInfo", args, LookupIamAccessKeyMetadataInfoResultOutput{}, options).(LookupIamAccessKeyMetadataInfoResultOutput), nil
-		}).(LookupIamAccessKeyMetadataInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamAccessKeyMetadataInfo", args, LookupIamAccessKeyMetadataInfoResultOutput{}, options).(LookupIamAccessKeyMetadataInfoResultOutput)
 }
 
 type LookupIamAccessKeyMetadataInfoOutputArgs struct {

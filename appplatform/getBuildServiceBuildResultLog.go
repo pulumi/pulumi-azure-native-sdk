@@ -46,12 +46,8 @@ type GetBuildServiceBuildResultLogResult struct {
 }
 
 func GetBuildServiceBuildResultLogOutput(ctx *pulumi.Context, args GetBuildServiceBuildResultLogOutputArgs, opts ...pulumi.InvokeOption) GetBuildServiceBuildResultLogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBuildServiceBuildResultLogResultOutput, error) {
-			args := v.(GetBuildServiceBuildResultLogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getBuildServiceBuildResultLog", args, GetBuildServiceBuildResultLogResultOutput{}, options).(GetBuildServiceBuildResultLogResultOutput), nil
-		}).(GetBuildServiceBuildResultLogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getBuildServiceBuildResultLog", args, GetBuildServiceBuildResultLogResultOutput{}, options).(GetBuildServiceBuildResultLogResultOutput)
 }
 
 type GetBuildServiceBuildResultLogOutputArgs struct {

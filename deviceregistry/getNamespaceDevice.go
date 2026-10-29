@@ -98,12 +98,8 @@ func (val *LookupNamespaceDeviceResult) Defaults() *LookupNamespaceDeviceResult 
 	return &tmp
 }
 func LookupNamespaceDeviceOutput(ctx *pulumi.Context, args LookupNamespaceDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceDeviceResultOutput, error) {
-			args := v.(LookupNamespaceDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceDevice", args, LookupNamespaceDeviceResultOutput{}, options).(LookupNamespaceDeviceResultOutput), nil
-		}).(LookupNamespaceDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceDevice", args, LookupNamespaceDeviceResultOutput{}, options).(LookupNamespaceDeviceResultOutput)
 }
 
 type LookupNamespaceDeviceOutputArgs struct {

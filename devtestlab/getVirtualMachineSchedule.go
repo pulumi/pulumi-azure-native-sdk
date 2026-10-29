@@ -92,12 +92,8 @@ func (val *LookupVirtualMachineScheduleResult) Defaults() *LookupVirtualMachineS
 	return &tmp
 }
 func LookupVirtualMachineScheduleOutput(ctx *pulumi.Context, args LookupVirtualMachineScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineScheduleResultOutput, error) {
-			args := v.(LookupVirtualMachineScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getVirtualMachineSchedule", args, LookupVirtualMachineScheduleResultOutput{}, options).(LookupVirtualMachineScheduleResultOutput), nil
-		}).(LookupVirtualMachineScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getVirtualMachineSchedule", args, LookupVirtualMachineScheduleResultOutput{}, options).(LookupVirtualMachineScheduleResultOutput)
 }
 
 type LookupVirtualMachineScheduleOutputArgs struct {

@@ -42,12 +42,8 @@ type ListIssueAlertsResult struct {
 }
 
 func ListIssueAlertsOutput(ctx *pulumi.Context, args ListIssueAlertsOutputArgs, opts ...pulumi.InvokeOption) ListIssueAlertsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIssueAlertsResultOutput, error) {
-			args := v.(ListIssueAlertsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:alertsmanagement:listIssueAlerts", args, ListIssueAlertsResultOutput{}, options).(ListIssueAlertsResultOutput), nil
-		}).(ListIssueAlertsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:alertsmanagement:listIssueAlerts", args, ListIssueAlertsResultOutput{}, options).(ListIssueAlertsResultOutput)
 }
 
 type ListIssueAlertsOutputArgs struct {

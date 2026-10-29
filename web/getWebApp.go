@@ -204,12 +204,8 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 	return &tmp
 }
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppResultOutput, error) {
-			args := v.(LookupWebAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput), nil
-		}).(LookupWebAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput)
 }
 
 type LookupWebAppOutputArgs struct {

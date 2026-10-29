@@ -98,12 +98,8 @@ func (val *LookupCertificateProfileResult) Defaults() *LookupCertificateProfileR
 	return &tmp
 }
 func LookupCertificateProfileOutput(ctx *pulumi.Context, args LookupCertificateProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCertificateProfileResultOutput, error) {
-			args := v.(LookupCertificateProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:codesigning:getCertificateProfile", args, LookupCertificateProfileResultOutput{}, options).(LookupCertificateProfileResultOutput), nil
-		}).(LookupCertificateProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:codesigning:getCertificateProfile", args, LookupCertificateProfileResultOutput{}, options).(LookupCertificateProfileResultOutput)
 }
 
 type LookupCertificateProfileOutputArgs struct {

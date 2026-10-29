@@ -63,12 +63,8 @@ type LookupADLSGen1FolderDataSetResult struct {
 }
 
 func LookupADLSGen1FolderDataSetOutput(ctx *pulumi.Context, args LookupADLSGen1FolderDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen1FolderDataSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupADLSGen1FolderDataSetResultOutput, error) {
-			args := v.(LookupADLSGen1FolderDataSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getADLSGen1FolderDataSet", args, LookupADLSGen1FolderDataSetResultOutput{}, options).(LookupADLSGen1FolderDataSetResultOutput), nil
-		}).(LookupADLSGen1FolderDataSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getADLSGen1FolderDataSet", args, LookupADLSGen1FolderDataSetResultOutput{}, options).(LookupADLSGen1FolderDataSetResultOutput)
 }
 
 type LookupADLSGen1FolderDataSetOutputArgs struct {

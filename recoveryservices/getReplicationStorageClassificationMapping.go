@@ -56,12 +56,8 @@ type LookupReplicationStorageClassificationMappingResult struct {
 }
 
 func LookupReplicationStorageClassificationMappingOutput(ctx *pulumi.Context, args LookupReplicationStorageClassificationMappingOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationStorageClassificationMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicationStorageClassificationMappingResultOutput, error) {
-			args := v.(LookupReplicationStorageClassificationMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationStorageClassificationMapping", args, LookupReplicationStorageClassificationMappingResultOutput{}, options).(LookupReplicationStorageClassificationMappingResultOutput), nil
-		}).(LookupReplicationStorageClassificationMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationStorageClassificationMapping", args, LookupReplicationStorageClassificationMappingResultOutput{}, options).(LookupReplicationStorageClassificationMappingResultOutput)
 }
 
 type LookupReplicationStorageClassificationMappingOutputArgs struct {

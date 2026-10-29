@@ -54,12 +54,8 @@ type LookupManagedInstancePrivateEndpointConnectionResult struct {
 }
 
 func LookupManagedInstancePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupManagedInstancePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstancePrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstancePrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupManagedInstancePrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getManagedInstancePrivateEndpointConnection", args, LookupManagedInstancePrivateEndpointConnectionResultOutput{}, options).(LookupManagedInstancePrivateEndpointConnectionResultOutput), nil
-		}).(LookupManagedInstancePrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getManagedInstancePrivateEndpointConnection", args, LookupManagedInstancePrivateEndpointConnectionResultOutput{}, options).(LookupManagedInstancePrivateEndpointConnectionResultOutput)
 }
 
 type LookupManagedInstancePrivateEndpointConnectionOutputArgs struct {

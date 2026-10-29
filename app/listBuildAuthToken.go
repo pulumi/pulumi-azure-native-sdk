@@ -44,12 +44,8 @@ type ListBuildAuthTokenResult struct {
 }
 
 func ListBuildAuthTokenOutput(ctx *pulumi.Context, args ListBuildAuthTokenOutputArgs, opts ...pulumi.InvokeOption) ListBuildAuthTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBuildAuthTokenResultOutput, error) {
-			args := v.(ListBuildAuthTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:listBuildAuthToken", args, ListBuildAuthTokenResultOutput{}, options).(ListBuildAuthTokenResultOutput), nil
-		}).(ListBuildAuthTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:listBuildAuthToken", args, ListBuildAuthTokenResultOutput{}, options).(ListBuildAuthTokenResultOutput)
 }
 
 type ListBuildAuthTokenOutputArgs struct {

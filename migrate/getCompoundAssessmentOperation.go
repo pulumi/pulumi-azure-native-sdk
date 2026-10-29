@@ -50,12 +50,8 @@ type LookupCompoundAssessmentOperationResult struct {
 }
 
 func LookupCompoundAssessmentOperationOutput(ctx *pulumi.Context, args LookupCompoundAssessmentOperationOutputArgs, opts ...pulumi.InvokeOption) LookupCompoundAssessmentOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCompoundAssessmentOperationResultOutput, error) {
-			args := v.(LookupCompoundAssessmentOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getCompoundAssessmentOperation", args, LookupCompoundAssessmentOperationResultOutput{}, options).(LookupCompoundAssessmentOperationResultOutput), nil
-		}).(LookupCompoundAssessmentOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getCompoundAssessmentOperation", args, LookupCompoundAssessmentOperationResultOutput{}, options).(LookupCompoundAssessmentOperationResultOutput)
 }
 
 type LookupCompoundAssessmentOperationOutputArgs struct {

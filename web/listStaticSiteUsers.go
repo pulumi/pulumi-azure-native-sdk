@@ -43,12 +43,8 @@ type ListStaticSiteUsersResult struct {
 }
 
 func ListStaticSiteUsersOutput(ctx *pulumi.Context, args ListStaticSiteUsersOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListStaticSiteUsersResultOutput, error) {
-			args := v.(ListStaticSiteUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listStaticSiteUsers", args, ListStaticSiteUsersResultOutput{}, options).(ListStaticSiteUsersResultOutput), nil
-		}).(ListStaticSiteUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listStaticSiteUsers", args, ListStaticSiteUsersResultOutput{}, options).(ListStaticSiteUsersResultOutput)
 }
 
 type ListStaticSiteUsersOutputArgs struct {

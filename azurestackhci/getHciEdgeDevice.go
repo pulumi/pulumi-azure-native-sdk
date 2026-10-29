@@ -51,12 +51,8 @@ type LookupHciEdgeDeviceResult struct {
 }
 
 func LookupHciEdgeDeviceOutput(ctx *pulumi.Context, args LookupHciEdgeDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupHciEdgeDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHciEdgeDeviceResultOutput, error) {
-			args := v.(LookupHciEdgeDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getHciEdgeDevice", args, LookupHciEdgeDeviceResultOutput{}, options).(LookupHciEdgeDeviceResultOutput), nil
-		}).(LookupHciEdgeDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getHciEdgeDevice", args, LookupHciEdgeDeviceResultOutput{}, options).(LookupHciEdgeDeviceResultOutput)
 }
 
 type LookupHciEdgeDeviceOutputArgs struct {

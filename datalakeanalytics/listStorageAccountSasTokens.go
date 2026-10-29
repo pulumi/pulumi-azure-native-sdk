@@ -44,12 +44,8 @@ type ListStorageAccountSasTokensResult struct {
 }
 
 func ListStorageAccountSasTokensOutput(ctx *pulumi.Context, args ListStorageAccountSasTokensOutputArgs, opts ...pulumi.InvokeOption) ListStorageAccountSasTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListStorageAccountSasTokensResultOutput, error) {
-			args := v.(ListStorageAccountSasTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datalakeanalytics:listStorageAccountSasTokens", args, ListStorageAccountSasTokensResultOutput{}, options).(ListStorageAccountSasTokensResultOutput), nil
-		}).(ListStorageAccountSasTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datalakeanalytics:listStorageAccountSasTokens", args, ListStorageAccountSasTokensResultOutput{}, options).(ListStorageAccountSasTokensResultOutput)
 }
 
 type ListStorageAccountSasTokensOutputArgs struct {

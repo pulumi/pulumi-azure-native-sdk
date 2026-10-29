@@ -58,12 +58,8 @@ type LookupPrivateLinkScopeResult struct {
 }
 
 func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkScopeOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkScopeResultOutput, error) {
-			args := v.(LookupPrivateLinkScopeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getPrivateLinkScope", args, LookupPrivateLinkScopeResultOutput{}, options).(LookupPrivateLinkScopeResultOutput), nil
-		}).(LookupPrivateLinkScopeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getPrivateLinkScope", args, LookupPrivateLinkScopeResultOutput{}, options).(LookupPrivateLinkScopeResultOutput)
 }
 
 type LookupPrivateLinkScopeOutputArgs struct {

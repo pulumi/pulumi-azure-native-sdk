@@ -91,12 +91,8 @@ func (val *LookupContainerGroupProfileResult) Defaults() *LookupContainerGroupPr
 	return &tmp
 }
 func LookupContainerGroupProfileOutput(ctx *pulumi.Context, args LookupContainerGroupProfileOutputArgs, opts ...pulumi.InvokeOption) LookupContainerGroupProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerGroupProfileResultOutput, error) {
-			args := v.(LookupContainerGroupProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerinstance:getContainerGroupProfile", args, LookupContainerGroupProfileResultOutput{}, options).(LookupContainerGroupProfileResultOutput), nil
-		}).(LookupContainerGroupProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerinstance:getContainerGroupProfile", args, LookupContainerGroupProfileResultOutput{}, options).(LookupContainerGroupProfileResultOutput)
 }
 
 type LookupContainerGroupProfileOutputArgs struct {

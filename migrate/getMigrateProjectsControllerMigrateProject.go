@@ -54,12 +54,8 @@ type LookupMigrateProjectsControllerMigrateProjectResult struct {
 }
 
 func LookupMigrateProjectsControllerMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectsControllerMigrateProjectOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateProjectsControllerMigrateProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMigrateProjectsControllerMigrateProjectResultOutput, error) {
-			args := v.(LookupMigrateProjectsControllerMigrateProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getMigrateProjectsControllerMigrateProject", args, LookupMigrateProjectsControllerMigrateProjectResultOutput{}, options).(LookupMigrateProjectsControllerMigrateProjectResultOutput), nil
-		}).(LookupMigrateProjectsControllerMigrateProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getMigrateProjectsControllerMigrateProject", args, LookupMigrateProjectsControllerMigrateProjectResultOutput{}, options).(LookupMigrateProjectsControllerMigrateProjectResultOutput)
 }
 
 type LookupMigrateProjectsControllerMigrateProjectOutputArgs struct {

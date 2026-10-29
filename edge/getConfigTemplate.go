@@ -56,12 +56,8 @@ type LookupConfigTemplateResult struct {
 }
 
 func LookupConfigTemplateOutput(ctx *pulumi.Context, args LookupConfigTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupConfigTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigTemplateResultOutput, error) {
-			args := v.(LookupConfigTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getConfigTemplate", args, LookupConfigTemplateResultOutput{}, options).(LookupConfigTemplateResultOutput), nil
-		}).(LookupConfigTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getConfigTemplate", args, LookupConfigTemplateResultOutput{}, options).(LookupConfigTemplateResultOutput)
 }
 
 type LookupConfigTemplateOutputArgs struct {

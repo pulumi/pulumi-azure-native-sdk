@@ -44,12 +44,8 @@ type ListNodeTypeFaultSimulationResult struct {
 }
 
 func ListNodeTypeFaultSimulationOutput(ctx *pulumi.Context, args ListNodeTypeFaultSimulationOutputArgs, opts ...pulumi.InvokeOption) ListNodeTypeFaultSimulationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNodeTypeFaultSimulationResultOutput, error) {
-			args := v.(ListNodeTypeFaultSimulationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicefabric:listNodeTypeFaultSimulation", args, ListNodeTypeFaultSimulationResultOutput{}, options).(ListNodeTypeFaultSimulationResultOutput), nil
-		}).(ListNodeTypeFaultSimulationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicefabric:listNodeTypeFaultSimulation", args, ListNodeTypeFaultSimulationResultOutput{}, options).(ListNodeTypeFaultSimulationResultOutput)
 }
 
 type ListNodeTypeFaultSimulationOutputArgs struct {

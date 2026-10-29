@@ -54,12 +54,8 @@ type LookupPrivateLinkHubResult struct {
 }
 
 func LookupPrivateLinkHubOutput(ctx *pulumi.Context, args LookupPrivateLinkHubOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkHubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkHubResultOutput, error) {
-			args := v.(LookupPrivateLinkHubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getPrivateLinkHub", args, LookupPrivateLinkHubResultOutput{}, options).(LookupPrivateLinkHubResultOutput), nil
-		}).(LookupPrivateLinkHubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getPrivateLinkHub", args, LookupPrivateLinkHubResultOutput{}, options).(LookupPrivateLinkHubResultOutput)
 }
 
 type LookupPrivateLinkHubOutputArgs struct {

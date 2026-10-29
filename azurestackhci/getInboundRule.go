@@ -52,12 +52,8 @@ type LookupInboundRuleResult struct {
 }
 
 func LookupInboundRuleOutput(ctx *pulumi.Context, args LookupInboundRuleOutputArgs, opts ...pulumi.InvokeOption) LookupInboundRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInboundRuleResultOutput, error) {
-			args := v.(LookupInboundRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getInboundRule", args, LookupInboundRuleResultOutput{}, options).(LookupInboundRuleResultOutput), nil
-		}).(LookupInboundRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getInboundRule", args, LookupInboundRuleResultOutput{}, options).(LookupInboundRuleResultOutput)
 }
 
 type LookupInboundRuleOutputArgs struct {

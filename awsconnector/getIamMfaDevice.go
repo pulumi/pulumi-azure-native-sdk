@@ -52,12 +52,8 @@ type LookupIamMfaDeviceResult struct {
 }
 
 func LookupIamMfaDeviceOutput(ctx *pulumi.Context, args LookupIamMfaDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupIamMfaDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamMfaDeviceResultOutput, error) {
-			args := v.(LookupIamMfaDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamMfaDevice", args, LookupIamMfaDeviceResultOutput{}, options).(LookupIamMfaDeviceResultOutput), nil
-		}).(LookupIamMfaDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamMfaDevice", args, LookupIamMfaDeviceResultOutput{}, options).(LookupIamMfaDeviceResultOutput)
 }
 
 type LookupIamMfaDeviceOutputArgs struct {

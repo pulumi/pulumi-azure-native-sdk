@@ -48,12 +48,8 @@ type ListAgentsConnectorSecretsResult struct {
 }
 
 func ListAgentsConnectorSecretsOutput(ctx *pulumi.Context, args ListAgentsConnectorSecretsOutputArgs, opts ...pulumi.InvokeOption) ListAgentsConnectorSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAgentsConnectorSecretsResultOutput, error) {
-			args := v.(ListAgentsConnectorSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:listAgentsConnectorSecrets", args, ListAgentsConnectorSecretsResultOutput{}, options).(ListAgentsConnectorSecretsResultOutput), nil
-		}).(ListAgentsConnectorSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:listAgentsConnectorSecrets", args, ListAgentsConnectorSecretsResultOutput{}, options).(ListAgentsConnectorSecretsResultOutput)
 }
 
 type ListAgentsConnectorSecretsOutputArgs struct {

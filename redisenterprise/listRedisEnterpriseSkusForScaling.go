@@ -40,12 +40,8 @@ type ListRedisEnterpriseSkusForScalingResult struct {
 }
 
 func ListRedisEnterpriseSkusForScalingOutput(ctx *pulumi.Context, args ListRedisEnterpriseSkusForScalingOutputArgs, opts ...pulumi.InvokeOption) ListRedisEnterpriseSkusForScalingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListRedisEnterpriseSkusForScalingResultOutput, error) {
-			args := v.(ListRedisEnterpriseSkusForScalingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redisenterprise:listRedisEnterpriseSkusForScaling", args, ListRedisEnterpriseSkusForScalingResultOutput{}, options).(ListRedisEnterpriseSkusForScalingResultOutput), nil
-		}).(ListRedisEnterpriseSkusForScalingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redisenterprise:listRedisEnterpriseSkusForScaling", args, ListRedisEnterpriseSkusForScalingResultOutput{}, options).(ListRedisEnterpriseSkusForScalingResultOutput)
 }
 
 type ListRedisEnterpriseSkusForScalingOutputArgs struct {

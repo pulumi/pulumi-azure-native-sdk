@@ -84,12 +84,8 @@ func (val *LookupCapacityPoolBackupResult) Defaults() *LookupCapacityPoolBackupR
 	return &tmp
 }
 func LookupCapacityPoolBackupOutput(ctx *pulumi.Context, args LookupCapacityPoolBackupOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityPoolBackupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapacityPoolBackupResultOutput, error) {
-			args := v.(LookupCapacityPoolBackupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolBackup", args, LookupCapacityPoolBackupResultOutput{}, options).(LookupCapacityPoolBackupResultOutput), nil
-		}).(LookupCapacityPoolBackupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolBackup", args, LookupCapacityPoolBackupResultOutput{}, options).(LookupCapacityPoolBackupResultOutput)
 }
 
 type LookupCapacityPoolBackupOutputArgs struct {

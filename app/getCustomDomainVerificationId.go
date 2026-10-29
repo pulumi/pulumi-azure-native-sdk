@@ -35,12 +35,8 @@ type GetCustomDomainVerificationIdResult struct {
 }
 
 func GetCustomDomainVerificationIdOutput(ctx *pulumi.Context, args GetCustomDomainVerificationIdOutputArgs, opts ...pulumi.InvokeOption) GetCustomDomainVerificationIdResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomDomainVerificationIdResultOutput, error) {
-			args := v.(GetCustomDomainVerificationIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getCustomDomainVerificationId", args, GetCustomDomainVerificationIdResultOutput{}, options).(GetCustomDomainVerificationIdResultOutput), nil
-		}).(GetCustomDomainVerificationIdResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getCustomDomainVerificationId", args, GetCustomDomainVerificationIdResultOutput{}, options).(GetCustomDomainVerificationIdResultOutput)
 }
 
 type GetCustomDomainVerificationIdOutputArgs struct {

@@ -42,12 +42,8 @@ type ListSqlMigrationServiceAuthKeysResult struct {
 }
 
 func ListSqlMigrationServiceAuthKeysOutput(ctx *pulumi.Context, args ListSqlMigrationServiceAuthKeysOutputArgs, opts ...pulumi.InvokeOption) ListSqlMigrationServiceAuthKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSqlMigrationServiceAuthKeysResultOutput, error) {
-			args := v.(ListSqlMigrationServiceAuthKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datamigration:listSqlMigrationServiceAuthKeys", args, ListSqlMigrationServiceAuthKeysResultOutput{}, options).(ListSqlMigrationServiceAuthKeysResultOutput), nil
-		}).(ListSqlMigrationServiceAuthKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datamigration:listSqlMigrationServiceAuthKeys", args, ListSqlMigrationServiceAuthKeysResultOutput{}, options).(ListSqlMigrationServiceAuthKeysResultOutput)
 }
 
 type ListSqlMigrationServiceAuthKeysOutputArgs struct {

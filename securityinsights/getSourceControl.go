@@ -74,12 +74,8 @@ type LookupSourceControlResult struct {
 }
 
 func LookupSourceControlOutput(ctx *pulumi.Context, args LookupSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupSourceControlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSourceControlResultOutput, error) {
-			args := v.(LookupSourceControlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getSourceControl", args, LookupSourceControlResultOutput{}, options).(LookupSourceControlResultOutput), nil
-		}).(LookupSourceControlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getSourceControl", args, LookupSourceControlResultOutput{}, options).(LookupSourceControlResultOutput)
 }
 
 type LookupSourceControlOutputArgs struct {

@@ -70,12 +70,8 @@ type LookupPackageResult struct {
 }
 
 func LookupPackageOutput(ctx *pulumi.Context, args LookupPackageOutputArgs, opts ...pulumi.InvokeOption) LookupPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPackageResultOutput, error) {
-			args := v.(LookupPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getPackage", args, LookupPackageResultOutput{}, options).(LookupPackageResultOutput), nil
-		}).(LookupPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getPackage", args, LookupPackageResultOutput{}, options).(LookupPackageResultOutput)
 }
 
 type LookupPackageOutputArgs struct {

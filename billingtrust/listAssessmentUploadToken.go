@@ -36,12 +36,8 @@ type ListAssessmentUploadTokenResult struct {
 }
 
 func ListAssessmentUploadTokenOutput(ctx *pulumi.Context, args ListAssessmentUploadTokenOutputArgs, opts ...pulumi.InvokeOption) ListAssessmentUploadTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAssessmentUploadTokenResultOutput, error) {
-			args := v.(ListAssessmentUploadTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingtrust:listAssessmentUploadToken", args, ListAssessmentUploadTokenResultOutput{}, options).(ListAssessmentUploadTokenResultOutput), nil
-		}).(ListAssessmentUploadTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingtrust:listAssessmentUploadToken", args, ListAssessmentUploadTokenResultOutput{}, options).(ListAssessmentUploadTokenResultOutput)
 }
 
 type ListAssessmentUploadTokenOutputArgs struct {

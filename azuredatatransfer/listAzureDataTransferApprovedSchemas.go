@@ -40,12 +40,8 @@ type ListAzureDataTransferApprovedSchemasResult struct {
 }
 
 func ListAzureDataTransferApprovedSchemasOutput(ctx *pulumi.Context, args ListAzureDataTransferApprovedSchemasOutputArgs, opts ...pulumi.InvokeOption) ListAzureDataTransferApprovedSchemasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAzureDataTransferApprovedSchemasResultOutput, error) {
-			args := v.(ListAzureDataTransferApprovedSchemasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:listAzureDataTransferApprovedSchemas", args, ListAzureDataTransferApprovedSchemasResultOutput{}, options).(ListAzureDataTransferApprovedSchemasResultOutput), nil
-		}).(ListAzureDataTransferApprovedSchemasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:listAzureDataTransferApprovedSchemas", args, ListAzureDataTransferApprovedSchemasResultOutput{}, options).(ListAzureDataTransferApprovedSchemasResultOutput)
 }
 
 type ListAzureDataTransferApprovedSchemasOutputArgs struct {

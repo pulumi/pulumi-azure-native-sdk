@@ -52,12 +52,8 @@ type LookupWorkspaceTagResult struct {
 }
 
 func LookupWorkspaceTagOutput(ctx *pulumi.Context, args LookupWorkspaceTagOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceTagResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceTagResultOutput, error) {
-			args := v.(LookupWorkspaceTagArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceTag", args, LookupWorkspaceTagResultOutput{}, options).(LookupWorkspaceTagResultOutput), nil
-		}).(LookupWorkspaceTagResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceTag", args, LookupWorkspaceTagResultOutput{}, options).(LookupWorkspaceTagResultOutput)
 }
 
 type LookupWorkspaceTagOutputArgs struct {

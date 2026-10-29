@@ -52,12 +52,8 @@ type LookupEdgeMachineJobResult struct {
 }
 
 func LookupEdgeMachineJobOutput(ctx *pulumi.Context, args LookupEdgeMachineJobOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeMachineJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEdgeMachineJobResultOutput, error) {
-			args := v.(LookupEdgeMachineJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getEdgeMachineJob", args, LookupEdgeMachineJobResultOutput{}, options).(LookupEdgeMachineJobResultOutput), nil
-		}).(LookupEdgeMachineJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getEdgeMachineJob", args, LookupEdgeMachineJobResultOutput{}, options).(LookupEdgeMachineJobResultOutput)
 }
 
 type LookupEdgeMachineJobOutputArgs struct {

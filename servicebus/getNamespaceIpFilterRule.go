@@ -52,12 +52,8 @@ type LookupNamespaceIpFilterRuleResult struct {
 }
 
 func LookupNamespaceIpFilterRuleOutput(ctx *pulumi.Context, args LookupNamespaceIpFilterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIpFilterRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceIpFilterRuleResultOutput, error) {
-			args := v.(LookupNamespaceIpFilterRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicebus:getNamespaceIpFilterRule", args, LookupNamespaceIpFilterRuleResultOutput{}, options).(LookupNamespaceIpFilterRuleResultOutput), nil
-		}).(LookupNamespaceIpFilterRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicebus:getNamespaceIpFilterRule", args, LookupNamespaceIpFilterRuleResultOutput{}, options).(LookupNamespaceIpFilterRuleResultOutput)
 }
 
 type LookupNamespaceIpFilterRuleOutputArgs struct {
