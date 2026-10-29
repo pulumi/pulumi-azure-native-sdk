@@ -37,12 +37,8 @@ type GetOrganizationApiKeyResult struct {
 }
 
 func GetOrganizationApiKeyOutput(ctx *pulumi.Context, args GetOrganizationApiKeyOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationApiKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationApiKeyResultOutput, error) {
-			args := v.(GetOrganizationApiKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:getOrganizationApiKey", args, GetOrganizationApiKeyResultOutput{}, options).(GetOrganizationApiKeyResultOutput), nil
-		}).(GetOrganizationApiKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:getOrganizationApiKey", args, GetOrganizationApiKeyResultOutput{}, options).(GetOrganizationApiKeyResultOutput)
 }
 
 type GetOrganizationApiKeyOutputArgs struct {

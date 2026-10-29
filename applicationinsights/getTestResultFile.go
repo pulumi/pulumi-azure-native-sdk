@@ -50,12 +50,8 @@ type GetTestResultFileResult struct {
 }
 
 func GetTestResultFileOutput(ctx *pulumi.Context, args GetTestResultFileOutputArgs, opts ...pulumi.InvokeOption) GetTestResultFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTestResultFileResultOutput, error) {
-			args := v.(GetTestResultFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:applicationinsights:getTestResultFile", args, GetTestResultFileResultOutput{}, options).(GetTestResultFileResultOutput), nil
-		}).(GetTestResultFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:applicationinsights:getTestResultFile", args, GetTestResultFileResultOutput{}, options).(GetTestResultFileResultOutput)
 }
 
 type GetTestResultFileOutputArgs struct {

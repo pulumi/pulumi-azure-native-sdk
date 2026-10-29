@@ -58,12 +58,8 @@ type LookupWorkspaceCertificateResult struct {
 }
 
 func LookupWorkspaceCertificateOutput(ctx *pulumi.Context, args LookupWorkspaceCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceCertificateResultOutput, error) {
-			args := v.(LookupWorkspaceCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceCertificate", args, LookupWorkspaceCertificateResultOutput{}, options).(LookupWorkspaceCertificateResultOutput), nil
-		}).(LookupWorkspaceCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceCertificate", args, LookupWorkspaceCertificateResultOutput{}, options).(LookupWorkspaceCertificateResultOutput)
 }
 
 type LookupWorkspaceCertificateOutputArgs struct {

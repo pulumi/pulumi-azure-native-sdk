@@ -47,12 +47,8 @@ type LookupJobResult struct {
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobResultOutput, error) {
-			args := v.(LookupJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:scheduler:getJob", args, LookupJobResultOutput{}, options).(LookupJobResultOutput), nil
-		}).(LookupJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:scheduler:getJob", args, LookupJobResultOutput{}, options).(LookupJobResultOutput)
 }
 
 type LookupJobOutputArgs struct {

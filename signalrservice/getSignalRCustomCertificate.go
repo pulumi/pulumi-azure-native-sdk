@@ -58,12 +58,8 @@ type LookupSignalRCustomCertificateResult struct {
 }
 
 func LookupSignalRCustomCertificateOutput(ctx *pulumi.Context, args LookupSignalRCustomCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRCustomCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalRCustomCertificateResultOutput, error) {
-			args := v.(LookupSignalRCustomCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:signalrservice:getSignalRCustomCertificate", args, LookupSignalRCustomCertificateResultOutput{}, options).(LookupSignalRCustomCertificateResultOutput), nil
-		}).(LookupSignalRCustomCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:signalrservice:getSignalRCustomCertificate", args, LookupSignalRCustomCertificateResultOutput{}, options).(LookupSignalRCustomCertificateResultOutput)
 }
 
 type LookupSignalRCustomCertificateOutputArgs struct {

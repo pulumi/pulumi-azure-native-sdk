@@ -46,12 +46,8 @@ type ListAccessServiceAccountsResult struct {
 }
 
 func ListAccessServiceAccountsOutput(ctx *pulumi.Context, args ListAccessServiceAccountsOutputArgs, opts ...pulumi.InvokeOption) ListAccessServiceAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccessServiceAccountsResultOutput, error) {
-			args := v.(ListAccessServiceAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:listAccessServiceAccounts", args, ListAccessServiceAccountsResultOutput{}, options).(ListAccessServiceAccountsResultOutput), nil
-		}).(ListAccessServiceAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:listAccessServiceAccounts", args, ListAccessServiceAccountsResultOutput{}, options).(ListAccessServiceAccountsResultOutput)
 }
 
 type ListAccessServiceAccountsOutputArgs struct {

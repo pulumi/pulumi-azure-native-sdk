@@ -58,12 +58,8 @@ type LookupSingleServerConfigurationResult struct {
 }
 
 func LookupSingleServerConfigurationOutput(ctx *pulumi.Context, args LookupSingleServerConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerConfigurationResultOutput, error) {
-			args := v.(LookupSingleServerConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getSingleServerConfiguration", args, LookupSingleServerConfigurationResultOutput{}, options).(LookupSingleServerConfigurationResultOutput), nil
-		}).(LookupSingleServerConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getSingleServerConfiguration", args, LookupSingleServerConfigurationResultOutput{}, options).(LookupSingleServerConfigurationResultOutput)
 }
 
 type LookupSingleServerConfigurationOutputArgs struct {

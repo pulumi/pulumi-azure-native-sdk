@@ -44,12 +44,8 @@ type LookupTrafficManagerUserMetricsKeyResult struct {
 }
 
 func LookupTrafficManagerUserMetricsKeyOutput(ctx *pulumi.Context, args LookupTrafficManagerUserMetricsKeyOutputArgs, opts ...pulumi.InvokeOption) LookupTrafficManagerUserMetricsKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTrafficManagerUserMetricsKeyResultOutput, error) {
-			args := v.(LookupTrafficManagerUserMetricsKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:trafficmanager:getTrafficManagerUserMetricsKey", args, LookupTrafficManagerUserMetricsKeyResultOutput{}, options).(LookupTrafficManagerUserMetricsKeyResultOutput), nil
-		}).(LookupTrafficManagerUserMetricsKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:trafficmanager:getTrafficManagerUserMetricsKey", args, LookupTrafficManagerUserMetricsKeyResultOutput{}, options).(LookupTrafficManagerUserMetricsKeyResultOutput)
 }
 
 type LookupTrafficManagerUserMetricsKeyOutputArgs struct {

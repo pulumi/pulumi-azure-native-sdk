@@ -63,12 +63,8 @@ type LookupScheduledSynchronizationSettingResult struct {
 }
 
 func LookupScheduledSynchronizationSettingOutput(ctx *pulumi.Context, args LookupScheduledSynchronizationSettingOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledSynchronizationSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScheduledSynchronizationSettingResultOutput, error) {
-			args := v.(LookupScheduledSynchronizationSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getScheduledSynchronizationSetting", args, LookupScheduledSynchronizationSettingResultOutput{}, options).(LookupScheduledSynchronizationSettingResultOutput), nil
-		}).(LookupScheduledSynchronizationSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getScheduledSynchronizationSetting", args, LookupScheduledSynchronizationSettingResultOutput{}, options).(LookupScheduledSynchronizationSettingResultOutput)
 }
 
 type LookupScheduledSynchronizationSettingOutputArgs struct {

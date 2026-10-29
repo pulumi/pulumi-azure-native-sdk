@@ -120,12 +120,8 @@ type LookupNamespaceAssetResult struct {
 }
 
 func LookupNamespaceAssetOutput(ctx *pulumi.Context, args LookupNamespaceAssetOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceAssetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceAssetResultOutput, error) {
-			args := v.(LookupNamespaceAssetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceAsset", args, LookupNamespaceAssetResultOutput{}, options).(LookupNamespaceAssetResultOutput), nil
-		}).(LookupNamespaceAssetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getNamespaceAsset", args, LookupNamespaceAssetResultOutput{}, options).(LookupNamespaceAssetResultOutput)
 }
 
 type LookupNamespaceAssetOutputArgs struct {

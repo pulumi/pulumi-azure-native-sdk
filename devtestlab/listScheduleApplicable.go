@@ -42,12 +42,8 @@ type ListScheduleApplicableResult struct {
 }
 
 func ListScheduleApplicableOutput(ctx *pulumi.Context, args ListScheduleApplicableOutputArgs, opts ...pulumi.InvokeOption) ListScheduleApplicableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListScheduleApplicableResultOutput, error) {
-			args := v.(ListScheduleApplicableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:listScheduleApplicable", args, ListScheduleApplicableResultOutput{}, options).(ListScheduleApplicableResultOutput), nil
-		}).(ListScheduleApplicableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:listScheduleApplicable", args, ListScheduleApplicableResultOutput{}, options).(ListScheduleApplicableResultOutput)
 }
 
 type ListScheduleApplicableOutputArgs struct {

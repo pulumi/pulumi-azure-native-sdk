@@ -92,12 +92,8 @@ func (val *LookupDomainEventSubscriptionResult) Defaults() *LookupDomainEventSub
 	return &tmp
 }
 func LookupDomainEventSubscriptionOutput(ctx *pulumi.Context, args LookupDomainEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDomainEventSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDomainEventSubscriptionResultOutput, error) {
-			args := v.(LookupDomainEventSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getDomainEventSubscription", args, LookupDomainEventSubscriptionResultOutput{}, options).(LookupDomainEventSubscriptionResultOutput), nil
-		}).(LookupDomainEventSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getDomainEventSubscription", args, LookupDomainEventSubscriptionResultOutput{}, options).(LookupDomainEventSubscriptionResultOutput)
 }
 
 type LookupDomainEventSubscriptionOutputArgs struct {

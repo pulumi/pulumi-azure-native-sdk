@@ -106,12 +106,8 @@ func (val *LookupDomainServiceResult) Defaults() *LookupDomainServiceResult {
 	return &tmp
 }
 func LookupDomainServiceOutput(ctx *pulumi.Context, args LookupDomainServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDomainServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDomainServiceResultOutput, error) {
-			args := v.(LookupDomainServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:aad:getDomainService", args, LookupDomainServiceResultOutput{}, options).(LookupDomainServiceResultOutput), nil
-		}).(LookupDomainServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:aad:getDomainService", args, LookupDomainServiceResultOutput{}, options).(LookupDomainServiceResultOutput)
 }
 
 type LookupDomainServiceOutputArgs struct {

@@ -76,12 +76,8 @@ type LookupGovernanceRuleResult struct {
 }
 
 func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGovernanceRuleResultOutput, error) {
-			args := v.(LookupGovernanceRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getGovernanceRule", args, LookupGovernanceRuleResultOutput{}, options).(LookupGovernanceRuleResultOutput), nil
-		}).(LookupGovernanceRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getGovernanceRule", args, LookupGovernanceRuleResultOutput{}, options).(LookupGovernanceRuleResultOutput)
 }
 
 type LookupGovernanceRuleOutputArgs struct {

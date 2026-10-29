@@ -52,12 +52,8 @@ type LookupIamServerCertificateResult struct {
 }
 
 func LookupIamServerCertificateOutput(ctx *pulumi.Context, args LookupIamServerCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupIamServerCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamServerCertificateResultOutput, error) {
-			args := v.(LookupIamServerCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamServerCertificate", args, LookupIamServerCertificateResultOutput{}, options).(LookupIamServerCertificateResultOutput), nil
-		}).(LookupIamServerCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamServerCertificate", args, LookupIamServerCertificateResultOutput{}, options).(LookupIamServerCertificateResultOutput)
 }
 
 type LookupIamServerCertificateOutputArgs struct {

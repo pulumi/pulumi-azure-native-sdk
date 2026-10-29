@@ -62,12 +62,8 @@ type LookupNamespaceTopicEventSubscriptionResult struct {
 }
 
 func LookupNamespaceTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupNamespaceTopicEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceTopicEventSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceTopicEventSubscriptionResultOutput, error) {
-			args := v.(LookupNamespaceTopicEventSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscription", args, LookupNamespaceTopicEventSubscriptionResultOutput{}, options).(LookupNamespaceTopicEventSubscriptionResultOutput), nil
-		}).(LookupNamespaceTopicEventSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscription", args, LookupNamespaceTopicEventSubscriptionResultOutput{}, options).(LookupNamespaceTopicEventSubscriptionResultOutput)
 }
 
 type LookupNamespaceTopicEventSubscriptionOutputArgs struct {

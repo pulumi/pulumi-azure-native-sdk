@@ -56,12 +56,8 @@ type LookupVirtualNetworkRetrieveResult struct {
 }
 
 func LookupVirtualNetworkRetrieveOutput(ctx *pulumi.Context, args LookupVirtualNetworkRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkRetrieveResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualNetworkRetrieveResultOutput, error) {
-			args := v.(LookupVirtualNetworkRetrieveArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcontainerservice:getVirtualNetworkRetrieve", args, LookupVirtualNetworkRetrieveResultOutput{}, options).(LookupVirtualNetworkRetrieveResultOutput), nil
-		}).(LookupVirtualNetworkRetrieveResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcontainerservice:getVirtualNetworkRetrieve", args, LookupVirtualNetworkRetrieveResultOutput{}, options).(LookupVirtualNetworkRetrieveResultOutput)
 }
 
 type LookupVirtualNetworkRetrieveOutputArgs struct {

@@ -72,12 +72,8 @@ func (val *LookupOnlineEndpointResult) Defaults() *LookupOnlineEndpointResult {
 	return &tmp
 }
 func LookupOnlineEndpointOutput(ctx *pulumi.Context, args LookupOnlineEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOnlineEndpointResultOutput, error) {
-			args := v.(LookupOnlineEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getOnlineEndpoint", args, LookupOnlineEndpointResultOutput{}, options).(LookupOnlineEndpointResultOutput), nil
-		}).(LookupOnlineEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getOnlineEndpoint", args, LookupOnlineEndpointResultOutput{}, options).(LookupOnlineEndpointResultOutput)
 }
 
 type LookupOnlineEndpointOutputArgs struct {

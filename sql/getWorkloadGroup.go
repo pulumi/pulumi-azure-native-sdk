@@ -62,12 +62,8 @@ type LookupWorkloadGroupResult struct {
 }
 
 func LookupWorkloadGroupOutput(ctx *pulumi.Context, args LookupWorkloadGroupOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadGroupResultOutput, error) {
-			args := v.(LookupWorkloadGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getWorkloadGroup", args, LookupWorkloadGroupResultOutput{}, options).(LookupWorkloadGroupResultOutput), nil
-		}).(LookupWorkloadGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getWorkloadGroup", args, LookupWorkloadGroupResultOutput{}, options).(LookupWorkloadGroupResultOutput)
 }
 
 type LookupWorkloadGroupOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupSitesByServiceGroupResult struct {
 }
 
 func LookupSitesByServiceGroupOutput(ctx *pulumi.Context, args LookupSitesByServiceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSitesByServiceGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSitesByServiceGroupResultOutput, error) {
-			args := v.(LookupSitesByServiceGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSitesByServiceGroup", args, LookupSitesByServiceGroupResultOutput{}, options).(LookupSitesByServiceGroupResultOutput), nil
-		}).(LookupSitesByServiceGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSitesByServiceGroup", args, LookupSitesByServiceGroupResultOutput{}, options).(LookupSitesByServiceGroupResultOutput)
 }
 
 type LookupSitesByServiceGroupOutputArgs struct {

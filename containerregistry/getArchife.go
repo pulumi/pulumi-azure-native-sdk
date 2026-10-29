@@ -60,12 +60,8 @@ type LookupArchifeResult struct {
 }
 
 func LookupArchifeOutput(ctx *pulumi.Context, args LookupArchifeOutputArgs, opts ...pulumi.InvokeOption) LookupArchifeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupArchifeResultOutput, error) {
-			args := v.(LookupArchifeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getArchife", args, LookupArchifeResultOutput{}, options).(LookupArchifeResultOutput), nil
-		}).(LookupArchifeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getArchife", args, LookupArchifeResultOutput{}, options).(LookupArchifeResultOutput)
 }
 
 type LookupArchifeOutputArgs struct {

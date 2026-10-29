@@ -42,12 +42,8 @@ type GetADOOAuthInfoResult struct {
 }
 
 func GetADOOAuthInfoOutput(ctx *pulumi.Context, args GetADOOAuthInfoOutputArgs, opts ...pulumi.InvokeOption) GetADOOAuthInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetADOOAuthInfoResultOutput, error) {
-			args := v.(GetADOOAuthInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devhub:getADOOAuthInfo", args, GetADOOAuthInfoResultOutput{}, options).(GetADOOAuthInfoResultOutput), nil
-		}).(GetADOOAuthInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devhub:getADOOAuthInfo", args, GetADOOAuthInfoResultOutput{}, options).(GetADOOAuthInfoResultOutput)
 }
 
 type GetADOOAuthInfoOutputArgs struct {

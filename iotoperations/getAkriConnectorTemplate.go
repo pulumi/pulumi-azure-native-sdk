@@ -64,12 +64,8 @@ func (val *LookupAkriConnectorTemplateResult) Defaults() *LookupAkriConnectorTem
 	return &tmp
 }
 func LookupAkriConnectorTemplateOutput(ctx *pulumi.Context, args LookupAkriConnectorTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupAkriConnectorTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAkriConnectorTemplateResultOutput, error) {
-			args := v.(LookupAkriConnectorTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperations:getAkriConnectorTemplate", args, LookupAkriConnectorTemplateResultOutput{}, options).(LookupAkriConnectorTemplateResultOutput), nil
-		}).(LookupAkriConnectorTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperations:getAkriConnectorTemplate", args, LookupAkriConnectorTemplateResultOutput{}, options).(LookupAkriConnectorTemplateResultOutput)
 }
 
 type LookupAkriConnectorTemplateOutputArgs struct {

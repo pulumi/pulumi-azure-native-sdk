@@ -54,12 +54,8 @@ type LookupMapResult struct {
 }
 
 func LookupMapOutput(ctx *pulumi.Context, args LookupMapOutputArgs, opts ...pulumi.InvokeOption) LookupMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMapResultOutput, error) {
-			args := v.(LookupMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dependencymap:getMap", args, LookupMapResultOutput{}, options).(LookupMapResultOutput), nil
-		}).(LookupMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dependencymap:getMap", args, LookupMapResultOutput{}, options).(LookupMapResultOutput)
 }
 
 type LookupMapOutputArgs struct {

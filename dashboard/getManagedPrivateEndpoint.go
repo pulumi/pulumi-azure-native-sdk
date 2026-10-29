@@ -70,12 +70,8 @@ type LookupManagedPrivateEndpointResult struct {
 }
 
 func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupManagedPrivateEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedPrivateEndpointResultOutput, error) {
-			args := v.(LookupManagedPrivateEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dashboard:getManagedPrivateEndpoint", args, LookupManagedPrivateEndpointResultOutput{}, options).(LookupManagedPrivateEndpointResultOutput), nil
-		}).(LookupManagedPrivateEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dashboard:getManagedPrivateEndpoint", args, LookupManagedPrivateEndpointResultOutput{}, options).(LookupManagedPrivateEndpointResultOutput)
 }
 
 type LookupManagedPrivateEndpointOutputArgs struct {

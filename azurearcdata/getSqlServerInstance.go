@@ -54,12 +54,8 @@ type LookupSqlServerInstanceResult struct {
 }
 
 func LookupSqlServerInstanceOutput(ctx *pulumi.Context, args LookupSqlServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlServerInstanceResultOutput, error) {
-			args := v.(LookupSqlServerInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerInstance", args, LookupSqlServerInstanceResultOutput{}, options).(LookupSqlServerInstanceResultOutput), nil
-		}).(LookupSqlServerInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerInstance", args, LookupSqlServerInstanceResultOutput{}, options).(LookupSqlServerInstanceResultOutput)
 }
 
 type LookupSqlServerInstanceOutputArgs struct {

@@ -38,12 +38,8 @@ type ListServiceGroupAncestorsResult struct {
 }
 
 func ListServiceGroupAncestorsOutput(ctx *pulumi.Context, args ListServiceGroupAncestorsOutputArgs, opts ...pulumi.InvokeOption) ListServiceGroupAncestorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListServiceGroupAncestorsResultOutput, error) {
-			args := v.(ListServiceGroupAncestorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:management:listServiceGroupAncestors", args, ListServiceGroupAncestorsResultOutput{}, options).(ListServiceGroupAncestorsResultOutput), nil
-		}).(ListServiceGroupAncestorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:management:listServiceGroupAncestors", args, ListServiceGroupAncestorsResultOutput{}, options).(ListServiceGroupAncestorsResultOutput)
 }
 
 type ListServiceGroupAncestorsOutputArgs struct {

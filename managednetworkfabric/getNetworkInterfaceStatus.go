@@ -48,12 +48,8 @@ type GetNetworkInterfaceStatusResult struct {
 }
 
 func GetNetworkInterfaceStatusOutput(ctx *pulumi.Context, args GetNetworkInterfaceStatusOutputArgs, opts ...pulumi.InvokeOption) GetNetworkInterfaceStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkInterfaceStatusResultOutput, error) {
-			args := v.(GetNetworkInterfaceStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkInterfaceStatus", args, GetNetworkInterfaceStatusResultOutput{}, options).(GetNetworkInterfaceStatusResultOutput), nil
-		}).(GetNetworkInterfaceStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkInterfaceStatus", args, GetNetworkInterfaceStatusResultOutput{}, options).(GetNetworkInterfaceStatusResultOutput)
 }
 
 type GetNetworkInterfaceStatusOutputArgs struct {

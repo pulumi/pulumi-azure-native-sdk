@@ -57,12 +57,8 @@ type LookupSqlResourceSqlStoredProcedureResult struct {
 }
 
 func LookupSqlResourceSqlStoredProcedureOutput(ctx *pulumi.Context, args LookupSqlResourceSqlStoredProcedureOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlStoredProcedureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlStoredProcedureResultOutput, error) {
-			args := v.(LookupSqlResourceSqlStoredProcedureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlStoredProcedure", args, LookupSqlResourceSqlStoredProcedureResultOutput{}, options).(LookupSqlResourceSqlStoredProcedureResultOutput), nil
-		}).(LookupSqlResourceSqlStoredProcedureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlStoredProcedure", args, LookupSqlResourceSqlStoredProcedureResultOutput{}, options).(LookupSqlResourceSqlStoredProcedureResultOutput)
 }
 
 type LookupSqlResourceSqlStoredProcedureOutputArgs struct {

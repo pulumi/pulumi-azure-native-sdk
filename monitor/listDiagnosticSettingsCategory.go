@@ -38,12 +38,8 @@ type ListDiagnosticSettingsCategoryResult struct {
 }
 
 func ListDiagnosticSettingsCategoryOutput(ctx *pulumi.Context, args ListDiagnosticSettingsCategoryOutputArgs, opts ...pulumi.InvokeOption) ListDiagnosticSettingsCategoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDiagnosticSettingsCategoryResultOutput, error) {
-			args := v.(ListDiagnosticSettingsCategoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:listDiagnosticSettingsCategory", args, ListDiagnosticSettingsCategoryResultOutput{}, options).(ListDiagnosticSettingsCategoryResultOutput), nil
-		}).(ListDiagnosticSettingsCategoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:listDiagnosticSettingsCategory", args, ListDiagnosticSettingsCategoryResultOutput{}, options).(ListDiagnosticSettingsCategoryResultOutput)
 }
 
 type ListDiagnosticSettingsCategoryOutputArgs struct {

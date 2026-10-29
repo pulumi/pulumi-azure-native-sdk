@@ -48,12 +48,8 @@ type ListStaticSiteConfiguredRolesResult struct {
 }
 
 func ListStaticSiteConfiguredRolesOutput(ctx *pulumi.Context, args ListStaticSiteConfiguredRolesOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteConfiguredRolesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListStaticSiteConfiguredRolesResultOutput, error) {
-			args := v.(ListStaticSiteConfiguredRolesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listStaticSiteConfiguredRoles", args, ListStaticSiteConfiguredRolesResultOutput{}, options).(ListStaticSiteConfiguredRolesResultOutput), nil
-		}).(ListStaticSiteConfiguredRolesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listStaticSiteConfiguredRoles", args, ListStaticSiteConfiguredRolesResultOutput{}, options).(ListStaticSiteConfiguredRolesResultOutput)
 }
 
 type ListStaticSiteConfiguredRolesOutputArgs struct {

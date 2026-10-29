@@ -50,12 +50,8 @@ type LookupServerAzureADOnlyAuthenticationResult struct {
 }
 
 func LookupServerAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args LookupServerAzureADOnlyAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupServerAzureADOnlyAuthenticationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerAzureADOnlyAuthenticationResultOutput, error) {
-			args := v.(LookupServerAzureADOnlyAuthenticationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getServerAzureADOnlyAuthentication", args, LookupServerAzureADOnlyAuthenticationResultOutput{}, options).(LookupServerAzureADOnlyAuthenticationResultOutput), nil
-		}).(LookupServerAzureADOnlyAuthenticationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getServerAzureADOnlyAuthentication", args, LookupServerAzureADOnlyAuthenticationResultOutput{}, options).(LookupServerAzureADOnlyAuthenticationResultOutput)
 }
 
 type LookupServerAzureADOnlyAuthenticationOutputArgs struct {

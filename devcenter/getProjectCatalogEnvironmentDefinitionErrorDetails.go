@@ -44,12 +44,8 @@ type GetProjectCatalogEnvironmentDefinitionErrorDetailsResult struct {
 }
 
 func GetProjectCatalogEnvironmentDefinitionErrorDetailsOutput(ctx *pulumi.Context, args GetProjectCatalogEnvironmentDefinitionErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput, error) {
-			args := v.(GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getProjectCatalogEnvironmentDefinitionErrorDetails", args, GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput{}, options).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput), nil
-		}).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getProjectCatalogEnvironmentDefinitionErrorDetails", args, GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput{}, options).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput)
 }
 
 type GetProjectCatalogEnvironmentDefinitionErrorDetailsOutputArgs struct {

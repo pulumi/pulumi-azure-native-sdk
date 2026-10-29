@@ -36,12 +36,8 @@ type GetGetPrivateDnsZoneSuffixExecuteResult struct {
 }
 
 func GetGetPrivateDnsZoneSuffixExecuteOutput(ctx *pulumi.Context, args GetGetPrivateDnsZoneSuffixExecuteOutputArgs, opts ...pulumi.InvokeOption) GetGetPrivateDnsZoneSuffixExecuteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGetPrivateDnsZoneSuffixExecuteResultOutput, error) {
-			args := v.(GetGetPrivateDnsZoneSuffixExecuteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getGetPrivateDnsZoneSuffixExecute", args, GetGetPrivateDnsZoneSuffixExecuteResultOutput{}, options).(GetGetPrivateDnsZoneSuffixExecuteResultOutput), nil
-		}).(GetGetPrivateDnsZoneSuffixExecuteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getGetPrivateDnsZoneSuffixExecute", args, GetGetPrivateDnsZoneSuffixExecuteResultOutput{}, options).(GetGetPrivateDnsZoneSuffixExecuteResultOutput)
 }
 
 type GetGetPrivateDnsZoneSuffixExecuteOutputArgs struct {

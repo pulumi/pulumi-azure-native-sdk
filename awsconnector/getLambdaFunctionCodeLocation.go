@@ -52,12 +52,8 @@ type LookupLambdaFunctionCodeLocationResult struct {
 }
 
 func LookupLambdaFunctionCodeLocationOutput(ctx *pulumi.Context, args LookupLambdaFunctionCodeLocationOutputArgs, opts ...pulumi.InvokeOption) LookupLambdaFunctionCodeLocationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLambdaFunctionCodeLocationResultOutput, error) {
-			args := v.(LookupLambdaFunctionCodeLocationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getLambdaFunctionCodeLocation", args, LookupLambdaFunctionCodeLocationResultOutput{}, options).(LookupLambdaFunctionCodeLocationResultOutput), nil
-		}).(LookupLambdaFunctionCodeLocationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getLambdaFunctionCodeLocation", args, LookupLambdaFunctionCodeLocationResultOutput{}, options).(LookupLambdaFunctionCodeLocationResultOutput)
 }
 
 type LookupLambdaFunctionCodeLocationOutputArgs struct {

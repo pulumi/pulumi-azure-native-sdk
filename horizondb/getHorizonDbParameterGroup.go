@@ -52,12 +52,8 @@ type LookupHorizonDbParameterGroupResult struct {
 }
 
 func LookupHorizonDbParameterGroupOutput(ctx *pulumi.Context, args LookupHorizonDbParameterGroupOutputArgs, opts ...pulumi.InvokeOption) LookupHorizonDbParameterGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHorizonDbParameterGroupResultOutput, error) {
-			args := v.(LookupHorizonDbParameterGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbParameterGroup", args, LookupHorizonDbParameterGroupResultOutput{}, options).(LookupHorizonDbParameterGroupResultOutput), nil
-		}).(LookupHorizonDbParameterGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbParameterGroup", args, LookupHorizonDbParameterGroupResultOutput{}, options).(LookupHorizonDbParameterGroupResultOutput)
 }
 
 type LookupHorizonDbParameterGroupOutputArgs struct {

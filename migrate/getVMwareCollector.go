@@ -44,12 +44,8 @@ type LookupVMwareCollectorResult struct {
 }
 
 func LookupVMwareCollectorOutput(ctx *pulumi.Context, args LookupVMwareCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupVMwareCollectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVMwareCollectorResultOutput, error) {
-			args := v.(LookupVMwareCollectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getVMwareCollector", args, LookupVMwareCollectorResultOutput{}, options).(LookupVMwareCollectorResultOutput), nil
-		}).(LookupVMwareCollectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getVMwareCollector", args, LookupVMwareCollectorResultOutput{}, options).(LookupVMwareCollectorResultOutput)
 }
 
 type LookupVMwareCollectorOutputArgs struct {

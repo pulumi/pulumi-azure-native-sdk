@@ -52,12 +52,8 @@ type LookupEc2SnapshotResult struct {
 }
 
 func LookupEc2SnapshotOutput(ctx *pulumi.Context, args LookupEc2SnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupEc2SnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2SnapshotResultOutput, error) {
-			args := v.(LookupEc2SnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Snapshot", args, LookupEc2SnapshotResultOutput{}, options).(LookupEc2SnapshotResultOutput), nil
-		}).(LookupEc2SnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2Snapshot", args, LookupEc2SnapshotResultOutput{}, options).(LookupEc2SnapshotResultOutput)
 }
 
 type LookupEc2SnapshotOutputArgs struct {

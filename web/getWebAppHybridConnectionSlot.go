@@ -73,12 +73,8 @@ type LookupWebAppHybridConnectionSlotResult struct {
 }
 
 func LookupWebAppHybridConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppHybridConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHybridConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppHybridConnectionSlotResultOutput, error) {
-			args := v.(LookupWebAppHybridConnectionSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppHybridConnectionSlot", args, LookupWebAppHybridConnectionSlotResultOutput{}, options).(LookupWebAppHybridConnectionSlotResultOutput), nil
-		}).(LookupWebAppHybridConnectionSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppHybridConnectionSlot", args, LookupWebAppHybridConnectionSlotResultOutput{}, options).(LookupWebAppHybridConnectionSlotResultOutput)
 }
 
 type LookupWebAppHybridConnectionSlotOutputArgs struct {

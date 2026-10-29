@@ -56,12 +56,8 @@ type LookupOrganizationEnvironmentByIdResult struct {
 }
 
 func LookupOrganizationEnvironmentByIdOutput(ctx *pulumi.Context, args LookupOrganizationEnvironmentByIdOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationEnvironmentByIdResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationEnvironmentByIdResultOutput, error) {
-			args := v.(LookupOrganizationEnvironmentByIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:getOrganizationEnvironmentById", args, LookupOrganizationEnvironmentByIdResultOutput{}, options).(LookupOrganizationEnvironmentByIdResultOutput), nil
-		}).(LookupOrganizationEnvironmentByIdResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:getOrganizationEnvironmentById", args, LookupOrganizationEnvironmentByIdResultOutput{}, options).(LookupOrganizationEnvironmentByIdResultOutput)
 }
 
 type LookupOrganizationEnvironmentByIdOutputArgs struct {

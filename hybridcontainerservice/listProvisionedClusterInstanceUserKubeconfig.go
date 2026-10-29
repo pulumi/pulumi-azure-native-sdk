@@ -46,12 +46,8 @@ type ListProvisionedClusterInstanceUserKubeconfigResult struct {
 }
 
 func ListProvisionedClusterInstanceUserKubeconfigOutput(ctx *pulumi.Context, args ListProvisionedClusterInstanceUserKubeconfigOutputArgs, opts ...pulumi.InvokeOption) ListProvisionedClusterInstanceUserKubeconfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListProvisionedClusterInstanceUserKubeconfigResultOutput, error) {
-			args := v.(ListProvisionedClusterInstanceUserKubeconfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcontainerservice:listProvisionedClusterInstanceUserKubeconfig", args, ListProvisionedClusterInstanceUserKubeconfigResultOutput{}, options).(ListProvisionedClusterInstanceUserKubeconfigResultOutput), nil
-		}).(ListProvisionedClusterInstanceUserKubeconfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcontainerservice:listProvisionedClusterInstanceUserKubeconfig", args, ListProvisionedClusterInstanceUserKubeconfigResultOutput{}, options).(ListProvisionedClusterInstanceUserKubeconfigResultOutput)
 }
 
 type ListProvisionedClusterInstanceUserKubeconfigOutputArgs struct {

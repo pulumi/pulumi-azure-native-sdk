@@ -78,12 +78,8 @@ func (val *LookupPlaywrightWorkspaceResult) Defaults() *LookupPlaywrightWorkspac
 	return &tmp
 }
 func LookupPlaywrightWorkspaceOutput(ctx *pulumi.Context, args LookupPlaywrightWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupPlaywrightWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPlaywrightWorkspaceResultOutput, error) {
-			args := v.(LookupPlaywrightWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:loadtestservice:getPlaywrightWorkspace", args, LookupPlaywrightWorkspaceResultOutput{}, options).(LookupPlaywrightWorkspaceResultOutput), nil
-		}).(LookupPlaywrightWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:loadtestservice:getPlaywrightWorkspace", args, LookupPlaywrightWorkspaceResultOutput{}, options).(LookupPlaywrightWorkspaceResultOutput)
 }
 
 type LookupPlaywrightWorkspaceOutputArgs struct {

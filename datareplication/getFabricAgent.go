@@ -52,12 +52,8 @@ type LookupFabricAgentResult struct {
 }
 
 func LookupFabricAgentOutput(ctx *pulumi.Context, args LookupFabricAgentOutputArgs, opts ...pulumi.InvokeOption) LookupFabricAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFabricAgentResultOutput, error) {
-			args := v.(LookupFabricAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datareplication:getFabricAgent", args, LookupFabricAgentResultOutput{}, options).(LookupFabricAgentResultOutput), nil
-		}).(LookupFabricAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datareplication:getFabricAgent", args, LookupFabricAgentResultOutput{}, options).(LookupFabricAgentResultOutput)
 }
 
 type LookupFabricAgentOutputArgs struct {

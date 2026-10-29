@@ -64,12 +64,8 @@ type LookupStaticSiteBuildDatabaseConnectionResult struct {
 }
 
 func LookupStaticSiteBuildDatabaseConnectionOutput(ctx *pulumi.Context, args LookupStaticSiteBuildDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteBuildDatabaseConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteBuildDatabaseConnectionResultOutput, error) {
-			args := v.(LookupStaticSiteBuildDatabaseConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getStaticSiteBuildDatabaseConnection", args, LookupStaticSiteBuildDatabaseConnectionResultOutput{}, options).(LookupStaticSiteBuildDatabaseConnectionResultOutput), nil
-		}).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getStaticSiteBuildDatabaseConnection", args, LookupStaticSiteBuildDatabaseConnectionResultOutput{}, options).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
 }
 
 type LookupStaticSiteBuildDatabaseConnectionOutputArgs struct {

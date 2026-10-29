@@ -50,12 +50,8 @@ type LookupServerDnsAliasResult struct {
 }
 
 func LookupServerDnsAliasOutput(ctx *pulumi.Context, args LookupServerDnsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupServerDnsAliasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerDnsAliasResultOutput, error) {
-			args := v.(LookupServerDnsAliasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getServerDnsAlias", args, LookupServerDnsAliasResultOutput{}, options).(LookupServerDnsAliasResultOutput), nil
-		}).(LookupServerDnsAliasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getServerDnsAlias", args, LookupServerDnsAliasResultOutput{}, options).(LookupServerDnsAliasResultOutput)
 }
 
 type LookupServerDnsAliasOutputArgs struct {

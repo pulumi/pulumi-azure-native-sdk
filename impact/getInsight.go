@@ -50,12 +50,8 @@ type LookupInsightResult struct {
 }
 
 func LookupInsightOutput(ctx *pulumi.Context, args LookupInsightOutputArgs, opts ...pulumi.InvokeOption) LookupInsightResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInsightResultOutput, error) {
-			args := v.(LookupInsightArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:impact:getInsight", args, LookupInsightResultOutput{}, options).(LookupInsightResultOutput), nil
-		}).(LookupInsightResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:impact:getInsight", args, LookupInsightResultOutput{}, options).(LookupInsightResultOutput)
 }
 
 type LookupInsightOutputArgs struct {

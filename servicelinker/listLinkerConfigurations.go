@@ -40,12 +40,8 @@ type ListLinkerConfigurationsResult struct {
 }
 
 func ListLinkerConfigurationsOutput(ctx *pulumi.Context, args ListLinkerConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListLinkerConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListLinkerConfigurationsResultOutput, error) {
-			args := v.(ListLinkerConfigurationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicelinker:listLinkerConfigurations", args, ListLinkerConfigurationsResultOutput{}, options).(ListLinkerConfigurationsResultOutput), nil
-		}).(ListLinkerConfigurationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicelinker:listLinkerConfigurations", args, ListLinkerConfigurationsResultOutput{}, options).(ListLinkerConfigurationsResultOutput)
 }
 
 type ListLinkerConfigurationsOutputArgs struct {

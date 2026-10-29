@@ -125,12 +125,8 @@ func (val *LookupIoMAMPolicyByNameResult) Defaults() *LookupIoMAMPolicyByNameRes
 	return &tmp
 }
 func LookupIoMAMPolicyByNameOutput(ctx *pulumi.Context, args LookupIoMAMPolicyByNameOutputArgs, opts ...pulumi.InvokeOption) LookupIoMAMPolicyByNameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIoMAMPolicyByNameResultOutput, error) {
-			args := v.(LookupIoMAMPolicyByNameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:intune:getIoMAMPolicyByName", args, LookupIoMAMPolicyByNameResultOutput{}, options).(LookupIoMAMPolicyByNameResultOutput), nil
-		}).(LookupIoMAMPolicyByNameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:intune:getIoMAMPolicyByName", args, LookupIoMAMPolicyByNameResultOutput{}, options).(LookupIoMAMPolicyByNameResultOutput)
 }
 
 type LookupIoMAMPolicyByNameOutputArgs struct {

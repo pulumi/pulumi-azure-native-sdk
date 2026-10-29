@@ -64,12 +64,8 @@ func (val *LookupBuildServiceBuildResult) Defaults() *LookupBuildServiceBuildRes
 	return &tmp
 }
 func LookupBuildServiceBuildOutput(ctx *pulumi.Context, args LookupBuildServiceBuildOutputArgs, opts ...pulumi.InvokeOption) LookupBuildServiceBuildResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBuildServiceBuildResultOutput, error) {
-			args := v.(LookupBuildServiceBuildArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getBuildServiceBuild", args, LookupBuildServiceBuildResultOutput{}, options).(LookupBuildServiceBuildResultOutput), nil
-		}).(LookupBuildServiceBuildResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getBuildServiceBuild", args, LookupBuildServiceBuildResultOutput{}, options).(LookupBuildServiceBuildResultOutput)
 }
 
 type LookupBuildServiceBuildOutputArgs struct {

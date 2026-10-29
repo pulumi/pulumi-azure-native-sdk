@@ -44,12 +44,8 @@ type ListRemediationDeploymentsAtResourceGroupResult struct {
 }
 
 func ListRemediationDeploymentsAtResourceGroupOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtResourceGroupOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtResourceGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtResourceGroupResultOutput, error) {
-			args := v.(ListRemediationDeploymentsAtResourceGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtResourceGroup", args, ListRemediationDeploymentsAtResourceGroupResultOutput{}, options).(ListRemediationDeploymentsAtResourceGroupResultOutput), nil
-		}).(ListRemediationDeploymentsAtResourceGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtResourceGroup", args, ListRemediationDeploymentsAtResourceGroupResultOutput{}, options).(ListRemediationDeploymentsAtResourceGroupResultOutput)
 }
 
 type ListRemediationDeploymentsAtResourceGroupOutputArgs struct {

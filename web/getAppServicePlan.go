@@ -126,12 +126,8 @@ type LookupAppServicePlanResult struct {
 }
 
 func LookupAppServicePlanOutput(ctx *pulumi.Context, args LookupAppServicePlanOutputArgs, opts ...pulumi.InvokeOption) LookupAppServicePlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppServicePlanResultOutput, error) {
-			args := v.(LookupAppServicePlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getAppServicePlan", args, LookupAppServicePlanResultOutput{}, options).(LookupAppServicePlanResultOutput), nil
-		}).(LookupAppServicePlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getAppServicePlan", args, LookupAppServicePlanResultOutput{}, options).(LookupAppServicePlanResultOutput)
 }
 
 type LookupAppServicePlanOutputArgs struct {

@@ -48,12 +48,8 @@ type LookupWorkloadImpactResult struct {
 }
 
 func LookupWorkloadImpactOutput(ctx *pulumi.Context, args LookupWorkloadImpactOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadImpactResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadImpactResultOutput, error) {
-			args := v.(LookupWorkloadImpactArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:impact:getWorkloadImpact", args, LookupWorkloadImpactResultOutput{}, options).(LookupWorkloadImpactResultOutput), nil
-		}).(LookupWorkloadImpactResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:impact:getWorkloadImpact", args, LookupWorkloadImpactResultOutput{}, options).(LookupWorkloadImpactResultOutput)
 }
 
 type LookupWorkloadImpactOutputArgs struct {

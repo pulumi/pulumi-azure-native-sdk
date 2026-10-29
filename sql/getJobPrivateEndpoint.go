@@ -54,12 +54,8 @@ type LookupJobPrivateEndpointResult struct {
 }
 
 func LookupJobPrivateEndpointOutput(ctx *pulumi.Context, args LookupJobPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupJobPrivateEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobPrivateEndpointResultOutput, error) {
-			args := v.(LookupJobPrivateEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getJobPrivateEndpoint", args, LookupJobPrivateEndpointResultOutput{}, options).(LookupJobPrivateEndpointResultOutput), nil
-		}).(LookupJobPrivateEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getJobPrivateEndpoint", args, LookupJobPrivateEndpointResultOutput{}, options).(LookupJobPrivateEndpointResultOutput)
 }
 
 type LookupJobPrivateEndpointOutputArgs struct {

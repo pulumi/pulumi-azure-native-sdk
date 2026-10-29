@@ -52,12 +52,8 @@ type LookupIamAccessKeyLastUsedResult struct {
 }
 
 func LookupIamAccessKeyLastUsedOutput(ctx *pulumi.Context, args LookupIamAccessKeyLastUsedOutputArgs, opts ...pulumi.InvokeOption) LookupIamAccessKeyLastUsedResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamAccessKeyLastUsedResultOutput, error) {
-			args := v.(LookupIamAccessKeyLastUsedArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamAccessKeyLastUsed", args, LookupIamAccessKeyLastUsedResultOutput{}, options).(LookupIamAccessKeyLastUsedResultOutput), nil
-		}).(LookupIamAccessKeyLastUsedResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamAccessKeyLastUsed", args, LookupIamAccessKeyLastUsedResultOutput{}, options).(LookupIamAccessKeyLastUsedResultOutput)
 }
 
 type LookupIamAccessKeyLastUsedOutputArgs struct {

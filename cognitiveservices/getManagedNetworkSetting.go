@@ -52,12 +52,8 @@ type LookupManagedNetworkSettingResult struct {
 }
 
 func LookupManagedNetworkSettingOutput(ctx *pulumi.Context, args LookupManagedNetworkSettingOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedNetworkSettingResultOutput, error) {
-			args := v.(LookupManagedNetworkSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getManagedNetworkSetting", args, LookupManagedNetworkSettingResultOutput{}, options).(LookupManagedNetworkSettingResultOutput), nil
-		}).(LookupManagedNetworkSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getManagedNetworkSetting", args, LookupManagedNetworkSettingResultOutput{}, options).(LookupManagedNetworkSettingResultOutput)
 }
 
 type LookupManagedNetworkSettingOutputArgs struct {
