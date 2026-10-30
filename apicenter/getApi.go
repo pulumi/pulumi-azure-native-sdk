@@ -72,12 +72,8 @@ type LookupApiResult struct {
 }
 
 func LookupApiOutput(ctx *pulumi.Context, args LookupApiOutputArgs, opts ...pulumi.InvokeOption) LookupApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiResultOutput, error) {
-			args := v.(LookupApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apicenter:getApi", args, LookupApiResultOutput{}, options).(LookupApiResultOutput), nil
-		}).(LookupApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apicenter:getApi", args, LookupApiResultOutput{}, options).(LookupApiResultOutput)
 }
 
 type LookupApiOutputArgs struct {

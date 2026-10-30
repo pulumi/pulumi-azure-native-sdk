@@ -98,12 +98,8 @@ type LookupSiteCertificateResult struct {
 }
 
 func LookupSiteCertificateOutput(ctx *pulumi.Context, args LookupSiteCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupSiteCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSiteCertificateResultOutput, error) {
-			args := v.(LookupSiteCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getSiteCertificate", args, LookupSiteCertificateResultOutput{}, options).(LookupSiteCertificateResultOutput), nil
-		}).(LookupSiteCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getSiteCertificate", args, LookupSiteCertificateResultOutput{}, options).(LookupSiteCertificateResultOutput)
 }
 
 type LookupSiteCertificateOutputArgs struct {

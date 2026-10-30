@@ -74,12 +74,8 @@ type LookupReplicationLinkResult struct {
 }
 
 func LookupReplicationLinkOutput(ctx *pulumi.Context, args LookupReplicationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicationLinkResultOutput, error) {
-			args := v.(LookupReplicationLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getReplicationLink", args, LookupReplicationLinkResultOutput{}, options).(LookupReplicationLinkResultOutput), nil
-		}).(LookupReplicationLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getReplicationLink", args, LookupReplicationLinkResultOutput{}, options).(LookupReplicationLinkResultOutput)
 }
 
 type LookupReplicationLinkOutputArgs struct {

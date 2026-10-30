@@ -86,12 +86,8 @@ type LookupRoleAssignmentResult struct {
 }
 
 func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoleAssignmentResultOutput, error) {
-			args := v.(LookupRoleAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:customerinsights:getRoleAssignment", args, LookupRoleAssignmentResultOutput{}, options).(LookupRoleAssignmentResultOutput), nil
-		}).(LookupRoleAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:customerinsights:getRoleAssignment", args, LookupRoleAssignmentResultOutput{}, options).(LookupRoleAssignmentResultOutput)
 }
 
 type LookupRoleAssignmentOutputArgs struct {

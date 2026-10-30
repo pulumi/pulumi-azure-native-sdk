@@ -55,12 +55,8 @@ type LookupRuleSetResult struct {
 }
 
 func LookupRuleSetOutput(ctx *pulumi.Context, args LookupRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupRuleSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuleSetResultOutput, error) {
-			args := v.(LookupRuleSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getRuleSet", args, LookupRuleSetResultOutput{}, options).(LookupRuleSetResultOutput), nil
-		}).(LookupRuleSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getRuleSet", args, LookupRuleSetResultOutput{}, options).(LookupRuleSetResultOutput)
 }
 
 type LookupRuleSetOutputArgs struct {

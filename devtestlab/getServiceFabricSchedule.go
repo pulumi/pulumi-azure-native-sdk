@@ -94,12 +94,8 @@ func (val *LookupServiceFabricScheduleResult) Defaults() *LookupServiceFabricSch
 	return &tmp
 }
 func LookupServiceFabricScheduleOutput(ctx *pulumi.Context, args LookupServiceFabricScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupServiceFabricScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceFabricScheduleResultOutput, error) {
-			args := v.(LookupServiceFabricScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getServiceFabricSchedule", args, LookupServiceFabricScheduleResultOutput{}, options).(LookupServiceFabricScheduleResultOutput), nil
-		}).(LookupServiceFabricScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getServiceFabricSchedule", args, LookupServiceFabricScheduleResultOutput{}, options).(LookupServiceFabricScheduleResultOutput)
 }
 
 type LookupServiceFabricScheduleOutputArgs struct {

@@ -50,12 +50,8 @@ type ListWebAppAzureStorageAccountsSlotResult struct {
 }
 
 func ListWebAppAzureStorageAccountsSlotOutput(ctx *pulumi.Context, args ListWebAppAzureStorageAccountsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppAzureStorageAccountsSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppAzureStorageAccountsSlotResultOutput, error) {
-			args := v.(ListWebAppAzureStorageAccountsSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppAzureStorageAccountsSlot", args, ListWebAppAzureStorageAccountsSlotResultOutput{}, options).(ListWebAppAzureStorageAccountsSlotResultOutput), nil
-		}).(ListWebAppAzureStorageAccountsSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppAzureStorageAccountsSlot", args, ListWebAppAzureStorageAccountsSlotResultOutput{}, options).(ListWebAppAzureStorageAccountsSlotResultOutput)
 }
 
 type ListWebAppAzureStorageAccountsSlotOutputArgs struct {

@@ -64,12 +64,8 @@ func (val *LookupSupercomputerResult) Defaults() *LookupSupercomputerResult {
 	return &tmp
 }
 func LookupSupercomputerOutput(ctx *pulumi.Context, args LookupSupercomputerOutputArgs, opts ...pulumi.InvokeOption) LookupSupercomputerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSupercomputerResultOutput, error) {
-			args := v.(LookupSupercomputerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getSupercomputer", args, LookupSupercomputerResultOutput{}, options).(LookupSupercomputerResultOutput), nil
-		}).(LookupSupercomputerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getSupercomputer", args, LookupSupercomputerResultOutput{}, options).(LookupSupercomputerResultOutput)
 }
 
 type LookupSupercomputerOutputArgs struct {

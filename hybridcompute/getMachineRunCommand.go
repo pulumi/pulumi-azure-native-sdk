@@ -92,12 +92,8 @@ func (val *LookupMachineRunCommandResult) Defaults() *LookupMachineRunCommandRes
 	return &tmp
 }
 func LookupMachineRunCommandOutput(ctx *pulumi.Context, args LookupMachineRunCommandOutputArgs, opts ...pulumi.InvokeOption) LookupMachineRunCommandResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMachineRunCommandResultOutput, error) {
-			args := v.(LookupMachineRunCommandArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcompute:getMachineRunCommand", args, LookupMachineRunCommandResultOutput{}, options).(LookupMachineRunCommandResultOutput), nil
-		}).(LookupMachineRunCommandResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcompute:getMachineRunCommand", args, LookupMachineRunCommandResultOutput{}, options).(LookupMachineRunCommandResultOutput)
 }
 
 type LookupMachineRunCommandOutputArgs struct {

@@ -58,12 +58,13 @@ type GetUserSharedAccessTokenResult struct {
 }
 
 func GetUserSharedAccessTokenOutput(ctx *pulumi.Context, args GetUserSharedAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetUserSharedAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserSharedAccessTokenResultOutput, error) {
+	outputArgs := pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) *GetUserSharedAccessTokenArgs {
 			args := v.(GetUserSharedAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getUserSharedAccessToken", args.Defaults(), GetUserSharedAccessTokenResultOutput{}, options).(GetUserSharedAccessTokenResultOutput), nil
-		}).(GetUserSharedAccessTokenResultOutput)
+			return args.Defaults()
+		})
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getUserSharedAccessToken", outputArgs, GetUserSharedAccessTokenResultOutput{}, options).(GetUserSharedAccessTokenResultOutput)
 }
 
 type GetUserSharedAccessTokenOutputArgs struct {

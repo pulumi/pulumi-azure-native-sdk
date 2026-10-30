@@ -58,12 +58,8 @@ type LookupProviderInstanceResult struct {
 }
 
 func LookupProviderInstanceOutput(ctx *pulumi.Context, args LookupProviderInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupProviderInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProviderInstanceResultOutput, error) {
-			args := v.(LookupProviderInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getProviderInstance", args, LookupProviderInstanceResultOutput{}, options).(LookupProviderInstanceResultOutput), nil
-		}).(LookupProviderInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getProviderInstance", args, LookupProviderInstanceResultOutput{}, options).(LookupProviderInstanceResultOutput)
 }
 
 type LookupProviderInstanceOutputArgs struct {

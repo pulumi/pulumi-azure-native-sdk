@@ -88,12 +88,8 @@ type LookupRunbookResult struct {
 }
 
 func LookupRunbookOutput(ctx *pulumi.Context, args LookupRunbookOutputArgs, opts ...pulumi.InvokeOption) LookupRunbookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRunbookResultOutput, error) {
-			args := v.(LookupRunbookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getRunbook", args, LookupRunbookResultOutput{}, options).(LookupRunbookResultOutput), nil
-		}).(LookupRunbookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getRunbook", args, LookupRunbookResultOutput{}, options).(LookupRunbookResultOutput)
 }
 
 type LookupRunbookOutputArgs struct {

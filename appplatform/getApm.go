@@ -52,12 +52,8 @@ type LookupApmResult struct {
 }
 
 func LookupApmOutput(ctx *pulumi.Context, args LookupApmOutputArgs, opts ...pulumi.InvokeOption) LookupApmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApmResultOutput, error) {
-			args := v.(LookupApmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getApm", args, LookupApmResultOutput{}, options).(LookupApmResultOutput), nil
-		}).(LookupApmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getApm", args, LookupApmResultOutput{}, options).(LookupApmResultOutput)
 }
 
 type LookupApmOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupEdgeActionResult struct {
 }
 
 func LookupEdgeActionOutput(ctx *pulumi.Context, args LookupEdgeActionOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeActionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEdgeActionResultOutput, error) {
-			args := v.(LookupEdgeActionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getEdgeAction", args, LookupEdgeActionResultOutput{}, options).(LookupEdgeActionResultOutput), nil
-		}).(LookupEdgeActionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getEdgeAction", args, LookupEdgeActionResultOutput{}, options).(LookupEdgeActionResultOutput)
 }
 
 type LookupEdgeActionOutputArgs struct {

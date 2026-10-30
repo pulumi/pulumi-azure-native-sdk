@@ -48,12 +48,8 @@ type ListShareSubscriptionSynchronizationsResult struct {
 }
 
 func ListShareSubscriptionSynchronizationsOutput(ctx *pulumi.Context, args ListShareSubscriptionSynchronizationsOutputArgs, opts ...pulumi.InvokeOption) ListShareSubscriptionSynchronizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListShareSubscriptionSynchronizationsResultOutput, error) {
-			args := v.(ListShareSubscriptionSynchronizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:listShareSubscriptionSynchronizations", args, ListShareSubscriptionSynchronizationsResultOutput{}, options).(ListShareSubscriptionSynchronizationsResultOutput), nil
-		}).(ListShareSubscriptionSynchronizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:listShareSubscriptionSynchronizations", args, ListShareSubscriptionSynchronizationsResultOutput{}, options).(ListShareSubscriptionSynchronizationsResultOutput)
 }
 
 type ListShareSubscriptionSynchronizationsOutputArgs struct {

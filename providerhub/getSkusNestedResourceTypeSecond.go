@@ -55,12 +55,8 @@ type LookupSkusNestedResourceTypeSecondResult struct {
 }
 
 func LookupSkusNestedResourceTypeSecondOutput(ctx *pulumi.Context, args LookupSkusNestedResourceTypeSecondOutputArgs, opts ...pulumi.InvokeOption) LookupSkusNestedResourceTypeSecondResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSkusNestedResourceTypeSecondResultOutput, error) {
-			args := v.(LookupSkusNestedResourceTypeSecondArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getSkusNestedResourceTypeSecond", args, LookupSkusNestedResourceTypeSecondResultOutput{}, options).(LookupSkusNestedResourceTypeSecondResultOutput), nil
-		}).(LookupSkusNestedResourceTypeSecondResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getSkusNestedResourceTypeSecond", args, LookupSkusNestedResourceTypeSecondResultOutput{}, options).(LookupSkusNestedResourceTypeSecondResultOutput)
 }
 
 type LookupSkusNestedResourceTypeSecondOutputArgs struct {

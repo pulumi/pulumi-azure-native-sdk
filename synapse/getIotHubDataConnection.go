@@ -73,12 +73,8 @@ type LookupIotHubDataConnectionResult struct {
 }
 
 func LookupIotHubDataConnectionOutput(ctx *pulumi.Context, args LookupIotHubDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupIotHubDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotHubDataConnectionResultOutput, error) {
-			args := v.(LookupIotHubDataConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getIotHubDataConnection", args, LookupIotHubDataConnectionResultOutput{}, options).(LookupIotHubDataConnectionResultOutput), nil
-		}).(LookupIotHubDataConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getIotHubDataConnection", args, LookupIotHubDataConnectionResultOutput{}, options).(LookupIotHubDataConnectionResultOutput)
 }
 
 type LookupIotHubDataConnectionOutputArgs struct {

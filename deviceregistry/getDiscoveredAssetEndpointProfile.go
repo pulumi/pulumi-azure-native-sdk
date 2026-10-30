@@ -66,12 +66,8 @@ type LookupDiscoveredAssetEndpointProfileResult struct {
 }
 
 func LookupDiscoveredAssetEndpointProfileOutput(ctx *pulumi.Context, args LookupDiscoveredAssetEndpointProfileOutputArgs, opts ...pulumi.InvokeOption) LookupDiscoveredAssetEndpointProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscoveredAssetEndpointProfileResultOutput, error) {
-			args := v.(LookupDiscoveredAssetEndpointProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getDiscoveredAssetEndpointProfile", args, LookupDiscoveredAssetEndpointProfileResultOutput{}, options).(LookupDiscoveredAssetEndpointProfileResultOutput), nil
-		}).(LookupDiscoveredAssetEndpointProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getDiscoveredAssetEndpointProfile", args, LookupDiscoveredAssetEndpointProfileResultOutput{}, options).(LookupDiscoveredAssetEndpointProfileResultOutput)
 }
 
 type LookupDiscoveredAssetEndpointProfileOutputArgs struct {

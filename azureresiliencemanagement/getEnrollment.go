@@ -52,12 +52,8 @@ type LookupEnrollmentResult struct {
 }
 
 func LookupEnrollmentOutput(ctx *pulumi.Context, args LookupEnrollmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnrollmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnrollmentResultOutput, error) {
-			args := v.(LookupEnrollmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getEnrollment", args, LookupEnrollmentResultOutput{}, options).(LookupEnrollmentResultOutput), nil
-		}).(LookupEnrollmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getEnrollment", args, LookupEnrollmentResultOutput{}, options).(LookupEnrollmentResultOutput)
 }
 
 type LookupEnrollmentOutputArgs struct {

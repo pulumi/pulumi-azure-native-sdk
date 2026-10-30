@@ -60,12 +60,8 @@ type LookupCommunityEndpointResult struct {
 }
 
 func LookupCommunityEndpointOutput(ctx *pulumi.Context, args LookupCommunityEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupCommunityEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunityEndpointResultOutput, error) {
-			args := v.(LookupCommunityEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getCommunityEndpoint", args, LookupCommunityEndpointResultOutput{}, options).(LookupCommunityEndpointResultOutput), nil
-		}).(LookupCommunityEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getCommunityEndpoint", args, LookupCommunityEndpointResultOutput{}, options).(LookupCommunityEndpointResultOutput)
 }
 
 type LookupCommunityEndpointOutputArgs struct {

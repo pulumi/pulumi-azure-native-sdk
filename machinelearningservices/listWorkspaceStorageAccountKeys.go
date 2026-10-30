@@ -39,12 +39,8 @@ type ListWorkspaceStorageAccountKeysResult struct {
 }
 
 func ListWorkspaceStorageAccountKeysOutput(ctx *pulumi.Context, args ListWorkspaceStorageAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceStorageAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceStorageAccountKeysResultOutput, error) {
-			args := v.(ListWorkspaceStorageAccountKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listWorkspaceStorageAccountKeys", args, ListWorkspaceStorageAccountKeysResultOutput{}, options).(ListWorkspaceStorageAccountKeysResultOutput), nil
-		}).(ListWorkspaceStorageAccountKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listWorkspaceStorageAccountKeys", args, ListWorkspaceStorageAccountKeysResultOutput{}, options).(ListWorkspaceStorageAccountKeysResultOutput)
 }
 
 type ListWorkspaceStorageAccountKeysOutputArgs struct {

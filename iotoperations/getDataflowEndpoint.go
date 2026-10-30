@@ -64,12 +64,8 @@ func (val *LookupDataflowEndpointResult) Defaults() *LookupDataflowEndpointResul
 	return &tmp
 }
 func LookupDataflowEndpointOutput(ctx *pulumi.Context, args LookupDataflowEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupDataflowEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataflowEndpointResultOutput, error) {
-			args := v.(LookupDataflowEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperations:getDataflowEndpoint", args, LookupDataflowEndpointResultOutput{}, options).(LookupDataflowEndpointResultOutput), nil
-		}).(LookupDataflowEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperations:getDataflowEndpoint", args, LookupDataflowEndpointResultOutput{}, options).(LookupDataflowEndpointResultOutput)
 }
 
 type LookupDataflowEndpointOutputArgs struct {

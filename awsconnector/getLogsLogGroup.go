@@ -62,12 +62,8 @@ func (val *LookupLogsLogGroupResult) Defaults() *LookupLogsLogGroupResult {
 	return &tmp
 }
 func LookupLogsLogGroupOutput(ctx *pulumi.Context, args LookupLogsLogGroupOutputArgs, opts ...pulumi.InvokeOption) LookupLogsLogGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogsLogGroupResultOutput, error) {
-			args := v.(LookupLogsLogGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getLogsLogGroup", args, LookupLogsLogGroupResultOutput{}, options).(LookupLogsLogGroupResultOutput), nil
-		}).(LookupLogsLogGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getLogsLogGroup", args, LookupLogsLogGroupResultOutput{}, options).(LookupLogsLogGroupResultOutput)
 }
 
 type LookupLogsLogGroupOutputArgs struct {

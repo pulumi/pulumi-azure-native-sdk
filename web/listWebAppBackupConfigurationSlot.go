@@ -68,12 +68,8 @@ func (val *ListWebAppBackupConfigurationSlotResult) Defaults() *ListWebAppBackup
 	return &tmp
 }
 func ListWebAppBackupConfigurationSlotOutput(ctx *pulumi.Context, args ListWebAppBackupConfigurationSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppBackupConfigurationSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppBackupConfigurationSlotResultOutput, error) {
-			args := v.(ListWebAppBackupConfigurationSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppBackupConfigurationSlot", args, ListWebAppBackupConfigurationSlotResultOutput{}, options).(ListWebAppBackupConfigurationSlotResultOutput), nil
-		}).(ListWebAppBackupConfigurationSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppBackupConfigurationSlot", args, ListWebAppBackupConfigurationSlotResultOutput{}, options).(ListWebAppBackupConfigurationSlotResultOutput)
 }
 
 type ListWebAppBackupConfigurationSlotOutputArgs struct {

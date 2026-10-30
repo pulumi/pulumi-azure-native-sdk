@@ -40,12 +40,8 @@ type GetEventSubscriptionDeliveryAttributesResult struct {
 }
 
 func GetEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetEventSubscriptionDeliveryAttributesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEventSubscriptionDeliveryAttributesResultOutput, error) {
-			args := v.(GetEventSubscriptionDeliveryAttributesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getEventSubscriptionDeliveryAttributes", args, GetEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetEventSubscriptionDeliveryAttributesResultOutput), nil
-		}).(GetEventSubscriptionDeliveryAttributesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getEventSubscriptionDeliveryAttributes", args, GetEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetEventSubscriptionDeliveryAttributesResultOutput)
 }
 
 type GetEventSubscriptionDeliveryAttributesOutputArgs struct {

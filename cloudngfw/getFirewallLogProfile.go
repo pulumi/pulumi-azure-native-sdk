@@ -52,12 +52,8 @@ type GetFirewallLogProfileResult struct {
 }
 
 func GetFirewallLogProfileOutput(ctx *pulumi.Context, args GetFirewallLogProfileOutputArgs, opts ...pulumi.InvokeOption) GetFirewallLogProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFirewallLogProfileResultOutput, error) {
-			args := v.(GetFirewallLogProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getFirewallLogProfile", args, GetFirewallLogProfileResultOutput{}, options).(GetFirewallLogProfileResultOutput), nil
-		}).(GetFirewallLogProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getFirewallLogProfile", args, GetFirewallLogProfileResultOutput{}, options).(GetFirewallLogProfileResultOutput)
 }
 
 type GetFirewallLogProfileOutputArgs struct {

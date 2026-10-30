@@ -68,12 +68,8 @@ type LookupAPICollectionByAzureApiManagementServiceResult struct {
 }
 
 func LookupAPICollectionByAzureApiManagementServiceOutput(ctx *pulumi.Context, args LookupAPICollectionByAzureApiManagementServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAPICollectionByAzureApiManagementServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAPICollectionByAzureApiManagementServiceResultOutput, error) {
-			args := v.(LookupAPICollectionByAzureApiManagementServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getAPICollectionByAzureApiManagementService", args, LookupAPICollectionByAzureApiManagementServiceResultOutput{}, options).(LookupAPICollectionByAzureApiManagementServiceResultOutput), nil
-		}).(LookupAPICollectionByAzureApiManagementServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getAPICollectionByAzureApiManagementService", args, LookupAPICollectionByAzureApiManagementServiceResultOutput{}, options).(LookupAPICollectionByAzureApiManagementServiceResultOutput)
 }
 
 type LookupAPICollectionByAzureApiManagementServiceOutputArgs struct {

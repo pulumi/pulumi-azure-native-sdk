@@ -48,12 +48,8 @@ type LookupSecurityOperatorResult struct {
 }
 
 func LookupSecurityOperatorOutput(ctx *pulumi.Context, args LookupSecurityOperatorOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityOperatorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityOperatorResultOutput, error) {
-			args := v.(LookupSecurityOperatorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getSecurityOperator", args, LookupSecurityOperatorResultOutput{}, options).(LookupSecurityOperatorResultOutput), nil
-		}).(LookupSecurityOperatorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getSecurityOperator", args, LookupSecurityOperatorResultOutput{}, options).(LookupSecurityOperatorResultOutput)
 }
 
 type LookupSecurityOperatorOutputArgs struct {

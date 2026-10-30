@@ -56,12 +56,8 @@ type LookupHealthModelResult struct {
 }
 
 func LookupHealthModelOutput(ctx *pulumi.Context, args LookupHealthModelOutputArgs, opts ...pulumi.InvokeOption) LookupHealthModelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHealthModelResultOutput, error) {
-			args := v.(LookupHealthModelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getHealthModel", args, LookupHealthModelResultOutput{}, options).(LookupHealthModelResultOutput), nil
-		}).(LookupHealthModelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getHealthModel", args, LookupHealthModelResultOutput{}, options).(LookupHealthModelResultOutput)
 }
 
 type LookupHealthModelOutputArgs struct {

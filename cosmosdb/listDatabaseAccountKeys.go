@@ -46,12 +46,8 @@ type ListDatabaseAccountKeysResult struct {
 }
 
 func ListDatabaseAccountKeysOutput(ctx *pulumi.Context, args ListDatabaseAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDatabaseAccountKeysResultOutput, error) {
-			args := v.(ListDatabaseAccountKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:listDatabaseAccountKeys", args, ListDatabaseAccountKeysResultOutput{}, options).(ListDatabaseAccountKeysResultOutput), nil
-		}).(ListDatabaseAccountKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:listDatabaseAccountKeys", args, ListDatabaseAccountKeysResultOutput{}, options).(ListDatabaseAccountKeysResultOutput)
 }
 
 type ListDatabaseAccountKeysOutputArgs struct {

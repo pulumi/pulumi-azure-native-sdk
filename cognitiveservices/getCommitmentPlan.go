@@ -62,12 +62,8 @@ type LookupCommitmentPlanResult struct {
 }
 
 func LookupCommitmentPlanOutput(ctx *pulumi.Context, args LookupCommitmentPlanOutputArgs, opts ...pulumi.InvokeOption) LookupCommitmentPlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommitmentPlanResultOutput, error) {
-			args := v.(LookupCommitmentPlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getCommitmentPlan", args, LookupCommitmentPlanResultOutput{}, options).(LookupCommitmentPlanResultOutput), nil
-		}).(LookupCommitmentPlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getCommitmentPlan", args, LookupCommitmentPlanResultOutput{}, options).(LookupCommitmentPlanResultOutput)
 }
 
 type LookupCommitmentPlanOutputArgs struct {

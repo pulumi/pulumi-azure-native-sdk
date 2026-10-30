@@ -72,12 +72,8 @@ type LookupOperatorApiConnectionResult struct {
 }
 
 func LookupOperatorApiConnectionOutput(ctx *pulumi.Context, args LookupOperatorApiConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupOperatorApiConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOperatorApiConnectionResultOutput, error) {
-			args := v.(LookupOperatorApiConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:programmableconnectivity:getOperatorApiConnection", args, LookupOperatorApiConnectionResultOutput{}, options).(LookupOperatorApiConnectionResultOutput), nil
-		}).(LookupOperatorApiConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:programmableconnectivity:getOperatorApiConnection", args, LookupOperatorApiConnectionResultOutput{}, options).(LookupOperatorApiConnectionResultOutput)
 }
 
 type LookupOperatorApiConnectionOutputArgs struct {

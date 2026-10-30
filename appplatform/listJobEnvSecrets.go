@@ -40,12 +40,8 @@ type ListJobEnvSecretsResult struct {
 }
 
 func ListJobEnvSecretsOutput(ctx *pulumi.Context, args ListJobEnvSecretsOutputArgs, opts ...pulumi.InvokeOption) ListJobEnvSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListJobEnvSecretsResultOutput, error) {
-			args := v.(ListJobEnvSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:listJobEnvSecrets", args, ListJobEnvSecretsResultOutput{}, options).(ListJobEnvSecretsResultOutput), nil
-		}).(ListJobEnvSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:listJobEnvSecrets", args, ListJobEnvSecretsResultOutput{}, options).(ListJobEnvSecretsResultOutput)
 }
 
 type ListJobEnvSecretsOutputArgs struct {

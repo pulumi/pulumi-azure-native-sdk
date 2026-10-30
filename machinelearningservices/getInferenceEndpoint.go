@@ -71,12 +71,8 @@ func (val *LookupInferenceEndpointResult) Defaults() *LookupInferenceEndpointRes
 	return &tmp
 }
 func LookupInferenceEndpointOutput(ctx *pulumi.Context, args LookupInferenceEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupInferenceEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInferenceEndpointResultOutput, error) {
-			args := v.(LookupInferenceEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceEndpoint", args, LookupInferenceEndpointResultOutput{}, options).(LookupInferenceEndpointResultOutput), nil
-		}).(LookupInferenceEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceEndpoint", args, LookupInferenceEndpointResultOutput{}, options).(LookupInferenceEndpointResultOutput)
 }
 
 type LookupInferenceEndpointOutputArgs struct {

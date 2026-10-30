@@ -60,12 +60,8 @@ type LookupContainerAppsSourceControlResult struct {
 }
 
 func LookupContainerAppsSourceControlOutput(ctx *pulumi.Context, args LookupContainerAppsSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppsSourceControlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerAppsSourceControlResultOutput, error) {
-			args := v.(LookupContainerAppsSourceControlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getContainerAppsSourceControl", args, LookupContainerAppsSourceControlResultOutput{}, options).(LookupContainerAppsSourceControlResultOutput), nil
-		}).(LookupContainerAppsSourceControlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getContainerAppsSourceControl", args, LookupContainerAppsSourceControlResultOutput{}, options).(LookupContainerAppsSourceControlResultOutput)
 }
 
 type LookupContainerAppsSourceControlOutputArgs struct {

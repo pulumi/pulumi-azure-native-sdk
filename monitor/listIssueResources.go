@@ -46,12 +46,8 @@ type ListIssueResourcesResult struct {
 }
 
 func ListIssueResourcesOutput(ctx *pulumi.Context, args ListIssueResourcesOutputArgs, opts ...pulumi.InvokeOption) ListIssueResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIssueResourcesResultOutput, error) {
-			args := v.(ListIssueResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:listIssueResources", args, ListIssueResourcesResultOutput{}, options).(ListIssueResourcesResultOutput), nil
-		}).(ListIssueResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:listIssueResources", args, ListIssueResourcesResultOutput{}, options).(ListIssueResourcesResultOutput)
 }
 
 type ListIssueResourcesOutputArgs struct {

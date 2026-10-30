@@ -68,12 +68,8 @@ type LookupSoftwareUpdateConfigurationByNameResult struct {
 }
 
 func LookupSoftwareUpdateConfigurationByNameOutput(ctx *pulumi.Context, args LookupSoftwareUpdateConfigurationByNameOutputArgs, opts ...pulumi.InvokeOption) LookupSoftwareUpdateConfigurationByNameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSoftwareUpdateConfigurationByNameResultOutput, error) {
-			args := v.(LookupSoftwareUpdateConfigurationByNameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getSoftwareUpdateConfigurationByName", args, LookupSoftwareUpdateConfigurationByNameResultOutput{}, options).(LookupSoftwareUpdateConfigurationByNameResultOutput), nil
-		}).(LookupSoftwareUpdateConfigurationByNameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getSoftwareUpdateConfigurationByName", args, LookupSoftwareUpdateConfigurationByNameResultOutput{}, options).(LookupSoftwareUpdateConfigurationByNameResultOutput)
 }
 
 type LookupSoftwareUpdateConfigurationByNameOutputArgs struct {

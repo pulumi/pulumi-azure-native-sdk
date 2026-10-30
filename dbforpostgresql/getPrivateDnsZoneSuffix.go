@@ -35,12 +35,8 @@ type GetPrivateDnsZoneSuffixResult struct {
 }
 
 func GetPrivateDnsZoneSuffixOutput(ctx *pulumi.Context, args GetPrivateDnsZoneSuffixOutputArgs, opts ...pulumi.InvokeOption) GetPrivateDnsZoneSuffixResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPrivateDnsZoneSuffixResultOutput, error) {
-			args := v.(GetPrivateDnsZoneSuffixArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getPrivateDnsZoneSuffix", args, GetPrivateDnsZoneSuffixResultOutput{}, options).(GetPrivateDnsZoneSuffixResultOutput), nil
-		}).(GetPrivateDnsZoneSuffixResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getPrivateDnsZoneSuffix", args, GetPrivateDnsZoneSuffixResultOutput{}, options).(GetPrivateDnsZoneSuffixResultOutput)
 }
 
 type GetPrivateDnsZoneSuffixOutputArgs struct {

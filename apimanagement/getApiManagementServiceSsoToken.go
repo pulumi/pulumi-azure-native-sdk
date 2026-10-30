@@ -40,12 +40,8 @@ type GetApiManagementServiceSsoTokenResult struct {
 }
 
 func GetApiManagementServiceSsoTokenOutput(ctx *pulumi.Context, args GetApiManagementServiceSsoTokenOutputArgs, opts ...pulumi.InvokeOption) GetApiManagementServiceSsoTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApiManagementServiceSsoTokenResultOutput, error) {
-			args := v.(GetApiManagementServiceSsoTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementServiceSsoToken", args, GetApiManagementServiceSsoTokenResultOutput{}, options).(GetApiManagementServiceSsoTokenResultOutput), nil
-		}).(GetApiManagementServiceSsoTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementServiceSsoToken", args, GetApiManagementServiceSsoTokenResultOutput{}, options).(GetApiManagementServiceSsoTokenResultOutput)
 }
 
 type GetApiManagementServiceSsoTokenOutputArgs struct {

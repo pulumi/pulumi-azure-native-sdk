@@ -54,12 +54,8 @@ type LookupVirtualNetworkRuleResult struct {
 }
 
 func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualNetworkRuleResultOutput, error) {
-			args := v.(LookupVirtualNetworkRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getVirtualNetworkRule", args, LookupVirtualNetworkRuleResultOutput{}, options).(LookupVirtualNetworkRuleResultOutput), nil
-		}).(LookupVirtualNetworkRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getVirtualNetworkRule", args, LookupVirtualNetworkRuleResultOutput{}, options).(LookupVirtualNetworkRuleResultOutput)
 }
 
 type LookupVirtualNetworkRuleOutputArgs struct {

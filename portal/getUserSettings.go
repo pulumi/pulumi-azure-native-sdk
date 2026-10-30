@@ -38,12 +38,8 @@ type LookupUserSettingsResult struct {
 }
 
 func LookupUserSettingsOutput(ctx *pulumi.Context, args LookupUserSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupUserSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserSettingsResultOutput, error) {
-			args := v.(LookupUserSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:portal:getUserSettings", args, LookupUserSettingsResultOutput{}, options).(LookupUserSettingsResultOutput), nil
-		}).(LookupUserSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:portal:getUserSettings", args, LookupUserSettingsResultOutput{}, options).(LookupUserSettingsResultOutput)
 }
 
 type LookupUserSettingsOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupClusterInstanceHybridIdentityMetadatumResult struct {
 }
 
 func LookupClusterInstanceHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupClusterInstanceHybridIdentityMetadatumOutputArgs, opts ...pulumi.InvokeOption) LookupClusterInstanceHybridIdentityMetadatumResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterInstanceHybridIdentityMetadatumResultOutput, error) {
-			args := v.(LookupClusterInstanceHybridIdentityMetadatumArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcontainerservice:getClusterInstanceHybridIdentityMetadatum", args, LookupClusterInstanceHybridIdentityMetadatumResultOutput{}, options).(LookupClusterInstanceHybridIdentityMetadatumResultOutput), nil
-		}).(LookupClusterInstanceHybridIdentityMetadatumResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcontainerservice:getClusterInstanceHybridIdentityMetadatum", args, LookupClusterInstanceHybridIdentityMetadatumResultOutput{}, options).(LookupClusterInstanceHybridIdentityMetadatumResultOutput)
 }
 
 type LookupClusterInstanceHybridIdentityMetadatumOutputArgs struct {

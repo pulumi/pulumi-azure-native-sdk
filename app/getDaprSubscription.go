@@ -74,12 +74,8 @@ func (val *LookupDaprSubscriptionResult) Defaults() *LookupDaprSubscriptionResul
 	return &tmp
 }
 func LookupDaprSubscriptionOutput(ctx *pulumi.Context, args LookupDaprSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDaprSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDaprSubscriptionResultOutput, error) {
-			args := v.(LookupDaprSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getDaprSubscription", args, LookupDaprSubscriptionResultOutput{}, options).(LookupDaprSubscriptionResultOutput), nil
-		}).(LookupDaprSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getDaprSubscription", args, LookupDaprSubscriptionResultOutput{}, options).(LookupDaprSubscriptionResultOutput)
 }
 
 type LookupDaprSubscriptionOutputArgs struct {

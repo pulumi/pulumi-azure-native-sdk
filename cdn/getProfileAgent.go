@@ -54,12 +54,8 @@ type LookupProfileAgentResult struct {
 }
 
 func LookupProfileAgentOutput(ctx *pulumi.Context, args LookupProfileAgentOutputArgs, opts ...pulumi.InvokeOption) LookupProfileAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProfileAgentResultOutput, error) {
-			args := v.(LookupProfileAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getProfileAgent", args, LookupProfileAgentResultOutput{}, options).(LookupProfileAgentResultOutput), nil
-		}).(LookupProfileAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getProfileAgent", args, LookupProfileAgentResultOutput{}, options).(LookupProfileAgentResultOutput)
 }
 
 type LookupProfileAgentOutputArgs struct {

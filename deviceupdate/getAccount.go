@@ -82,12 +82,8 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 	return &tmp
 }
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
-			args := v.(LookupAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceupdate:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput), nil
-		}).(LookupAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceupdate:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput)
 }
 
 type LookupAccountOutputArgs struct {

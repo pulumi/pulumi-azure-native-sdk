@@ -46,12 +46,8 @@ type ListWebPubSubKeysResult struct {
 }
 
 func ListWebPubSubKeysOutput(ctx *pulumi.Context, args ListWebPubSubKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebPubSubKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebPubSubKeysResultOutput, error) {
-			args := v.(ListWebPubSubKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:webpubsub:listWebPubSubKeys", args, ListWebPubSubKeysResultOutput{}, options).(ListWebPubSubKeysResultOutput), nil
-		}).(ListWebPubSubKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:webpubsub:listWebPubSubKeys", args, ListWebPubSubKeysResultOutput{}, options).(ListWebPubSubKeysResultOutput)
 }
 
 type ListWebPubSubKeysOutputArgs struct {

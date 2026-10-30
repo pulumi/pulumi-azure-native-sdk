@@ -876,34 +876,16 @@ func (in *comparisonOperationTypePtr) ToComparisonOperationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ComparisonOperationTypePtrOutput)
 }
 
-// Operator used in the filtering condition.
+// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 type ConditionOperator string
 
 const (
-	// Equal to.
-	ConditionOperatorEqual = ConditionOperator("eq")
-	// Not equal to.
-	ConditionOperatorNotEqual = ConditionOperator("ne")
-	// Less than.
-	ConditionOperatorLessThan = ConditionOperator("lt")
-	// Less than or equal to.
-	ConditionOperatorLessThanOrEqual = ConditionOperator("lte")
-	// Greater than.
-	ConditionOperatorGreaterThan = ConditionOperator("gt")
-	// Greater than or equal to.
-	ConditionOperatorGreaterThanOrEqual = ConditionOperator("gte")
-	// Matches when `value` is one of the items in the `^^`-delimited list (for example, `value` = "east^^west^^north").
-	ConditionOperatorIn = ConditionOperator("in")
-	// Matches when `value` is none of the items in the `^^`-delimited list (for example, `value` = "east^^west^^north").
-	ConditionOperatorNotIn = ConditionOperator("notin")
-	// Starts with.
-	ConditionOperatorStartsWith = ConditionOperator("startswith")
-	// Does not start with.
-	ConditionOperatorNotStartsWith = ConditionOperator("notstartswith")
-	// Contains the value.
-	ConditionOperatorContains = ConditionOperator("contains")
-	// Does not contain the value.
-	ConditionOperatorNotContains = ConditionOperator("notcontains")
+	ConditionOperatorEquals             = ConditionOperator("Equals")
+	ConditionOperatorGreaterThan        = ConditionOperator("GreaterThan")
+	ConditionOperatorGreaterThanOrEqual = ConditionOperator("GreaterThanOrEqual")
+	ConditionOperatorLessThan           = ConditionOperator("LessThan")
+	ConditionOperatorLessThanOrEqual    = ConditionOperator("LessThanOrEqual")
+	ConditionOperatorGreaterOrLessThan  = ConditionOperator("GreaterOrLessThan")
 )
 
 func (ConditionOperator) ElementType() reflect.Type {
@@ -1028,18 +1010,12 @@ func (o ConditionOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // ConditionOperatorInput is an input type that accepts values of the ConditionOperator enum
 // A concrete instance of `ConditionOperatorInput` can be one of the following:
 //
-//	ConditionOperatorEqual
-//	ConditionOperatorNotEqual
-//	ConditionOperatorLessThan
-//	ConditionOperatorLessThanOrEqual
+//	ConditionOperatorEquals
 //	ConditionOperatorGreaterThan
 //	ConditionOperatorGreaterThanOrEqual
-//	ConditionOperatorIn
-//	ConditionOperatorNotIn
-//	ConditionOperatorStartsWith
-//	ConditionOperatorNotStartsWith
-//	ConditionOperatorContains
-//	ConditionOperatorNotContains
+//	ConditionOperatorLessThan
+//	ConditionOperatorLessThanOrEqual
+//	ConditionOperatorGreaterOrLessThan
 type ConditionOperatorInput interface {
 	pulumi.Input
 
@@ -1078,9 +1054,7 @@ func (in *conditionOperatorPtr) ToConditionOperatorPtrOutputWithContext(ctx cont
 type CriterionType string
 
 const (
-	// StaticThresholdCriterion
-	CriterionTypeStaticThresholdCriterion = CriterionType("StaticThresholdCriterion")
-	// DynamicThresholdCriterion
+	CriterionTypeStaticThresholdCriterion  = CriterionType("StaticThresholdCriterion")
 	CriterionTypeDynamicThresholdCriterion = CriterionType("DynamicThresholdCriterion")
 )
 
@@ -1414,9 +1388,7 @@ func (in *dependenciesAggregationTypePtr) ToDependenciesAggregationTypePtrOutput
 type DimensionOperator string
 
 const (
-	// Include
 	DimensionOperatorInclude = DimensionOperator("Include")
-	// Exclude
 	DimensionOperatorExclude = DimensionOperator("Exclude")
 )
 
@@ -3606,12 +3578,9 @@ func (in *externalNetworkingModePtr) ToExternalNetworkingModePtrOutputWithContex
 type IdentityType string
 
 const (
-	// SystemAssigned
 	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
-	// UserAssigned
-	IdentityTypeUserAssigned = IdentityType("UserAssigned")
-	// None
-	IdentityTypeNone = IdentityType("None")
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	IdentityTypeNone           = IdentityType("None")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -4110,12 +4079,9 @@ func (in *jsonMapperElementPtr) ToJsonMapperElementPtrOutputWithContext(ctx cont
 type Kind string
 
 const (
-	// LogAlert
-	KindLogAlert = Kind("LogAlert")
-	// SimpleLogAlert
+	KindLogAlert       = Kind("LogAlert")
 	KindSimpleLogAlert = Kind("SimpleLogAlert")
-	// LogToMetric
-	KindLogToMetric = Kind("LogToMetric")
+	KindLogToMetric    = Kind("LogToMetric")
 )
 
 func (Kind) ElementType() reflect.Type {
@@ -10126,6 +10092,204 @@ func (in *signalOperatorPtr) ToSignalOperatorPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(SignalOperatorPtrOutput)
 }
 
+// Operator used in the filtering condition.
+type SliConditionOperator string
+
+const (
+	// Equal to.
+	SliConditionOperatorEqual = SliConditionOperator("eq")
+	// Not equal to.
+	SliConditionOperatorNotEqual = SliConditionOperator("ne")
+	// Less than.
+	SliConditionOperatorLessThan = SliConditionOperator("lt")
+	// Less than or equal to.
+	SliConditionOperatorLessThanOrEqual = SliConditionOperator("lte")
+	// Greater than.
+	SliConditionOperatorGreaterThan = SliConditionOperator("gt")
+	// Greater than or equal to.
+	SliConditionOperatorGreaterThanOrEqual = SliConditionOperator("gte")
+	// Matches when `value` is one of the items in the `^^`-delimited list (for example, `value` = "east^^west^^north").
+	SliConditionOperatorIn = SliConditionOperator("in")
+	// Matches when `value` is none of the items in the `^^`-delimited list (for example, `value` = "east^^west^^north").
+	SliConditionOperatorNotIn = SliConditionOperator("notin")
+	// Starts with.
+	SliConditionOperatorStartsWith = SliConditionOperator("startswith")
+	// Does not start with.
+	SliConditionOperatorNotStartsWith = SliConditionOperator("notstartswith")
+	// Contains the value.
+	SliConditionOperatorContains = SliConditionOperator("contains")
+	// Does not contain the value.
+	SliConditionOperatorNotContains = SliConditionOperator("notcontains")
+)
+
+func (SliConditionOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*SliConditionOperator)(nil)).Elem()
+}
+
+func (e SliConditionOperator) ToSliConditionOperatorOutput() SliConditionOperatorOutput {
+	return pulumi.ToOutput(e).(SliConditionOperatorOutput)
+}
+
+func (e SliConditionOperator) ToSliConditionOperatorOutputWithContext(ctx context.Context) SliConditionOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SliConditionOperatorOutput)
+}
+
+func (e SliConditionOperator) ToSliConditionOperatorPtrOutput() SliConditionOperatorPtrOutput {
+	return e.ToSliConditionOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e SliConditionOperator) ToSliConditionOperatorPtrOutputWithContext(ctx context.Context) SliConditionOperatorPtrOutput {
+	return SliConditionOperator(e).ToSliConditionOperatorOutputWithContext(ctx).ToSliConditionOperatorPtrOutputWithContext(ctx)
+}
+
+func (e SliConditionOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SliConditionOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SliConditionOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SliConditionOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SliConditionOperatorOutput struct{ *pulumi.OutputState }
+
+func (SliConditionOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SliConditionOperator)(nil)).Elem()
+}
+
+func (o SliConditionOperatorOutput) ToSliConditionOperatorOutput() SliConditionOperatorOutput {
+	return o
+}
+
+func (o SliConditionOperatorOutput) ToSliConditionOperatorOutputWithContext(ctx context.Context) SliConditionOperatorOutput {
+	return o
+}
+
+func (o SliConditionOperatorOutput) ToSliConditionOperatorPtrOutput() SliConditionOperatorPtrOutput {
+	return o.ToSliConditionOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o SliConditionOperatorOutput) ToSliConditionOperatorPtrOutputWithContext(ctx context.Context) SliConditionOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SliConditionOperator) *SliConditionOperator {
+		return &v
+	}).(SliConditionOperatorPtrOutput)
+}
+
+func (o SliConditionOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SliConditionOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SliConditionOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SliConditionOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SliConditionOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SliConditionOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SliConditionOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (SliConditionOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SliConditionOperator)(nil)).Elem()
+}
+
+func (o SliConditionOperatorPtrOutput) ToSliConditionOperatorPtrOutput() SliConditionOperatorPtrOutput {
+	return o
+}
+
+func (o SliConditionOperatorPtrOutput) ToSliConditionOperatorPtrOutputWithContext(ctx context.Context) SliConditionOperatorPtrOutput {
+	return o
+}
+
+func (o SliConditionOperatorPtrOutput) Elem() SliConditionOperatorOutput {
+	return o.ApplyT(func(v *SliConditionOperator) SliConditionOperator {
+		if v != nil {
+			return *v
+		}
+		var ret SliConditionOperator
+		return ret
+	}).(SliConditionOperatorOutput)
+}
+
+func (o SliConditionOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SliConditionOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SliConditionOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SliConditionOperatorInput is an input type that accepts values of the SliConditionOperator enum
+// A concrete instance of `SliConditionOperatorInput` can be one of the following:
+//
+//	SliConditionOperatorEqual
+//	SliConditionOperatorNotEqual
+//	SliConditionOperatorLessThan
+//	SliConditionOperatorLessThanOrEqual
+//	SliConditionOperatorGreaterThan
+//	SliConditionOperatorGreaterThanOrEqual
+//	SliConditionOperatorIn
+//	SliConditionOperatorNotIn
+//	SliConditionOperatorStartsWith
+//	SliConditionOperatorNotStartsWith
+//	SliConditionOperatorContains
+//	SliConditionOperatorNotContains
+type SliConditionOperatorInput interface {
+	pulumi.Input
+
+	ToSliConditionOperatorOutput() SliConditionOperatorOutput
+	ToSliConditionOperatorOutputWithContext(context.Context) SliConditionOperatorOutput
+}
+
+var sliConditionOperatorPtrType = reflect.TypeOf((**SliConditionOperator)(nil)).Elem()
+
+type SliConditionOperatorPtrInput interface {
+	pulumi.Input
+
+	ToSliConditionOperatorPtrOutput() SliConditionOperatorPtrOutput
+	ToSliConditionOperatorPtrOutputWithContext(context.Context) SliConditionOperatorPtrOutput
+}
+
+type sliConditionOperatorPtr string
+
+func SliConditionOperatorPtr(v string) SliConditionOperatorPtrInput {
+	return (*sliConditionOperatorPtr)(&v)
+}
+
+func (*sliConditionOperatorPtr) ElementType() reflect.Type {
+	return sliConditionOperatorPtrType
+}
+
+func (in *sliConditionOperatorPtr) ToSliConditionOperatorPtrOutput() SliConditionOperatorPtrOutput {
+	return pulumi.ToOutput(in).(SliConditionOperatorPtrOutput)
+}
+
+func (in *sliConditionOperatorPtr) ToSliConditionOperatorPtrOutputWithContext(ctx context.Context) SliConditionOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SliConditionOperatorPtrOutput)
+}
+
 // Type of spatial aggregation.
 type SpatialAggregationType string
 
@@ -11021,16 +11185,11 @@ func (in *temporalAggregationTypePtr) ToTemporalAggregationTypePtrOutputWithCont
 type TimeAggregation string
 
 const (
-	// Count
-	TimeAggregationCount = TimeAggregation("Count")
-	// Average
+	TimeAggregationCount   = TimeAggregation("Count")
 	TimeAggregationAverage = TimeAggregation("Average")
-	// Minimum
 	TimeAggregationMinimum = TimeAggregation("Minimum")
-	// Maximum
 	TimeAggregationMaximum = TimeAggregation("Maximum")
-	// Total
-	TimeAggregationTotal = TimeAggregation("Total")
+	TimeAggregationTotal   = TimeAggregation("Total")
 )
 
 func (TimeAggregation) ElementType() reflect.Type {
@@ -11661,6 +11820,8 @@ func init() {
 	pulumi.RegisterOutputType(ScopedResourceKindPtrOutput{})
 	pulumi.RegisterOutputType(SignalOperatorOutput{})
 	pulumi.RegisterOutputType(SignalOperatorPtrOutput{})
+	pulumi.RegisterOutputType(SliConditionOperatorOutput{})
+	pulumi.RegisterOutputType(SliConditionOperatorPtrOutput{})
 	pulumi.RegisterOutputType(SpatialAggregationTypeOutput{})
 	pulumi.RegisterOutputType(SpatialAggregationTypePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})

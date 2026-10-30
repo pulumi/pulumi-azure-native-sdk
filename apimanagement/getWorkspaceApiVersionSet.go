@@ -60,12 +60,8 @@ type LookupWorkspaceApiVersionSetResult struct {
 }
 
 func LookupWorkspaceApiVersionSetOutput(ctx *pulumi.Context, args LookupWorkspaceApiVersionSetOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceApiVersionSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceApiVersionSetResultOutput, error) {
-			args := v.(LookupWorkspaceApiVersionSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceApiVersionSet", args, LookupWorkspaceApiVersionSetResultOutput{}, options).(LookupWorkspaceApiVersionSetResultOutput), nil
-		}).(LookupWorkspaceApiVersionSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceApiVersionSet", args, LookupWorkspaceApiVersionSetResultOutput{}, options).(LookupWorkspaceApiVersionSetResultOutput)
 }
 
 type LookupWorkspaceApiVersionSetOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupPeeringResult struct {
 }
 
 func LookupPeeringOutput(ctx *pulumi.Context, args LookupPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPeeringResultOutput, error) {
-			args := v.(LookupPeeringArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:peering:getPeering", args, LookupPeeringResultOutput{}, options).(LookupPeeringResultOutput), nil
-		}).(LookupPeeringResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:peering:getPeering", args, LookupPeeringResultOutput{}, options).(LookupPeeringResultOutput)
 }
 
 type LookupPeeringOutputArgs struct {

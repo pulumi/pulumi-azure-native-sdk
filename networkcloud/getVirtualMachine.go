@@ -131,12 +131,8 @@ func (val *LookupVirtualMachineResult) Defaults() *LookupVirtualMachineResult {
 	return &tmp
 }
 func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineResultOutput, error) {
-			args := v.(LookupVirtualMachineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getVirtualMachine", args, LookupVirtualMachineResultOutput{}, options).(LookupVirtualMachineResultOutput), nil
-		}).(LookupVirtualMachineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getVirtualMachine", args, LookupVirtualMachineResultOutput{}, options).(LookupVirtualMachineResultOutput)
 }
 
 type LookupVirtualMachineOutputArgs struct {

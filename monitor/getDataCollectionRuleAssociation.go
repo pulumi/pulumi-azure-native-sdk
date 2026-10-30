@@ -60,12 +60,8 @@ type LookupDataCollectionRuleAssociationResult struct {
 }
 
 func LookupDataCollectionRuleAssociationOutput(ctx *pulumi.Context, args LookupDataCollectionRuleAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupDataCollectionRuleAssociationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataCollectionRuleAssociationResultOutput, error) {
-			args := v.(LookupDataCollectionRuleAssociationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getDataCollectionRuleAssociation", args, LookupDataCollectionRuleAssociationResultOutput{}, options).(LookupDataCollectionRuleAssociationResultOutput), nil
-		}).(LookupDataCollectionRuleAssociationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getDataCollectionRuleAssociation", args, LookupDataCollectionRuleAssociationResultOutput{}, options).(LookupDataCollectionRuleAssociationResultOutput)
 }
 
 type LookupDataCollectionRuleAssociationOutputArgs struct {

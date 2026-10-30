@@ -50,12 +50,8 @@ type LookupManagedNetworkPeeringPolicyResult struct {
 }
 
 func LookupManagedNetworkPeeringPolicyOutput(ctx *pulumi.Context, args LookupManagedNetworkPeeringPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkPeeringPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedNetworkPeeringPolicyResultOutput, error) {
-			args := v.(LookupManagedNetworkPeeringPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetwork:getManagedNetworkPeeringPolicy", args, LookupManagedNetworkPeeringPolicyResultOutput{}, options).(LookupManagedNetworkPeeringPolicyResultOutput), nil
-		}).(LookupManagedNetworkPeeringPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetwork:getManagedNetworkPeeringPolicy", args, LookupManagedNetworkPeeringPolicyResultOutput{}, options).(LookupManagedNetworkPeeringPolicyResultOutput)
 }
 
 type LookupManagedNetworkPeeringPolicyOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupNotebookWorkspaceResult struct {
 }
 
 func LookupNotebookWorkspaceOutput(ctx *pulumi.Context, args LookupNotebookWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotebookWorkspaceResultOutput, error) {
-			args := v.(LookupNotebookWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getNotebookWorkspace", args, LookupNotebookWorkspaceResultOutput{}, options).(LookupNotebookWorkspaceResultOutput), nil
-		}).(LookupNotebookWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getNotebookWorkspace", args, LookupNotebookWorkspaceResultOutput{}, options).(LookupNotebookWorkspaceResultOutput)
 }
 
 type LookupNotebookWorkspaceOutputArgs struct {

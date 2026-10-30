@@ -93,12 +93,8 @@ func (val *LookupPartnerNamespaceResult) Defaults() *LookupPartnerNamespaceResul
 	return &tmp
 }
 func LookupPartnerNamespaceOutput(ctx *pulumi.Context, args LookupPartnerNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerNamespaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPartnerNamespaceResultOutput, error) {
-			args := v.(LookupPartnerNamespaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getPartnerNamespace", args, LookupPartnerNamespaceResultOutput{}, options).(LookupPartnerNamespaceResultOutput), nil
-		}).(LookupPartnerNamespaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getPartnerNamespace", args, LookupPartnerNamespaceResultOutput{}, options).(LookupPartnerNamespaceResultOutput)
 }
 
 type LookupPartnerNamespaceOutputArgs struct {

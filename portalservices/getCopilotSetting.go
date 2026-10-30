@@ -48,12 +48,8 @@ type LookupCopilotSettingResult struct {
 }
 
 func LookupCopilotSettingOutput(ctx *pulumi.Context, args LookupCopilotSettingOutputArgs, opts ...pulumi.InvokeOption) LookupCopilotSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCopilotSettingResultOutput, error) {
-			args := v.(LookupCopilotSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:portalservices:getCopilotSetting", args, LookupCopilotSettingResultOutput{}, options).(LookupCopilotSettingResultOutput), nil
-		}).(LookupCopilotSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:portalservices:getCopilotSetting", args, LookupCopilotSettingResultOutput{}, options).(LookupCopilotSettingResultOutput)
 }
 
 type LookupCopilotSettingOutputArgs struct {

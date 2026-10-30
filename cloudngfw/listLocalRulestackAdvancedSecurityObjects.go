@@ -45,12 +45,8 @@ type ListLocalRulestackAdvancedSecurityObjectsResult struct {
 }
 
 func ListLocalRulestackAdvancedSecurityObjectsOutput(ctx *pulumi.Context, args ListLocalRulestackAdvancedSecurityObjectsOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackAdvancedSecurityObjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListLocalRulestackAdvancedSecurityObjectsResultOutput, error) {
-			args := v.(ListLocalRulestackAdvancedSecurityObjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listLocalRulestackAdvancedSecurityObjects", args, ListLocalRulestackAdvancedSecurityObjectsResultOutput{}, options).(ListLocalRulestackAdvancedSecurityObjectsResultOutput), nil
-		}).(ListLocalRulestackAdvancedSecurityObjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listLocalRulestackAdvancedSecurityObjects", args, ListLocalRulestackAdvancedSecurityObjectsResultOutput{}, options).(ListLocalRulestackAdvancedSecurityObjectsResultOutput)
 }
 
 type ListLocalRulestackAdvancedSecurityObjectsOutputArgs struct {

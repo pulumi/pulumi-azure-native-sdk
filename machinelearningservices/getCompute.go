@@ -60,12 +60,8 @@ type LookupComputeResult struct {
 }
 
 func LookupComputeOutput(ctx *pulumi.Context, args LookupComputeOutputArgs, opts ...pulumi.InvokeOption) LookupComputeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComputeResultOutput, error) {
-			args := v.(LookupComputeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getCompute", args, LookupComputeResultOutput{}, options).(LookupComputeResultOutput), nil
-		}).(LookupComputeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getCompute", args, LookupComputeResultOutput{}, options).(LookupComputeResultOutput)
 }
 
 type LookupComputeOutputArgs struct {

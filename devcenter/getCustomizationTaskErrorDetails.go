@@ -44,12 +44,8 @@ type GetCustomizationTaskErrorDetailsResult struct {
 }
 
 func GetCustomizationTaskErrorDetailsOutput(ctx *pulumi.Context, args GetCustomizationTaskErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetCustomizationTaskErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomizationTaskErrorDetailsResultOutput, error) {
-			args := v.(GetCustomizationTaskErrorDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getCustomizationTaskErrorDetails", args, GetCustomizationTaskErrorDetailsResultOutput{}, options).(GetCustomizationTaskErrorDetailsResultOutput), nil
-		}).(GetCustomizationTaskErrorDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getCustomizationTaskErrorDetails", args, GetCustomizationTaskErrorDetailsResultOutput{}, options).(GetCustomizationTaskErrorDetailsResultOutput)
 }
 
 type GetCustomizationTaskErrorDetailsOutputArgs struct {

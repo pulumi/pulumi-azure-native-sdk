@@ -44,12 +44,8 @@ type GetSAPAvailabilityZoneDetailsResult struct {
 }
 
 func GetSAPAvailabilityZoneDetailsOutput(ctx *pulumi.Context, args GetSAPAvailabilityZoneDetailsOutputArgs, opts ...pulumi.InvokeOption) GetSAPAvailabilityZoneDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSAPAvailabilityZoneDetailsResultOutput, error) {
-			args := v.(GetSAPAvailabilityZoneDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSAPAvailabilityZoneDetails", args, GetSAPAvailabilityZoneDetailsResultOutput{}, options).(GetSAPAvailabilityZoneDetailsResultOutput), nil
-		}).(GetSAPAvailabilityZoneDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSAPAvailabilityZoneDetails", args, GetSAPAvailabilityZoneDetailsResultOutput{}, options).(GetSAPAvailabilityZoneDetailsResultOutput)
 }
 
 type GetSAPAvailabilityZoneDetailsOutputArgs struct {

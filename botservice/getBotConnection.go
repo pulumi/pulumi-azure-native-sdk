@@ -74,12 +74,8 @@ func (val *LookupBotConnectionResult) Defaults() *LookupBotConnectionResult {
 	return &tmp
 }
 func LookupBotConnectionOutput(ctx *pulumi.Context, args LookupBotConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupBotConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBotConnectionResultOutput, error) {
-			args := v.(LookupBotConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:botservice:getBotConnection", args, LookupBotConnectionResultOutput{}, options).(LookupBotConnectionResultOutput), nil
-		}).(LookupBotConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:botservice:getBotConnection", args, LookupBotConnectionResultOutput{}, options).(LookupBotConnectionResultOutput)
 }
 
 type LookupBotConnectionOutputArgs struct {

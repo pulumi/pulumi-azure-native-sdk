@@ -58,12 +58,8 @@ type LookupGeoBackupPolicyResult struct {
 }
 
 func LookupGeoBackupPolicyOutput(ctx *pulumi.Context, args LookupGeoBackupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGeoBackupPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGeoBackupPolicyResultOutput, error) {
-			args := v.(LookupGeoBackupPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getGeoBackupPolicy", args, LookupGeoBackupPolicyResultOutput{}, options).(LookupGeoBackupPolicyResultOutput), nil
-		}).(LookupGeoBackupPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getGeoBackupPolicy", args, LookupGeoBackupPolicyResultOutput{}, options).(LookupGeoBackupPolicyResultOutput)
 }
 
 type LookupGeoBackupPolicyOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupIncidentRelationResult struct {
 }
 
 func LookupIncidentRelationOutput(ctx *pulumi.Context, args LookupIncidentRelationOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentRelationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIncidentRelationResultOutput, error) {
-			args := v.(LookupIncidentRelationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getIncidentRelation", args, LookupIncidentRelationResultOutput{}, options).(LookupIncidentRelationResultOutput), nil
-		}).(LookupIncidentRelationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getIncidentRelation", args, LookupIncidentRelationResultOutput{}, options).(LookupIncidentRelationResultOutput)
 }
 
 type LookupIncidentRelationOutputArgs struct {

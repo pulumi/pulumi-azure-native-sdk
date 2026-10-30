@@ -50,12 +50,8 @@ type LookupAssociatedTenantResult struct {
 }
 
 func LookupAssociatedTenantOutput(ctx *pulumi.Context, args LookupAssociatedTenantOutputArgs, opts ...pulumi.InvokeOption) LookupAssociatedTenantResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssociatedTenantResultOutput, error) {
-			args := v.(LookupAssociatedTenantArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billing:getAssociatedTenant", args, LookupAssociatedTenantResultOutput{}, options).(LookupAssociatedTenantResultOutput), nil
-		}).(LookupAssociatedTenantResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billing:getAssociatedTenant", args, LookupAssociatedTenantResultOutput{}, options).(LookupAssociatedTenantResultOutput)
 }
 
 type LookupAssociatedTenantOutputArgs struct {
