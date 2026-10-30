@@ -51,12 +51,8 @@ type LookupSkusResult struct {
 }
 
 func LookupSkusOutput(ctx *pulumi.Context, args LookupSkusOutputArgs, opts ...pulumi.InvokeOption) LookupSkusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSkusResultOutput, error) {
-			args := v.(LookupSkusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getSkus", args, LookupSkusResultOutput{}, options).(LookupSkusResultOutput), nil
-		}).(LookupSkusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getSkus", args, LookupSkusResultOutput{}, options).(LookupSkusResultOutput)
 }
 
 type LookupSkusOutputArgs struct {

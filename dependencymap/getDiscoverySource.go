@@ -56,12 +56,8 @@ type LookupDiscoverySourceResult struct {
 }
 
 func LookupDiscoverySourceOutput(ctx *pulumi.Context, args LookupDiscoverySourceOutputArgs, opts ...pulumi.InvokeOption) LookupDiscoverySourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscoverySourceResultOutput, error) {
-			args := v.(LookupDiscoverySourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dependencymap:getDiscoverySource", args, LookupDiscoverySourceResultOutput{}, options).(LookupDiscoverySourceResultOutput), nil
-		}).(LookupDiscoverySourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dependencymap:getDiscoverySource", args, LookupDiscoverySourceResultOutput{}, options).(LookupDiscoverySourceResultOutput)
 }
 
 type LookupDiscoverySourceOutputArgs struct {

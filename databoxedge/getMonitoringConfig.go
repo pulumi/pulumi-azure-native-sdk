@@ -52,12 +52,8 @@ type LookupMonitoringConfigResult struct {
 }
 
 func LookupMonitoringConfigOutput(ctx *pulumi.Context, args LookupMonitoringConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoringConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitoringConfigResultOutput, error) {
-			args := v.(LookupMonitoringConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:getMonitoringConfig", args, LookupMonitoringConfigResultOutput{}, options).(LookupMonitoringConfigResultOutput), nil
-		}).(LookupMonitoringConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:getMonitoringConfig", args, LookupMonitoringConfigResultOutput{}, options).(LookupMonitoringConfigResultOutput)
 }
 
 type LookupMonitoringConfigOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupAssociationsInterfaceResult struct {
 }
 
 func LookupAssociationsInterfaceOutput(ctx *pulumi.Context, args LookupAssociationsInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupAssociationsInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssociationsInterfaceResultOutput, error) {
-			args := v.(LookupAssociationsInterfaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicenetworking:getAssociationsInterface", args, LookupAssociationsInterfaceResultOutput{}, options).(LookupAssociationsInterfaceResultOutput), nil
-		}).(LookupAssociationsInterfaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicenetworking:getAssociationsInterface", args, LookupAssociationsInterfaceResultOutput{}, options).(LookupAssociationsInterfaceResultOutput)
 }
 
 type LookupAssociationsInterfaceOutputArgs struct {

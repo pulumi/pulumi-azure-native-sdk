@@ -52,12 +52,8 @@ type LookupGuardDutyDetectorResult struct {
 }
 
 func LookupGuardDutyDetectorOutput(ctx *pulumi.Context, args LookupGuardDutyDetectorOutputArgs, opts ...pulumi.InvokeOption) LookupGuardDutyDetectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGuardDutyDetectorResultOutput, error) {
-			args := v.(LookupGuardDutyDetectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getGuardDutyDetector", args, LookupGuardDutyDetectorResultOutput{}, options).(LookupGuardDutyDetectorResultOutput), nil
-		}).(LookupGuardDutyDetectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getGuardDutyDetector", args, LookupGuardDutyDetectorResultOutput{}, options).(LookupGuardDutyDetectorResultOutput)
 }
 
 type LookupGuardDutyDetectorOutputArgs struct {

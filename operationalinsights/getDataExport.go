@@ -62,12 +62,8 @@ type LookupDataExportResult struct {
 }
 
 func LookupDataExportOutput(ctx *pulumi.Context, args LookupDataExportOutputArgs, opts ...pulumi.InvokeOption) LookupDataExportResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataExportResultOutput, error) {
-			args := v.(LookupDataExportArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationalinsights:getDataExport", args, LookupDataExportResultOutput{}, options).(LookupDataExportResultOutput), nil
-		}).(LookupDataExportResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationalinsights:getDataExport", args, LookupDataExportResultOutput{}, options).(LookupDataExportResultOutput)
 }
 
 type LookupDataExportOutputArgs struct {

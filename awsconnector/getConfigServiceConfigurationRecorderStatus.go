@@ -52,12 +52,8 @@ type LookupConfigServiceConfigurationRecorderStatusResult struct {
 }
 
 func LookupConfigServiceConfigurationRecorderStatusOutput(ctx *pulumi.Context, args LookupConfigServiceConfigurationRecorderStatusOutputArgs, opts ...pulumi.InvokeOption) LookupConfigServiceConfigurationRecorderStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigServiceConfigurationRecorderStatusResultOutput, error) {
-			args := v.(LookupConfigServiceConfigurationRecorderStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getConfigServiceConfigurationRecorderStatus", args, LookupConfigServiceConfigurationRecorderStatusResultOutput{}, options).(LookupConfigServiceConfigurationRecorderStatusResultOutput), nil
-		}).(LookupConfigServiceConfigurationRecorderStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getConfigServiceConfigurationRecorderStatus", args, LookupConfigServiceConfigurationRecorderStatusResultOutput{}, options).(LookupConfigServiceConfigurationRecorderStatusResultOutput)
 }
 
 type LookupConfigServiceConfigurationRecorderStatusOutputArgs struct {

@@ -64,12 +64,8 @@ type LookupEnvironmentResult struct {
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentResultOutput, error) {
-			args := v.(LookupEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apicenter:getEnvironment", args, LookupEnvironmentResultOutput{}, options).(LookupEnvironmentResultOutput), nil
-		}).(LookupEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apicenter:getEnvironment", args, LookupEnvironmentResultOutput{}, options).(LookupEnvironmentResultOutput)
 }
 
 type LookupEnvironmentOutputArgs struct {

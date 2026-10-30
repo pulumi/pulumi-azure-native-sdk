@@ -48,12 +48,8 @@ type ListWebAppMetadataResult struct {
 }
 
 func ListWebAppMetadataOutput(ctx *pulumi.Context, args ListWebAppMetadataOutputArgs, opts ...pulumi.InvokeOption) ListWebAppMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppMetadataResultOutput, error) {
-			args := v.(ListWebAppMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppMetadata", args, ListWebAppMetadataResultOutput{}, options).(ListWebAppMetadataResultOutput), nil
-		}).(ListWebAppMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppMetadata", args, ListWebAppMetadataResultOutput{}, options).(ListWebAppMetadataResultOutput)
 }
 
 type ListWebAppMetadataOutputArgs struct {

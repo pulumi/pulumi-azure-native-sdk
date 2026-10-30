@@ -38,12 +38,8 @@ type ListAzureDataTransferFlowProfilesResult struct {
 }
 
 func ListAzureDataTransferFlowProfilesOutput(ctx *pulumi.Context, args ListAzureDataTransferFlowProfilesOutputArgs, opts ...pulumi.InvokeOption) ListAzureDataTransferFlowProfilesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAzureDataTransferFlowProfilesResultOutput, error) {
-			args := v.(ListAzureDataTransferFlowProfilesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:listAzureDataTransferFlowProfiles", args, ListAzureDataTransferFlowProfilesResultOutput{}, options).(ListAzureDataTransferFlowProfilesResultOutput), nil
-		}).(ListAzureDataTransferFlowProfilesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:listAzureDataTransferFlowProfiles", args, ListAzureDataTransferFlowProfilesResultOutput{}, options).(ListAzureDataTransferFlowProfilesResultOutput)
 }
 
 type ListAzureDataTransferFlowProfilesOutputArgs struct {

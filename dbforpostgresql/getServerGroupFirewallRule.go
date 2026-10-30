@@ -56,12 +56,8 @@ type LookupServerGroupFirewallRuleResult struct {
 }
 
 func LookupServerGroupFirewallRuleOutput(ctx *pulumi.Context, args LookupServerGroupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupFirewallRuleResultOutput, error) {
-			args := v.(LookupServerGroupFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupFirewallRule", args, LookupServerGroupFirewallRuleResultOutput{}, options).(LookupServerGroupFirewallRuleResultOutput), nil
-		}).(LookupServerGroupFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupFirewallRule", args, LookupServerGroupFirewallRuleResultOutput{}, options).(LookupServerGroupFirewallRuleResultOutput)
 }
 
 type LookupServerGroupFirewallRuleOutputArgs struct {

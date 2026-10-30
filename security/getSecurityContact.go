@@ -56,12 +56,8 @@ type LookupSecurityContactResult struct {
 }
 
 func LookupSecurityContactOutput(ctx *pulumi.Context, args LookupSecurityContactOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityContactResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityContactResultOutput, error) {
-			args := v.(LookupSecurityContactArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getSecurityContact", args, LookupSecurityContactResultOutput{}, options).(LookupSecurityContactResultOutput), nil
-		}).(LookupSecurityContactResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getSecurityContact", args, LookupSecurityContactResultOutput{}, options).(LookupSecurityContactResultOutput)
 }
 
 type LookupSecurityContactOutputArgs struct {

@@ -68,12 +68,8 @@ type LookupManagedDatabaseResult struct {
 }
 
 func LookupManagedDatabaseOutput(ctx *pulumi.Context, args LookupManagedDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupManagedDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedDatabaseResultOutput, error) {
-			args := v.(LookupManagedDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getManagedDatabase", args, LookupManagedDatabaseResultOutput{}, options).(LookupManagedDatabaseResultOutput), nil
-		}).(LookupManagedDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getManagedDatabase", args, LookupManagedDatabaseResultOutput{}, options).(LookupManagedDatabaseResultOutput)
 }
 
 type LookupManagedDatabaseOutputArgs struct {

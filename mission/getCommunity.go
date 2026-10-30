@@ -92,12 +92,8 @@ func (val *LookupCommunityResult) Defaults() *LookupCommunityResult {
 	return &tmp
 }
 func LookupCommunityOutput(ctx *pulumi.Context, args LookupCommunityOutputArgs, opts ...pulumi.InvokeOption) LookupCommunityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunityResultOutput, error) {
-			args := v.(LookupCommunityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getCommunity", args, LookupCommunityResultOutput{}, options).(LookupCommunityResultOutput), nil
-		}).(LookupCommunityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getCommunity", args, LookupCommunityResultOutput{}, options).(LookupCommunityResultOutput)
 }
 
 type LookupCommunityOutputArgs struct {

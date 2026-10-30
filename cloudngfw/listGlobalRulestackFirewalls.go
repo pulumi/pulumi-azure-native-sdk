@@ -40,12 +40,8 @@ type ListGlobalRulestackFirewallsResult struct {
 }
 
 func ListGlobalRulestackFirewallsOutput(ctx *pulumi.Context, args ListGlobalRulestackFirewallsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackFirewallsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGlobalRulestackFirewallsResultOutput, error) {
-			args := v.(ListGlobalRulestackFirewallsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackFirewalls", args, ListGlobalRulestackFirewallsResultOutput{}, options).(ListGlobalRulestackFirewallsResultOutput), nil
-		}).(ListGlobalRulestackFirewallsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackFirewalls", args, ListGlobalRulestackFirewallsResultOutput{}, options).(ListGlobalRulestackFirewallsResultOutput)
 }
 
 type ListGlobalRulestackFirewallsOutputArgs struct {

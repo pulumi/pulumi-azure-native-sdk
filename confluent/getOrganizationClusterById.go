@@ -60,12 +60,8 @@ type LookupOrganizationClusterByIdResult struct {
 }
 
 func LookupOrganizationClusterByIdOutput(ctx *pulumi.Context, args LookupOrganizationClusterByIdOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationClusterByIdResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationClusterByIdResultOutput, error) {
-			args := v.(LookupOrganizationClusterByIdArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:getOrganizationClusterById", args, LookupOrganizationClusterByIdResultOutput{}, options).(LookupOrganizationClusterByIdResultOutput), nil
-		}).(LookupOrganizationClusterByIdResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:getOrganizationClusterById", args, LookupOrganizationClusterByIdResultOutput{}, options).(LookupOrganizationClusterByIdResultOutput)
 }
 
 type LookupOrganizationClusterByIdOutputArgs struct {

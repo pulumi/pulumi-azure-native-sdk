@@ -64,12 +64,8 @@ type LookupFluidRelayServerResult struct {
 }
 
 func LookupFluidRelayServerOutput(ctx *pulumi.Context, args LookupFluidRelayServerOutputArgs, opts ...pulumi.InvokeOption) LookupFluidRelayServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFluidRelayServerResultOutput, error) {
-			args := v.(LookupFluidRelayServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fluidrelay:getFluidRelayServer", args, LookupFluidRelayServerResultOutput{}, options).(LookupFluidRelayServerResultOutput), nil
-		}).(LookupFluidRelayServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fluidrelay:getFluidRelayServer", args, LookupFluidRelayServerResultOutput{}, options).(LookupFluidRelayServerResultOutput)
 }
 
 type LookupFluidRelayServerOutputArgs struct {

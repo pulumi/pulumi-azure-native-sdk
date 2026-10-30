@@ -42,12 +42,8 @@ type ListIotDpsResourceKeysResult struct {
 }
 
 func ListIotDpsResourceKeysOutput(ctx *pulumi.Context, args ListIotDpsResourceKeysOutputArgs, opts ...pulumi.InvokeOption) ListIotDpsResourceKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIotDpsResourceKeysResultOutput, error) {
-			args := v.(ListIotDpsResourceKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceprovisioningservices:listIotDpsResourceKeys", args, ListIotDpsResourceKeysResultOutput{}, options).(ListIotDpsResourceKeysResultOutput), nil
-		}).(ListIotDpsResourceKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceprovisioningservices:listIotDpsResourceKeys", args, ListIotDpsResourceKeysResultOutput{}, options).(ListIotDpsResourceKeysResultOutput)
 }
 
 type ListIotDpsResourceKeysOutputArgs struct {

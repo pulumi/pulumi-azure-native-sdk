@@ -120,12 +120,8 @@ func (val *LookupServiceResult) Defaults() *LookupServiceResult {
 	return &tmp
 }
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceResultOutput, error) {
-			args := v.(LookupServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:search:getService", args, LookupServiceResultOutput{}, options).(LookupServiceResultOutput), nil
-		}).(LookupServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:search:getService", args, LookupServiceResultOutput{}, options).(LookupServiceResultOutput)
 }
 
 type LookupServiceOutputArgs struct {

@@ -44,12 +44,8 @@ type GetNamespaceTopicEventSubscriptionDeliveryAttributesResult struct {
 }
 
 func GetNamespaceTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetNamespaceTopicEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput, error) {
-			args := v.(GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscriptionDeliveryAttributes", args, GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput), nil
-		}).(GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscriptionDeliveryAttributes", args, GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetNamespaceTopicEventSubscriptionDeliveryAttributesResultOutput)
 }
 
 type GetNamespaceTopicEventSubscriptionDeliveryAttributesOutputArgs struct {

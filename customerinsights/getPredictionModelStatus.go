@@ -60,12 +60,8 @@ type GetPredictionModelStatusResult struct {
 }
 
 func GetPredictionModelStatusOutput(ctx *pulumi.Context, args GetPredictionModelStatusOutputArgs, opts ...pulumi.InvokeOption) GetPredictionModelStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPredictionModelStatusResultOutput, error) {
-			args := v.(GetPredictionModelStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:customerinsights:getPredictionModelStatus", args, GetPredictionModelStatusResultOutput{}, options).(GetPredictionModelStatusResultOutput), nil
-		}).(GetPredictionModelStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:customerinsights:getPredictionModelStatus", args, GetPredictionModelStatusResultOutput{}, options).(GetPredictionModelStatusResultOutput)
 }
 
 type GetPredictionModelStatusOutputArgs struct {

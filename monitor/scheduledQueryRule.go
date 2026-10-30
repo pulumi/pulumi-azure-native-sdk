@@ -14,9 +14,9 @@ import (
 
 // The scheduled query rule resource.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2026-03-01.
 //
-// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 
@@ -31,14 +31,14 @@ type ScheduledQueryRule struct {
 	// The api-version used when creating this alert rule
 	CreatedWithApiVersion pulumi.StringOutput `pulumi:"createdWithApiVersion"`
 	// The rule criteria that defines the conditions of the scheduled query rule.
-	Criteria ScheduledQueryRuleCriteriaResponsePtrOutput `pulumi:"criteria"`
+	Criteria ScheduledQueryRuleCriteriaResponseOutput `pulumi:"criteria"`
 	// The description of the scheduled query rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the alert rule
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency pulumi.StringPtrOutput `pulumi:"evaluationFrequency"`
@@ -66,7 +66,7 @@ type ScheduledQueryRule struct {
 	Severity pulumi.Float64PtrOutput `pulumi:"severity"`
 	// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
 	SkipQueryValidation pulumi.BoolPtrOutput `pulumi:"skipQueryValidation"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// SystemData of ScheduledQueryRule.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -85,8 +85,17 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Criteria == nil {
+		return nil, errors.New("invalid value for required argument 'Criteria'")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -182,17 +191,17 @@ type scheduledQueryRuleArgs struct {
 	// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
 	CheckWorkspaceAlertsStorageConfigured *bool `pulumi:"checkWorkspaceAlertsStorageConfigured"`
 	// The rule criteria that defines the conditions of the scheduled query rule.
-	Criteria *ScheduledQueryRuleCriteria `pulumi:"criteria"`
+	Criteria ScheduledQueryRuleCriteria `pulumi:"criteria"`
 	// The description of the scheduled query rule.
 	Description *string `pulumi:"description"`
 	// The display name of the alert rule
 	DisplayName *string `pulumi:"displayName"`
 	// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency *string `pulumi:"evaluationFrequency"`
 	// The identity of the resource.
-	Identity *MicrosoftCommonIdentity `pulumi:"identity"`
+	Identity *Identity `pulumi:"identity"`
 	// Indicates the type of scheduled query rule. The default is LogAlert.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -230,17 +239,17 @@ type ScheduledQueryRuleArgs struct {
 	// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
 	CheckWorkspaceAlertsStorageConfigured pulumi.BoolPtrInput
 	// The rule criteria that defines the conditions of the scheduled query rule.
-	Criteria ScheduledQueryRuleCriteriaPtrInput
+	Criteria ScheduledQueryRuleCriteriaInput
 	// The description of the scheduled query rule.
 	Description pulumi.StringPtrInput
 	// The display name of the alert rule
 	DisplayName pulumi.StringPtrInput
 	// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-	Enabled pulumi.BoolPtrInput
+	Enabled pulumi.BoolInput
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency pulumi.StringPtrInput
 	// The identity of the resource.
-	Identity MicrosoftCommonIdentityPtrInput
+	Identity IdentityPtrInput
 	// Indicates the type of scheduled query rule. The default is LogAlert.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -332,8 +341,8 @@ func (o ScheduledQueryRuleOutput) CreatedWithApiVersion() pulumi.StringOutput {
 }
 
 // The rule criteria that defines the conditions of the scheduled query rule.
-func (o ScheduledQueryRuleOutput) Criteria() ScheduledQueryRuleCriteriaResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) ScheduledQueryRuleCriteriaResponsePtrOutput { return v.Criteria }).(ScheduledQueryRuleCriteriaResponsePtrOutput)
+func (o ScheduledQueryRuleOutput) Criteria() ScheduledQueryRuleCriteriaResponseOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) ScheduledQueryRuleCriteriaResponseOutput { return v.Criteria }).(ScheduledQueryRuleCriteriaResponseOutput)
 }
 
 // The description of the scheduled query rule.
@@ -347,11 +356,11 @@ func (o ScheduledQueryRuleOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-func (o ScheduledQueryRuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ScheduledQueryRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o ScheduledQueryRuleOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -421,7 +430,7 @@ func (o ScheduledQueryRuleOutput) SkipQueryValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.BoolPtrOutput { return v.SkipQueryValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// SystemData of ScheduledQueryRule.
 func (o ScheduledQueryRuleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

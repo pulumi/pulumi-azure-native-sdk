@@ -84,12 +84,8 @@ type LookupAuthorizationServerResult struct {
 }
 
 func LookupAuthorizationServerOutput(ctx *pulumi.Context, args LookupAuthorizationServerOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationServerResultOutput, error) {
-			args := v.(LookupAuthorizationServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getAuthorizationServer", args, LookupAuthorizationServerResultOutput{}, options).(LookupAuthorizationServerResultOutput), nil
-		}).(LookupAuthorizationServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getAuthorizationServer", args, LookupAuthorizationServerResultOutput{}, options).(LookupAuthorizationServerResultOutput)
 }
 
 type LookupAuthorizationServerOutputArgs struct {

@@ -38,12 +38,8 @@ type ListManufacturingDataServiceAvailableVersionsResult struct {
 }
 
 func ListManufacturingDataServiceAvailableVersionsOutput(ctx *pulumi.Context, args ListManufacturingDataServiceAvailableVersionsOutputArgs, opts ...pulumi.InvokeOption) ListManufacturingDataServiceAvailableVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListManufacturingDataServiceAvailableVersionsResultOutput, error) {
-			args := v.(ListManufacturingDataServiceAvailableVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:manufacturingplatform:listManufacturingDataServiceAvailableVersions", args, ListManufacturingDataServiceAvailableVersionsResultOutput{}, options).(ListManufacturingDataServiceAvailableVersionsResultOutput), nil
-		}).(ListManufacturingDataServiceAvailableVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:manufacturingplatform:listManufacturingDataServiceAvailableVersions", args, ListManufacturingDataServiceAvailableVersionsResultOutput{}, options).(ListManufacturingDataServiceAvailableVersionsResultOutput)
 }
 
 type ListManufacturingDataServiceAvailableVersionsOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupDnsResolverResult struct {
 }
 
 func LookupDnsResolverOutput(ctx *pulumi.Context, args LookupDnsResolverOutputArgs, opts ...pulumi.InvokeOption) LookupDnsResolverResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsResolverResultOutput, error) {
-			args := v.(LookupDnsResolverArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getDnsResolver", args, LookupDnsResolverResultOutput{}, options).(LookupDnsResolverResultOutput), nil
-		}).(LookupDnsResolverResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getDnsResolver", args, LookupDnsResolverResultOutput{}, options).(LookupDnsResolverResultOutput)
 }
 
 type LookupDnsResolverOutputArgs struct {

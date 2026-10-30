@@ -68,12 +68,8 @@ func (val *LookupPostgresInstanceResult) Defaults() *LookupPostgresInstanceResul
 	return &tmp
 }
 func LookupPostgresInstanceOutput(ctx *pulumi.Context, args LookupPostgresInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresInstanceResultOutput, error) {
-			args := v.(LookupPostgresInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getPostgresInstance", args, LookupPostgresInstanceResultOutput{}, options).(LookupPostgresInstanceResultOutput), nil
-		}).(LookupPostgresInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getPostgresInstance", args, LookupPostgresInstanceResultOutput{}, options).(LookupPostgresInstanceResultOutput)
 }
 
 type LookupPostgresInstanceOutputArgs struct {

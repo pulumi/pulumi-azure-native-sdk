@@ -54,12 +54,8 @@ type LookupSchedulerResult struct {
 }
 
 func LookupSchedulerOutput(ctx *pulumi.Context, args LookupSchedulerOutputArgs, opts ...pulumi.InvokeOption) LookupSchedulerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchedulerResultOutput, error) {
-			args := v.(LookupSchedulerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:durabletask:getScheduler", args, LookupSchedulerResultOutput{}, options).(LookupSchedulerResultOutput), nil
-		}).(LookupSchedulerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:durabletask:getScheduler", args, LookupSchedulerResultOutput{}, options).(LookupSchedulerResultOutput)
 }
 
 type LookupSchedulerOutputArgs struct {

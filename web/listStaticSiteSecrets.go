@@ -48,12 +48,8 @@ type ListStaticSiteSecretsResult struct {
 }
 
 func ListStaticSiteSecretsOutput(ctx *pulumi.Context, args ListStaticSiteSecretsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListStaticSiteSecretsResultOutput, error) {
-			args := v.(ListStaticSiteSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listStaticSiteSecrets", args, ListStaticSiteSecretsResultOutput{}, options).(ListStaticSiteSecretsResultOutput), nil
-		}).(ListStaticSiteSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listStaticSiteSecrets", args, ListStaticSiteSecretsResultOutput{}, options).(ListStaticSiteSecretsResultOutput)
 }
 
 type ListStaticSiteSecretsOutputArgs struct {

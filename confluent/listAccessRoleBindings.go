@@ -46,12 +46,8 @@ type ListAccessRoleBindingsResult struct {
 }
 
 func ListAccessRoleBindingsOutput(ctx *pulumi.Context, args ListAccessRoleBindingsOutputArgs, opts ...pulumi.InvokeOption) ListAccessRoleBindingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccessRoleBindingsResultOutput, error) {
-			args := v.(ListAccessRoleBindingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:listAccessRoleBindings", args, ListAccessRoleBindingsResultOutput{}, options).(ListAccessRoleBindingsResultOutput), nil
-		}).(ListAccessRoleBindingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:listAccessRoleBindings", args, ListAccessRoleBindingsResultOutput{}, options).(ListAccessRoleBindingsResultOutput)
 }
 
 type ListAccessRoleBindingsOutputArgs struct {

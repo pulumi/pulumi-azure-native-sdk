@@ -72,12 +72,8 @@ type LookupWebAppHostNameBindingSlotResult struct {
 }
 
 func LookupWebAppHostNameBindingSlotOutput(ctx *pulumi.Context, args LookupWebAppHostNameBindingSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHostNameBindingSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppHostNameBindingSlotResultOutput, error) {
-			args := v.(LookupWebAppHostNameBindingSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppHostNameBindingSlot", args, LookupWebAppHostNameBindingSlotResultOutput{}, options).(LookupWebAppHostNameBindingSlotResultOutput), nil
-		}).(LookupWebAppHostNameBindingSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppHostNameBindingSlot", args, LookupWebAppHostNameBindingSlotResultOutput{}, options).(LookupWebAppHostNameBindingSlotResultOutput)
 }
 
 type LookupWebAppHostNameBindingSlotOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupProfessionalServiceSubscriptionLevelResult struct {
 }
 
 func LookupProfessionalServiceSubscriptionLevelOutput(ctx *pulumi.Context, args LookupProfessionalServiceSubscriptionLevelOutputArgs, opts ...pulumi.InvokeOption) LookupProfessionalServiceSubscriptionLevelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProfessionalServiceSubscriptionLevelResultOutput, error) {
-			args := v.(LookupProfessionalServiceSubscriptionLevelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:professionalservice:getProfessionalServiceSubscriptionLevel", args, LookupProfessionalServiceSubscriptionLevelResultOutput{}, options).(LookupProfessionalServiceSubscriptionLevelResultOutput), nil
-		}).(LookupProfessionalServiceSubscriptionLevelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:professionalservice:getProfessionalServiceSubscriptionLevel", args, LookupProfessionalServiceSubscriptionLevelResultOutput{}, options).(LookupProfessionalServiceSubscriptionLevelResultOutput)
 }
 
 type LookupProfessionalServiceSubscriptionLevelOutputArgs struct {

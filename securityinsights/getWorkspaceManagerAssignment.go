@@ -60,12 +60,8 @@ type LookupWorkspaceManagerAssignmentResult struct {
 }
 
 func LookupWorkspaceManagerAssignmentOutput(ctx *pulumi.Context, args LookupWorkspaceManagerAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceManagerAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceManagerAssignmentResultOutput, error) {
-			args := v.(LookupWorkspaceManagerAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getWorkspaceManagerAssignment", args, LookupWorkspaceManagerAssignmentResultOutput{}, options).(LookupWorkspaceManagerAssignmentResultOutput), nil
-		}).(LookupWorkspaceManagerAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getWorkspaceManagerAssignment", args, LookupWorkspaceManagerAssignmentResultOutput{}, options).(LookupWorkspaceManagerAssignmentResultOutput)
 }
 
 type LookupWorkspaceManagerAssignmentOutputArgs struct {

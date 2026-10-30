@@ -93,12 +93,8 @@ func (val *LookupActionGroupResult) Defaults() *LookupActionGroupResult {
 	return &tmp
 }
 func LookupActionGroupOutput(ctx *pulumi.Context, args LookupActionGroupOutputArgs, opts ...pulumi.InvokeOption) LookupActionGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActionGroupResultOutput, error) {
-			args := v.(LookupActionGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getActionGroup", args, LookupActionGroupResultOutput{}, options).(LookupActionGroupResultOutput), nil
-		}).(LookupActionGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getActionGroup", args, LookupActionGroupResultOutput{}, options).(LookupActionGroupResultOutput)
 }
 
 type LookupActionGroupOutputArgs struct {

@@ -44,12 +44,8 @@ type GetPackageDownloadURLResult struct {
 }
 
 func GetPackageDownloadURLOutput(ctx *pulumi.Context, args GetPackageDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetPackageDownloadURLResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPackageDownloadURLResultOutput, error) {
-			args := v.(GetPackageDownloadURLArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getPackageDownloadURL", args, GetPackageDownloadURLResultOutput{}, options).(GetPackageDownloadURLResultOutput), nil
-		}).(GetPackageDownloadURLResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getPackageDownloadURL", args, GetPackageDownloadURLResultOutput{}, options).(GetPackageDownloadURLResultOutput)
 }
 
 type GetPackageDownloadURLOutputArgs struct {

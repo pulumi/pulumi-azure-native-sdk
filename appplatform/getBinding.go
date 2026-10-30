@@ -54,12 +54,8 @@ type LookupBindingResult struct {
 }
 
 func LookupBindingOutput(ctx *pulumi.Context, args LookupBindingOutputArgs, opts ...pulumi.InvokeOption) LookupBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBindingResultOutput, error) {
-			args := v.(LookupBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getBinding", args, LookupBindingResultOutput{}, options).(LookupBindingResultOutput), nil
-		}).(LookupBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getBinding", args, LookupBindingResultOutput{}, options).(LookupBindingResultOutput)
 }
 
 type LookupBindingOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupACSSBackupConnectionResult struct {
 }
 
 func LookupACSSBackupConnectionOutput(ctx *pulumi.Context, args LookupACSSBackupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupACSSBackupConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupACSSBackupConnectionResultOutput, error) {
-			args := v.(LookupACSSBackupConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getACSSBackupConnection", args, LookupACSSBackupConnectionResultOutput{}, options).(LookupACSSBackupConnectionResultOutput), nil
-		}).(LookupACSSBackupConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getACSSBackupConnection", args, LookupACSSBackupConnectionResultOutput{}, options).(LookupACSSBackupConnectionResultOutput)
 }
 
 type LookupACSSBackupConnectionOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupFluidRelayPrivateEndpointConnectionResult struct {
 }
 
 func LookupFluidRelayPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupFluidRelayPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupFluidRelayPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFluidRelayPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupFluidRelayPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fluidrelay:getFluidRelayPrivateEndpointConnection", args, LookupFluidRelayPrivateEndpointConnectionResultOutput{}, options).(LookupFluidRelayPrivateEndpointConnectionResultOutput), nil
-		}).(LookupFluidRelayPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fluidrelay:getFluidRelayPrivateEndpointConnection", args, LookupFluidRelayPrivateEndpointConnectionResultOutput{}, options).(LookupFluidRelayPrivateEndpointConnectionResultOutput)
 }
 
 type LookupFluidRelayPrivateEndpointConnectionOutputArgs struct {

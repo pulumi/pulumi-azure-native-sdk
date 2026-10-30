@@ -58,12 +58,8 @@ type LookupHybridIdentityMetadataResult struct {
 }
 
 func LookupHybridIdentityMetadataOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHybridIdentityMetadataResultOutput, error) {
-			args := v.(LookupHybridIdentityMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:scvmm:getHybridIdentityMetadata", args, LookupHybridIdentityMetadataResultOutput{}, options).(LookupHybridIdentityMetadataResultOutput), nil
-		}).(LookupHybridIdentityMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:scvmm:getHybridIdentityMetadata", args, LookupHybridIdentityMetadataResultOutput{}, options).(LookupHybridIdentityMetadataResultOutput)
 }
 
 type LookupHybridIdentityMetadataOutputArgs struct {

@@ -110,12 +110,8 @@ func (val *LookupInternalNetworkResult) Defaults() *LookupInternalNetworkResult 
 	return &tmp
 }
 func LookupInternalNetworkOutput(ctx *pulumi.Context, args LookupInternalNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupInternalNetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInternalNetworkResultOutput, error) {
-			args := v.(LookupInternalNetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getInternalNetwork", args, LookupInternalNetworkResultOutput{}, options).(LookupInternalNetworkResultOutput), nil
-		}).(LookupInternalNetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getInternalNetwork", args, LookupInternalNetworkResultOutput{}, options).(LookupInternalNetworkResultOutput)
 }
 
 type LookupInternalNetworkOutputArgs struct {

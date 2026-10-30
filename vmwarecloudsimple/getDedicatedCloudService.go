@@ -56,12 +56,8 @@ type LookupDedicatedCloudServiceResult struct {
 }
 
 func LookupDedicatedCloudServiceOutput(ctx *pulumi.Context, args LookupDedicatedCloudServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedCloudServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDedicatedCloudServiceResultOutput, error) {
-			args := v.(LookupDedicatedCloudServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:vmwarecloudsimple:getDedicatedCloudService", args, LookupDedicatedCloudServiceResultOutput{}, options).(LookupDedicatedCloudServiceResultOutput), nil
-		}).(LookupDedicatedCloudServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:vmwarecloudsimple:getDedicatedCloudService", args, LookupDedicatedCloudServiceResultOutput{}, options).(LookupDedicatedCloudServiceResultOutput)
 }
 
 type LookupDedicatedCloudServiceOutputArgs struct {

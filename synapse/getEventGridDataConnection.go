@@ -75,12 +75,8 @@ type LookupEventGridDataConnectionResult struct {
 }
 
 func LookupEventGridDataConnectionOutput(ctx *pulumi.Context, args LookupEventGridDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventGridDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEventGridDataConnectionResultOutput, error) {
-			args := v.(LookupEventGridDataConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getEventGridDataConnection", args, LookupEventGridDataConnectionResultOutput{}, options).(LookupEventGridDataConnectionResultOutput), nil
-		}).(LookupEventGridDataConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getEventGridDataConnection", args, LookupEventGridDataConnectionResultOutput{}, options).(LookupEventGridDataConnectionResultOutput)
 }
 
 type LookupEventGridDataConnectionOutputArgs struct {

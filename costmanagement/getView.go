@@ -76,12 +76,8 @@ type LookupViewResult struct {
 }
 
 func LookupViewOutput(ctx *pulumi.Context, args LookupViewOutputArgs, opts ...pulumi.InvokeOption) LookupViewResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupViewResultOutput, error) {
-			args := v.(LookupViewArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:costmanagement:getView", args, LookupViewResultOutput{}, options).(LookupViewResultOutput), nil
-		}).(LookupViewResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:costmanagement:getView", args, LookupViewResultOutput{}, options).(LookupViewResultOutput)
 }
 
 type LookupViewOutputArgs struct {

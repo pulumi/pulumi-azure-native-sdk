@@ -40,12 +40,8 @@ type ListOpenShiftClusterAdminCredentialsResult struct {
 }
 
 func ListOpenShiftClusterAdminCredentialsOutput(ctx *pulumi.Context, args ListOpenShiftClusterAdminCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListOpenShiftClusterAdminCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListOpenShiftClusterAdminCredentialsResultOutput, error) {
-			args := v.(ListOpenShiftClusterAdminCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redhatopenshift:listOpenShiftClusterAdminCredentials", args, ListOpenShiftClusterAdminCredentialsResultOutput{}, options).(ListOpenShiftClusterAdminCredentialsResultOutput), nil
-		}).(ListOpenShiftClusterAdminCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redhatopenshift:listOpenShiftClusterAdminCredentials", args, ListOpenShiftClusterAdminCredentialsResultOutput{}, options).(ListOpenShiftClusterAdminCredentialsResultOutput)
 }
 
 type ListOpenShiftClusterAdminCredentialsOutputArgs struct {

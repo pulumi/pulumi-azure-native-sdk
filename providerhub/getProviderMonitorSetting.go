@@ -51,12 +51,8 @@ type LookupProviderMonitorSettingResult struct {
 }
 
 func LookupProviderMonitorSettingOutput(ctx *pulumi.Context, args LookupProviderMonitorSettingOutputArgs, opts ...pulumi.InvokeOption) LookupProviderMonitorSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProviderMonitorSettingResultOutput, error) {
-			args := v.(LookupProviderMonitorSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getProviderMonitorSetting", args, LookupProviderMonitorSettingResultOutput{}, options).(LookupProviderMonitorSettingResultOutput), nil
-		}).(LookupProviderMonitorSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getProviderMonitorSetting", args, LookupProviderMonitorSettingResultOutput{}, options).(LookupProviderMonitorSettingResultOutput)
 }
 
 type LookupProviderMonitorSettingOutputArgs struct {

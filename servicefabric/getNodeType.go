@@ -172,12 +172,8 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 	return &tmp
 }
 func LookupNodeTypeOutput(ctx *pulumi.Context, args LookupNodeTypeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNodeTypeResultOutput, error) {
-			args := v.(LookupNodeTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicefabric:getNodeType", args, LookupNodeTypeResultOutput{}, options).(LookupNodeTypeResultOutput), nil
-		}).(LookupNodeTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicefabric:getNodeType", args, LookupNodeTypeResultOutput{}, options).(LookupNodeTypeResultOutput)
 }
 
 type LookupNodeTypeOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupEndpointDeploymentResult struct {
 }
 
 func LookupEndpointDeploymentOutput(ctx *pulumi.Context, args LookupEndpointDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEndpointDeploymentResultOutput, error) {
-			args := v.(LookupEndpointDeploymentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getEndpointDeployment", args, LookupEndpointDeploymentResultOutput{}, options).(LookupEndpointDeploymentResultOutput), nil
-		}).(LookupEndpointDeploymentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getEndpointDeployment", args, LookupEndpointDeploymentResultOutput{}, options).(LookupEndpointDeploymentResultOutput)
 }
 
 type LookupEndpointDeploymentOutputArgs struct {

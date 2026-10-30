@@ -56,12 +56,8 @@ type LookupNetworkExperimentProfileResult struct {
 }
 
 func LookupNetworkExperimentProfileOutput(ctx *pulumi.Context, args LookupNetworkExperimentProfileOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkExperimentProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkExperimentProfileResultOutput, error) {
-			args := v.(LookupNetworkExperimentProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:frontdoor:getNetworkExperimentProfile", args, LookupNetworkExperimentProfileResultOutput{}, options).(LookupNetworkExperimentProfileResultOutput), nil
-		}).(LookupNetworkExperimentProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:frontdoor:getNetworkExperimentProfile", args, LookupNetworkExperimentProfileResultOutput{}, options).(LookupNetworkExperimentProfileResultOutput)
 }
 
 type LookupNetworkExperimentProfileOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupStandbyVirtualMachinePoolResult struct {
 }
 
 func LookupStandbyVirtualMachinePoolOutput(ctx *pulumi.Context, args LookupStandbyVirtualMachinePoolOutputArgs, opts ...pulumi.InvokeOption) LookupStandbyVirtualMachinePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStandbyVirtualMachinePoolResultOutput, error) {
-			args := v.(LookupStandbyVirtualMachinePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:standbypool:getStandbyVirtualMachinePool", args, LookupStandbyVirtualMachinePoolResultOutput{}, options).(LookupStandbyVirtualMachinePoolResultOutput), nil
-		}).(LookupStandbyVirtualMachinePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:standbypool:getStandbyVirtualMachinePool", args, LookupStandbyVirtualMachinePoolResultOutput{}, options).(LookupStandbyVirtualMachinePoolResultOutput)
 }
 
 type LookupStandbyVirtualMachinePoolOutputArgs struct {

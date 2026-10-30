@@ -52,12 +52,8 @@ type LookupSingleServerVirtualNetworkRuleResult struct {
 }
 
 func LookupSingleServerVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupSingleServerVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerVirtualNetworkRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerVirtualNetworkRuleResultOutput, error) {
-			args := v.(LookupSingleServerVirtualNetworkRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerVirtualNetworkRule", args, LookupSingleServerVirtualNetworkRuleResultOutput{}, options).(LookupSingleServerVirtualNetworkRuleResultOutput), nil
-		}).(LookupSingleServerVirtualNetworkRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerVirtualNetworkRule", args, LookupSingleServerVirtualNetworkRuleResultOutput{}, options).(LookupSingleServerVirtualNetworkRuleResultOutput)
 }
 
 type LookupSingleServerVirtualNetworkRuleOutputArgs struct {

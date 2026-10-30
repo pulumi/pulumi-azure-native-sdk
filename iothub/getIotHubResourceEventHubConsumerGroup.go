@@ -54,12 +54,8 @@ type LookupIotHubResourceEventHubConsumerGroupResult struct {
 }
 
 func LookupIotHubResourceEventHubConsumerGroupOutput(ctx *pulumi.Context, args LookupIotHubResourceEventHubConsumerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupIotHubResourceEventHubConsumerGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotHubResourceEventHubConsumerGroupResultOutput, error) {
-			args := v.(LookupIotHubResourceEventHubConsumerGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iothub:getIotHubResourceEventHubConsumerGroup", args, LookupIotHubResourceEventHubConsumerGroupResultOutput{}, options).(LookupIotHubResourceEventHubConsumerGroupResultOutput), nil
-		}).(LookupIotHubResourceEventHubConsumerGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iothub:getIotHubResourceEventHubConsumerGroup", args, LookupIotHubResourceEventHubConsumerGroupResultOutput{}, options).(LookupIotHubResourceEventHubConsumerGroupResultOutput)
 }
 
 type LookupIotHubResourceEventHubConsumerGroupOutputArgs struct {

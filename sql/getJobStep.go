@@ -78,12 +78,8 @@ func (val *LookupJobStepResult) Defaults() *LookupJobStepResult {
 	return &tmp
 }
 func LookupJobStepOutput(ctx *pulumi.Context, args LookupJobStepOutputArgs, opts ...pulumi.InvokeOption) LookupJobStepResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobStepResultOutput, error) {
-			args := v.(LookupJobStepArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getJobStep", args, LookupJobStepResultOutput{}, options).(LookupJobStepResultOutput), nil
-		}).(LookupJobStepResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getJobStep", args, LookupJobStepResultOutput{}, options).(LookupJobStepResultOutput)
 }
 
 type LookupJobStepOutputArgs struct {
