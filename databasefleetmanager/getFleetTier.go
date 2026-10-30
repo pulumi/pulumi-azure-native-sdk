@@ -50,12 +50,8 @@ type LookupFleetTierResult struct {
 }
 
 func LookupFleetTierOutput(ctx *pulumi.Context, args LookupFleetTierOutputArgs, opts ...pulumi.InvokeOption) LookupFleetTierResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFleetTierResultOutput, error) {
-			args := v.(LookupFleetTierArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databasefleetmanager:getFleetTier", args, LookupFleetTierResultOutput{}, options).(LookupFleetTierResultOutput), nil
-		}).(LookupFleetTierResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databasefleetmanager:getFleetTier", args, LookupFleetTierResultOutput{}, options).(LookupFleetTierResultOutput)
 }
 
 type LookupFleetTierOutputArgs struct {

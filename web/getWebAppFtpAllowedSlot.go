@@ -53,12 +53,8 @@ type LookupWebAppFtpAllowedSlotResult struct {
 }
 
 func LookupWebAppFtpAllowedSlotOutput(ctx *pulumi.Context, args LookupWebAppFtpAllowedSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppFtpAllowedSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppFtpAllowedSlotResultOutput, error) {
-			args := v.(LookupWebAppFtpAllowedSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppFtpAllowedSlot", args, LookupWebAppFtpAllowedSlotResultOutput{}, options).(LookupWebAppFtpAllowedSlotResultOutput), nil
-		}).(LookupWebAppFtpAllowedSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppFtpAllowedSlot", args, LookupWebAppFtpAllowedSlotResultOutput{}, options).(LookupWebAppFtpAllowedSlotResultOutput)
 }
 
 type LookupWebAppFtpAllowedSlotOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupComponentLinkedStorageAccountResult struct {
 }
 
 func LookupComponentLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupComponentLinkedStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupComponentLinkedStorageAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComponentLinkedStorageAccountResultOutput, error) {
-			args := v.(LookupComponentLinkedStorageAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:applicationinsights:getComponentLinkedStorageAccount", args, LookupComponentLinkedStorageAccountResultOutput{}, options).(LookupComponentLinkedStorageAccountResultOutput), nil
-		}).(LookupComponentLinkedStorageAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:applicationinsights:getComponentLinkedStorageAccount", args, LookupComponentLinkedStorageAccountResultOutput{}, options).(LookupComponentLinkedStorageAccountResultOutput)
 }
 
 type LookupComponentLinkedStorageAccountOutputArgs struct {

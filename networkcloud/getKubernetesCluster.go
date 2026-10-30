@@ -99,12 +99,8 @@ func (val *LookupKubernetesClusterResult) Defaults() *LookupKubernetesClusterRes
 	return &tmp
 }
 func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClusterOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesClusterResultOutput, error) {
-			args := v.(LookupKubernetesClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getKubernetesCluster", args, LookupKubernetesClusterResultOutput{}, options).(LookupKubernetesClusterResultOutput), nil
-		}).(LookupKubernetesClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getKubernetesCluster", args, LookupKubernetesClusterResultOutput{}, options).(LookupKubernetesClusterResultOutput)
 }
 
 type LookupKubernetesClusterOutputArgs struct {

@@ -94,12 +94,8 @@ type LookupStaticSiteResult struct {
 }
 
 func LookupStaticSiteOutput(ctx *pulumi.Context, args LookupStaticSiteOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteResultOutput, error) {
-			args := v.(LookupStaticSiteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getStaticSite", args, LookupStaticSiteResultOutput{}, options).(LookupStaticSiteResultOutput), nil
-		}).(LookupStaticSiteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getStaticSite", args, LookupStaticSiteResultOutput{}, options).(LookupStaticSiteResultOutput)
 }
 
 type LookupStaticSiteOutputArgs struct {

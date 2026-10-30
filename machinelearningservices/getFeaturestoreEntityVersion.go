@@ -64,12 +64,8 @@ func (val *LookupFeaturestoreEntityVersionResult) Defaults() *LookupFeaturestore
 	return &tmp
 }
 func LookupFeaturestoreEntityVersionOutput(ctx *pulumi.Context, args LookupFeaturestoreEntityVersionOutputArgs, opts ...pulumi.InvokeOption) LookupFeaturestoreEntityVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeaturestoreEntityVersionResultOutput, error) {
-			args := v.(LookupFeaturestoreEntityVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturestoreEntityVersion", args, LookupFeaturestoreEntityVersionResultOutput{}, options).(LookupFeaturestoreEntityVersionResultOutput), nil
-		}).(LookupFeaturestoreEntityVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturestoreEntityVersion", args, LookupFeaturestoreEntityVersionResultOutput{}, options).(LookupFeaturestoreEntityVersionResultOutput)
 }
 
 type LookupFeaturestoreEntityVersionOutputArgs struct {

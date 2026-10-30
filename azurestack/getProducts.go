@@ -44,12 +44,8 @@ type GetProductsResult struct {
 }
 
 func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProductsResultOutput, error) {
-			args := v.(GetProductsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestack:getProducts", args, GetProductsResultOutput{}, options).(GetProductsResultOutput), nil
-		}).(GetProductsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestack:getProducts", args, GetProductsResultOutput{}, options).(GetProductsResultOutput)
 }
 
 type GetProductsOutputArgs struct {

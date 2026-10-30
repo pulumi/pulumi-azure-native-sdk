@@ -124,12 +124,8 @@ func (val *LookupDomainResult) Defaults() *LookupDomainResult {
 	return &tmp
 }
 func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDomainResultOutput, error) {
-			args := v.(LookupDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getDomain", args, LookupDomainResultOutput{}, options).(LookupDomainResultOutput), nil
-		}).(LookupDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getDomain", args, LookupDomainResultOutput{}, options).(LookupDomainResultOutput)
 }
 
 type LookupDomainOutputArgs struct {

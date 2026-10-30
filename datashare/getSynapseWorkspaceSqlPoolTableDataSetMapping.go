@@ -61,12 +61,8 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult struct {
 }
 
 func LookupSynapseWorkspaceSqlPoolTableDataSetMappingOutput(ctx *pulumi.Context, args LookupSynapseWorkspaceSqlPoolTableDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput, error) {
-			args := v.(LookupSynapseWorkspaceSqlPoolTableDataSetMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping", args, LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput{}, options).(LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput), nil
-		}).(LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping", args, LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput{}, options).(LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput)
 }
 
 type LookupSynapseWorkspaceSqlPoolTableDataSetMappingOutputArgs struct {

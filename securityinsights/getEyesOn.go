@@ -55,12 +55,8 @@ type LookupEyesOnResult struct {
 }
 
 func LookupEyesOnOutput(ctx *pulumi.Context, args LookupEyesOnOutputArgs, opts ...pulumi.InvokeOption) LookupEyesOnResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEyesOnResultOutput, error) {
-			args := v.(LookupEyesOnArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getEyesOn", args, LookupEyesOnResultOutput{}, options).(LookupEyesOnResultOutput), nil
-		}).(LookupEyesOnResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getEyesOn", args, LookupEyesOnResultOutput{}, options).(LookupEyesOnResultOutput)
 }
 
 type LookupEyesOnOutputArgs struct {

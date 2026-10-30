@@ -60,12 +60,8 @@ type LookupGovernanceAssignmentResult struct {
 }
 
 func LookupGovernanceAssignmentOutput(ctx *pulumi.Context, args LookupGovernanceAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGovernanceAssignmentResultOutput, error) {
-			args := v.(LookupGovernanceAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getGovernanceAssignment", args, LookupGovernanceAssignmentResultOutput{}, options).(LookupGovernanceAssignmentResultOutput), nil
-		}).(LookupGovernanceAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getGovernanceAssignment", args, LookupGovernanceAssignmentResultOutput{}, options).(LookupGovernanceAssignmentResultOutput)
 }
 
 type LookupGovernanceAssignmentOutputArgs struct {

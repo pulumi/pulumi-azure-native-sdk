@@ -44,12 +44,8 @@ type ListConfigurationStoreKeysResult struct {
 }
 
 func ListConfigurationStoreKeysOutput(ctx *pulumi.Context, args ListConfigurationStoreKeysOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationStoreKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListConfigurationStoreKeysResultOutput, error) {
-			args := v.(ListConfigurationStoreKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appconfiguration:listConfigurationStoreKeys", args, ListConfigurationStoreKeysResultOutput{}, options).(ListConfigurationStoreKeysResultOutput), nil
-		}).(ListConfigurationStoreKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appconfiguration:listConfigurationStoreKeys", args, ListConfigurationStoreKeysResultOutput{}, options).(ListConfigurationStoreKeysResultOutput)
 }
 
 type ListConfigurationStoreKeysOutputArgs struct {

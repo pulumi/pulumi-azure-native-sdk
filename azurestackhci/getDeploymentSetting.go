@@ -74,12 +74,8 @@ func (val *LookupDeploymentSettingResult) Defaults() *LookupDeploymentSettingRes
 	return &tmp
 }
 func LookupDeploymentSettingOutput(ctx *pulumi.Context, args LookupDeploymentSettingOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDeploymentSettingResultOutput, error) {
-			args := v.(LookupDeploymentSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getDeploymentSetting", args, LookupDeploymentSettingResultOutput{}, options).(LookupDeploymentSettingResultOutput), nil
-		}).(LookupDeploymentSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getDeploymentSetting", args, LookupDeploymentSettingResultOutput{}, options).(LookupDeploymentSettingResultOutput)
 }
 
 type LookupDeploymentSettingOutputArgs struct {

@@ -81,12 +81,8 @@ func (val *LookupSignalRReplicaResult) Defaults() *LookupSignalRReplicaResult {
 	return &tmp
 }
 func LookupSignalRReplicaOutput(ctx *pulumi.Context, args LookupSignalRReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRReplicaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalRReplicaResultOutput, error) {
-			args := v.(LookupSignalRReplicaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:signalrservice:getSignalRReplica", args, LookupSignalRReplicaResultOutput{}, options).(LookupSignalRReplicaResultOutput), nil
-		}).(LookupSignalRReplicaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:signalrservice:getSignalRReplica", args, LookupSignalRReplicaResultOutput{}, options).(LookupSignalRReplicaResultOutput)
 }
 
 type LookupSignalRReplicaOutputArgs struct {

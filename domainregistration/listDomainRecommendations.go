@@ -42,12 +42,8 @@ type ListDomainRecommendationsResult struct {
 }
 
 func ListDomainRecommendationsOutput(ctx *pulumi.Context, args ListDomainRecommendationsOutputArgs, opts ...pulumi.InvokeOption) ListDomainRecommendationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDomainRecommendationsResultOutput, error) {
-			args := v.(ListDomainRecommendationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:domainregistration:listDomainRecommendations", args, ListDomainRecommendationsResultOutput{}, options).(ListDomainRecommendationsResultOutput), nil
-		}).(ListDomainRecommendationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:domainregistration:listDomainRecommendations", args, ListDomainRecommendationsResultOutput{}, options).(ListDomainRecommendationsResultOutput)
 }
 
 type ListDomainRecommendationsOutputArgs struct {

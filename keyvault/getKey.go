@@ -81,12 +81,8 @@ func (val *LookupKeyResult) Defaults() *LookupKeyResult {
 	return &tmp
 }
 func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKeyResultOutput, error) {
-			args := v.(LookupKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:keyvault:getKey", args, LookupKeyResultOutput{}, options).(LookupKeyResultOutput), nil
-		}).(LookupKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:keyvault:getKey", args, LookupKeyResultOutput{}, options).(LookupKeyResultOutput)
 }
 
 type LookupKeyOutputArgs struct {

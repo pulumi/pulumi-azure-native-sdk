@@ -66,12 +66,8 @@ type LookupDatabaseAdvisorResult struct {
 }
 
 func LookupDatabaseAdvisorOutput(ctx *pulumi.Context, args LookupDatabaseAdvisorOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAdvisorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAdvisorResultOutput, error) {
-			args := v.(LookupDatabaseAdvisorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getDatabaseAdvisor", args, LookupDatabaseAdvisorResultOutput{}, options).(LookupDatabaseAdvisorResultOutput), nil
-		}).(LookupDatabaseAdvisorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getDatabaseAdvisor", args, LookupDatabaseAdvisorResultOutput{}, options).(LookupDatabaseAdvisorResultOutput)
 }
 
 type LookupDatabaseAdvisorOutputArgs struct {

@@ -116,12 +116,8 @@ type LookupServerGroupClusterResult struct {
 }
 
 func LookupServerGroupClusterOutput(ctx *pulumi.Context, args LookupServerGroupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupClusterResultOutput, error) {
-			args := v.(LookupServerGroupClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupCluster", args, LookupServerGroupClusterResultOutput{}, options).(LookupServerGroupClusterResultOutput), nil
-		}).(LookupServerGroupClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupCluster", args, LookupServerGroupClusterResultOutput{}, options).(LookupServerGroupClusterResultOutput)
 }
 
 type LookupServerGroupClusterOutputArgs struct {

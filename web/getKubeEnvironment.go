@@ -79,12 +79,8 @@ type LookupKubeEnvironmentResult struct {
 }
 
 func LookupKubeEnvironmentOutput(ctx *pulumi.Context, args LookupKubeEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupKubeEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKubeEnvironmentResultOutput, error) {
-			args := v.(LookupKubeEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getKubeEnvironment", args, LookupKubeEnvironmentResultOutput{}, options).(LookupKubeEnvironmentResultOutput), nil
-		}).(LookupKubeEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getKubeEnvironment", args, LookupKubeEnvironmentResultOutput{}, options).(LookupKubeEnvironmentResultOutput)
 }
 
 type LookupKubeEnvironmentOutputArgs struct {

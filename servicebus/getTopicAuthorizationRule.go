@@ -56,12 +56,8 @@ type LookupTopicAuthorizationRuleResult struct {
 }
 
 func LookupTopicAuthorizationRuleOutput(ctx *pulumi.Context, args LookupTopicAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupTopicAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTopicAuthorizationRuleResultOutput, error) {
-			args := v.(LookupTopicAuthorizationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicebus:getTopicAuthorizationRule", args, LookupTopicAuthorizationRuleResultOutput{}, options).(LookupTopicAuthorizationRuleResultOutput), nil
-		}).(LookupTopicAuthorizationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicebus:getTopicAuthorizationRule", args, LookupTopicAuthorizationRuleResultOutput{}, options).(LookupTopicAuthorizationRuleResultOutput)
 }
 
 type LookupTopicAuthorizationRuleOutputArgs struct {

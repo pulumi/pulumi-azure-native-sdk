@@ -80,12 +80,8 @@ type LookupSapCentralServerInstanceResult struct {
 }
 
 func LookupSapCentralServerInstanceOutput(ctx *pulumi.Context, args LookupSapCentralServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSapCentralServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSapCentralServerInstanceResultOutput, error) {
-			args := v.(LookupSapCentralServerInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapCentralServerInstance", args, LookupSapCentralServerInstanceResultOutput{}, options).(LookupSapCentralServerInstanceResultOutput), nil
-		}).(LookupSapCentralServerInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapCentralServerInstance", args, LookupSapCentralServerInstanceResultOutput{}, options).(LookupSapCentralServerInstanceResultOutput)
 }
 
 type LookupSapCentralServerInstanceOutputArgs struct {

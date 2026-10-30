@@ -40,12 +40,8 @@ type ListKustoPoolFollowerDatabasesResult struct {
 }
 
 func ListKustoPoolFollowerDatabasesOutput(ctx *pulumi.Context, args ListKustoPoolFollowerDatabasesOutputArgs, opts ...pulumi.InvokeOption) ListKustoPoolFollowerDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListKustoPoolFollowerDatabasesResultOutput, error) {
-			args := v.(ListKustoPoolFollowerDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:listKustoPoolFollowerDatabases", args, ListKustoPoolFollowerDatabasesResultOutput{}, options).(ListKustoPoolFollowerDatabasesResultOutput), nil
-		}).(ListKustoPoolFollowerDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:listKustoPoolFollowerDatabases", args, ListKustoPoolFollowerDatabasesResultOutput{}, options).(ListKustoPoolFollowerDatabasesResultOutput)
 }
 
 type ListKustoPoolFollowerDatabasesOutputArgs struct {

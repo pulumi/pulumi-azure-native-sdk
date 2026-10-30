@@ -52,12 +52,8 @@ type LookupJobTargetGroupResult struct {
 }
 
 func LookupJobTargetGroupOutput(ctx *pulumi.Context, args LookupJobTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupJobTargetGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobTargetGroupResultOutput, error) {
-			args := v.(LookupJobTargetGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getJobTargetGroup", args, LookupJobTargetGroupResultOutput{}, options).(LookupJobTargetGroupResultOutput), nil
-		}).(LookupJobTargetGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getJobTargetGroup", args, LookupJobTargetGroupResultOutput{}, options).(LookupJobTargetGroupResultOutput)
 }
 
 type LookupJobTargetGroupOutputArgs struct {

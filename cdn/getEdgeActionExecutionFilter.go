@@ -64,12 +64,8 @@ type LookupEdgeActionExecutionFilterResult struct {
 }
 
 func LookupEdgeActionExecutionFilterOutput(ctx *pulumi.Context, args LookupEdgeActionExecutionFilterOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeActionExecutionFilterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEdgeActionExecutionFilterResultOutput, error) {
-			args := v.(LookupEdgeActionExecutionFilterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getEdgeActionExecutionFilter", args, LookupEdgeActionExecutionFilterResultOutput{}, options).(LookupEdgeActionExecutionFilterResultOutput), nil
-		}).(LookupEdgeActionExecutionFilterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getEdgeActionExecutionFilter", args, LookupEdgeActionExecutionFilterResultOutput{}, options).(LookupEdgeActionExecutionFilterResultOutput)
 }
 
 type LookupEdgeActionExecutionFilterOutputArgs struct {

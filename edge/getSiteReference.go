@@ -52,12 +52,8 @@ type LookupSiteReferenceResult struct {
 }
 
 func LookupSiteReferenceOutput(ctx *pulumi.Context, args LookupSiteReferenceOutputArgs, opts ...pulumi.InvokeOption) LookupSiteReferenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSiteReferenceResultOutput, error) {
-			args := v.(LookupSiteReferenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSiteReference", args, LookupSiteReferenceResultOutput{}, options).(LookupSiteReferenceResultOutput), nil
-		}).(LookupSiteReferenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSiteReference", args, LookupSiteReferenceResultOutput{}, options).(LookupSiteReferenceResultOutput)
 }
 
 type LookupSiteReferenceOutputArgs struct {

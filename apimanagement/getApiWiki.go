@@ -50,12 +50,8 @@ type LookupApiWikiResult struct {
 }
 
 func LookupApiWikiOutput(ctx *pulumi.Context, args LookupApiWikiOutputArgs, opts ...pulumi.InvokeOption) LookupApiWikiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiWikiResultOutput, error) {
-			args := v.(LookupApiWikiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiWiki", args, LookupApiWikiResultOutput{}, options).(LookupApiWikiResultOutput), nil
-		}).(LookupApiWikiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiWiki", args, LookupApiWikiResultOutput{}, options).(LookupApiWikiResultOutput)
 }
 
 type LookupApiWikiOutputArgs struct {

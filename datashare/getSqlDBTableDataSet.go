@@ -63,12 +63,8 @@ type LookupSqlDBTableDataSetResult struct {
 }
 
 func LookupSqlDBTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDBTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDBTableDataSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetResultOutput, error) {
-			args := v.(LookupSqlDBTableDataSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getSqlDBTableDataSet", args, LookupSqlDBTableDataSetResultOutput{}, options).(LookupSqlDBTableDataSetResultOutput), nil
-		}).(LookupSqlDBTableDataSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getSqlDBTableDataSet", args, LookupSqlDBTableDataSetResultOutput{}, options).(LookupSqlDBTableDataSetResultOutput)
 }
 
 type LookupSqlDBTableDataSetOutputArgs struct {

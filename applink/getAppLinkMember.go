@@ -54,12 +54,8 @@ type LookupAppLinkMemberResult struct {
 }
 
 func LookupAppLinkMemberOutput(ctx *pulumi.Context, args LookupAppLinkMemberOutputArgs, opts ...pulumi.InvokeOption) LookupAppLinkMemberResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppLinkMemberResultOutput, error) {
-			args := v.(LookupAppLinkMemberArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:applink:getAppLinkMember", args, LookupAppLinkMemberResultOutput{}, options).(LookupAppLinkMemberResultOutput), nil
-		}).(LookupAppLinkMemberResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:applink:getAppLinkMember", args, LookupAppLinkMemberResultOutput{}, options).(LookupAppLinkMemberResultOutput)
 }
 
 type LookupAppLinkMemberOutputArgs struct {

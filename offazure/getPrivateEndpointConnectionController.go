@@ -58,12 +58,8 @@ type LookupPrivateEndpointConnectionControllerResult struct {
 }
 
 func LookupPrivateEndpointConnectionControllerOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionControllerOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionControllerResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getPrivateEndpointConnectionController", args, LookupPrivateEndpointConnectionControllerResultOutput{}, options).(LookupPrivateEndpointConnectionControllerResultOutput), nil
-		}).(LookupPrivateEndpointConnectionControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getPrivateEndpointConnectionController", args, LookupPrivateEndpointConnectionControllerResultOutput{}, options).(LookupPrivateEndpointConnectionControllerResultOutput)
 }
 
 type LookupPrivateEndpointConnectionControllerOutputArgs struct {

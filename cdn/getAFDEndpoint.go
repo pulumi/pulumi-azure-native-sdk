@@ -65,12 +65,8 @@ type LookupAFDEndpointResult struct {
 }
 
 func LookupAFDEndpointOutput(ctx *pulumi.Context, args LookupAFDEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupAFDEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAFDEndpointResultOutput, error) {
-			args := v.(LookupAFDEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getAFDEndpoint", args, LookupAFDEndpointResultOutput{}, options).(LookupAFDEndpointResultOutput), nil
-		}).(LookupAFDEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getAFDEndpoint", args, LookupAFDEndpointResultOutput{}, options).(LookupAFDEndpointResultOutput)
 }
 
 type LookupAFDEndpointOutputArgs struct {

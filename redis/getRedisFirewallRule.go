@@ -50,12 +50,8 @@ type LookupRedisFirewallRuleResult struct {
 }
 
 func LookupRedisFirewallRuleOutput(ctx *pulumi.Context, args LookupRedisFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRedisFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisFirewallRuleResultOutput, error) {
-			args := v.(LookupRedisFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getRedisFirewallRule", args, LookupRedisFirewallRuleResultOutput{}, options).(LookupRedisFirewallRuleResultOutput), nil
-		}).(LookupRedisFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getRedisFirewallRule", args, LookupRedisFirewallRuleResultOutput{}, options).(LookupRedisFirewallRuleResultOutput)
 }
 
 type LookupRedisFirewallRuleOutputArgs struct {

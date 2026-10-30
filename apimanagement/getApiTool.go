@@ -58,12 +58,8 @@ type LookupApiToolResult struct {
 }
 
 func LookupApiToolOutput(ctx *pulumi.Context, args LookupApiToolOutputArgs, opts ...pulumi.InvokeOption) LookupApiToolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiToolResultOutput, error) {
-			args := v.(LookupApiToolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiTool", args, LookupApiToolResultOutput{}, options).(LookupApiToolResultOutput), nil
-		}).(LookupApiToolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiTool", args, LookupApiToolResultOutput{}, options).(LookupApiToolResultOutput)
 }
 
 type LookupApiToolOutputArgs struct {

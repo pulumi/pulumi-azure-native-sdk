@@ -58,12 +58,8 @@ type LookupCassandraResourceCassandraViewResult struct {
 }
 
 func LookupCassandraResourceCassandraViewOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraViewOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraViewResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraViewResultOutput, error) {
-			args := v.(LookupCassandraResourceCassandraViewArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getCassandraResourceCassandraView", args, LookupCassandraResourceCassandraViewResultOutput{}, options).(LookupCassandraResourceCassandraViewResultOutput), nil
-		}).(LookupCassandraResourceCassandraViewResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getCassandraResourceCassandraView", args, LookupCassandraResourceCassandraViewResultOutput{}, options).(LookupCassandraResourceCassandraViewResultOutput)
 }
 
 type LookupCassandraResourceCassandraViewOutputArgs struct {

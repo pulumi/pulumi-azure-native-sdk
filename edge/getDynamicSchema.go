@@ -54,12 +54,8 @@ type LookupDynamicSchemaResult struct {
 }
 
 func LookupDynamicSchemaOutput(ctx *pulumi.Context, args LookupDynamicSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupDynamicSchemaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDynamicSchemaResultOutput, error) {
-			args := v.(LookupDynamicSchemaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getDynamicSchema", args, LookupDynamicSchemaResultOutput{}, options).(LookupDynamicSchemaResultOutput), nil
-		}).(LookupDynamicSchemaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getDynamicSchema", args, LookupDynamicSchemaResultOutput{}, options).(LookupDynamicSchemaResultOutput)
 }
 
 type LookupDynamicSchemaOutputArgs struct {

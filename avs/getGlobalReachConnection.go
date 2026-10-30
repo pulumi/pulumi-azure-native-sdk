@@ -66,12 +66,8 @@ type LookupGlobalReachConnectionResult struct {
 }
 
 func LookupGlobalReachConnectionOutput(ctx *pulumi.Context, args LookupGlobalReachConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalReachConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlobalReachConnectionResultOutput, error) {
-			args := v.(LookupGlobalReachConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getGlobalReachConnection", args, LookupGlobalReachConnectionResultOutput{}, options).(LookupGlobalReachConnectionResultOutput), nil
-		}).(LookupGlobalReachConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getGlobalReachConnection", args, LookupGlobalReachConnectionResultOutput{}, options).(LookupGlobalReachConnectionResultOutput)
 }
 
 type LookupGlobalReachConnectionOutputArgs struct {

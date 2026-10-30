@@ -74,12 +74,8 @@ func (val *LookupControllerDetailsResult) Defaults() *LookupControllerDetailsRes
 	return &tmp
 }
 func LookupControllerDetailsOutput(ctx *pulumi.Context, args LookupControllerDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupControllerDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupControllerDetailsResultOutput, error) {
-			args := v.(LookupControllerDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:delegatednetwork:getControllerDetails", args, LookupControllerDetailsResultOutput{}, options).(LookupControllerDetailsResultOutput), nil
-		}).(LookupControllerDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:delegatednetwork:getControllerDetails", args, LookupControllerDetailsResultOutput{}, options).(LookupControllerDetailsResultOutput)
 }
 
 type LookupControllerDetailsOutputArgs struct {

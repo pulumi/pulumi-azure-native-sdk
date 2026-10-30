@@ -42,12 +42,8 @@ type ListAccountKeysResult struct {
 }
 
 func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccountKeysResultOutput, error) {
-			args := v.(ListAccountKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:listAccountKeys", args, ListAccountKeysResultOutput{}, options).(ListAccountKeysResultOutput), nil
-		}).(ListAccountKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:listAccountKeys", args, ListAccountKeysResultOutput{}, options).(ListAccountKeysResultOutput)
 }
 
 type ListAccountKeysOutputArgs struct {

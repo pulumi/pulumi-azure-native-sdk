@@ -52,12 +52,8 @@ type LookupSignalDefinitionResult struct {
 }
 
 func LookupSignalDefinitionOutput(ctx *pulumi.Context, args LookupSignalDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupSignalDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalDefinitionResultOutput, error) {
-			args := v.(LookupSignalDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getSignalDefinition", args, LookupSignalDefinitionResultOutput{}, options).(LookupSignalDefinitionResultOutput), nil
-		}).(LookupSignalDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getSignalDefinition", args, LookupSignalDefinitionResultOutput{}, options).(LookupSignalDefinitionResultOutput)
 }
 
 type LookupSignalDefinitionOutputArgs struct {

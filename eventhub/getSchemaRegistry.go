@@ -62,12 +62,8 @@ type LookupSchemaRegistryResult struct {
 }
 
 func LookupSchemaRegistryOutput(ctx *pulumi.Context, args LookupSchemaRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaRegistryResultOutput, error) {
-			args := v.(LookupSchemaRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventhub:getSchemaRegistry", args, LookupSchemaRegistryResultOutput{}, options).(LookupSchemaRegistryResultOutput), nil
-		}).(LookupSchemaRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventhub:getSchemaRegistry", args, LookupSchemaRegistryResultOutput{}, options).(LookupSchemaRegistryResultOutput)
 }
 
 type LookupSchemaRegistryOutputArgs struct {

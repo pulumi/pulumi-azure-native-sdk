@@ -174,12 +174,8 @@ type ListWebAppAuthSettingsResult struct {
 }
 
 func ListWebAppAuthSettingsOutput(ctx *pulumi.Context, args ListWebAppAuthSettingsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppAuthSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppAuthSettingsResultOutput, error) {
-			args := v.(ListWebAppAuthSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppAuthSettings", args, ListWebAppAuthSettingsResultOutput{}, options).(ListWebAppAuthSettingsResultOutput), nil
-		}).(ListWebAppAuthSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppAuthSettings", args, ListWebAppAuthSettingsResultOutput{}, options).(ListWebAppAuthSettingsResultOutput)
 }
 
 type ListWebAppAuthSettingsOutputArgs struct {

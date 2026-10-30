@@ -58,12 +58,8 @@ type LookupSandboxCustomImageResult struct {
 }
 
 func LookupSandboxCustomImageOutput(ctx *pulumi.Context, args LookupSandboxCustomImageOutputArgs, opts ...pulumi.InvokeOption) LookupSandboxCustomImageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSandboxCustomImageResultOutput, error) {
-			args := v.(LookupSandboxCustomImageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getSandboxCustomImage", args, LookupSandboxCustomImageResultOutput{}, options).(LookupSandboxCustomImageResultOutput), nil
-		}).(LookupSandboxCustomImageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getSandboxCustomImage", args, LookupSandboxCustomImageResultOutput{}, options).(LookupSandboxCustomImageResultOutput)
 }
 
 type LookupSandboxCustomImageOutputArgs struct {

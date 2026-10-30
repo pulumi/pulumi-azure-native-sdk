@@ -64,12 +64,8 @@ type LookupContactProfileResult struct {
 }
 
 func LookupContactProfileOutput(ctx *pulumi.Context, args LookupContactProfileOutputArgs, opts ...pulumi.InvokeOption) LookupContactProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContactProfileResultOutput, error) {
-			args := v.(LookupContactProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:orbital:getContactProfile", args, LookupContactProfileResultOutput{}, options).(LookupContactProfileResultOutput), nil
-		}).(LookupContactProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:orbital:getContactProfile", args, LookupContactProfileResultOutput{}, options).(LookupContactProfileResultOutput)
 }
 
 type LookupContactProfileOutputArgs struct {

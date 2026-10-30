@@ -48,12 +48,8 @@ type ListWebAppConnectionStringsResult struct {
 }
 
 func ListWebAppConnectionStringsOutput(ctx *pulumi.Context, args ListWebAppConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppConnectionStringsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppConnectionStringsResultOutput, error) {
-			args := v.(ListWebAppConnectionStringsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppConnectionStrings", args, ListWebAppConnectionStringsResultOutput{}, options).(ListWebAppConnectionStringsResultOutput), nil
-		}).(ListWebAppConnectionStringsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppConnectionStrings", args, ListWebAppConnectionStringsResultOutput{}, options).(ListWebAppConnectionStringsResultOutput)
 }
 
 type ListWebAppConnectionStringsOutputArgs struct {

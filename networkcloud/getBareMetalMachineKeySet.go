@@ -79,12 +79,8 @@ type LookupBareMetalMachineKeySetResult struct {
 }
 
 func LookupBareMetalMachineKeySetOutput(ctx *pulumi.Context, args LookupBareMetalMachineKeySetOutputArgs, opts ...pulumi.InvokeOption) LookupBareMetalMachineKeySetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBareMetalMachineKeySetResultOutput, error) {
-			args := v.(LookupBareMetalMachineKeySetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getBareMetalMachineKeySet", args, LookupBareMetalMachineKeySetResultOutput{}, options).(LookupBareMetalMachineKeySetResultOutput), nil
-		}).(LookupBareMetalMachineKeySetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getBareMetalMachineKeySet", args, LookupBareMetalMachineKeySetResultOutput{}, options).(LookupBareMetalMachineKeySetResultOutput)
 }
 
 type LookupBareMetalMachineKeySetOutputArgs struct {

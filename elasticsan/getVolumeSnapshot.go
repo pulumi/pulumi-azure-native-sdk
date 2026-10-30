@@ -60,12 +60,8 @@ type LookupVolumeSnapshotResult struct {
 }
 
 func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVolumeSnapshotResultOutput, error) {
-			args := v.(LookupVolumeSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elasticsan:getVolumeSnapshot", args, LookupVolumeSnapshotResultOutput{}, options).(LookupVolumeSnapshotResultOutput), nil
-		}).(LookupVolumeSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elasticsan:getVolumeSnapshot", args, LookupVolumeSnapshotResultOutput{}, options).(LookupVolumeSnapshotResultOutput)
 }
 
 type LookupVolumeSnapshotOutputArgs struct {

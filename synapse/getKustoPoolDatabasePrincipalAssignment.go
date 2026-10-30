@@ -68,12 +68,8 @@ type LookupKustoPoolDatabasePrincipalAssignmentResult struct {
 }
 
 func LookupKustoPoolDatabasePrincipalAssignmentOutput(ctx *pulumi.Context, args LookupKustoPoolDatabasePrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolDatabasePrincipalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKustoPoolDatabasePrincipalAssignmentResultOutput, error) {
-			args := v.(LookupKustoPoolDatabasePrincipalAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getKustoPoolDatabasePrincipalAssignment", args, LookupKustoPoolDatabasePrincipalAssignmentResultOutput{}, options).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput), nil
-		}).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getKustoPoolDatabasePrincipalAssignment", args, LookupKustoPoolDatabasePrincipalAssignmentResultOutput{}, options).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput)
 }
 
 type LookupKustoPoolDatabasePrincipalAssignmentOutputArgs struct {

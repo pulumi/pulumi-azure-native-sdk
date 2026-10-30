@@ -52,12 +52,8 @@ type LookupConnectedEnvironmentsStorageResult struct {
 }
 
 func LookupConnectedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentsStorageOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentsStorageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectedEnvironmentsStorageResultOutput, error) {
-			args := v.(LookupConnectedEnvironmentsStorageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsStorage", args, LookupConnectedEnvironmentsStorageResultOutput{}, options).(LookupConnectedEnvironmentsStorageResultOutput), nil
-		}).(LookupConnectedEnvironmentsStorageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsStorage", args, LookupConnectedEnvironmentsStorageResultOutput{}, options).(LookupConnectedEnvironmentsStorageResultOutput)
 }
 
 type LookupConnectedEnvironmentsStorageOutputArgs struct {

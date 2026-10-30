@@ -62,12 +62,8 @@ func (val *LookupRegistryEnvironmentContainerResult) Defaults() *LookupRegistryE
 	return &tmp
 }
 func LookupRegistryEnvironmentContainerOutput(ctx *pulumi.Context, args LookupRegistryEnvironmentContainerOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryEnvironmentContainerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryEnvironmentContainerResultOutput, error) {
-			args := v.(LookupRegistryEnvironmentContainerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryEnvironmentContainer", args, LookupRegistryEnvironmentContainerResultOutput{}, options).(LookupRegistryEnvironmentContainerResultOutput), nil
-		}).(LookupRegistryEnvironmentContainerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryEnvironmentContainer", args, LookupRegistryEnvironmentContainerResultOutput{}, options).(LookupRegistryEnvironmentContainerResultOutput)
 }
 
 type LookupRegistryEnvironmentContainerOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupWebAppAuthSettingsV2WithoutSecretsSlotResult struct {
 }
 
 func LookupWebAppAuthSettingsV2WithoutSecretsSlotOutput(ctx *pulumi.Context, args LookupWebAppAuthSettingsV2WithoutSecretsSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput, error) {
-			args := v.(LookupWebAppAuthSettingsV2WithoutSecretsSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppAuthSettingsV2WithoutSecretsSlot", args, LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput{}, options).(LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput), nil
-		}).(LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppAuthSettingsV2WithoutSecretsSlot", args, LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput{}, options).(LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput)
 }
 
 type LookupWebAppAuthSettingsV2WithoutSecretsSlotOutputArgs struct {

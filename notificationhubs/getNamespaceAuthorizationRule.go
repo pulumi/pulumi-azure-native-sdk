@@ -72,12 +72,8 @@ type LookupNamespaceAuthorizationRuleResult struct {
 }
 
 func LookupNamespaceAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNamespaceAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceAuthorizationRuleResultOutput, error) {
-			args := v.(LookupNamespaceAuthorizationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:notificationhubs:getNamespaceAuthorizationRule", args, LookupNamespaceAuthorizationRuleResultOutput{}, options).(LookupNamespaceAuthorizationRuleResultOutput), nil
-		}).(LookupNamespaceAuthorizationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:notificationhubs:getNamespaceAuthorizationRule", args, LookupNamespaceAuthorizationRuleResultOutput{}, options).(LookupNamespaceAuthorizationRuleResultOutput)
 }
 
 type LookupNamespaceAuthorizationRuleOutputArgs struct {

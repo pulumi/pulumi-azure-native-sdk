@@ -52,12 +52,8 @@ type LookupLogsLogStreamResult struct {
 }
 
 func LookupLogsLogStreamOutput(ctx *pulumi.Context, args LookupLogsLogStreamOutputArgs, opts ...pulumi.InvokeOption) LookupLogsLogStreamResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogsLogStreamResultOutput, error) {
-			args := v.(LookupLogsLogStreamArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getLogsLogStream", args, LookupLogsLogStreamResultOutput{}, options).(LookupLogsLogStreamResultOutput), nil
-		}).(LookupLogsLogStreamResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getLogsLogStream", args, LookupLogsLogStreamResultOutput{}, options).(LookupLogsLogStreamResultOutput)
 }
 
 type LookupLogsLogStreamOutputArgs struct {

@@ -42,12 +42,8 @@ type ListAzureDevOpsOrgAvailableResult struct {
 }
 
 func ListAzureDevOpsOrgAvailableOutput(ctx *pulumi.Context, args ListAzureDevOpsOrgAvailableOutputArgs, opts ...pulumi.InvokeOption) ListAzureDevOpsOrgAvailableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAzureDevOpsOrgAvailableResultOutput, error) {
-			args := v.(ListAzureDevOpsOrgAvailableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:listAzureDevOpsOrgAvailable", args, ListAzureDevOpsOrgAvailableResultOutput{}, options).(ListAzureDevOpsOrgAvailableResultOutput), nil
-		}).(ListAzureDevOpsOrgAvailableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:listAzureDevOpsOrgAvailable", args, ListAzureDevOpsOrgAvailableResultOutput{}, options).(ListAzureDevOpsOrgAvailableResultOutput)
 }
 
 type ListAzureDevOpsOrgAvailableOutputArgs struct {

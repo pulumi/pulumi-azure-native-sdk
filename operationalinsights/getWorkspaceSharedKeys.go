@@ -40,12 +40,8 @@ type GetWorkspaceSharedKeysResult struct {
 }
 
 func GetWorkspaceSharedKeysOutput(ctx *pulumi.Context, args GetWorkspaceSharedKeysOutputArgs, opts ...pulumi.InvokeOption) GetWorkspaceSharedKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkspaceSharedKeysResultOutput, error) {
-			args := v.(GetWorkspaceSharedKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationalinsights:getWorkspaceSharedKeys", args, GetWorkspaceSharedKeysResultOutput{}, options).(GetWorkspaceSharedKeysResultOutput), nil
-		}).(GetWorkspaceSharedKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationalinsights:getWorkspaceSharedKeys", args, GetWorkspaceSharedKeysResultOutput{}, options).(GetWorkspaceSharedKeysResultOutput)
 }
 
 type GetWorkspaceSharedKeysOutputArgs struct {

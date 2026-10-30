@@ -51,12 +51,8 @@ type LookupReplicationExtensionResult struct {
 }
 
 func LookupReplicationExtensionOutput(ctx *pulumi.Context, args LookupReplicationExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationExtensionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicationExtensionResultOutput, error) {
-			args := v.(LookupReplicationExtensionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datareplication:getReplicationExtension", args, LookupReplicationExtensionResultOutput{}, options).(LookupReplicationExtensionResultOutput), nil
-		}).(LookupReplicationExtensionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datareplication:getReplicationExtension", args, LookupReplicationExtensionResultOutput{}, options).(LookupReplicationExtensionResultOutput)
 }
 
 type LookupReplicationExtensionOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupSqlPoolTransparentDataEncryptionResult struct {
 }
 
 func LookupSqlPoolTransparentDataEncryptionOutput(ctx *pulumi.Context, args LookupSqlPoolTransparentDataEncryptionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolTransparentDataEncryptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlPoolTransparentDataEncryptionResultOutput, error) {
-			args := v.(LookupSqlPoolTransparentDataEncryptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getSqlPoolTransparentDataEncryption", args, LookupSqlPoolTransparentDataEncryptionResultOutput{}, options).(LookupSqlPoolTransparentDataEncryptionResultOutput), nil
-		}).(LookupSqlPoolTransparentDataEncryptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getSqlPoolTransparentDataEncryption", args, LookupSqlPoolTransparentDataEncryptionResultOutput{}, options).(LookupSqlPoolTransparentDataEncryptionResultOutput)
 }
 
 type LookupSqlPoolTransparentDataEncryptionOutputArgs struct {

@@ -62,12 +62,8 @@ func (val *LookupCloudWatchAlarmResult) Defaults() *LookupCloudWatchAlarmResult 
 	return &tmp
 }
 func LookupCloudWatchAlarmOutput(ctx *pulumi.Context, args LookupCloudWatchAlarmOutputArgs, opts ...pulumi.InvokeOption) LookupCloudWatchAlarmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudWatchAlarmResultOutput, error) {
-			args := v.(LookupCloudWatchAlarmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getCloudWatchAlarm", args, LookupCloudWatchAlarmResultOutput{}, options).(LookupCloudWatchAlarmResultOutput), nil
-		}).(LookupCloudWatchAlarmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getCloudWatchAlarm", args, LookupCloudWatchAlarmResultOutput{}, options).(LookupCloudWatchAlarmResultOutput)
 }
 
 type LookupCloudWatchAlarmOutputArgs struct {

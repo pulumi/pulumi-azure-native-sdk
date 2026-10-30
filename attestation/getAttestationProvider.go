@@ -78,12 +78,8 @@ func (val *LookupAttestationProviderResult) Defaults() *LookupAttestationProvide
 	return &tmp
 }
 func LookupAttestationProviderOutput(ctx *pulumi.Context, args LookupAttestationProviderOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAttestationProviderResultOutput, error) {
-			args := v.(LookupAttestationProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:attestation:getAttestationProvider", args, LookupAttestationProviderResultOutput{}, options).(LookupAttestationProviderResultOutput), nil
-		}).(LookupAttestationProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:attestation:getAttestationProvider", args, LookupAttestationProviderResultOutput{}, options).(LookupAttestationProviderResultOutput)
 }
 
 type LookupAttestationProviderOutputArgs struct {

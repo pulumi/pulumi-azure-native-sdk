@@ -70,12 +70,8 @@ type LookupCloudHsmClusterResult struct {
 }
 
 func LookupCloudHsmClusterOutput(ctx *pulumi.Context, args LookupCloudHsmClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCloudHsmClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudHsmClusterResultOutput, error) {
-			args := v.(LookupCloudHsmClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hardwaresecuritymodules:getCloudHsmCluster", args, LookupCloudHsmClusterResultOutput{}, options).(LookupCloudHsmClusterResultOutput), nil
-		}).(LookupCloudHsmClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hardwaresecuritymodules:getCloudHsmCluster", args, LookupCloudHsmClusterResultOutput{}, options).(LookupCloudHsmClusterResultOutput)
 }
 
 type LookupCloudHsmClusterOutputArgs struct {

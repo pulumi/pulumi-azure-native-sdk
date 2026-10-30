@@ -46,12 +46,8 @@ type ListIntegrationAccountKeyVaultKeysResult struct {
 }
 
 func ListIntegrationAccountKeyVaultKeysOutput(ctx *pulumi.Context, args ListIntegrationAccountKeyVaultKeysOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountKeyVaultKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountKeyVaultKeysResultOutput, error) {
-			args := v.(ListIntegrationAccountKeyVaultKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountKeyVaultKeys", args, ListIntegrationAccountKeyVaultKeysResultOutput{}, options).(ListIntegrationAccountKeyVaultKeysResultOutput), nil
-		}).(ListIntegrationAccountKeyVaultKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountKeyVaultKeys", args, ListIntegrationAccountKeyVaultKeysResultOutput{}, options).(ListIntegrationAccountKeyVaultKeysResultOutput)
 }
 
 type ListIntegrationAccountKeyVaultKeysOutputArgs struct {
