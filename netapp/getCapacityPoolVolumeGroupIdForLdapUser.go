@@ -46,12 +46,8 @@ type GetCapacityPoolVolumeGroupIdForLdapUserResult struct {
 }
 
 func GetCapacityPoolVolumeGroupIdForLdapUserOutput(ctx *pulumi.Context, args GetCapacityPoolVolumeGroupIdForLdapUserOutputArgs, opts ...pulumi.InvokeOption) GetCapacityPoolVolumeGroupIdForLdapUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCapacityPoolVolumeGroupIdForLdapUserResultOutput, error) {
-			args := v.(GetCapacityPoolVolumeGroupIdForLdapUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolVolumeGroupIdForLdapUser", args, GetCapacityPoolVolumeGroupIdForLdapUserResultOutput{}, options).(GetCapacityPoolVolumeGroupIdForLdapUserResultOutput), nil
-		}).(GetCapacityPoolVolumeGroupIdForLdapUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolVolumeGroupIdForLdapUser", args, GetCapacityPoolVolumeGroupIdForLdapUserResultOutput{}, options).(GetCapacityPoolVolumeGroupIdForLdapUserResultOutput)
 }
 
 type GetCapacityPoolVolumeGroupIdForLdapUserOutputArgs struct {

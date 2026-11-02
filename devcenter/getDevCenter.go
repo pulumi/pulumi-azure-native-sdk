@@ -64,12 +64,8 @@ type LookupDevCenterResult struct {
 }
 
 func LookupDevCenterOutput(ctx *pulumi.Context, args LookupDevCenterOutputArgs, opts ...pulumi.InvokeOption) LookupDevCenterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDevCenterResultOutput, error) {
-			args := v.(LookupDevCenterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getDevCenter", args, LookupDevCenterResultOutput{}, options).(LookupDevCenterResultOutput), nil
-		}).(LookupDevCenterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getDevCenter", args, LookupDevCenterResultOutput{}, options).(LookupDevCenterResultOutput)
 }
 
 type LookupDevCenterOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupCapacityPoolSnapshotResult struct {
 }
 
 func LookupCapacityPoolSnapshotOutput(ctx *pulumi.Context, args LookupCapacityPoolSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityPoolSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapacityPoolSnapshotResultOutput, error) {
-			args := v.(LookupCapacityPoolSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSnapshot", args, LookupCapacityPoolSnapshotResultOutput{}, options).(LookupCapacityPoolSnapshotResultOutput), nil
-		}).(LookupCapacityPoolSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolSnapshot", args, LookupCapacityPoolSnapshotResultOutput{}, options).(LookupCapacityPoolSnapshotResultOutput)
 }
 
 type LookupCapacityPoolSnapshotOutputArgs struct {

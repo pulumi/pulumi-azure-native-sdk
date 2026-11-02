@@ -36,12 +36,8 @@ type GetOrganizationElasticToAzureSubscriptionMappingResult struct {
 }
 
 func GetOrganizationElasticToAzureSubscriptionMappingOutput(ctx *pulumi.Context, args GetOrganizationElasticToAzureSubscriptionMappingOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationElasticToAzureSubscriptionMappingResultOutput, error) {
-			args := v.(GetOrganizationElasticToAzureSubscriptionMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:getOrganizationElasticToAzureSubscriptionMapping", args, GetOrganizationElasticToAzureSubscriptionMappingResultOutput{}, options).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput), nil
-		}).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:getOrganizationElasticToAzureSubscriptionMapping", args, GetOrganizationElasticToAzureSubscriptionMappingResultOutput{}, options).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput)
 }
 
 type GetOrganizationElasticToAzureSubscriptionMappingOutputArgs struct {

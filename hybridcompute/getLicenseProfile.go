@@ -86,12 +86,8 @@ type LookupLicenseProfileResult struct {
 }
 
 func LookupLicenseProfileOutput(ctx *pulumi.Context, args LookupLicenseProfileOutputArgs, opts ...pulumi.InvokeOption) LookupLicenseProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLicenseProfileResultOutput, error) {
-			args := v.(LookupLicenseProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridcompute:getLicenseProfile", args, LookupLicenseProfileResultOutput{}, options).(LookupLicenseProfileResultOutput), nil
-		}).(LookupLicenseProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridcompute:getLicenseProfile", args, LookupLicenseProfileResultOutput{}, options).(LookupLicenseProfileResultOutput)
 }
 
 type LookupLicenseProfileOutputArgs struct {

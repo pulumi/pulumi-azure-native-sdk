@@ -38,12 +38,8 @@ type ListAgriServiceAvailableSolutionsResult struct {
 }
 
 func ListAgriServiceAvailableSolutionsOutput(ctx *pulumi.Context, args ListAgriServiceAvailableSolutionsOutputArgs, opts ...pulumi.InvokeOption) ListAgriServiceAvailableSolutionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAgriServiceAvailableSolutionsResultOutput, error) {
-			args := v.(ListAgriServiceAvailableSolutionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:agricultureplatform:listAgriServiceAvailableSolutions", args, ListAgriServiceAvailableSolutionsResultOutput{}, options).(ListAgriServiceAvailableSolutionsResultOutput), nil
-		}).(ListAgriServiceAvailableSolutionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:agricultureplatform:listAgriServiceAvailableSolutions", args, ListAgriServiceAvailableSolutionsResultOutput{}, options).(ListAgriServiceAvailableSolutionsResultOutput)
 }
 
 type ListAgriServiceAvailableSolutionsOutputArgs struct {

@@ -62,12 +62,8 @@ func (val *LookupComponentContainerResult) Defaults() *LookupComponentContainerR
 	return &tmp
 }
 func LookupComponentContainerOutput(ctx *pulumi.Context, args LookupComponentContainerOutputArgs, opts ...pulumi.InvokeOption) LookupComponentContainerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComponentContainerResultOutput, error) {
-			args := v.(LookupComponentContainerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getComponentContainer", args, LookupComponentContainerResultOutput{}, options).(LookupComponentContainerResultOutput), nil
-		}).(LookupComponentContainerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getComponentContainer", args, LookupComponentContainerResultOutput{}, options).(LookupComponentContainerResultOutput)
 }
 
 type LookupComponentContainerOutputArgs struct {

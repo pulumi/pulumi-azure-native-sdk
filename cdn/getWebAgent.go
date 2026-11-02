@@ -60,12 +60,8 @@ type LookupWebAgentResult struct {
 }
 
 func LookupWebAgentOutput(ctx *pulumi.Context, args LookupWebAgentOutputArgs, opts ...pulumi.InvokeOption) LookupWebAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAgentResultOutput, error) {
-			args := v.(LookupWebAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getWebAgent", args, LookupWebAgentResultOutput{}, options).(LookupWebAgentResultOutput), nil
-		}).(LookupWebAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getWebAgent", args, LookupWebAgentResultOutput{}, options).(LookupWebAgentResultOutput)
 }
 
 type LookupWebAgentOutputArgs struct {

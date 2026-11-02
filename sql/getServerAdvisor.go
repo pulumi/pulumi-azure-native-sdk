@@ -64,12 +64,8 @@ type LookupServerAdvisorResult struct {
 }
 
 func LookupServerAdvisorOutput(ctx *pulumi.Context, args LookupServerAdvisorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAdvisorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerAdvisorResultOutput, error) {
-			args := v.(LookupServerAdvisorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getServerAdvisor", args, LookupServerAdvisorResultOutput{}, options).(LookupServerAdvisorResultOutput), nil
-		}).(LookupServerAdvisorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getServerAdvisor", args, LookupServerAdvisorResultOutput{}, options).(LookupServerAdvisorResultOutput)
 }
 
 type LookupServerAdvisorOutputArgs struct {

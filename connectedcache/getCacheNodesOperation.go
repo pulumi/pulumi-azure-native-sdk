@@ -52,12 +52,8 @@ type LookupCacheNodesOperationResult struct {
 }
 
 func LookupCacheNodesOperationOutput(ctx *pulumi.Context, args LookupCacheNodesOperationOutputArgs, opts ...pulumi.InvokeOption) LookupCacheNodesOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCacheNodesOperationResultOutput, error) {
-			args := v.(LookupCacheNodesOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getCacheNodesOperation", args, LookupCacheNodesOperationResultOutput{}, options).(LookupCacheNodesOperationResultOutput), nil
-		}).(LookupCacheNodesOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getCacheNodesOperation", args, LookupCacheNodesOperationResultOutput{}, options).(LookupCacheNodesOperationResultOutput)
 }
 
 type LookupCacheNodesOperationOutputArgs struct {

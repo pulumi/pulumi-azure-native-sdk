@@ -52,12 +52,8 @@ type LookupEc2NetworkInterfaceResult struct {
 }
 
 func LookupEc2NetworkInterfaceOutput(ctx *pulumi.Context, args LookupEc2NetworkInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupEc2NetworkInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2NetworkInterfaceResultOutput, error) {
-			args := v.(LookupEc2NetworkInterfaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2NetworkInterface", args, LookupEc2NetworkInterfaceResultOutput{}, options).(LookupEc2NetworkInterfaceResultOutput), nil
-		}).(LookupEc2NetworkInterfaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2NetworkInterface", args, LookupEc2NetworkInterfaceResultOutput{}, options).(LookupEc2NetworkInterfaceResultOutput)
 }
 
 type LookupEc2NetworkInterfaceOutputArgs struct {

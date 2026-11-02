@@ -54,12 +54,8 @@ type LookupIspCustomerResult struct {
 }
 
 func LookupIspCustomerOutput(ctx *pulumi.Context, args LookupIspCustomerOutputArgs, opts ...pulumi.InvokeOption) LookupIspCustomerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIspCustomerResultOutput, error) {
-			args := v.(LookupIspCustomerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getIspCustomer", args, LookupIspCustomerResultOutput{}, options).(LookupIspCustomerResultOutput), nil
-		}).(LookupIspCustomerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getIspCustomer", args, LookupIspCustomerResultOutput{}, options).(LookupIspCustomerResultOutput)
 }
 
 type LookupIspCustomerOutputArgs struct {

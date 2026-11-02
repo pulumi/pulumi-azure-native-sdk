@@ -58,12 +58,8 @@ type LookupFqdnListGlobalRulestackResult struct {
 }
 
 func LookupFqdnListGlobalRulestackOutput(ctx *pulumi.Context, args LookupFqdnListGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupFqdnListGlobalRulestackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFqdnListGlobalRulestackResultOutput, error) {
-			args := v.(LookupFqdnListGlobalRulestackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getFqdnListGlobalRulestack", args, LookupFqdnListGlobalRulestackResultOutput{}, options).(LookupFqdnListGlobalRulestackResultOutput), nil
-		}).(LookupFqdnListGlobalRulestackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getFqdnListGlobalRulestack", args, LookupFqdnListGlobalRulestackResultOutput{}, options).(LookupFqdnListGlobalRulestackResultOutput)
 }
 
 type LookupFqdnListGlobalRulestackOutputArgs struct {

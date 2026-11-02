@@ -56,12 +56,8 @@ type LookupHcxEnterpriseSiteResult struct {
 }
 
 func LookupHcxEnterpriseSiteOutput(ctx *pulumi.Context, args LookupHcxEnterpriseSiteOutputArgs, opts ...pulumi.InvokeOption) LookupHcxEnterpriseSiteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHcxEnterpriseSiteResultOutput, error) {
-			args := v.(LookupHcxEnterpriseSiteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getHcxEnterpriseSite", args, LookupHcxEnterpriseSiteResultOutput{}, options).(LookupHcxEnterpriseSiteResultOutput), nil
-		}).(LookupHcxEnterpriseSiteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getHcxEnterpriseSite", args, LookupHcxEnterpriseSiteResultOutput{}, options).(LookupHcxEnterpriseSiteResultOutput)
 }
 
 type LookupHcxEnterpriseSiteOutputArgs struct {

@@ -66,12 +66,8 @@ func (val *LookupManufacturingDataServiceResult) Defaults() *LookupManufacturing
 	return &tmp
 }
 func LookupManufacturingDataServiceOutput(ctx *pulumi.Context, args LookupManufacturingDataServiceOutputArgs, opts ...pulumi.InvokeOption) LookupManufacturingDataServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManufacturingDataServiceResultOutput, error) {
-			args := v.(LookupManufacturingDataServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:manufacturingplatform:getManufacturingDataService", args, LookupManufacturingDataServiceResultOutput{}, options).(LookupManufacturingDataServiceResultOutput), nil
-		}).(LookupManufacturingDataServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:manufacturingplatform:getManufacturingDataService", args, LookupManufacturingDataServiceResultOutput{}, options).(LookupManufacturingDataServiceResultOutput)
 }
 
 type LookupManufacturingDataServiceOutputArgs struct {

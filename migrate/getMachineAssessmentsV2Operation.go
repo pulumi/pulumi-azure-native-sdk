@@ -50,12 +50,8 @@ type LookupMachineAssessmentsV2OperationResult struct {
 }
 
 func LookupMachineAssessmentsV2OperationOutput(ctx *pulumi.Context, args LookupMachineAssessmentsV2OperationOutputArgs, opts ...pulumi.InvokeOption) LookupMachineAssessmentsV2OperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMachineAssessmentsV2OperationResultOutput, error) {
-			args := v.(LookupMachineAssessmentsV2OperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getMachineAssessmentsV2Operation", args, LookupMachineAssessmentsV2OperationResultOutput{}, options).(LookupMachineAssessmentsV2OperationResultOutput), nil
-		}).(LookupMachineAssessmentsV2OperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getMachineAssessmentsV2Operation", args, LookupMachineAssessmentsV2OperationResultOutput{}, options).(LookupMachineAssessmentsV2OperationResultOutput)
 }
 
 type LookupMachineAssessmentsV2OperationOutputArgs struct {

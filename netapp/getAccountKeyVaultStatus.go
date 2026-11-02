@@ -44,12 +44,8 @@ type GetAccountKeyVaultStatusResult struct {
 }
 
 func GetAccountKeyVaultStatusOutput(ctx *pulumi.Context, args GetAccountKeyVaultStatusOutputArgs, opts ...pulumi.InvokeOption) GetAccountKeyVaultStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountKeyVaultStatusResultOutput, error) {
-			args := v.(GetAccountKeyVaultStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getAccountKeyVaultStatus", args, GetAccountKeyVaultStatusResultOutput{}, options).(GetAccountKeyVaultStatusResultOutput), nil
-		}).(GetAccountKeyVaultStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getAccountKeyVaultStatus", args, GetAccountKeyVaultStatusResultOutput{}, options).(GetAccountKeyVaultStatusResultOutput)
 }
 
 type GetAccountKeyVaultStatusOutputArgs struct {

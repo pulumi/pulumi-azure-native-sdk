@@ -46,12 +46,8 @@ type GetFactoryGitHubAccessTokenResult struct {
 }
 
 func GetFactoryGitHubAccessTokenOutput(ctx *pulumi.Context, args GetFactoryGitHubAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetFactoryGitHubAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFactoryGitHubAccessTokenResultOutput, error) {
-			args := v.(GetFactoryGitHubAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getFactoryGitHubAccessToken", args, GetFactoryGitHubAccessTokenResultOutput{}, options).(GetFactoryGitHubAccessTokenResultOutput), nil
-		}).(GetFactoryGitHubAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getFactoryGitHubAccessToken", args, GetFactoryGitHubAccessTokenResultOutput{}, options).(GetFactoryGitHubAccessTokenResultOutput)
 }
 
 type GetFactoryGitHubAccessTokenOutputArgs struct {

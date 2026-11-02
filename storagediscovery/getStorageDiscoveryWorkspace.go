@@ -64,12 +64,8 @@ func (val *LookupStorageDiscoveryWorkspaceResult) Defaults() *LookupStorageDisco
 	return &tmp
 }
 func LookupStorageDiscoveryWorkspaceOutput(ctx *pulumi.Context, args LookupStorageDiscoveryWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageDiscoveryWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStorageDiscoveryWorkspaceResultOutput, error) {
-			args := v.(LookupStorageDiscoveryWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagediscovery:getStorageDiscoveryWorkspace", args, LookupStorageDiscoveryWorkspaceResultOutput{}, options).(LookupStorageDiscoveryWorkspaceResultOutput), nil
-		}).(LookupStorageDiscoveryWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagediscovery:getStorageDiscoveryWorkspace", args, LookupStorageDiscoveryWorkspaceResultOutput{}, options).(LookupStorageDiscoveryWorkspaceResultOutput)
 }
 
 type LookupStorageDiscoveryWorkspaceOutputArgs struct {

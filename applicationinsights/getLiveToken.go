@@ -38,12 +38,8 @@ type GetLiveTokenResult struct {
 }
 
 func GetLiveTokenOutput(ctx *pulumi.Context, args GetLiveTokenOutputArgs, opts ...pulumi.InvokeOption) GetLiveTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLiveTokenResultOutput, error) {
-			args := v.(GetLiveTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:applicationinsights:getLiveToken", args, GetLiveTokenResultOutput{}, options).(GetLiveTokenResultOutput), nil
-		}).(GetLiveTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:applicationinsights:getLiveToken", args, GetLiveTokenResultOutput{}, options).(GetLiveTokenResultOutput)
 }
 
 type GetLiveTokenOutputArgs struct {

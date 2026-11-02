@@ -64,12 +64,8 @@ type LookupClusterPrincipalAssignmentResult struct {
 }
 
 func LookupClusterPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupClusterPrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPrincipalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterPrincipalAssignmentResultOutput, error) {
-			args := v.(LookupClusterPrincipalAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getClusterPrincipalAssignment", args, LookupClusterPrincipalAssignmentResultOutput{}, options).(LookupClusterPrincipalAssignmentResultOutput), nil
-		}).(LookupClusterPrincipalAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getClusterPrincipalAssignment", args, LookupClusterPrincipalAssignmentResultOutput{}, options).(LookupClusterPrincipalAssignmentResultOutput)
 }
 
 type LookupClusterPrincipalAssignmentOutputArgs struct {

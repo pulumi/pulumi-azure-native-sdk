@@ -50,12 +50,8 @@ type LookupOpenAIResult struct {
 }
 
 func LookupOpenAIOutput(ctx *pulumi.Context, args LookupOpenAIOutputArgs, opts ...pulumi.InvokeOption) LookupOpenAIResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenAIResultOutput, error) {
-			args := v.(LookupOpenAIArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:getOpenAI", args, LookupOpenAIResultOutput{}, options).(LookupOpenAIResultOutput), nil
-		}).(LookupOpenAIResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:getOpenAI", args, LookupOpenAIResultOutput{}, options).(LookupOpenAIResultOutput)
 }
 
 type LookupOpenAIOutputArgs struct {

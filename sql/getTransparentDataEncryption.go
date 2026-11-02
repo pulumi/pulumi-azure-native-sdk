@@ -52,12 +52,8 @@ type LookupTransparentDataEncryptionResult struct {
 }
 
 func LookupTransparentDataEncryptionOutput(ctx *pulumi.Context, args LookupTransparentDataEncryptionOutputArgs, opts ...pulumi.InvokeOption) LookupTransparentDataEncryptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTransparentDataEncryptionResultOutput, error) {
-			args := v.(LookupTransparentDataEncryptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getTransparentDataEncryption", args, LookupTransparentDataEncryptionResultOutput{}, options).(LookupTransparentDataEncryptionResultOutput), nil
-		}).(LookupTransparentDataEncryptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getTransparentDataEncryption", args, LookupTransparentDataEncryptionResultOutput{}, options).(LookupTransparentDataEncryptionResultOutput)
 }
 
 type LookupTransparentDataEncryptionOutputArgs struct {

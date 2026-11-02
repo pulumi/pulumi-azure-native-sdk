@@ -62,12 +62,8 @@ func (val *LookupEntityResult) Defaults() *LookupEntityResult {
 	return &tmp
 }
 func LookupEntityOutput(ctx *pulumi.Context, args LookupEntityOutputArgs, opts ...pulumi.InvokeOption) LookupEntityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEntityResultOutput, error) {
-			args := v.(LookupEntityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudhealth:getEntity", args, LookupEntityResultOutput{}, options).(LookupEntityResultOutput), nil
-		}).(LookupEntityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudhealth:getEntity", args, LookupEntityResultOutput{}, options).(LookupEntityResultOutput)
 }
 
 type LookupEntityOutputArgs struct {

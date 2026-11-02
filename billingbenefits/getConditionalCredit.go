@@ -66,12 +66,8 @@ type LookupConditionalCreditResult struct {
 }
 
 func LookupConditionalCreditOutput(ctx *pulumi.Context, args LookupConditionalCreditOutputArgs, opts ...pulumi.InvokeOption) LookupConditionalCreditResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConditionalCreditResultOutput, error) {
-			args := v.(LookupConditionalCreditArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingbenefits:getConditionalCredit", args, LookupConditionalCreditResultOutput{}, options).(LookupConditionalCreditResultOutput), nil
-		}).(LookupConditionalCreditResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingbenefits:getConditionalCredit", args, LookupConditionalCreditResultOutput{}, options).(LookupConditionalCreditResultOutput)
 }
 
 type LookupConditionalCreditOutputArgs struct {

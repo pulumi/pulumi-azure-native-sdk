@@ -68,12 +68,8 @@ type LookupIntegrationAccountMapResult struct {
 }
 
 func LookupIntegrationAccountMapOutput(ctx *pulumi.Context, args LookupIntegrationAccountMapOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountMapResultOutput, error) {
-			args := v.(LookupIntegrationAccountMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountMap", args, LookupIntegrationAccountMapResultOutput{}, options).(LookupIntegrationAccountMapResultOutput), nil
-		}).(LookupIntegrationAccountMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountMap", args, LookupIntegrationAccountMapResultOutput{}, options).(LookupIntegrationAccountMapResultOutput)
 }
 
 type LookupIntegrationAccountMapOutputArgs struct {

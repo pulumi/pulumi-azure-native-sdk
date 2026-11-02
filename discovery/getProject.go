@@ -56,12 +56,8 @@ type LookupProjectResult struct {
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectResultOutput, error) {
-			args := v.(LookupProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getProject", args, LookupProjectResultOutput{}, options).(LookupProjectResultOutput), nil
-		}).(LookupProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getProject", args, LookupProjectResultOutput{}, options).(LookupProjectResultOutput)
 }
 
 type LookupProjectOutputArgs struct {

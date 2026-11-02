@@ -72,12 +72,8 @@ func (val *GetInferenceGroupDeltaModelsStatusAsyncResult) Defaults() *GetInferen
 	return &tmp
 }
 func GetInferenceGroupDeltaModelsStatusAsyncOutput(ctx *pulumi.Context, args GetInferenceGroupDeltaModelsStatusAsyncOutputArgs, opts ...pulumi.InvokeOption) GetInferenceGroupDeltaModelsStatusAsyncResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInferenceGroupDeltaModelsStatusAsyncResultOutput, error) {
-			args := v.(GetInferenceGroupDeltaModelsStatusAsyncArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceGroupDeltaModelsStatusAsync", args, GetInferenceGroupDeltaModelsStatusAsyncResultOutput{}, options).(GetInferenceGroupDeltaModelsStatusAsyncResultOutput), nil
-		}).(GetInferenceGroupDeltaModelsStatusAsyncResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceGroupDeltaModelsStatusAsync", args, GetInferenceGroupDeltaModelsStatusAsyncResultOutput{}, options).(GetInferenceGroupDeltaModelsStatusAsyncResultOutput)
 }
 
 type GetInferenceGroupDeltaModelsStatusAsyncOutputArgs struct {

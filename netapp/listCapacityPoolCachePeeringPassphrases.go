@@ -48,12 +48,8 @@ type ListCapacityPoolCachePeeringPassphrasesResult struct {
 }
 
 func ListCapacityPoolCachePeeringPassphrasesOutput(ctx *pulumi.Context, args ListCapacityPoolCachePeeringPassphrasesOutputArgs, opts ...pulumi.InvokeOption) ListCapacityPoolCachePeeringPassphrasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListCapacityPoolCachePeeringPassphrasesResultOutput, error) {
-			args := v.(ListCapacityPoolCachePeeringPassphrasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolCachePeeringPassphrases", args, ListCapacityPoolCachePeeringPassphrasesResultOutput{}, options).(ListCapacityPoolCachePeeringPassphrasesResultOutput), nil
-		}).(ListCapacityPoolCachePeeringPassphrasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolCachePeeringPassphrases", args, ListCapacityPoolCachePeeringPassphrasesResultOutput{}, options).(ListCapacityPoolCachePeeringPassphrasesResultOutput)
 }
 
 type ListCapacityPoolCachePeeringPassphrasesOutputArgs struct {

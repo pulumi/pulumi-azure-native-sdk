@@ -62,12 +62,8 @@ type LookupSchemaVersionResult struct {
 }
 
 func LookupSchemaVersionOutput(ctx *pulumi.Context, args LookupSchemaVersionOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaVersionResultOutput, error) {
-			args := v.(LookupSchemaVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getSchemaVersion", args, LookupSchemaVersionResultOutput{}, options).(LookupSchemaVersionResultOutput), nil
-		}).(LookupSchemaVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getSchemaVersion", args, LookupSchemaVersionResultOutput{}, options).(LookupSchemaVersionResultOutput)
 }
 
 type LookupSchemaVersionOutputArgs struct {

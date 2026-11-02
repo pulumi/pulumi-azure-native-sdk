@@ -54,12 +54,8 @@ type LookupVirtualNetworkSubnetResult struct {
 }
 
 func LookupVirtualNetworkSubnetOutput(ctx *pulumi.Context, args LookupVirtualNetworkSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkSubnetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualNetworkSubnetResultOutput, error) {
-			args := v.(LookupVirtualNetworkSubnetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getVirtualNetworkSubnet", args, LookupVirtualNetworkSubnetResultOutput{}, options).(LookupVirtualNetworkSubnetResultOutput), nil
-		}).(LookupVirtualNetworkSubnetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getVirtualNetworkSubnet", args, LookupVirtualNetworkSubnetResultOutput{}, options).(LookupVirtualNetworkSubnetResultOutput)
 }
 
 type LookupVirtualNetworkSubnetOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupWebAppPublicCertificateSlotResult struct {
 }
 
 func LookupWebAppPublicCertificateSlotOutput(ctx *pulumi.Context, args LookupWebAppPublicCertificateSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPublicCertificateSlotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppPublicCertificateSlotResultOutput, error) {
-			args := v.(LookupWebAppPublicCertificateSlotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppPublicCertificateSlot", args, LookupWebAppPublicCertificateSlotResultOutput{}, options).(LookupWebAppPublicCertificateSlotResultOutput), nil
-		}).(LookupWebAppPublicCertificateSlotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppPublicCertificateSlot", args, LookupWebAppPublicCertificateSlotResultOutput{}, options).(LookupWebAppPublicCertificateSlotResultOutput)
 }
 
 type LookupWebAppPublicCertificateSlotOutputArgs struct {

@@ -46,12 +46,8 @@ type ListAgentApplicationAgentsResult struct {
 }
 
 func ListAgentApplicationAgentsOutput(ctx *pulumi.Context, args ListAgentApplicationAgentsOutputArgs, opts ...pulumi.InvokeOption) ListAgentApplicationAgentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAgentApplicationAgentsResultOutput, error) {
-			args := v.(ListAgentApplicationAgentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:listAgentApplicationAgents", args, ListAgentApplicationAgentsResultOutput{}, options).(ListAgentApplicationAgentsResultOutput), nil
-		}).(ListAgentApplicationAgentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:listAgentApplicationAgents", args, ListAgentApplicationAgentsResultOutput{}, options).(ListAgentApplicationAgentsResultOutput)
 }
 
 type ListAgentApplicationAgentsOutputArgs struct {

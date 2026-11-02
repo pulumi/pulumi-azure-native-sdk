@@ -96,12 +96,8 @@ type LookupDeviceResult struct {
 }
 
 func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDeviceResultOutput, error) {
-			args := v.(LookupDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:getDevice", args, LookupDeviceResultOutput{}, options).(LookupDeviceResultOutput), nil
-		}).(LookupDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:getDevice", args, LookupDeviceResultOutput{}, options).(LookupDeviceResultOutput)
 }
 
 type LookupDeviceOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupForwardingRuleResult struct {
 }
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupForwardingRuleResultOutput, error) {
-			args := v.(LookupForwardingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getForwardingRule", args, LookupForwardingRuleResultOutput{}, options).(LookupForwardingRuleResultOutput), nil
-		}).(LookupForwardingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getForwardingRule", args, LookupForwardingRuleResultOutput{}, options).(LookupForwardingRuleResultOutput)
 }
 
 type LookupForwardingRuleOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupBillingProfileResult struct {
 }
 
 func LookupBillingProfileOutput(ctx *pulumi.Context, args LookupBillingProfileOutputArgs, opts ...pulumi.InvokeOption) LookupBillingProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBillingProfileResultOutput, error) {
-			args := v.(LookupBillingProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billing:getBillingProfile", args, LookupBillingProfileResultOutput{}, options).(LookupBillingProfileResultOutput), nil
-		}).(LookupBillingProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billing:getBillingProfile", args, LookupBillingProfileResultOutput{}, options).(LookupBillingProfileResultOutput)
 }
 
 type LookupBillingProfileOutputArgs struct {

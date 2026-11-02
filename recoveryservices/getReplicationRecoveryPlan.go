@@ -52,12 +52,8 @@ type LookupReplicationRecoveryPlanResult struct {
 }
 
 func LookupReplicationRecoveryPlanOutput(ctx *pulumi.Context, args LookupReplicationRecoveryPlanOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationRecoveryPlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicationRecoveryPlanResultOutput, error) {
-			args := v.(LookupReplicationRecoveryPlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationRecoveryPlan", args, LookupReplicationRecoveryPlanResultOutput{}, options).(LookupReplicationRecoveryPlanResultOutput), nil
-		}).(LookupReplicationRecoveryPlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationRecoveryPlan", args, LookupReplicationRecoveryPlanResultOutput{}, options).(LookupReplicationRecoveryPlanResultOutput)
 }
 
 type LookupReplicationRecoveryPlanOutputArgs struct {

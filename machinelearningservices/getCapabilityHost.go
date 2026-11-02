@@ -62,12 +62,8 @@ func (val *LookupCapabilityHostResult) Defaults() *LookupCapabilityHostResult {
 	return &tmp
 }
 func LookupCapabilityHostOutput(ctx *pulumi.Context, args LookupCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupCapabilityHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapabilityHostResultOutput, error) {
-			args := v.(LookupCapabilityHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getCapabilityHost", args, LookupCapabilityHostResultOutput{}, options).(LookupCapabilityHostResultOutput), nil
-		}).(LookupCapabilityHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getCapabilityHost", args, LookupCapabilityHostResultOutput{}, options).(LookupCapabilityHostResultOutput)
 }
 
 type LookupCapabilityHostOutputArgs struct {

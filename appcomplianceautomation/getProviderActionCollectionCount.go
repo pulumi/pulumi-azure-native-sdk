@@ -36,12 +36,8 @@ type GetProviderActionCollectionCountResult struct {
 }
 
 func GetProviderActionCollectionCountOutput(ctx *pulumi.Context, args GetProviderActionCollectionCountOutputArgs, opts ...pulumi.InvokeOption) GetProviderActionCollectionCountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProviderActionCollectionCountResultOutput, error) {
-			args := v.(GetProviderActionCollectionCountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appcomplianceautomation:getProviderActionCollectionCount", args, GetProviderActionCollectionCountResultOutput{}, options).(GetProviderActionCollectionCountResultOutput), nil
-		}).(GetProviderActionCollectionCountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appcomplianceautomation:getProviderActionCollectionCount", args, GetProviderActionCollectionCountResultOutput{}, options).(GetProviderActionCollectionCountResultOutput)
 }
 
 type GetProviderActionCollectionCountOutputArgs struct {

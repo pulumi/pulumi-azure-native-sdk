@@ -58,12 +58,8 @@ type LookupPrivateAccessResult struct {
 }
 
 func LookupPrivateAccessOutput(ctx *pulumi.Context, args LookupPrivateAccessOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateAccessResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateAccessResultOutput, error) {
-			args := v.(LookupPrivateAccessArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:chaos:getPrivateAccess", args, LookupPrivateAccessResultOutput{}, options).(LookupPrivateAccessResultOutput), nil
-		}).(LookupPrivateAccessResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:chaos:getPrivateAccess", args, LookupPrivateAccessResultOutput{}, options).(LookupPrivateAccessResultOutput)
 }
 
 type LookupPrivateAccessOutputArgs struct {

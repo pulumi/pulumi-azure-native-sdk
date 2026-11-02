@@ -44,12 +44,8 @@ type GetNamespaceTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetNamespaceTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetNamespaceTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetNamespaceTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNamespaceTopicEventSubscriptionFullUrlResultOutput, error) {
-			args := v.(GetNamespaceTopicEventSubscriptionFullUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscriptionFullUrl", args, GetNamespaceTopicEventSubscriptionFullUrlResultOutput{}, options).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput), nil
-		}).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscriptionFullUrl", args, GetNamespaceTopicEventSubscriptionFullUrlResultOutput{}, options).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput)
 }
 
 type GetNamespaceTopicEventSubscriptionFullUrlOutputArgs struct {

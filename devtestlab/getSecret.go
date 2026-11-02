@@ -62,12 +62,8 @@ type LookupSecretResult struct {
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretResultOutput, error) {
-			args := v.(LookupSecretArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getSecret", args, LookupSecretResultOutput{}, options).(LookupSecretResultOutput), nil
-		}).(LookupSecretResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getSecret", args, LookupSecretResultOutput{}, options).(LookupSecretResultOutput)
 }
 
 type LookupSecretOutputArgs struct {

@@ -74,12 +74,8 @@ type LookupSourceResult struct {
 }
 
 func LookupSourceOutput(ctx *pulumi.Context, args LookupSourceOutputArgs, opts ...pulumi.InvokeOption) LookupSourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSourceResultOutput, error) {
-			args := v.(LookupSourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingbenefits:getSource", args, LookupSourceResultOutput{}, options).(LookupSourceResultOutput), nil
-		}).(LookupSourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingbenefits:getSource", args, LookupSourceResultOutput{}, options).(LookupSourceResultOutput)
 }
 
 type LookupSourceOutputArgs struct {

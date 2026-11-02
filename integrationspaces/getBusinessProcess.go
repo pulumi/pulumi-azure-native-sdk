@@ -66,12 +66,8 @@ type LookupBusinessProcessResult struct {
 }
 
 func LookupBusinessProcessOutput(ctx *pulumi.Context, args LookupBusinessProcessOutputArgs, opts ...pulumi.InvokeOption) LookupBusinessProcessResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBusinessProcessResultOutput, error) {
-			args := v.(LookupBusinessProcessArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:integrationspaces:getBusinessProcess", args, LookupBusinessProcessResultOutput{}, options).(LookupBusinessProcessResultOutput), nil
-		}).(LookupBusinessProcessResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:integrationspaces:getBusinessProcess", args, LookupBusinessProcessResultOutput{}, options).(LookupBusinessProcessResultOutput)
 }
 
 type LookupBusinessProcessOutputArgs struct {

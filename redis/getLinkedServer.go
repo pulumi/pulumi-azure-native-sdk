@@ -62,12 +62,8 @@ type LookupLinkedServerResult struct {
 }
 
 func LookupLinkedServerOutput(ctx *pulumi.Context, args LookupLinkedServerOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLinkedServerResultOutput, error) {
-			args := v.(LookupLinkedServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getLinkedServer", args, LookupLinkedServerResultOutput{}, options).(LookupLinkedServerResultOutput), nil
-		}).(LookupLinkedServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getLinkedServer", args, LookupLinkedServerResultOutput{}, options).(LookupLinkedServerResultOutput)
 }
 
 type LookupLinkedServerOutputArgs struct {

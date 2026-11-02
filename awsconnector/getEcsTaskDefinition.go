@@ -52,12 +52,8 @@ type LookupEcsTaskDefinitionResult struct {
 }
 
 func LookupEcsTaskDefinitionOutput(ctx *pulumi.Context, args LookupEcsTaskDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupEcsTaskDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEcsTaskDefinitionResultOutput, error) {
-			args := v.(LookupEcsTaskDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEcsTaskDefinition", args, LookupEcsTaskDefinitionResultOutput{}, options).(LookupEcsTaskDefinitionResultOutput), nil
-		}).(LookupEcsTaskDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEcsTaskDefinition", args, LookupEcsTaskDefinitionResultOutput{}, options).(LookupEcsTaskDefinitionResultOutput)
 }
 
 type LookupEcsTaskDefinitionOutputArgs struct {

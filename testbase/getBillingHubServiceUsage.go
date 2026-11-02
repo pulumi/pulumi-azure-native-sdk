@@ -44,12 +44,8 @@ type GetBillingHubServiceUsageResult struct {
 }
 
 func GetBillingHubServiceUsageOutput(ctx *pulumi.Context, args GetBillingHubServiceUsageOutputArgs, opts ...pulumi.InvokeOption) GetBillingHubServiceUsageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBillingHubServiceUsageResultOutput, error) {
-			args := v.(GetBillingHubServiceUsageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getBillingHubServiceUsage", args, GetBillingHubServiceUsageResultOutput{}, options).(GetBillingHubServiceUsageResultOutput), nil
-		}).(GetBillingHubServiceUsageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getBillingHubServiceUsage", args, GetBillingHubServiceUsageResultOutput{}, options).(GetBillingHubServiceUsageResultOutput)
 }
 
 type GetBillingHubServiceUsageOutputArgs struct {

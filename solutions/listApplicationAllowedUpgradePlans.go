@@ -40,12 +40,8 @@ type ListApplicationAllowedUpgradePlansResult struct {
 }
 
 func ListApplicationAllowedUpgradePlansOutput(ctx *pulumi.Context, args ListApplicationAllowedUpgradePlansOutputArgs, opts ...pulumi.InvokeOption) ListApplicationAllowedUpgradePlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListApplicationAllowedUpgradePlansResultOutput, error) {
-			args := v.(ListApplicationAllowedUpgradePlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:solutions:listApplicationAllowedUpgradePlans", args, ListApplicationAllowedUpgradePlansResultOutput{}, options).(ListApplicationAllowedUpgradePlansResultOutput), nil
-		}).(ListApplicationAllowedUpgradePlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:solutions:listApplicationAllowedUpgradePlans", args, ListApplicationAllowedUpgradePlansResultOutput{}, options).(ListApplicationAllowedUpgradePlansResultOutput)
 }
 
 type ListApplicationAllowedUpgradePlansOutputArgs struct {

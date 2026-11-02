@@ -58,12 +58,8 @@ type LookupApiIssueAttachmentResult struct {
 }
 
 func LookupApiIssueAttachmentOutput(ctx *pulumi.Context, args LookupApiIssueAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupApiIssueAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiIssueAttachmentResultOutput, error) {
-			args := v.(LookupApiIssueAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiIssueAttachment", args, LookupApiIssueAttachmentResultOutput{}, options).(LookupApiIssueAttachmentResultOutput), nil
-		}).(LookupApiIssueAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiIssueAttachment", args, LookupApiIssueAttachmentResultOutput{}, options).(LookupApiIssueAttachmentResultOutput)
 }
 
 type LookupApiIssueAttachmentOutputArgs struct {

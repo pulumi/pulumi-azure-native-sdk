@@ -44,12 +44,8 @@ type ListAppServicePlanServerFarmInstanceDetailsResult struct {
 }
 
 func ListAppServicePlanServerFarmInstanceDetailsOutput(ctx *pulumi.Context, args ListAppServicePlanServerFarmInstanceDetailsOutputArgs, opts ...pulumi.InvokeOption) ListAppServicePlanServerFarmInstanceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAppServicePlanServerFarmInstanceDetailsResultOutput, error) {
-			args := v.(ListAppServicePlanServerFarmInstanceDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listAppServicePlanServerFarmInstanceDetails", args, ListAppServicePlanServerFarmInstanceDetailsResultOutput{}, options).(ListAppServicePlanServerFarmInstanceDetailsResultOutput), nil
-		}).(ListAppServicePlanServerFarmInstanceDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listAppServicePlanServerFarmInstanceDetails", args, ListAppServicePlanServerFarmInstanceDetailsResultOutput{}, options).(ListAppServicePlanServerFarmInstanceDetailsResultOutput)
 }
 
 type ListAppServicePlanServerFarmInstanceDetailsOutputArgs struct {

@@ -40,12 +40,8 @@ type ListClusterStreamingJobsResult struct {
 }
 
 func ListClusterStreamingJobsOutput(ctx *pulumi.Context, args ListClusterStreamingJobsOutputArgs, opts ...pulumi.InvokeOption) ListClusterStreamingJobsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClusterStreamingJobsResultOutput, error) {
-			args := v.(ListClusterStreamingJobsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:streamanalytics:listClusterStreamingJobs", args, ListClusterStreamingJobsResultOutput{}, options).(ListClusterStreamingJobsResultOutput), nil
-		}).(ListClusterStreamingJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:streamanalytics:listClusterStreamingJobs", args, ListClusterStreamingJobsResultOutput{}, options).(ListClusterStreamingJobsResultOutput)
 }
 
 type ListClusterStreamingJobsOutputArgs struct {

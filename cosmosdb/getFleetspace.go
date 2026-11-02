@@ -60,12 +60,8 @@ type LookupFleetspaceResult struct {
 }
 
 func LookupFleetspaceOutput(ctx *pulumi.Context, args LookupFleetspaceOutputArgs, opts ...pulumi.InvokeOption) LookupFleetspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFleetspaceResultOutput, error) {
-			args := v.(LookupFleetspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getFleetspace", args, LookupFleetspaceResultOutput{}, options).(LookupFleetspaceResultOutput), nil
-		}).(LookupFleetspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getFleetspace", args, LookupFleetspaceResultOutput{}, options).(LookupFleetspaceResultOutput)
 }
 
 type LookupFleetspaceOutputArgs struct {

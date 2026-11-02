@@ -84,12 +84,8 @@ func (val *LookupHuntResult) Defaults() *LookupHuntResult {
 	return &tmp
 }
 func LookupHuntOutput(ctx *pulumi.Context, args LookupHuntOutputArgs, opts ...pulumi.InvokeOption) LookupHuntResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHuntResultOutput, error) {
-			args := v.(LookupHuntArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getHunt", args, LookupHuntResultOutput{}, options).(LookupHuntResultOutput), nil
-		}).(LookupHuntResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getHunt", args, LookupHuntResultOutput{}, options).(LookupHuntResultOutput)
 }
 
 type LookupHuntOutputArgs struct {

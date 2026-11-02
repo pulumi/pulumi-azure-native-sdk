@@ -58,12 +58,8 @@ type LookupSolutionConfigurationResult struct {
 }
 
 func LookupSolutionConfigurationOutput(ctx *pulumi.Context, args LookupSolutionConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSolutionConfigurationResultOutput, error) {
-			args := v.(LookupSolutionConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridconnectivity:getSolutionConfiguration", args, LookupSolutionConfigurationResultOutput{}, options).(LookupSolutionConfigurationResultOutput), nil
-		}).(LookupSolutionConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridconnectivity:getSolutionConfiguration", args, LookupSolutionConfigurationResultOutput{}, options).(LookupSolutionConfigurationResultOutput)
 }
 
 type LookupSolutionConfigurationOutputArgs struct {

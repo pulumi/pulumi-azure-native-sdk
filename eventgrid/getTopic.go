@@ -100,12 +100,8 @@ func (val *LookupTopicResult) Defaults() *LookupTopicResult {
 	return &tmp
 }
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTopicResultOutput, error) {
-			args := v.(LookupTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getTopic", args, LookupTopicResultOutput{}, options).(LookupTopicResultOutput), nil
-		}).(LookupTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getTopic", args, LookupTopicResultOutput{}, options).(LookupTopicResultOutput)
 }
 
 type LookupTopicOutputArgs struct {

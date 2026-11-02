@@ -54,12 +54,8 @@ type LookupSqlResourceSqlDatabaseResult struct {
 }
 
 func LookupSqlResourceSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlResourceSqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResultOutput, error) {
-			args := v.(LookupSqlResourceSqlDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlDatabase", args, LookupSqlResourceSqlDatabaseResultOutput{}, options).(LookupSqlResourceSqlDatabaseResultOutput), nil
-		}).(LookupSqlResourceSqlDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlDatabase", args, LookupSqlResourceSqlDatabaseResultOutput{}, options).(LookupSqlResourceSqlDatabaseResultOutput)
 }
 
 type LookupSqlResourceSqlDatabaseOutputArgs struct {

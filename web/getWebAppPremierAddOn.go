@@ -66,12 +66,8 @@ type LookupWebAppPremierAddOnResult struct {
 }
 
 func LookupWebAppPremierAddOnOutput(ctx *pulumi.Context, args LookupWebAppPremierAddOnOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPremierAddOnResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppPremierAddOnResultOutput, error) {
-			args := v.(LookupWebAppPremierAddOnArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppPremierAddOn", args, LookupWebAppPremierAddOnResultOutput{}, options).(LookupWebAppPremierAddOnResultOutput), nil
-		}).(LookupWebAppPremierAddOnResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppPremierAddOn", args, LookupWebAppPremierAddOnResultOutput{}, options).(LookupWebAppPremierAddOnResultOutput)
 }
 
 type LookupWebAppPremierAddOnOutputArgs struct {

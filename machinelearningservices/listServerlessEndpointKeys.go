@@ -44,12 +44,8 @@ type ListServerlessEndpointKeysResult struct {
 }
 
 func ListServerlessEndpointKeysOutput(ctx *pulumi.Context, args ListServerlessEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListServerlessEndpointKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListServerlessEndpointKeysResultOutput, error) {
-			args := v.(ListServerlessEndpointKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listServerlessEndpointKeys", args, ListServerlessEndpointKeysResultOutput{}, options).(ListServerlessEndpointKeysResultOutput), nil
-		}).(ListServerlessEndpointKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listServerlessEndpointKeys", args, ListServerlessEndpointKeysResultOutput{}, options).(ListServerlessEndpointKeysResultOutput)
 }
 
 type ListServerlessEndpointKeysOutputArgs struct {

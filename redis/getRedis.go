@@ -118,12 +118,8 @@ func (val *LookupRedisResult) Defaults() *LookupRedisResult {
 	return &tmp
 }
 func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...pulumi.InvokeOption) LookupRedisResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisResultOutput, error) {
-			args := v.(LookupRedisArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getRedis", args, LookupRedisResultOutput{}, options).(LookupRedisResultOutput), nil
-		}).(LookupRedisResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getRedis", args, LookupRedisResultOutput{}, options).(LookupRedisResultOutput)
 }
 
 type LookupRedisOutputArgs struct {

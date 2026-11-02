@@ -73,12 +73,8 @@ type LookupEventHubEventSourceResult struct {
 }
 
 func LookupEventHubEventSourceOutput(ctx *pulumi.Context, args LookupEventHubEventSourceOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubEventSourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEventHubEventSourceResultOutput, error) {
-			args := v.(LookupEventHubEventSourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:timeseriesinsights:getEventHubEventSource", args, LookupEventHubEventSourceResultOutput{}, options).(LookupEventHubEventSourceResultOutput), nil
-		}).(LookupEventHubEventSourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:timeseriesinsights:getEventHubEventSource", args, LookupEventHubEventSourceResultOutput{}, options).(LookupEventHubEventSourceResultOutput)
 }
 
 type LookupEventHubEventSourceOutputArgs struct {

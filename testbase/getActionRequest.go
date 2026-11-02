@@ -52,12 +52,8 @@ type LookupActionRequestResult struct {
 }
 
 func LookupActionRequestOutput(ctx *pulumi.Context, args LookupActionRequestOutputArgs, opts ...pulumi.InvokeOption) LookupActionRequestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActionRequestResultOutput, error) {
-			args := v.(LookupActionRequestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getActionRequest", args, LookupActionRequestResultOutput{}, options).(LookupActionRequestResultOutput), nil
-		}).(LookupActionRequestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getActionRequest", args, LookupActionRequestResultOutput{}, options).(LookupActionRequestResultOutput)
 }
 
 type LookupActionRequestOutputArgs struct {

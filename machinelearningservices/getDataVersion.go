@@ -54,12 +54,8 @@ type LookupDataVersionResult struct {
 }
 
 func LookupDataVersionOutput(ctx *pulumi.Context, args LookupDataVersionOutputArgs, opts ...pulumi.InvokeOption) LookupDataVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataVersionResultOutput, error) {
-			args := v.(LookupDataVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getDataVersion", args, LookupDataVersionResultOutput{}, options).(LookupDataVersionResultOutput), nil
-		}).(LookupDataVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getDataVersion", args, LookupDataVersionResultOutput{}, options).(LookupDataVersionResultOutput)
 }
 
 type LookupDataVersionOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupRedisLinkedServerResult struct {
 }
 
 func LookupRedisLinkedServerOutput(ctx *pulumi.Context, args LookupRedisLinkedServerOutputArgs, opts ...pulumi.InvokeOption) LookupRedisLinkedServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisLinkedServerResultOutput, error) {
-			args := v.(LookupRedisLinkedServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getRedisLinkedServer", args, LookupRedisLinkedServerResultOutput{}, options).(LookupRedisLinkedServerResultOutput), nil
-		}).(LookupRedisLinkedServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getRedisLinkedServer", args, LookupRedisLinkedServerResultOutput{}, options).(LookupRedisLinkedServerResultOutput)
 }
 
 type LookupRedisLinkedServerOutputArgs struct {

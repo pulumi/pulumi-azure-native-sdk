@@ -60,12 +60,8 @@ type LookupElasticCapacityPoolResult struct {
 }
 
 func LookupElasticCapacityPoolOutput(ctx *pulumi.Context, args LookupElasticCapacityPoolOutputArgs, opts ...pulumi.InvokeOption) LookupElasticCapacityPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticCapacityPoolResultOutput, error) {
-			args := v.(LookupElasticCapacityPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getElasticCapacityPool", args, LookupElasticCapacityPoolResultOutput{}, options).(LookupElasticCapacityPoolResultOutput), nil
-		}).(LookupElasticCapacityPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getElasticCapacityPool", args, LookupElasticCapacityPoolResultOutput{}, options).(LookupElasticCapacityPoolResultOutput)
 }
 
 type LookupElasticCapacityPoolOutputArgs struct {

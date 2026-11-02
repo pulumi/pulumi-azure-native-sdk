@@ -80,12 +80,8 @@ type LookupNetworkBootstrapDeviceResult struct {
 }
 
 func LookupNetworkBootstrapDeviceOutput(ctx *pulumi.Context, args LookupNetworkBootstrapDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkBootstrapDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkBootstrapDeviceResultOutput, error) {
-			args := v.(LookupNetworkBootstrapDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkBootstrapDevice", args, LookupNetworkBootstrapDeviceResultOutput{}, options).(LookupNetworkBootstrapDeviceResultOutput), nil
-		}).(LookupNetworkBootstrapDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkBootstrapDevice", args, LookupNetworkBootstrapDeviceResultOutput{}, options).(LookupNetworkBootstrapDeviceResultOutput)
 }
 
 type LookupNetworkBootstrapDeviceOutputArgs struct {

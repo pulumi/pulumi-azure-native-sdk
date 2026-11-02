@@ -52,12 +52,8 @@ type LookupCodeBuildSourceCredentialsInfoResult struct {
 }
 
 func LookupCodeBuildSourceCredentialsInfoOutput(ctx *pulumi.Context, args LookupCodeBuildSourceCredentialsInfoOutputArgs, opts ...pulumi.InvokeOption) LookupCodeBuildSourceCredentialsInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCodeBuildSourceCredentialsInfoResultOutput, error) {
-			args := v.(LookupCodeBuildSourceCredentialsInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getCodeBuildSourceCredentialsInfo", args, LookupCodeBuildSourceCredentialsInfoResultOutput{}, options).(LookupCodeBuildSourceCredentialsInfoResultOutput), nil
-		}).(LookupCodeBuildSourceCredentialsInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getCodeBuildSourceCredentialsInfo", args, LookupCodeBuildSourceCredentialsInfoResultOutput{}, options).(LookupCodeBuildSourceCredentialsInfoResultOutput)
 }
 
 type LookupCodeBuildSourceCredentialsInfoOutputArgs struct {

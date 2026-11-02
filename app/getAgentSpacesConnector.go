@@ -50,12 +50,8 @@ type LookupAgentSpacesConnectorResult struct {
 }
 
 func LookupAgentSpacesConnectorOutput(ctx *pulumi.Context, args LookupAgentSpacesConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAgentSpacesConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAgentSpacesConnectorResultOutput, error) {
-			args := v.(LookupAgentSpacesConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getAgentSpacesConnector", args, LookupAgentSpacesConnectorResultOutput{}, options).(LookupAgentSpacesConnectorResultOutput), nil
-		}).(LookupAgentSpacesConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getAgentSpacesConnector", args, LookupAgentSpacesConnectorResultOutput{}, options).(LookupAgentSpacesConnectorResultOutput)
 }
 
 type LookupAgentSpacesConnectorOutputArgs struct {

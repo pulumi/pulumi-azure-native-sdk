@@ -52,12 +52,8 @@ type LookupEc2RouteTableResult struct {
 }
 
 func LookupEc2RouteTableOutput(ctx *pulumi.Context, args LookupEc2RouteTableOutputArgs, opts ...pulumi.InvokeOption) LookupEc2RouteTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2RouteTableResultOutput, error) {
-			args := v.(LookupEc2RouteTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2RouteTable", args, LookupEc2RouteTableResultOutput{}, options).(LookupEc2RouteTableResultOutput), nil
-		}).(LookupEc2RouteTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2RouteTable", args, LookupEc2RouteTableResultOutput{}, options).(LookupEc2RouteTableResultOutput)
 }
 
 type LookupEc2RouteTableOutputArgs struct {

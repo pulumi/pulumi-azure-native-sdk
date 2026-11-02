@@ -71,12 +71,8 @@ func (val *LookupNamespaceTopicResult) Defaults() *LookupNamespaceTopicResult {
 	return &tmp
 }
 func LookupNamespaceTopicOutput(ctx *pulumi.Context, args LookupNamespaceTopicOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceTopicResultOutput, error) {
-			args := v.(LookupNamespaceTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopic", args, LookupNamespaceTopicResultOutput{}, options).(LookupNamespaceTopicResultOutput), nil
-		}).(LookupNamespaceTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopic", args, LookupNamespaceTopicResultOutput{}, options).(LookupNamespaceTopicResultOutput)
 }
 
 type LookupNamespaceTopicOutputArgs struct {

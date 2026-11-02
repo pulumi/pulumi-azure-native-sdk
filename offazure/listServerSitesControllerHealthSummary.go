@@ -42,12 +42,8 @@ type ListServerSitesControllerHealthSummaryResult struct {
 }
 
 func ListServerSitesControllerHealthSummaryOutput(ctx *pulumi.Context, args ListServerSitesControllerHealthSummaryOutputArgs, opts ...pulumi.InvokeOption) ListServerSitesControllerHealthSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListServerSitesControllerHealthSummaryResultOutput, error) {
-			args := v.(ListServerSitesControllerHealthSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:listServerSitesControllerHealthSummary", args, ListServerSitesControllerHealthSummaryResultOutput{}, options).(ListServerSitesControllerHealthSummaryResultOutput), nil
-		}).(ListServerSitesControllerHealthSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:listServerSitesControllerHealthSummary", args, ListServerSitesControllerHealthSummaryResultOutput{}, options).(ListServerSitesControllerHealthSummaryResultOutput)
 }
 
 type ListServerSitesControllerHealthSummaryOutputArgs struct {

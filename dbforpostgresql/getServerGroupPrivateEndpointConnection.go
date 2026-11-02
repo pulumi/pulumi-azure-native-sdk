@@ -58,12 +58,8 @@ type LookupServerGroupPrivateEndpointConnectionResult struct {
 }
 
 func LookupServerGroupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupServerGroupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupServerGroupPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupPrivateEndpointConnection", args, LookupServerGroupPrivateEndpointConnectionResultOutput{}, options).(LookupServerGroupPrivateEndpointConnectionResultOutput), nil
-		}).(LookupServerGroupPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupPrivateEndpointConnection", args, LookupServerGroupPrivateEndpointConnectionResultOutput{}, options).(LookupServerGroupPrivateEndpointConnectionResultOutput)
 }
 
 type LookupServerGroupPrivateEndpointConnectionOutputArgs struct {

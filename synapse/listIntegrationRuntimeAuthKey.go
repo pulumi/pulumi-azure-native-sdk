@@ -44,12 +44,8 @@ type ListIntegrationRuntimeAuthKeyResult struct {
 }
 
 func ListIntegrationRuntimeAuthKeyOutput(ctx *pulumi.Context, args ListIntegrationRuntimeAuthKeyOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationRuntimeAuthKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIntegrationRuntimeAuthKeyResultOutput, error) {
-			args := v.(ListIntegrationRuntimeAuthKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:listIntegrationRuntimeAuthKey", args, ListIntegrationRuntimeAuthKeyResultOutput{}, options).(ListIntegrationRuntimeAuthKeyResultOutput), nil
-		}).(ListIntegrationRuntimeAuthKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:listIntegrationRuntimeAuthKey", args, ListIntegrationRuntimeAuthKeyResultOutput{}, options).(ListIntegrationRuntimeAuthKeyResultOutput)
 }
 
 type ListIntegrationRuntimeAuthKeyOutputArgs struct {

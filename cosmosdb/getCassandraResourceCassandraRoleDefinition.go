@@ -56,12 +56,8 @@ type LookupCassandraResourceCassandraRoleDefinitionResult struct {
 }
 
 func LookupCassandraResourceCassandraRoleDefinitionOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraRoleDefinitionResultOutput, error) {
-			args := v.(LookupCassandraResourceCassandraRoleDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getCassandraResourceCassandraRoleDefinition", args, LookupCassandraResourceCassandraRoleDefinitionResultOutput{}, options).(LookupCassandraResourceCassandraRoleDefinitionResultOutput), nil
-		}).(LookupCassandraResourceCassandraRoleDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getCassandraResourceCassandraRoleDefinition", args, LookupCassandraResourceCassandraRoleDefinitionResultOutput{}, options).(LookupCassandraResourceCassandraRoleDefinitionResultOutput)
 }
 
 type LookupCassandraResourceCassandraRoleDefinitionOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupWorkspacePrivateEndpointConnectionResult struct {
 }
 
 func LookupWorkspacePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupWorkspacePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspacePrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspacePrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupWorkspacePrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:healthcareapis:getWorkspacePrivateEndpointConnection", args, LookupWorkspacePrivateEndpointConnectionResultOutput{}, options).(LookupWorkspacePrivateEndpointConnectionResultOutput), nil
-		}).(LookupWorkspacePrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:healthcareapis:getWorkspacePrivateEndpointConnection", args, LookupWorkspacePrivateEndpointConnectionResultOutput{}, options).(LookupWorkspacePrivateEndpointConnectionResultOutput)
 }
 
 type LookupWorkspacePrivateEndpointConnectionOutputArgs struct {

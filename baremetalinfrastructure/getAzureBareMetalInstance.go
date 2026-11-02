@@ -70,12 +70,8 @@ type LookupAzureBareMetalInstanceResult struct {
 }
 
 func LookupAzureBareMetalInstanceOutput(ctx *pulumi.Context, args LookupAzureBareMetalInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureBareMetalInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureBareMetalInstanceResultOutput, error) {
-			args := v.(LookupAzureBareMetalInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:baremetalinfrastructure:getAzureBareMetalInstance", args, LookupAzureBareMetalInstanceResultOutput{}, options).(LookupAzureBareMetalInstanceResultOutput), nil
-		}).(LookupAzureBareMetalInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:baremetalinfrastructure:getAzureBareMetalInstance", args, LookupAzureBareMetalInstanceResultOutput{}, options).(LookupAzureBareMetalInstanceResultOutput)
 }
 
 type LookupAzureBareMetalInstanceOutputArgs struct {

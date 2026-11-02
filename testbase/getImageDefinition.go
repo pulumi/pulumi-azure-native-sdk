@@ -55,12 +55,8 @@ type LookupImageDefinitionResult struct {
 }
 
 func LookupImageDefinitionOutput(ctx *pulumi.Context, args LookupImageDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupImageDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImageDefinitionResultOutput, error) {
-			args := v.(LookupImageDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getImageDefinition", args, LookupImageDefinitionResultOutput{}, options).(LookupImageDefinitionResultOutput), nil
-		}).(LookupImageDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getImageDefinition", args, LookupImageDefinitionResultOutput{}, options).(LookupImageDefinitionResultOutput)
 }
 
 type LookupImageDefinitionOutputArgs struct {

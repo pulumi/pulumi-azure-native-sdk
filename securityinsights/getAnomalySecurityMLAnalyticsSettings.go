@@ -81,12 +81,8 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 }
 
 func LookupAnomalySecurityMLAnalyticsSettingsOutput(ctx *pulumi.Context, args LookupAnomalySecurityMLAnalyticsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAnomalySecurityMLAnalyticsSettingsResultOutput, error) {
-			args := v.(LookupAnomalySecurityMLAnalyticsSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getAnomalySecurityMLAnalyticsSettings", args, LookupAnomalySecurityMLAnalyticsSettingsResultOutput{}, options).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput), nil
-		}).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getAnomalySecurityMLAnalyticsSettings", args, LookupAnomalySecurityMLAnalyticsSettingsResultOutput{}, options).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput)
 }
 
 type LookupAnomalySecurityMLAnalyticsSettingsOutputArgs struct {

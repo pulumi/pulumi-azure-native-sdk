@@ -54,12 +54,8 @@ type LookupBookshelfResult struct {
 }
 
 func LookupBookshelfOutput(ctx *pulumi.Context, args LookupBookshelfOutputArgs, opts ...pulumi.InvokeOption) LookupBookshelfResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBookshelfResultOutput, error) {
-			args := v.(LookupBookshelfArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getBookshelf", args, LookupBookshelfResultOutput{}, options).(LookupBookshelfResultOutput), nil
-		}).(LookupBookshelfResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getBookshelf", args, LookupBookshelfResultOutput{}, options).(LookupBookshelfResultOutput)
 }
 
 type LookupBookshelfOutputArgs struct {

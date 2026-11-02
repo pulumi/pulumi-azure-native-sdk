@@ -48,12 +48,8 @@ type LookupServiceGroupMemberRelationshipResult struct {
 }
 
 func LookupServiceGroupMemberRelationshipOutput(ctx *pulumi.Context, args LookupServiceGroupMemberRelationshipOutputArgs, opts ...pulumi.InvokeOption) LookupServiceGroupMemberRelationshipResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceGroupMemberRelationshipResultOutput, error) {
-			args := v.(LookupServiceGroupMemberRelationshipArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:relationships:getServiceGroupMemberRelationship", args, LookupServiceGroupMemberRelationshipResultOutput{}, options).(LookupServiceGroupMemberRelationshipResultOutput), nil
-		}).(LookupServiceGroupMemberRelationshipResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:relationships:getServiceGroupMemberRelationship", args, LookupServiceGroupMemberRelationshipResultOutput{}, options).(LookupServiceGroupMemberRelationshipResultOutput)
 }
 
 type LookupServiceGroupMemberRelationshipOutputArgs struct {

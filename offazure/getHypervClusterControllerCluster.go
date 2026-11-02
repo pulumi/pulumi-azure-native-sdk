@@ -68,12 +68,8 @@ type LookupHypervClusterControllerClusterResult struct {
 }
 
 func LookupHypervClusterControllerClusterOutput(ctx *pulumi.Context, args LookupHypervClusterControllerClusterOutputArgs, opts ...pulumi.InvokeOption) LookupHypervClusterControllerClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHypervClusterControllerClusterResultOutput, error) {
-			args := v.(LookupHypervClusterControllerClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getHypervClusterControllerCluster", args, LookupHypervClusterControllerClusterResultOutput{}, options).(LookupHypervClusterControllerClusterResultOutput), nil
-		}).(LookupHypervClusterControllerClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getHypervClusterControllerCluster", args, LookupHypervClusterControllerClusterResultOutput{}, options).(LookupHypervClusterControllerClusterResultOutput)
 }
 
 type LookupHypervClusterControllerClusterOutputArgs struct {

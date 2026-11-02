@@ -62,12 +62,8 @@ type LookupOutboundEndpointResult struct {
 }
 
 func LookupOutboundEndpointOutput(ctx *pulumi.Context, args LookupOutboundEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupOutboundEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOutboundEndpointResultOutput, error) {
-			args := v.(LookupOutboundEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getOutboundEndpoint", args, LookupOutboundEndpointResultOutput{}, options).(LookupOutboundEndpointResultOutput), nil
-		}).(LookupOutboundEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getOutboundEndpoint", args, LookupOutboundEndpointResultOutput{}, options).(LookupOutboundEndpointResultOutput)
 }
 
 type LookupOutboundEndpointOutputArgs struct {

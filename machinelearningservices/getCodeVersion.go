@@ -64,12 +64,8 @@ func (val *LookupCodeVersionResult) Defaults() *LookupCodeVersionResult {
 	return &tmp
 }
 func LookupCodeVersionOutput(ctx *pulumi.Context, args LookupCodeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupCodeVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCodeVersionResultOutput, error) {
-			args := v.(LookupCodeVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getCodeVersion", args, LookupCodeVersionResultOutput{}, options).(LookupCodeVersionResultOutput), nil
-		}).(LookupCodeVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getCodeVersion", args, LookupCodeVersionResultOutput{}, options).(LookupCodeVersionResultOutput)
 }
 
 type LookupCodeVersionOutputArgs struct {

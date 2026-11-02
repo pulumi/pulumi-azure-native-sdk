@@ -56,12 +56,8 @@ type LookupDaprComponentResiliencyPolicyResult struct {
 }
 
 func LookupDaprComponentResiliencyPolicyOutput(ctx *pulumi.Context, args LookupDaprComponentResiliencyPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDaprComponentResiliencyPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDaprComponentResiliencyPolicyResultOutput, error) {
-			args := v.(LookupDaprComponentResiliencyPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getDaprComponentResiliencyPolicy", args, LookupDaprComponentResiliencyPolicyResultOutput{}, options).(LookupDaprComponentResiliencyPolicyResultOutput), nil
-		}).(LookupDaprComponentResiliencyPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getDaprComponentResiliencyPolicy", args, LookupDaprComponentResiliencyPolicyResultOutput{}, options).(LookupDaprComponentResiliencyPolicyResultOutput)
 }
 
 type LookupDaprComponentResiliencyPolicyOutputArgs struct {

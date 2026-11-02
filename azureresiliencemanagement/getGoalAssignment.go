@@ -50,12 +50,8 @@ type LookupGoalAssignmentResult struct {
 }
 
 func LookupGoalAssignmentOutput(ctx *pulumi.Context, args LookupGoalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGoalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGoalAssignmentResultOutput, error) {
-			args := v.(LookupGoalAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getGoalAssignment", args, LookupGoalAssignmentResultOutput{}, options).(LookupGoalAssignmentResultOutput), nil
-		}).(LookupGoalAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getGoalAssignment", args, LookupGoalAssignmentResultOutput{}, options).(LookupGoalAssignmentResultOutput)
 }
 
 type LookupGoalAssignmentOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupReplicaResult struct {
 }
 
 func LookupReplicaOutput(ctx *pulumi.Context, args LookupReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupReplicaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicaResultOutput, error) {
-			args := v.(LookupReplicaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appconfiguration:getReplica", args, LookupReplicaResultOutput{}, options).(LookupReplicaResultOutput), nil
-		}).(LookupReplicaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appconfiguration:getReplica", args, LookupReplicaResultOutput{}, options).(LookupReplicaResultOutput)
 }
 
 type LookupReplicaOutputArgs struct {

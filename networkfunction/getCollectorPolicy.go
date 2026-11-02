@@ -60,12 +60,8 @@ type LookupCollectorPolicyResult struct {
 }
 
 func LookupCollectorPolicyOutput(ctx *pulumi.Context, args LookupCollectorPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCollectorPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCollectorPolicyResultOutput, error) {
-			args := v.(LookupCollectorPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkfunction:getCollectorPolicy", args, LookupCollectorPolicyResultOutput{}, options).(LookupCollectorPolicyResultOutput), nil
-		}).(LookupCollectorPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkfunction:getCollectorPolicy", args, LookupCollectorPolicyResultOutput{}, options).(LookupCollectorPolicyResultOutput)
 }
 
 type LookupCollectorPolicyOutputArgs struct {

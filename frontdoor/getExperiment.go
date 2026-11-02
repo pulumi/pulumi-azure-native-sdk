@@ -66,12 +66,8 @@ type LookupExperimentResult struct {
 }
 
 func LookupExperimentOutput(ctx *pulumi.Context, args LookupExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupExperimentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExperimentResultOutput, error) {
-			args := v.(LookupExperimentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:frontdoor:getExperiment", args, LookupExperimentResultOutput{}, options).(LookupExperimentResultOutput), nil
-		}).(LookupExperimentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:frontdoor:getExperiment", args, LookupExperimentResultOutput{}, options).(LookupExperimentResultOutput)
 }
 
 type LookupExperimentOutputArgs struct {

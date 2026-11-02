@@ -90,12 +90,8 @@ func (val *LookupIotSecuritySolutionResult) Defaults() *LookupIotSecuritySolutio
 	return &tmp
 }
 func LookupIotSecuritySolutionOutput(ctx *pulumi.Context, args LookupIotSecuritySolutionOutputArgs, opts ...pulumi.InvokeOption) LookupIotSecuritySolutionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotSecuritySolutionResultOutput, error) {
-			args := v.(LookupIotSecuritySolutionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getIotSecuritySolution", args, LookupIotSecuritySolutionResultOutput{}, options).(LookupIotSecuritySolutionResultOutput), nil
-		}).(LookupIotSecuritySolutionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getIotSecuritySolution", args, LookupIotSecuritySolutionResultOutput{}, options).(LookupIotSecuritySolutionResultOutput)
 }
 
 type LookupIotSecuritySolutionOutputArgs struct {

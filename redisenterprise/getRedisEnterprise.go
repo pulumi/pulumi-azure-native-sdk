@@ -78,12 +78,8 @@ type LookupRedisEnterpriseResult struct {
 }
 
 func LookupRedisEnterpriseOutput(ctx *pulumi.Context, args LookupRedisEnterpriseOutputArgs, opts ...pulumi.InvokeOption) LookupRedisEnterpriseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisEnterpriseResultOutput, error) {
-			args := v.(LookupRedisEnterpriseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redisenterprise:getRedisEnterprise", args, LookupRedisEnterpriseResultOutput{}, options).(LookupRedisEnterpriseResultOutput), nil
-		}).(LookupRedisEnterpriseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redisenterprise:getRedisEnterprise", args, LookupRedisEnterpriseResultOutput{}, options).(LookupRedisEnterpriseResultOutput)
 }
 
 type LookupRedisEnterpriseOutputArgs struct {

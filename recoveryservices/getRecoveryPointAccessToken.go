@@ -63,12 +63,8 @@ type GetRecoveryPointAccessTokenResult struct {
 }
 
 func GetRecoveryPointAccessTokenOutput(ctx *pulumi.Context, args GetRecoveryPointAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetRecoveryPointAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRecoveryPointAccessTokenResultOutput, error) {
-			args := v.(GetRecoveryPointAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:recoveryservices:getRecoveryPointAccessToken", args, GetRecoveryPointAccessTokenResultOutput{}, options).(GetRecoveryPointAccessTokenResultOutput), nil
-		}).(GetRecoveryPointAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:recoveryservices:getRecoveryPointAccessToken", args, GetRecoveryPointAccessTokenResultOutput{}, options).(GetRecoveryPointAccessTokenResultOutput)
 }
 
 type GetRecoveryPointAccessTokenOutputArgs struct {

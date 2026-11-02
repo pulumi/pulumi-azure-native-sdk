@@ -55,12 +55,8 @@ type LookupAnomaliesResult struct {
 }
 
 func LookupAnomaliesOutput(ctx *pulumi.Context, args LookupAnomaliesOutputArgs, opts ...pulumi.InvokeOption) LookupAnomaliesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAnomaliesResultOutput, error) {
-			args := v.(LookupAnomaliesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getAnomalies", args, LookupAnomaliesResultOutput{}, options).(LookupAnomaliesResultOutput), nil
-		}).(LookupAnomaliesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getAnomalies", args, LookupAnomaliesResultOutput{}, options).(LookupAnomaliesResultOutput)
 }
 
 type LookupAnomaliesOutputArgs struct {

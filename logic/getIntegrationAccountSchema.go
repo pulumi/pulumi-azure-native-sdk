@@ -72,12 +72,8 @@ type LookupIntegrationAccountSchemaResult struct {
 }
 
 func LookupIntegrationAccountSchemaOutput(ctx *pulumi.Context, args LookupIntegrationAccountSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountSchemaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountSchemaResultOutput, error) {
-			args := v.(LookupIntegrationAccountSchemaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountSchema", args, LookupIntegrationAccountSchemaResultOutput{}, options).(LookupIntegrationAccountSchemaResultOutput), nil
-		}).(LookupIntegrationAccountSchemaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountSchema", args, LookupIntegrationAccountSchemaResultOutput{}, options).(LookupIntegrationAccountSchemaResultOutput)
 }
 
 type LookupIntegrationAccountSchemaOutputArgs struct {

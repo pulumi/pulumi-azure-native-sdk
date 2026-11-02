@@ -52,12 +52,8 @@ type LookupTaskHubResult struct {
 }
 
 func LookupTaskHubOutput(ctx *pulumi.Context, args LookupTaskHubOutputArgs, opts ...pulumi.InvokeOption) LookupTaskHubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTaskHubResultOutput, error) {
-			args := v.(LookupTaskHubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:durabletask:getTaskHub", args, LookupTaskHubResultOutput{}, options).(LookupTaskHubResultOutput), nil
-		}).(LookupTaskHubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:durabletask:getTaskHub", args, LookupTaskHubResultOutput{}, options).(LookupTaskHubResultOutput)
 }
 
 type LookupTaskHubOutputArgs struct {

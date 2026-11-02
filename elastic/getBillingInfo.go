@@ -42,12 +42,8 @@ type GetBillingInfoResult struct {
 }
 
 func GetBillingInfoOutput(ctx *pulumi.Context, args GetBillingInfoOutputArgs, opts ...pulumi.InvokeOption) GetBillingInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBillingInfoResultOutput, error) {
-			args := v.(GetBillingInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:getBillingInfo", args, GetBillingInfoResultOutput{}, options).(GetBillingInfoResultOutput), nil
-		}).(GetBillingInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:getBillingInfo", args, GetBillingInfoResultOutput{}, options).(GetBillingInfoResultOutput)
 }
 
 type GetBillingInfoOutputArgs struct {

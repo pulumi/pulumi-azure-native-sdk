@@ -57,12 +57,8 @@ type LookupJitNetworkAccessPolicyResult struct {
 }
 
 func LookupJitNetworkAccessPolicyOutput(ctx *pulumi.Context, args LookupJitNetworkAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupJitNetworkAccessPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJitNetworkAccessPolicyResultOutput, error) {
-			args := v.(LookupJitNetworkAccessPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getJitNetworkAccessPolicy", args, LookupJitNetworkAccessPolicyResultOutput{}, options).(LookupJitNetworkAccessPolicyResultOutput), nil
-		}).(LookupJitNetworkAccessPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getJitNetworkAccessPolicy", args, LookupJitNetworkAccessPolicyResultOutput{}, options).(LookupJitNetworkAccessPolicyResultOutput)
 }
 
 type LookupJitNetworkAccessPolicyOutputArgs struct {

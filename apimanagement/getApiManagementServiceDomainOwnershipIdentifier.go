@@ -36,12 +36,8 @@ type GetApiManagementServiceDomainOwnershipIdentifierResult struct {
 }
 
 func GetApiManagementServiceDomainOwnershipIdentifierOutput(ctx *pulumi.Context, args GetApiManagementServiceDomainOwnershipIdentifierOutputArgs, opts ...pulumi.InvokeOption) GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApiManagementServiceDomainOwnershipIdentifierResultOutput, error) {
-			args := v.(GetApiManagementServiceDomainOwnershipIdentifierArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementServiceDomainOwnershipIdentifier", args, GetApiManagementServiceDomainOwnershipIdentifierResultOutput{}, options).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput), nil
-		}).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementServiceDomainOwnershipIdentifier", args, GetApiManagementServiceDomainOwnershipIdentifierResultOutput{}, options).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput)
 }
 
 type GetApiManagementServiceDomainOwnershipIdentifierOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupEventHubAuthorizationRuleResult struct {
 }
 
 func LookupEventHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupEventHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEventHubAuthorizationRuleResultOutput, error) {
-			args := v.(LookupEventHubAuthorizationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventhub:getEventHubAuthorizationRule", args, LookupEventHubAuthorizationRuleResultOutput{}, options).(LookupEventHubAuthorizationRuleResultOutput), nil
-		}).(LookupEventHubAuthorizationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventhub:getEventHubAuthorizationRule", args, LookupEventHubAuthorizationRuleResultOutput{}, options).(LookupEventHubAuthorizationRuleResultOutput)
 }
 
 type LookupEventHubAuthorizationRuleOutputArgs struct {

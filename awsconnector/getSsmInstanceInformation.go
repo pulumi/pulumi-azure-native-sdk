@@ -52,12 +52,8 @@ type LookupSsmInstanceInformationResult struct {
 }
 
 func LookupSsmInstanceInformationOutput(ctx *pulumi.Context, args LookupSsmInstanceInformationOutputArgs, opts ...pulumi.InvokeOption) LookupSsmInstanceInformationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSsmInstanceInformationResultOutput, error) {
-			args := v.(LookupSsmInstanceInformationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSsmInstanceInformation", args, LookupSsmInstanceInformationResultOutput{}, options).(LookupSsmInstanceInformationResultOutput), nil
-		}).(LookupSsmInstanceInformationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSsmInstanceInformation", args, LookupSsmInstanceInformationResultOutput{}, options).(LookupSsmInstanceInformationResultOutput)
 }
 
 type LookupSsmInstanceInformationOutputArgs struct {

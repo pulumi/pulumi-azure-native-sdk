@@ -42,12 +42,8 @@ type ListNamedValueResult struct {
 }
 
 func ListNamedValueOutput(ctx *pulumi.Context, args ListNamedValueOutputArgs, opts ...pulumi.InvokeOption) ListNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNamedValueResultOutput, error) {
-			args := v.(ListNamedValueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listNamedValue", args, ListNamedValueResultOutput{}, options).(ListNamedValueResultOutput), nil
-		}).(ListNamedValueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listNamedValue", args, ListNamedValueResultOutput{}, options).(ListNamedValueResultOutput)
 }
 
 type ListNamedValueOutputArgs struct {

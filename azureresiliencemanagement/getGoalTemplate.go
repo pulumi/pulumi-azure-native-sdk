@@ -50,12 +50,8 @@ type LookupGoalTemplateResult struct {
 }
 
 func LookupGoalTemplateOutput(ctx *pulumi.Context, args LookupGoalTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupGoalTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGoalTemplateResultOutput, error) {
-			args := v.(LookupGoalTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getGoalTemplate", args, LookupGoalTemplateResultOutput{}, options).(LookupGoalTemplateResultOutput), nil
-		}).(LookupGoalTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getGoalTemplate", args, LookupGoalTemplateResultOutput{}, options).(LookupGoalTemplateResultOutput)
 }
 
 type LookupGoalTemplateOutputArgs struct {

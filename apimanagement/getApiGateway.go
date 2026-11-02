@@ -70,12 +70,8 @@ type LookupApiGatewayResult struct {
 }
 
 func LookupApiGatewayOutput(ctx *pulumi.Context, args LookupApiGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupApiGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiGatewayResultOutput, error) {
-			args := v.(LookupApiGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiGateway", args, LookupApiGatewayResultOutput{}, options).(LookupApiGatewayResultOutput), nil
-		}).(LookupApiGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiGateway", args, LookupApiGatewayResultOutput{}, options).(LookupApiGatewayResultOutput)
 }
 
 type LookupApiGatewayOutputArgs struct {

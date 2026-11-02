@@ -70,12 +70,8 @@ func (val *LookupPolicyFragmentResult) Defaults() *LookupPolicyFragmentResult {
 	return &tmp
 }
 func LookupPolicyFragmentOutput(ctx *pulumi.Context, args LookupPolicyFragmentOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyFragmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPolicyFragmentResultOutput, error) {
-			args := v.(LookupPolicyFragmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getPolicyFragment", args, LookupPolicyFragmentResultOutput{}, options).(LookupPolicyFragmentResultOutput), nil
-		}).(LookupPolicyFragmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getPolicyFragment", args, LookupPolicyFragmentResultOutput{}, options).(LookupPolicyFragmentResultOutput)
 }
 
 type LookupPolicyFragmentOutputArgs struct {

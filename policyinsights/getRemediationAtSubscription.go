@@ -72,12 +72,8 @@ type LookupRemediationAtSubscriptionResult struct {
 }
 
 func LookupRemediationAtSubscriptionOutput(ctx *pulumi.Context, args LookupRemediationAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRemediationAtSubscriptionResultOutput, error) {
-			args := v.(LookupRemediationAtSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:policyinsights:getRemediationAtSubscription", args, LookupRemediationAtSubscriptionResultOutput{}, options).(LookupRemediationAtSubscriptionResultOutput), nil
-		}).(LookupRemediationAtSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:policyinsights:getRemediationAtSubscription", args, LookupRemediationAtSubscriptionResultOutput{}, options).(LookupRemediationAtSubscriptionResultOutput)
 }
 
 type LookupRemediationAtSubscriptionOutputArgs struct {

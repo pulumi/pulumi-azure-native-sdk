@@ -60,12 +60,8 @@ type LookupManagedInstanceLongTermRetentionPolicyResult struct {
 }
 
 func LookupManagedInstanceLongTermRetentionPolicyOutput(ctx *pulumi.Context, args LookupManagedInstanceLongTermRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceLongTermRetentionPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstanceLongTermRetentionPolicyResultOutput, error) {
-			args := v.(LookupManagedInstanceLongTermRetentionPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getManagedInstanceLongTermRetentionPolicy", args, LookupManagedInstanceLongTermRetentionPolicyResultOutput{}, options).(LookupManagedInstanceLongTermRetentionPolicyResultOutput), nil
-		}).(LookupManagedInstanceLongTermRetentionPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getManagedInstanceLongTermRetentionPolicy", args, LookupManagedInstanceLongTermRetentionPolicyResultOutput{}, options).(LookupManagedInstanceLongTermRetentionPolicyResultOutput)
 }
 
 type LookupManagedInstanceLongTermRetentionPolicyOutputArgs struct {

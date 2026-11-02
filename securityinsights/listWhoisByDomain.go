@@ -54,12 +54,8 @@ type ListWhoisByDomainResult struct {
 }
 
 func ListWhoisByDomainOutput(ctx *pulumi.Context, args ListWhoisByDomainOutputArgs, opts ...pulumi.InvokeOption) ListWhoisByDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWhoisByDomainResultOutput, error) {
-			args := v.(ListWhoisByDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:listWhoisByDomain", args, ListWhoisByDomainResultOutput{}, options).(ListWhoisByDomainResultOutput), nil
-		}).(ListWhoisByDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:listWhoisByDomain", args, ListWhoisByDomainResultOutput{}, options).(ListWhoisByDomainResultOutput)
 }
 
 type ListWhoisByDomainOutputArgs struct {

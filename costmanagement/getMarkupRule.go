@@ -58,12 +58,8 @@ type LookupMarkupRuleResult struct {
 }
 
 func LookupMarkupRuleOutput(ctx *pulumi.Context, args LookupMarkupRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMarkupRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMarkupRuleResultOutput, error) {
-			args := v.(LookupMarkupRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:costmanagement:getMarkupRule", args, LookupMarkupRuleResultOutput{}, options).(LookupMarkupRuleResultOutput), nil
-		}).(LookupMarkupRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:costmanagement:getMarkupRule", args, LookupMarkupRuleResultOutput{}, options).(LookupMarkupRuleResultOutput)
 }
 
 type LookupMarkupRuleOutputArgs struct {

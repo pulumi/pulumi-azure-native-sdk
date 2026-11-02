@@ -60,12 +60,8 @@ type LookupClientApplicationResult struct {
 }
 
 func LookupClientApplicationOutput(ctx *pulumi.Context, args LookupClientApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupClientApplicationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClientApplicationResultOutput, error) {
-			args := v.(LookupClientApplicationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getClientApplication", args, LookupClientApplicationResultOutput{}, options).(LookupClientApplicationResultOutput), nil
-		}).(LookupClientApplicationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getClientApplication", args, LookupClientApplicationResultOutput{}, options).(LookupClientApplicationResultOutput)
 }
 
 type LookupClientApplicationOutputArgs struct {

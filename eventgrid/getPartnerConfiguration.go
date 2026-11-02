@@ -54,12 +54,8 @@ type LookupPartnerConfigurationResult struct {
 }
 
 func LookupPartnerConfigurationOutput(ctx *pulumi.Context, args LookupPartnerConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPartnerConfigurationResultOutput, error) {
-			args := v.(LookupPartnerConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getPartnerConfiguration", args, LookupPartnerConfigurationResultOutput{}, options).(LookupPartnerConfigurationResultOutput), nil
-		}).(LookupPartnerConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getPartnerConfiguration", args, LookupPartnerConfigurationResultOutput{}, options).(LookupPartnerConfigurationResultOutput)
 }
 
 type LookupPartnerConfigurationOutputArgs struct {

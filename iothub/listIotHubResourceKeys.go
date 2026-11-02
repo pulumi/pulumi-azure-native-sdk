@@ -42,12 +42,8 @@ type ListIotHubResourceKeysResult struct {
 }
 
 func ListIotHubResourceKeysOutput(ctx *pulumi.Context, args ListIotHubResourceKeysOutputArgs, opts ...pulumi.InvokeOption) ListIotHubResourceKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIotHubResourceKeysResultOutput, error) {
-			args := v.(ListIotHubResourceKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iothub:listIotHubResourceKeys", args, ListIotHubResourceKeysResultOutput{}, options).(ListIotHubResourceKeysResultOutput), nil
-		}).(ListIotHubResourceKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iothub:listIotHubResourceKeys", args, ListIotHubResourceKeysResultOutput{}, options).(ListIotHubResourceKeysResultOutput)
 }
 
 type ListIotHubResourceKeysOutputArgs struct {

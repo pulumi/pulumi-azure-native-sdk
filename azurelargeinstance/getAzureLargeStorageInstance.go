@@ -58,12 +58,8 @@ type LookupAzureLargeStorageInstanceResult struct {
 }
 
 func LookupAzureLargeStorageInstanceOutput(ctx *pulumi.Context, args LookupAzureLargeStorageInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureLargeStorageInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureLargeStorageInstanceResultOutput, error) {
-			args := v.(LookupAzureLargeStorageInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurelargeinstance:getAzureLargeStorageInstance", args, LookupAzureLargeStorageInstanceResultOutput{}, options).(LookupAzureLargeStorageInstanceResultOutput), nil
-		}).(LookupAzureLargeStorageInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurelargeinstance:getAzureLargeStorageInstance", args, LookupAzureLargeStorageInstanceResultOutput{}, options).(LookupAzureLargeStorageInstanceResultOutput)
 }
 
 type LookupAzureLargeStorageInstanceOutputArgs struct {

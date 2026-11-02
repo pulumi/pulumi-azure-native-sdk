@@ -68,12 +68,8 @@ type LookupOrderResult struct {
 }
 
 func LookupOrderOutput(ctx *pulumi.Context, args LookupOrderOutputArgs, opts ...pulumi.InvokeOption) LookupOrderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrderResultOutput, error) {
-			args := v.(LookupOrderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:getOrder", args, LookupOrderResultOutput{}, options).(LookupOrderResultOutput), nil
-		}).(LookupOrderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:getOrder", args, LookupOrderResultOutput{}, options).(LookupOrderResultOutput)
 }
 
 type LookupOrderOutputArgs struct {

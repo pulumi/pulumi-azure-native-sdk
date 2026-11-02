@@ -56,12 +56,8 @@ type LookupDynamicSchemaVersionResult struct {
 }
 
 func LookupDynamicSchemaVersionOutput(ctx *pulumi.Context, args LookupDynamicSchemaVersionOutputArgs, opts ...pulumi.InvokeOption) LookupDynamicSchemaVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDynamicSchemaVersionResultOutput, error) {
-			args := v.(LookupDynamicSchemaVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getDynamicSchemaVersion", args, LookupDynamicSchemaVersionResultOutput{}, options).(LookupDynamicSchemaVersionResultOutput), nil
-		}).(LookupDynamicSchemaVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getDynamicSchemaVersion", args, LookupDynamicSchemaVersionResultOutput{}, options).(LookupDynamicSchemaVersionResultOutput)
 }
 
 type LookupDynamicSchemaVersionOutputArgs struct {

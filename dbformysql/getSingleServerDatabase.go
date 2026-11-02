@@ -50,12 +50,8 @@ type LookupSingleServerDatabaseResult struct {
 }
 
 func LookupSingleServerDatabaseOutput(ctx *pulumi.Context, args LookupSingleServerDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerDatabaseResultOutput, error) {
-			args := v.(LookupSingleServerDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerDatabase", args, LookupSingleServerDatabaseResultOutput{}, options).(LookupSingleServerDatabaseResultOutput), nil
-		}).(LookupSingleServerDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerDatabase", args, LookupSingleServerDatabaseResultOutput{}, options).(LookupSingleServerDatabaseResultOutput)
 }
 
 type LookupSingleServerDatabaseOutputArgs struct {

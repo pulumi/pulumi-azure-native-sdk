@@ -42,12 +42,8 @@ type ListRemediationDeploymentsAtSubscriptionResult struct {
 }
 
 func ListRemediationDeploymentsAtSubscriptionOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtSubscriptionResultOutput, error) {
-			args := v.(ListRemediationDeploymentsAtSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtSubscription", args, ListRemediationDeploymentsAtSubscriptionResultOutput{}, options).(ListRemediationDeploymentsAtSubscriptionResultOutput), nil
-		}).(ListRemediationDeploymentsAtSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtSubscription", args, ListRemediationDeploymentsAtSubscriptionResultOutput{}, options).(ListRemediationDeploymentsAtSubscriptionResultOutput)
 }
 
 type ListRemediationDeploymentsAtSubscriptionOutputArgs struct {

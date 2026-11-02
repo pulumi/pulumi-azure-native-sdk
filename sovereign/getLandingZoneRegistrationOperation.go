@@ -50,12 +50,8 @@ type LookupLandingZoneRegistrationOperationResult struct {
 }
 
 func LookupLandingZoneRegistrationOperationOutput(ctx *pulumi.Context, args LookupLandingZoneRegistrationOperationOutputArgs, opts ...pulumi.InvokeOption) LookupLandingZoneRegistrationOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLandingZoneRegistrationOperationResultOutput, error) {
-			args := v.(LookupLandingZoneRegistrationOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sovereign:getLandingZoneRegistrationOperation", args, LookupLandingZoneRegistrationOperationResultOutput{}, options).(LookupLandingZoneRegistrationOperationResultOutput), nil
-		}).(LookupLandingZoneRegistrationOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sovereign:getLandingZoneRegistrationOperation", args, LookupLandingZoneRegistrationOperationResultOutput{}, options).(LookupLandingZoneRegistrationOperationResultOutput)
 }
 
 type LookupLandingZoneRegistrationOperationOutputArgs struct {
