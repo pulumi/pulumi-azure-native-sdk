@@ -90,12 +90,8 @@ func (val *LookupVirtualHardDiskResult) Defaults() *LookupVirtualHardDiskResult 
 	return &tmp
 }
 func LookupVirtualHardDiskOutput(ctx *pulumi.Context, args LookupVirtualHardDiskOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHardDiskResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualHardDiskResultOutput, error) {
-			args := v.(LookupVirtualHardDiskArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getVirtualHardDisk", args, LookupVirtualHardDiskResultOutput{}, options).(LookupVirtualHardDiskResultOutput), nil
-		}).(LookupVirtualHardDiskResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getVirtualHardDisk", args, LookupVirtualHardDiskResultOutput{}, options).(LookupVirtualHardDiskResultOutput)
 }
 
 type LookupVirtualHardDiskOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupThroughputPoolResult struct {
 }
 
 func LookupThroughputPoolOutput(ctx *pulumi.Context, args LookupThroughputPoolOutputArgs, opts ...pulumi.InvokeOption) LookupThroughputPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupThroughputPoolResultOutput, error) {
-			args := v.(LookupThroughputPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getThroughputPool", args, LookupThroughputPoolResultOutput{}, options).(LookupThroughputPoolResultOutput), nil
-		}).(LookupThroughputPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getThroughputPool", args, LookupThroughputPoolResultOutput{}, options).(LookupThroughputPoolResultOutput)
 }
 
 type LookupThroughputPoolOutputArgs struct {

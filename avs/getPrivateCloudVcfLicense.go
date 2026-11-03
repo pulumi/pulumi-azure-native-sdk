@@ -40,12 +40,8 @@ type GetPrivateCloudVcfLicenseResult struct {
 }
 
 func GetPrivateCloudVcfLicenseOutput(ctx *pulumi.Context, args GetPrivateCloudVcfLicenseOutputArgs, opts ...pulumi.InvokeOption) GetPrivateCloudVcfLicenseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPrivateCloudVcfLicenseResultOutput, error) {
-			args := v.(GetPrivateCloudVcfLicenseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getPrivateCloudVcfLicense", args, GetPrivateCloudVcfLicenseResultOutput{}, options).(GetPrivateCloudVcfLicenseResultOutput), nil
-		}).(GetPrivateCloudVcfLicenseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getPrivateCloudVcfLicense", args, GetPrivateCloudVcfLicenseResultOutput{}, options).(GetPrivateCloudVcfLicenseResultOutput)
 }
 
 type GetPrivateCloudVcfLicenseOutputArgs struct {

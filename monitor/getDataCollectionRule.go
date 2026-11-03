@@ -77,12 +77,8 @@ type LookupDataCollectionRuleResult struct {
 }
 
 func LookupDataCollectionRuleOutput(ctx *pulumi.Context, args LookupDataCollectionRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDataCollectionRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataCollectionRuleResultOutput, error) {
-			args := v.(LookupDataCollectionRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getDataCollectionRule", args, LookupDataCollectionRuleResultOutput{}, options).(LookupDataCollectionRuleResultOutput), nil
-		}).(LookupDataCollectionRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getDataCollectionRule", args, LookupDataCollectionRuleResultOutput{}, options).(LookupDataCollectionRuleResultOutput)
 }
 
 type LookupDataCollectionRuleOutputArgs struct {

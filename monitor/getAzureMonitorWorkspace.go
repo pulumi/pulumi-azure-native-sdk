@@ -66,12 +66,8 @@ type LookupAzureMonitorWorkspaceResult struct {
 }
 
 func LookupAzureMonitorWorkspaceOutput(ctx *pulumi.Context, args LookupAzureMonitorWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureMonitorWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureMonitorWorkspaceResultOutput, error) {
-			args := v.(LookupAzureMonitorWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getAzureMonitorWorkspace", args, LookupAzureMonitorWorkspaceResultOutput{}, options).(LookupAzureMonitorWorkspaceResultOutput), nil
-		}).(LookupAzureMonitorWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getAzureMonitorWorkspace", args, LookupAzureMonitorWorkspaceResultOutput{}, options).(LookupAzureMonitorWorkspaceResultOutput)
 }
 
 type LookupAzureMonitorWorkspaceOutputArgs struct {

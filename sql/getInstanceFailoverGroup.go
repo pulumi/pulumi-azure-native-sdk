@@ -62,12 +62,8 @@ type LookupInstanceFailoverGroupResult struct {
 }
 
 func LookupInstanceFailoverGroupOutput(ctx *pulumi.Context, args LookupInstanceFailoverGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceFailoverGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceFailoverGroupResultOutput, error) {
-			args := v.(LookupInstanceFailoverGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getInstanceFailoverGroup", args, LookupInstanceFailoverGroupResultOutput{}, options).(LookupInstanceFailoverGroupResultOutput), nil
-		}).(LookupInstanceFailoverGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getInstanceFailoverGroup", args, LookupInstanceFailoverGroupResultOutput{}, options).(LookupInstanceFailoverGroupResultOutput)
 }
 
 type LookupInstanceFailoverGroupOutputArgs struct {

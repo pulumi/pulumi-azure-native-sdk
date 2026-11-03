@@ -52,12 +52,8 @@ type LookupProjectCapabilityHostResult struct {
 }
 
 func LookupProjectCapabilityHostOutput(ctx *pulumi.Context, args LookupProjectCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupProjectCapabilityHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectCapabilityHostResultOutput, error) {
-			args := v.(LookupProjectCapabilityHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getProjectCapabilityHost", args, LookupProjectCapabilityHostResultOutput{}, options).(LookupProjectCapabilityHostResultOutput), nil
-		}).(LookupProjectCapabilityHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getProjectCapabilityHost", args, LookupProjectCapabilityHostResultOutput{}, options).(LookupProjectCapabilityHostResultOutput)
 }
 
 type LookupProjectCapabilityHostOutputArgs struct {

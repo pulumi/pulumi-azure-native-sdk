@@ -97,12 +97,8 @@ func (val *ListTaskDetailsResult) Defaults() *ListTaskDetailsResult {
 	return &tmp
 }
 func ListTaskDetailsOutput(ctx *pulumi.Context, args ListTaskDetailsOutputArgs, opts ...pulumi.InvokeOption) ListTaskDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListTaskDetailsResultOutput, error) {
-			args := v.(ListTaskDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:listTaskDetails", args, ListTaskDetailsResultOutput{}, options).(ListTaskDetailsResultOutput), nil
-		}).(ListTaskDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:listTaskDetails", args, ListTaskDetailsResultOutput{}, options).(ListTaskDetailsResultOutput)
 }
 
 type ListTaskDetailsOutputArgs struct {

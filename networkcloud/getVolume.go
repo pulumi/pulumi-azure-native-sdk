@@ -67,12 +67,8 @@ type LookupVolumeResult struct {
 }
 
 func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVolumeResultOutput, error) {
-			args := v.(LookupVolumeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getVolume", args, LookupVolumeResultOutput{}, options).(LookupVolumeResultOutput), nil
-		}).(LookupVolumeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getVolume", args, LookupVolumeResultOutput{}, options).(LookupVolumeResultOutput)
 }
 
 type LookupVolumeOutputArgs struct {

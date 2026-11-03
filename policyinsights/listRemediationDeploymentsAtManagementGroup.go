@@ -46,12 +46,8 @@ type ListRemediationDeploymentsAtManagementGroupResult struct {
 }
 
 func ListRemediationDeploymentsAtManagementGroupOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtManagementGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtManagementGroupResultOutput, error) {
-			args := v.(ListRemediationDeploymentsAtManagementGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtManagementGroup", args, ListRemediationDeploymentsAtManagementGroupResultOutput{}, options).(ListRemediationDeploymentsAtManagementGroupResultOutput), nil
-		}).(ListRemediationDeploymentsAtManagementGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtManagementGroup", args, ListRemediationDeploymentsAtManagementGroupResultOutput{}, options).(ListRemediationDeploymentsAtManagementGroupResultOutput)
 }
 
 type ListRemediationDeploymentsAtManagementGroupOutputArgs struct {

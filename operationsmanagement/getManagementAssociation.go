@@ -54,12 +54,8 @@ type LookupManagementAssociationResult struct {
 }
 
 func LookupManagementAssociationOutput(ctx *pulumi.Context, args LookupManagementAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupManagementAssociationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagementAssociationResultOutput, error) {
-			args := v.(LookupManagementAssociationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationsmanagement:getManagementAssociation", args, LookupManagementAssociationResultOutput{}, options).(LookupManagementAssociationResultOutput), nil
-		}).(LookupManagementAssociationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationsmanagement:getManagementAssociation", args, LookupManagementAssociationResultOutput{}, options).(LookupManagementAssociationResultOutput)
 }
 
 type LookupManagementAssociationOutputArgs struct {

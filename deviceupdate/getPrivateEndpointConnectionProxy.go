@@ -56,12 +56,8 @@ type LookupPrivateEndpointConnectionProxyResult struct {
 }
 
 func LookupPrivateEndpointConnectionProxyOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionProxyOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionProxyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionProxyResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionProxyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceupdate:getPrivateEndpointConnectionProxy", args, LookupPrivateEndpointConnectionProxyResultOutput{}, options).(LookupPrivateEndpointConnectionProxyResultOutput), nil
-		}).(LookupPrivateEndpointConnectionProxyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceupdate:getPrivateEndpointConnectionProxy", args, LookupPrivateEndpointConnectionProxyResultOutput{}, options).(LookupPrivateEndpointConnectionProxyResultOutput)
 }
 
 type LookupPrivateEndpointConnectionProxyOutputArgs struct {

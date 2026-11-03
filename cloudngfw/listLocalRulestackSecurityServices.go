@@ -45,12 +45,8 @@ type ListLocalRulestackSecurityServicesResult struct {
 }
 
 func ListLocalRulestackSecurityServicesOutput(ctx *pulumi.Context, args ListLocalRulestackSecurityServicesOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackSecurityServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListLocalRulestackSecurityServicesResultOutput, error) {
-			args := v.(ListLocalRulestackSecurityServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listLocalRulestackSecurityServices", args, ListLocalRulestackSecurityServicesResultOutput{}, options).(ListLocalRulestackSecurityServicesResultOutput), nil
-		}).(ListLocalRulestackSecurityServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listLocalRulestackSecurityServices", args, ListLocalRulestackSecurityServicesResultOutput{}, options).(ListLocalRulestackSecurityServicesResultOutput)
 }
 
 type ListLocalRulestackSecurityServicesOutputArgs struct {

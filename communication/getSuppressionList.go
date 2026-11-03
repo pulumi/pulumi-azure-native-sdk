@@ -60,12 +60,8 @@ type LookupSuppressionListResult struct {
 }
 
 func LookupSuppressionListOutput(ctx *pulumi.Context, args LookupSuppressionListOutputArgs, opts ...pulumi.InvokeOption) LookupSuppressionListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSuppressionListResultOutput, error) {
-			args := v.(LookupSuppressionListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:communication:getSuppressionList", args, LookupSuppressionListResultOutput{}, options).(LookupSuppressionListResultOutput), nil
-		}).(LookupSuppressionListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:communication:getSuppressionList", args, LookupSuppressionListResultOutput{}, options).(LookupSuppressionListResultOutput)
 }
 
 type LookupSuppressionListOutputArgs struct {

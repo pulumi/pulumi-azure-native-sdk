@@ -56,12 +56,8 @@ type LookupDeviceSecurityGroupResult struct {
 }
 
 func LookupDeviceSecurityGroupOutput(ctx *pulumi.Context, args LookupDeviceSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceSecurityGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDeviceSecurityGroupResultOutput, error) {
-			args := v.(LookupDeviceSecurityGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getDeviceSecurityGroup", args, LookupDeviceSecurityGroupResultOutput{}, options).(LookupDeviceSecurityGroupResultOutput), nil
-		}).(LookupDeviceSecurityGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getDeviceSecurityGroup", args, LookupDeviceSecurityGroupResultOutput{}, options).(LookupDeviceSecurityGroupResultOutput)
 }
 
 type LookupDeviceSecurityGroupOutputArgs struct {

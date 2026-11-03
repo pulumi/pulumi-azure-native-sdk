@@ -92,12 +92,8 @@ func (val *LookupTopicEventSubscriptionResult) Defaults() *LookupTopicEventSubsc
 	return &tmp
 }
 func LookupTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupTopicEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupTopicEventSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTopicEventSubscriptionResultOutput, error) {
-			args := v.(LookupTopicEventSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getTopicEventSubscription", args, LookupTopicEventSubscriptionResultOutput{}, options).(LookupTopicEventSubscriptionResultOutput), nil
-		}).(LookupTopicEventSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getTopicEventSubscription", args, LookupTopicEventSubscriptionResultOutput{}, options).(LookupTopicEventSubscriptionResultOutput)
 }
 
 type LookupTopicEventSubscriptionOutputArgs struct {

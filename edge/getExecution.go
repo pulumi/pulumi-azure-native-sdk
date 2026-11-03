@@ -60,12 +60,8 @@ type LookupExecutionResult struct {
 }
 
 func LookupExecutionOutput(ctx *pulumi.Context, args LookupExecutionOutputArgs, opts ...pulumi.InvokeOption) LookupExecutionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExecutionResultOutput, error) {
-			args := v.(LookupExecutionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getExecution", args, LookupExecutionResultOutput{}, options).(LookupExecutionResultOutput), nil
-		}).(LookupExecutionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getExecution", args, LookupExecutionResultOutput{}, options).(LookupExecutionResultOutput)
 }
 
 type LookupExecutionOutputArgs struct {

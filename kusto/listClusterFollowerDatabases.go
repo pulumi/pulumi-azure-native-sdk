@@ -40,12 +40,8 @@ type ListClusterFollowerDatabasesResult struct {
 }
 
 func ListClusterFollowerDatabasesOutput(ctx *pulumi.Context, args ListClusterFollowerDatabasesOutputArgs, opts ...pulumi.InvokeOption) ListClusterFollowerDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClusterFollowerDatabasesResultOutput, error) {
-			args := v.(ListClusterFollowerDatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:listClusterFollowerDatabases", args, ListClusterFollowerDatabasesResultOutput{}, options).(ListClusterFollowerDatabasesResultOutput), nil
-		}).(ListClusterFollowerDatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:listClusterFollowerDatabases", args, ListClusterFollowerDatabasesResultOutput{}, options).(ListClusterFollowerDatabasesResultOutput)
 }
 
 type ListClusterFollowerDatabasesOutputArgs struct {

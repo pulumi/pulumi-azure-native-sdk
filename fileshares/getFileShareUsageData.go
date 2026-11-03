@@ -38,12 +38,8 @@ type GetFileShareUsageDataResult struct {
 }
 
 func GetFileShareUsageDataOutput(ctx *pulumi.Context, args GetFileShareUsageDataOutputArgs, opts ...pulumi.InvokeOption) GetFileShareUsageDataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileShareUsageDataResultOutput, error) {
-			args := v.(GetFileShareUsageDataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fileshares:getFileShareUsageData", args, GetFileShareUsageDataResultOutput{}, options).(GetFileShareUsageDataResultOutput), nil
-		}).(GetFileShareUsageDataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fileshares:getFileShareUsageData", args, GetFileShareUsageDataResultOutput{}, options).(GetFileShareUsageDataResultOutput)
 }
 
 type GetFileShareUsageDataOutputArgs struct {

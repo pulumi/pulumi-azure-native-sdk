@@ -52,12 +52,8 @@ type LookupCloudFormationStackSetResult struct {
 }
 
 func LookupCloudFormationStackSetOutput(ctx *pulumi.Context, args LookupCloudFormationStackSetOutputArgs, opts ...pulumi.InvokeOption) LookupCloudFormationStackSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudFormationStackSetResultOutput, error) {
-			args := v.(LookupCloudFormationStackSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getCloudFormationStackSet", args, LookupCloudFormationStackSetResultOutput{}, options).(LookupCloudFormationStackSetResultOutput), nil
-		}).(LookupCloudFormationStackSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getCloudFormationStackSet", args, LookupCloudFormationStackSetResultOutput{}, options).(LookupCloudFormationStackSetResultOutput)
 }
 
 type LookupCloudFormationStackSetOutputArgs struct {

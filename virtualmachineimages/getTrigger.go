@@ -56,12 +56,8 @@ type LookupTriggerResult struct {
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTriggerResultOutput, error) {
-			args := v.(LookupTriggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:virtualmachineimages:getTrigger", args, LookupTriggerResultOutput{}, options).(LookupTriggerResultOutput), nil
-		}).(LookupTriggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:virtualmachineimages:getTrigger", args, LookupTriggerResultOutput{}, options).(LookupTriggerResultOutput)
 }
 
 type LookupTriggerOutputArgs struct {

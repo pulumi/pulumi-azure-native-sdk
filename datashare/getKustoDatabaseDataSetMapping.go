@@ -63,12 +63,8 @@ type LookupKustoDatabaseDataSetMappingResult struct {
 }
 
 func LookupKustoDatabaseDataSetMappingOutput(ctx *pulumi.Context, args LookupKustoDatabaseDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupKustoDatabaseDataSetMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKustoDatabaseDataSetMappingResultOutput, error) {
-			args := v.(LookupKustoDatabaseDataSetMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getKustoDatabaseDataSetMapping", args, LookupKustoDatabaseDataSetMappingResultOutput{}, options).(LookupKustoDatabaseDataSetMappingResultOutput), nil
-		}).(LookupKustoDatabaseDataSetMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getKustoDatabaseDataSetMapping", args, LookupKustoDatabaseDataSetMappingResultOutput{}, options).(LookupKustoDatabaseDataSetMappingResultOutput)
 }
 
 type LookupKustoDatabaseDataSetMappingOutputArgs struct {

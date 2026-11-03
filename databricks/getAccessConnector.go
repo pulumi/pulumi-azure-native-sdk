@@ -56,12 +56,8 @@ type LookupAccessConnectorResult struct {
 }
 
 func LookupAccessConnectorOutput(ctx *pulumi.Context, args LookupAccessConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAccessConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessConnectorResultOutput, error) {
-			args := v.(LookupAccessConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databricks:getAccessConnector", args, LookupAccessConnectorResultOutput{}, options).(LookupAccessConnectorResultOutput), nil
-		}).(LookupAccessConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databricks:getAccessConnector", args, LookupAccessConnectorResultOutput{}, options).(LookupAccessConnectorResultOutput)
 }
 
 type LookupAccessConnectorOutputArgs struct {

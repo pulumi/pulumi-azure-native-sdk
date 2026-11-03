@@ -54,12 +54,8 @@ type LookupRegisteredAsnResult struct {
 }
 
 func LookupRegisteredAsnOutput(ctx *pulumi.Context, args LookupRegisteredAsnOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredAsnResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegisteredAsnResultOutput, error) {
-			args := v.(LookupRegisteredAsnArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:peering:getRegisteredAsn", args, LookupRegisteredAsnResultOutput{}, options).(LookupRegisteredAsnResultOutput), nil
-		}).(LookupRegisteredAsnResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:peering:getRegisteredAsn", args, LookupRegisteredAsnResultOutput{}, options).(LookupRegisteredAsnResultOutput)
 }
 
 type LookupRegisteredAsnOutputArgs struct {

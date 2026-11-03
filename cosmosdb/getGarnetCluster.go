@@ -56,12 +56,8 @@ type LookupGarnetClusterResult struct {
 }
 
 func LookupGarnetClusterOutput(ctx *pulumi.Context, args LookupGarnetClusterOutputArgs, opts ...pulumi.InvokeOption) LookupGarnetClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGarnetClusterResultOutput, error) {
-			args := v.(LookupGarnetClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getGarnetCluster", args, LookupGarnetClusterResultOutput{}, options).(LookupGarnetClusterResultOutput), nil
-		}).(LookupGarnetClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getGarnetCluster", args, LookupGarnetClusterResultOutput{}, options).(LookupGarnetClusterResultOutput)
 }
 
 type LookupGarnetClusterOutputArgs struct {

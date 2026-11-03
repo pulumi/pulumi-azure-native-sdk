@@ -40,12 +40,8 @@ type ListClusterLanguageExtensionsResult struct {
 }
 
 func ListClusterLanguageExtensionsOutput(ctx *pulumi.Context, args ListClusterLanguageExtensionsOutputArgs, opts ...pulumi.InvokeOption) ListClusterLanguageExtensionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClusterLanguageExtensionsResultOutput, error) {
-			args := v.(ListClusterLanguageExtensionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:listClusterLanguageExtensions", args, ListClusterLanguageExtensionsResultOutput{}, options).(ListClusterLanguageExtensionsResultOutput), nil
-		}).(ListClusterLanguageExtensionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:listClusterLanguageExtensions", args, ListClusterLanguageExtensionsResultOutput{}, options).(ListClusterLanguageExtensionsResultOutput)
 }
 
 type ListClusterLanguageExtensionsOutputArgs struct {

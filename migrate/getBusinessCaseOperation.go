@@ -68,12 +68,8 @@ func (val *LookupBusinessCaseOperationResult) Defaults() *LookupBusinessCaseOper
 	return &tmp
 }
 func LookupBusinessCaseOperationOutput(ctx *pulumi.Context, args LookupBusinessCaseOperationOutputArgs, opts ...pulumi.InvokeOption) LookupBusinessCaseOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBusinessCaseOperationResultOutput, error) {
-			args := v.(LookupBusinessCaseOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getBusinessCaseOperation", args, LookupBusinessCaseOperationResultOutput{}, options).(LookupBusinessCaseOperationResultOutput), nil
-		}).(LookupBusinessCaseOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getBusinessCaseOperation", args, LookupBusinessCaseOperationResultOutput{}, options).(LookupBusinessCaseOperationResultOutput)
 }
 
 type LookupBusinessCaseOperationOutputArgs struct {

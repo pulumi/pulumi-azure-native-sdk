@@ -54,12 +54,8 @@ type LookupContextResult struct {
 }
 
 func LookupContextOutput(ctx *pulumi.Context, args LookupContextOutputArgs, opts ...pulumi.InvokeOption) LookupContextResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContextResultOutput, error) {
-			args := v.(LookupContextArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getContext", args, LookupContextResultOutput{}, options).(LookupContextResultOutput), nil
-		}).(LookupContextResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getContext", args, LookupContextResultOutput{}, options).(LookupContextResultOutput)
 }
 
 type LookupContextOutputArgs struct {

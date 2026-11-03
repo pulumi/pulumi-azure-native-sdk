@@ -52,12 +52,8 @@ type LookupStorageResult struct {
 }
 
 func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts ...pulumi.InvokeOption) LookupStorageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStorageResultOutput, error) {
-			args := v.(LookupStorageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getStorage", args, LookupStorageResultOutput{}, options).(LookupStorageResultOutput), nil
-		}).(LookupStorageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getStorage", args, LookupStorageResultOutput{}, options).(LookupStorageResultOutput)
 }
 
 type LookupStorageOutputArgs struct {

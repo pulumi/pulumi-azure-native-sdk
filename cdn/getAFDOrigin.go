@@ -97,12 +97,8 @@ func (val *LookupAFDOriginResult) Defaults() *LookupAFDOriginResult {
 	return &tmp
 }
 func LookupAFDOriginOutput(ctx *pulumi.Context, args LookupAFDOriginOutputArgs, opts ...pulumi.InvokeOption) LookupAFDOriginResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAFDOriginResultOutput, error) {
-			args := v.(LookupAFDOriginArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getAFDOrigin", args, LookupAFDOriginResultOutput{}, options).(LookupAFDOriginResultOutput), nil
-		}).(LookupAFDOriginResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getAFDOrigin", args, LookupAFDOriginResultOutput{}, options).(LookupAFDOriginResultOutput)
 }
 
 type LookupAFDOriginOutputArgs struct {

@@ -57,12 +57,8 @@ type LookupSecurityPolicyResult struct {
 }
 
 func LookupSecurityPolicyOutput(ctx *pulumi.Context, args LookupSecurityPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityPolicyResultOutput, error) {
-			args := v.(LookupSecurityPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getSecurityPolicy", args, LookupSecurityPolicyResultOutput{}, options).(LookupSecurityPolicyResultOutput), nil
-		}).(LookupSecurityPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getSecurityPolicy", args, LookupSecurityPolicyResultOutput{}, options).(LookupSecurityPolicyResultOutput)
 }
 
 type LookupSecurityPolicyOutputArgs struct {

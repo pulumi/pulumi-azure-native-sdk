@@ -158,12 +158,8 @@ func (val *LookupDatabaseAccountResult) Defaults() *LookupDatabaseAccountResult 
 	return &tmp
 }
 func LookupDatabaseAccountOutput(ctx *pulumi.Context, args LookupDatabaseAccountOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAccountResultOutput, error) {
-			args := v.(LookupDatabaseAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccount", args, LookupDatabaseAccountResultOutput{}, options).(LookupDatabaseAccountResultOutput), nil
-		}).(LookupDatabaseAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccount", args, LookupDatabaseAccountResultOutput{}, options).(LookupDatabaseAccountResultOutput)
 }
 
 type LookupDatabaseAccountOutputArgs struct {

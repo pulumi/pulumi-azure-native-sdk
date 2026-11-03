@@ -54,12 +54,8 @@ type LookupPatchScheduleResult struct {
 }
 
 func LookupPatchScheduleOutput(ctx *pulumi.Context, args LookupPatchScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupPatchScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPatchScheduleResultOutput, error) {
-			args := v.(LookupPatchScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redis:getPatchSchedule", args, LookupPatchScheduleResultOutput{}, options).(LookupPatchScheduleResultOutput), nil
-		}).(LookupPatchScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redis:getPatchSchedule", args, LookupPatchScheduleResultOutput{}, options).(LookupPatchScheduleResultOutput)
 }
 
 type LookupPatchScheduleOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupApiIssueCommentResult struct {
 }
 
 func LookupApiIssueCommentOutput(ctx *pulumi.Context, args LookupApiIssueCommentOutputArgs, opts ...pulumi.InvokeOption) LookupApiIssueCommentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiIssueCommentResultOutput, error) {
-			args := v.(LookupApiIssueCommentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiIssueComment", args, LookupApiIssueCommentResultOutput{}, options).(LookupApiIssueCommentResultOutput), nil
-		}).(LookupApiIssueCommentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiIssueComment", args, LookupApiIssueCommentResultOutput{}, options).(LookupApiIssueCommentResultOutput)
 }
 
 type LookupApiIssueCommentOutputArgs struct {

@@ -48,12 +48,8 @@ type GetSapVirtualInstanceInvokeSapSupportedSkuResult struct {
 }
 
 func GetSapVirtualInstanceInvokeSapSupportedSkuOutput(ctx *pulumi.Context, args GetSapVirtualInstanceInvokeSapSupportedSkuOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput, error) {
-			args := v.(GetSapVirtualInstanceInvokeSapSupportedSkuArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeSapSupportedSku", args, GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput{}, options).(GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput), nil
-		}).(GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapVirtualInstanceInvokeSapSupportedSku", args, GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput{}, options).(GetSapVirtualInstanceInvokeSapSupportedSkuResultOutput)
 }
 
 type GetSapVirtualInstanceInvokeSapSupportedSkuOutputArgs struct {

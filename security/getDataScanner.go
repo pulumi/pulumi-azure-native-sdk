@@ -50,12 +50,8 @@ type LookupDataScannerResult struct {
 }
 
 func LookupDataScannerOutput(ctx *pulumi.Context, args LookupDataScannerOutputArgs, opts ...pulumi.InvokeOption) LookupDataScannerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataScannerResultOutput, error) {
-			args := v.(LookupDataScannerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getDataScanner", args, LookupDataScannerResultOutput{}, options).(LookupDataScannerResultOutput), nil
-		}).(LookupDataScannerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getDataScanner", args, LookupDataScannerResultOutput{}, options).(LookupDataScannerResultOutput)
 }
 
 type LookupDataScannerOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupLightsailInstanceResult struct {
 }
 
 func LookupLightsailInstanceOutput(ctx *pulumi.Context, args LookupLightsailInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupLightsailInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLightsailInstanceResultOutput, error) {
-			args := v.(LookupLightsailInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getLightsailInstance", args, LookupLightsailInstanceResultOutput{}, options).(LookupLightsailInstanceResultOutput), nil
-		}).(LookupLightsailInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getLightsailInstance", args, LookupLightsailInstanceResultOutput{}, options).(LookupLightsailInstanceResultOutput)
 }
 
 type LookupLightsailInstanceOutputArgs struct {

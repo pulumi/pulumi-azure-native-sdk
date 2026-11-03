@@ -70,12 +70,8 @@ func (val *LookupSqlManagedInstanceResult) Defaults() *LookupSqlManagedInstanceR
 	return &tmp
 }
 func LookupSqlManagedInstanceOutput(ctx *pulumi.Context, args LookupSqlManagedInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlManagedInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlManagedInstanceResultOutput, error) {
-			args := v.(LookupSqlManagedInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlManagedInstance", args, LookupSqlManagedInstanceResultOutput{}, options).(LookupSqlManagedInstanceResultOutput), nil
-		}).(LookupSqlManagedInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getSqlManagedInstance", args, LookupSqlManagedInstanceResultOutput{}, options).(LookupSqlManagedInstanceResultOutput)
 }
 
 type LookupSqlManagedInstanceOutputArgs struct {

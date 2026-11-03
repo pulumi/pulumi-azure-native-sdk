@@ -58,12 +58,8 @@ type LookupAdministratorResult struct {
 }
 
 func LookupAdministratorOutput(ctx *pulumi.Context, args LookupAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupAdministratorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAdministratorResultOutput, error) {
-			args := v.(LookupAdministratorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getAdministrator", args, LookupAdministratorResultOutput{}, options).(LookupAdministratorResultOutput), nil
-		}).(LookupAdministratorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getAdministrator", args, LookupAdministratorResultOutput{}, options).(LookupAdministratorResultOutput)
 }
 
 type LookupAdministratorOutputArgs struct {

@@ -6167,7 +6167,7 @@ type Condition struct {
 	AlertSensitivity *string `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType *string `pulumi:"criterionType"`
-	// List of Dimensions conditions
+	// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
 	Dimensions []Dimension `pulumi:"dimensions"`
 	// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
 	FailingPeriods *ConditionFailingPeriods `pulumi:"failingPeriods"`
@@ -6219,7 +6219,7 @@ type ConditionArgs struct {
 	AlertSensitivity pulumi.StringPtrInput `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType pulumi.StringPtrInput `pulumi:"criterionType"`
-	// List of Dimensions conditions
+	// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
 	Dimensions DimensionArrayInput `pulumi:"dimensions"`
 	// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
 	FailingPeriods ConditionFailingPeriodsPtrInput `pulumi:"failingPeriods"`
@@ -6314,7 +6314,7 @@ func (o ConditionOutput) CriterionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.CriterionType }).(pulumi.StringPtrOutput)
 }
 
-// List of Dimensions conditions
+// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
 func (o ConditionOutput) Dimensions() DimensionArrayOutput {
 	return o.ApplyT(func(v Condition) []Dimension { return v.Dimensions }).(DimensionArrayOutput)
 }
@@ -6579,110 +6579,16 @@ func (o ConditionFailingPeriodsPtrOutput) NumberOfEvaluationPeriods() pulumi.Flo
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-type ConditionFailingPeriodsResponse struct {
-	// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
-	MinFailingPeriodsToAlert *float64 `pulumi:"minFailingPeriodsToAlert"`
-	// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-	NumberOfEvaluationPeriods *float64 `pulumi:"numberOfEvaluationPeriods"`
-}
-
-// Defaults sets the appropriate defaults for ConditionFailingPeriodsResponse
-func (val *ConditionFailingPeriodsResponse) Defaults() *ConditionFailingPeriodsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MinFailingPeriodsToAlert == nil {
-		minFailingPeriodsToAlert_ := 1.0
-		tmp.MinFailingPeriodsToAlert = &minFailingPeriodsToAlert_
-	}
-	if tmp.NumberOfEvaluationPeriods == nil {
-		numberOfEvaluationPeriods_ := 1.0
-		tmp.NumberOfEvaluationPeriods = &numberOfEvaluationPeriods_
-	}
-	return &tmp
-}
-
-// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-type ConditionFailingPeriodsResponseOutput struct{ *pulumi.OutputState }
-
-func (ConditionFailingPeriodsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionFailingPeriodsResponse)(nil)).Elem()
-}
-
-func (o ConditionFailingPeriodsResponseOutput) ToConditionFailingPeriodsResponseOutput() ConditionFailingPeriodsResponseOutput {
-	return o
-}
-
-func (o ConditionFailingPeriodsResponseOutput) ToConditionFailingPeriodsResponseOutputWithContext(ctx context.Context) ConditionFailingPeriodsResponseOutput {
-	return o
-}
-
-// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
-func (o ConditionFailingPeriodsResponseOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ConditionFailingPeriodsResponse) *float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64PtrOutput)
-}
-
-// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-func (o ConditionFailingPeriodsResponseOutput) NumberOfEvaluationPeriods() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ConditionFailingPeriodsResponse) *float64 { return v.NumberOfEvaluationPeriods }).(pulumi.Float64PtrOutput)
-}
-
-type ConditionFailingPeriodsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionFailingPeriodsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionFailingPeriodsResponse)(nil)).Elem()
-}
-
-func (o ConditionFailingPeriodsResponsePtrOutput) ToConditionFailingPeriodsResponsePtrOutput() ConditionFailingPeriodsResponsePtrOutput {
-	return o
-}
-
-func (o ConditionFailingPeriodsResponsePtrOutput) ToConditionFailingPeriodsResponsePtrOutputWithContext(ctx context.Context) ConditionFailingPeriodsResponsePtrOutput {
-	return o
-}
-
-func (o ConditionFailingPeriodsResponsePtrOutput) Elem() ConditionFailingPeriodsResponseOutput {
-	return o.ApplyT(func(v *ConditionFailingPeriodsResponse) ConditionFailingPeriodsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionFailingPeriodsResponse
-		return ret
-	}).(ConditionFailingPeriodsResponseOutput)
-}
-
-// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
-func (o ConditionFailingPeriodsResponsePtrOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ConditionFailingPeriodsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinFailingPeriodsToAlert
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-func (o ConditionFailingPeriodsResponsePtrOutput) NumberOfEvaluationPeriods() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ConditionFailingPeriodsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.NumberOfEvaluationPeriods
-	}).(pulumi.Float64PtrOutput)
-}
-
 // A condition of the scheduled query rule.
 type ConditionResponse struct {
 	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 	AlertSensitivity *string `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType *string `pulumi:"criterionType"`
-	// List of Dimensions conditions
+	// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
 	Dimensions []DimensionResponse `pulumi:"dimensions"`
 	// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-	FailingPeriods *ConditionFailingPeriodsResponse `pulumi:"failingPeriods"`
+	FailingPeriods *ConditionResponseFailingPeriods `pulumi:"failingPeriods"`
 	// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
 	IgnoreDataBefore *string `pulumi:"ignoreDataBefore"`
 	// The column containing the metric measure number. Relevant only for rules of the kind LogAlert.
@@ -6739,14 +6645,14 @@ func (o ConditionResponseOutput) CriterionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionResponse) *string { return v.CriterionType }).(pulumi.StringPtrOutput)
 }
 
-// List of Dimensions conditions
+// List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
 func (o ConditionResponseOutput) Dimensions() DimensionResponseArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
 }
 
 // The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
-func (o ConditionResponseOutput) FailingPeriods() ConditionFailingPeriodsResponsePtrOutput {
-	return o.ApplyT(func(v ConditionResponse) *ConditionFailingPeriodsResponse { return v.FailingPeriods }).(ConditionFailingPeriodsResponsePtrOutput)
+func (o ConditionResponseOutput) FailingPeriods() ConditionResponseFailingPeriodsPtrOutput {
+	return o.ApplyT(func(v ConditionResponse) *ConditionResponseFailingPeriods { return v.FailingPeriods }).(ConditionResponseFailingPeriodsPtrOutput)
 }
 
 // Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
@@ -6812,6 +6718,100 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponse {
 		return vs[0].([]ConditionResponse)[vs[1].(int)]
 	}).(ConditionResponseOutput)
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+type ConditionResponseFailingPeriods struct {
+	// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+	MinFailingPeriodsToAlert *float64 `pulumi:"minFailingPeriodsToAlert"`
+	// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+	NumberOfEvaluationPeriods *float64 `pulumi:"numberOfEvaluationPeriods"`
+}
+
+// Defaults sets the appropriate defaults for ConditionResponseFailingPeriods
+func (val *ConditionResponseFailingPeriods) Defaults() *ConditionResponseFailingPeriods {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MinFailingPeriodsToAlert == nil {
+		minFailingPeriodsToAlert_ := 1.0
+		tmp.MinFailingPeriodsToAlert = &minFailingPeriodsToAlert_
+	}
+	if tmp.NumberOfEvaluationPeriods == nil {
+		numberOfEvaluationPeriods_ := 1.0
+		tmp.NumberOfEvaluationPeriods = &numberOfEvaluationPeriods_
+	}
+	return &tmp
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+type ConditionResponseFailingPeriodsOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseFailingPeriodsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionResponseFailingPeriods)(nil)).Elem()
+}
+
+func (o ConditionResponseFailingPeriodsOutput) ToConditionResponseFailingPeriodsOutput() ConditionResponseFailingPeriodsOutput {
+	return o
+}
+
+func (o ConditionResponseFailingPeriodsOutput) ToConditionResponseFailingPeriodsOutputWithContext(ctx context.Context) ConditionResponseFailingPeriodsOutput {
+	return o
+}
+
+// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+func (o ConditionResponseFailingPeriodsOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConditionResponseFailingPeriods) *float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64PtrOutput)
+}
+
+// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+func (o ConditionResponseFailingPeriodsOutput) NumberOfEvaluationPeriods() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConditionResponseFailingPeriods) *float64 { return v.NumberOfEvaluationPeriods }).(pulumi.Float64PtrOutput)
+}
+
+type ConditionResponseFailingPeriodsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseFailingPeriodsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionResponseFailingPeriods)(nil)).Elem()
+}
+
+func (o ConditionResponseFailingPeriodsPtrOutput) ToConditionResponseFailingPeriodsPtrOutput() ConditionResponseFailingPeriodsPtrOutput {
+	return o
+}
+
+func (o ConditionResponseFailingPeriodsPtrOutput) ToConditionResponseFailingPeriodsPtrOutputWithContext(ctx context.Context) ConditionResponseFailingPeriodsPtrOutput {
+	return o
+}
+
+func (o ConditionResponseFailingPeriodsPtrOutput) Elem() ConditionResponseFailingPeriodsOutput {
+	return o.ApplyT(func(v *ConditionResponseFailingPeriods) ConditionResponseFailingPeriods {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionResponseFailingPeriods
+		return ret
+	}).(ConditionResponseFailingPeriodsOutput)
+}
+
+// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+func (o ConditionResponseFailingPeriodsPtrOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConditionResponseFailingPeriods) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinFailingPeriodsToAlert
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+func (o ConditionResponseFailingPeriodsPtrOutput) NumberOfEvaluationPeriods() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConditionResponseFailingPeriods) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfEvaluationPeriods
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Represents a filtering condition.
@@ -14941,6 +14941,165 @@ func (o IconDefinitionResponsePtrOutput) IconName() pulumi.StringPtrOutput {
 }
 
 // Identity for the resource.
+type Identity struct {
+	// Type of managed service identity.
+	Type IdentityType `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
+// You can construct a concrete instance of `IdentityInput` via:
+//
+//	IdentityArgs{...}
+type IdentityInput interface {
+	pulumi.Input
+
+	ToIdentityOutput() IdentityOutput
+	ToIdentityOutputWithContext(context.Context) IdentityOutput
+}
+
+// Identity for the resource.
+type IdentityArgs struct {
+	// Type of managed service identity.
+	Type IdentityTypeInput `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (IdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Identity)(nil)).Elem()
+}
+
+func (i IdentityArgs) ToIdentityOutput() IdentityOutput {
+	return i.ToIdentityOutputWithContext(context.Background())
+}
+
+func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
+}
+
+func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
+	return i.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityArgs) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput).ToIdentityPtrOutputWithContext(ctx)
+}
+
+// IdentityPtrInput is an input type that accepts IdentityArgs, IdentityPtr and IdentityPtrOutput values.
+// You can construct a concrete instance of `IdentityPtrInput` via:
+//
+//	        IdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPtrOutput() IdentityPtrOutput
+	ToIdentityPtrOutputWithContext(context.Context) IdentityPtrOutput
+}
+
+type identityPtrType IdentityArgs
+
+func IdentityPtr(v *IdentityArgs) IdentityPtrInput {
+	return (*identityPtrType)(v)
+}
+
+func (*identityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Identity)(nil)).Elem()
+}
+
+func (i *identityPtrType) ToIdentityPtrOutput() IdentityPtrOutput {
+	return i.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
+}
+
+// Identity for the resource.
+type IdentityOutput struct{ *pulumi.OutputState }
+
+func (IdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Identity)(nil)).Elem()
+}
+
+func (o IdentityOutput) ToIdentityOutput() IdentityOutput {
+	return o
+}
+
+func (o IdentityOutput) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
+	return o
+}
+
+func (o IdentityOutput) ToIdentityPtrOutput() IdentityPtrOutput {
+	return o.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Identity) *Identity {
+		return &v
+	}).(IdentityPtrOutput)
+}
+
+// Type of managed service identity.
+func (o IdentityOutput) Type() IdentityTypeOutput {
+	return o.ApplyT(func(v Identity) IdentityType { return v.Type }).(IdentityTypeOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Identity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type IdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Identity)(nil)).Elem()
+}
+
+func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
+	return o
+}
+
+func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return o
+}
+
+func (o IdentityPtrOutput) Elem() IdentityOutput {
+	return o.ApplyT(func(v *Identity) Identity {
+		if v != nil {
+			return *v
+		}
+		var ret Identity
+		return ret
+	}).(IdentityOutput)
+}
+
+// Type of managed service identity.
+func (o IdentityPtrOutput) Type() IdentityTypePtrOutput {
+	return o.ApplyT(func(v *Identity) *IdentityType {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(IdentityTypePtrOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Identity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identity for the resource.
 type IdentityResponse struct {
 	// The principal ID of resource identity.
 	PrincipalId string `pulumi:"principalId"`
@@ -20798,165 +20957,6 @@ func (o MicrosoftCommonEmailReceiverArrayOutput) Index(i pulumi.IntInput) Micros
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrosoftCommonEmailReceiver {
 		return vs[0].([]MicrosoftCommonEmailReceiver)[vs[1].(int)]
 	}).(MicrosoftCommonEmailReceiverOutput)
-}
-
-// Identity for the resource.
-type MicrosoftCommonIdentity struct {
-	// Type of managed service identity.
-	Type IdentityType `pulumi:"type"`
-	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// MicrosoftCommonIdentityInput is an input type that accepts MicrosoftCommonIdentityArgs and MicrosoftCommonIdentityOutput values.
-// You can construct a concrete instance of `MicrosoftCommonIdentityInput` via:
-//
-//	MicrosoftCommonIdentityArgs{...}
-type MicrosoftCommonIdentityInput interface {
-	pulumi.Input
-
-	ToMicrosoftCommonIdentityOutput() MicrosoftCommonIdentityOutput
-	ToMicrosoftCommonIdentityOutputWithContext(context.Context) MicrosoftCommonIdentityOutput
-}
-
-// Identity for the resource.
-type MicrosoftCommonIdentityArgs struct {
-	// Type of managed service identity.
-	Type IdentityTypeInput `pulumi:"type"`
-	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (MicrosoftCommonIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrosoftCommonIdentity)(nil)).Elem()
-}
-
-func (i MicrosoftCommonIdentityArgs) ToMicrosoftCommonIdentityOutput() MicrosoftCommonIdentityOutput {
-	return i.ToMicrosoftCommonIdentityOutputWithContext(context.Background())
-}
-
-func (i MicrosoftCommonIdentityArgs) ToMicrosoftCommonIdentityOutputWithContext(ctx context.Context) MicrosoftCommonIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonIdentityOutput)
-}
-
-func (i MicrosoftCommonIdentityArgs) ToMicrosoftCommonIdentityPtrOutput() MicrosoftCommonIdentityPtrOutput {
-	return i.ToMicrosoftCommonIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i MicrosoftCommonIdentityArgs) ToMicrosoftCommonIdentityPtrOutputWithContext(ctx context.Context) MicrosoftCommonIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonIdentityOutput).ToMicrosoftCommonIdentityPtrOutputWithContext(ctx)
-}
-
-// MicrosoftCommonIdentityPtrInput is an input type that accepts MicrosoftCommonIdentityArgs, MicrosoftCommonIdentityPtr and MicrosoftCommonIdentityPtrOutput values.
-// You can construct a concrete instance of `MicrosoftCommonIdentityPtrInput` via:
-//
-//	        MicrosoftCommonIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type MicrosoftCommonIdentityPtrInput interface {
-	pulumi.Input
-
-	ToMicrosoftCommonIdentityPtrOutput() MicrosoftCommonIdentityPtrOutput
-	ToMicrosoftCommonIdentityPtrOutputWithContext(context.Context) MicrosoftCommonIdentityPtrOutput
-}
-
-type microsoftCommonIdentityPtrType MicrosoftCommonIdentityArgs
-
-func MicrosoftCommonIdentityPtr(v *MicrosoftCommonIdentityArgs) MicrosoftCommonIdentityPtrInput {
-	return (*microsoftCommonIdentityPtrType)(v)
-}
-
-func (*microsoftCommonIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MicrosoftCommonIdentity)(nil)).Elem()
-}
-
-func (i *microsoftCommonIdentityPtrType) ToMicrosoftCommonIdentityPtrOutput() MicrosoftCommonIdentityPtrOutput {
-	return i.ToMicrosoftCommonIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *microsoftCommonIdentityPtrType) ToMicrosoftCommonIdentityPtrOutputWithContext(ctx context.Context) MicrosoftCommonIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonIdentityPtrOutput)
-}
-
-// Identity for the resource.
-type MicrosoftCommonIdentityOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrosoftCommonIdentity)(nil)).Elem()
-}
-
-func (o MicrosoftCommonIdentityOutput) ToMicrosoftCommonIdentityOutput() MicrosoftCommonIdentityOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityOutput) ToMicrosoftCommonIdentityOutputWithContext(ctx context.Context) MicrosoftCommonIdentityOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityOutput) ToMicrosoftCommonIdentityPtrOutput() MicrosoftCommonIdentityPtrOutput {
-	return o.ToMicrosoftCommonIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o MicrosoftCommonIdentityOutput) ToMicrosoftCommonIdentityPtrOutputWithContext(ctx context.Context) MicrosoftCommonIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrosoftCommonIdentity) *MicrosoftCommonIdentity {
-		return &v
-	}).(MicrosoftCommonIdentityPtrOutput)
-}
-
-// Type of managed service identity.
-func (o MicrosoftCommonIdentityOutput) Type() IdentityTypeOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentity) IdentityType { return v.Type }).(IdentityTypeOutput)
-}
-
-// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o MicrosoftCommonIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type MicrosoftCommonIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MicrosoftCommonIdentity)(nil)).Elem()
-}
-
-func (o MicrosoftCommonIdentityPtrOutput) ToMicrosoftCommonIdentityPtrOutput() MicrosoftCommonIdentityPtrOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityPtrOutput) ToMicrosoftCommonIdentityPtrOutputWithContext(ctx context.Context) MicrosoftCommonIdentityPtrOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityPtrOutput) Elem() MicrosoftCommonIdentityOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentity) MicrosoftCommonIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret MicrosoftCommonIdentity
-		return ret
-	}).(MicrosoftCommonIdentityOutput)
-}
-
-// Type of managed service identity.
-func (o MicrosoftCommonIdentityPtrOutput) Type() IdentityTypePtrOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentity) *IdentityType {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(IdentityTypePtrOutput)
-}
-
-// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o MicrosoftCommonIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
 }
 
 // Specifies the retention policy for the log.
@@ -28277,47 +28277,6 @@ func (i ScheduledQueryRuleCriteriaArgs) ToScheduledQueryRuleCriteriaOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRuleCriteriaOutput)
 }
 
-func (i ScheduledQueryRuleCriteriaArgs) ToScheduledQueryRuleCriteriaPtrOutput() ScheduledQueryRuleCriteriaPtrOutput {
-	return i.ToScheduledQueryRuleCriteriaPtrOutputWithContext(context.Background())
-}
-
-func (i ScheduledQueryRuleCriteriaArgs) ToScheduledQueryRuleCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRuleCriteriaOutput).ToScheduledQueryRuleCriteriaPtrOutputWithContext(ctx)
-}
-
-// ScheduledQueryRuleCriteriaPtrInput is an input type that accepts ScheduledQueryRuleCriteriaArgs, ScheduledQueryRuleCriteriaPtr and ScheduledQueryRuleCriteriaPtrOutput values.
-// You can construct a concrete instance of `ScheduledQueryRuleCriteriaPtrInput` via:
-//
-//	        ScheduledQueryRuleCriteriaArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScheduledQueryRuleCriteriaPtrInput interface {
-	pulumi.Input
-
-	ToScheduledQueryRuleCriteriaPtrOutput() ScheduledQueryRuleCriteriaPtrOutput
-	ToScheduledQueryRuleCriteriaPtrOutputWithContext(context.Context) ScheduledQueryRuleCriteriaPtrOutput
-}
-
-type scheduledQueryRuleCriteriaPtrType ScheduledQueryRuleCriteriaArgs
-
-func ScheduledQueryRuleCriteriaPtr(v *ScheduledQueryRuleCriteriaArgs) ScheduledQueryRuleCriteriaPtrInput {
-	return (*scheduledQueryRuleCriteriaPtrType)(v)
-}
-
-func (*scheduledQueryRuleCriteriaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduledQueryRuleCriteria)(nil)).Elem()
-}
-
-func (i *scheduledQueryRuleCriteriaPtrType) ToScheduledQueryRuleCriteriaPtrOutput() ScheduledQueryRuleCriteriaPtrOutput {
-	return i.ToScheduledQueryRuleCriteriaPtrOutputWithContext(context.Background())
-}
-
-func (i *scheduledQueryRuleCriteriaPtrType) ToScheduledQueryRuleCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRuleCriteriaPtrOutput)
-}
-
 // The rule criteria that defines the conditions of the scheduled query rule.
 type ScheduledQueryRuleCriteriaOutput struct{ *pulumi.OutputState }
 
@@ -28333,53 +28292,9 @@ func (o ScheduledQueryRuleCriteriaOutput) ToScheduledQueryRuleCriteriaOutputWith
 	return o
 }
 
-func (o ScheduledQueryRuleCriteriaOutput) ToScheduledQueryRuleCriteriaPtrOutput() ScheduledQueryRuleCriteriaPtrOutput {
-	return o.ToScheduledQueryRuleCriteriaPtrOutputWithContext(context.Background())
-}
-
-func (o ScheduledQueryRuleCriteriaOutput) ToScheduledQueryRuleCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledQueryRuleCriteria) *ScheduledQueryRuleCriteria {
-		return &v
-	}).(ScheduledQueryRuleCriteriaPtrOutput)
-}
-
 // A list of conditions to evaluate against the specified scopes
 func (o ScheduledQueryRuleCriteriaOutput) AllOf() ConditionArrayOutput {
 	return o.ApplyT(func(v ScheduledQueryRuleCriteria) []Condition { return v.AllOf }).(ConditionArrayOutput)
-}
-
-type ScheduledQueryRuleCriteriaPtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduledQueryRuleCriteriaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduledQueryRuleCriteria)(nil)).Elem()
-}
-
-func (o ScheduledQueryRuleCriteriaPtrOutput) ToScheduledQueryRuleCriteriaPtrOutput() ScheduledQueryRuleCriteriaPtrOutput {
-	return o
-}
-
-func (o ScheduledQueryRuleCriteriaPtrOutput) ToScheduledQueryRuleCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaPtrOutput {
-	return o
-}
-
-func (o ScheduledQueryRuleCriteriaPtrOutput) Elem() ScheduledQueryRuleCriteriaOutput {
-	return o.ApplyT(func(v *ScheduledQueryRuleCriteria) ScheduledQueryRuleCriteria {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduledQueryRuleCriteria
-		return ret
-	}).(ScheduledQueryRuleCriteriaOutput)
-}
-
-// A list of conditions to evaluate against the specified scopes
-func (o ScheduledQueryRuleCriteriaPtrOutput) AllOf() ConditionArrayOutput {
-	return o.ApplyT(func(v *ScheduledQueryRuleCriteria) []Condition {
-		if v == nil {
-			return nil
-		}
-		return v.AllOf
-	}).(ConditionArrayOutput)
 }
 
 // The rule criteria that defines the conditions of the scheduled query rule.
@@ -28406,40 +28321,6 @@ func (o ScheduledQueryRuleCriteriaResponseOutput) ToScheduledQueryRuleCriteriaRe
 // A list of conditions to evaluate against the specified scopes
 func (o ScheduledQueryRuleCriteriaResponseOutput) AllOf() ConditionResponseArrayOutput {
 	return o.ApplyT(func(v ScheduledQueryRuleCriteriaResponse) []ConditionResponse { return v.AllOf }).(ConditionResponseArrayOutput)
-}
-
-type ScheduledQueryRuleCriteriaResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduledQueryRuleCriteriaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduledQueryRuleCriteriaResponse)(nil)).Elem()
-}
-
-func (o ScheduledQueryRuleCriteriaResponsePtrOutput) ToScheduledQueryRuleCriteriaResponsePtrOutput() ScheduledQueryRuleCriteriaResponsePtrOutput {
-	return o
-}
-
-func (o ScheduledQueryRuleCriteriaResponsePtrOutput) ToScheduledQueryRuleCriteriaResponsePtrOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaResponsePtrOutput {
-	return o
-}
-
-func (o ScheduledQueryRuleCriteriaResponsePtrOutput) Elem() ScheduledQueryRuleCriteriaResponseOutput {
-	return o.ApplyT(func(v *ScheduledQueryRuleCriteriaResponse) ScheduledQueryRuleCriteriaResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduledQueryRuleCriteriaResponse
-		return ret
-	}).(ScheduledQueryRuleCriteriaResponseOutput)
-}
-
-// A list of conditions to evaluate against the specified scopes
-func (o ScheduledQueryRuleCriteriaResponsePtrOutput) AllOf() ConditionResponseArrayOutput {
-	return o.ApplyT(func(v *ScheduledQueryRuleCriteriaResponse) []ConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllOf
-	}).(ConditionResponseArrayOutput)
 }
 
 // Schema map for azure monitor for logs.
@@ -33254,15 +33135,15 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// Properties of the user assigned identity.
+// User assigned identity properties.
 type UserIdentityPropertiesResponse struct {
-	// The client ID of resource identity.
+	// The client id of user assigned identity.
 	ClientId string `pulumi:"clientId"`
-	// The principal ID of resource identity.
+	// The principal id of user assigned identity.
 	PrincipalId string `pulumi:"principalId"`
 }
 
-// Properties of the user assigned identity.
+// User assigned identity properties.
 type UserIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (UserIdentityPropertiesResponseOutput) ElementType() reflect.Type {
@@ -33277,12 +33158,12 @@ func (o UserIdentityPropertiesResponseOutput) ToUserIdentityPropertiesResponseOu
 	return o
 }
 
-// The client ID of resource identity.
+// The client id of user assigned identity.
 func (o UserIdentityPropertiesResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserIdentityPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// The principal ID of resource identity.
+// The principal id of user assigned identity.
 func (o UserIdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserIdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
@@ -34777,10 +34658,10 @@ func init() {
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionFailingPeriodsOutput{})
 	pulumi.RegisterOutputType(ConditionFailingPeriodsPtrOutput{})
-	pulumi.RegisterOutputType(ConditionFailingPeriodsResponseOutput{})
-	pulumi.RegisterOutputType(ConditionFailingPeriodsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
 	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConditionResponseFailingPeriodsOutput{})
+	pulumi.RegisterOutputType(ConditionResponseFailingPeriodsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionSliResponseOutput{})
 	pulumi.RegisterOutputType(ConditionSliResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConditionV1Output{})
@@ -34911,6 +34792,8 @@ func init() {
 	pulumi.RegisterOutputType(IconDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(IconDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(IconDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityOutput{})
+	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IisLogsDataSourceOutput{})
@@ -35011,8 +34894,6 @@ func init() {
 	pulumi.RegisterOutputType(MicrosoftCommonAzureAppPushReceiverArrayOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonEmailReceiverOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonEmailReceiverArrayOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonIdentityOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonIdentityPtrOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonSmsReceiverOutput{})
@@ -35135,9 +35016,7 @@ func init() {
 	pulumi.RegisterOutputType(ScaleRuleResponseOutput{})
 	pulumi.RegisterOutputType(ScaleRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScheduledQueryRuleCriteriaOutput{})
-	pulumi.RegisterOutputType(ScheduledQueryRuleCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledQueryRuleCriteriaResponseOutput{})
-	pulumi.RegisterOutputType(ScheduledQueryRuleCriteriaResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaMapOutput{})
 	pulumi.RegisterOutputType(SchemaMapPtrOutput{})
 	pulumi.RegisterOutputType(SchemaMapResponseOutput{})

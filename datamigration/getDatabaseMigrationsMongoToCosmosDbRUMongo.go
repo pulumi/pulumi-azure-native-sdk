@@ -76,12 +76,8 @@ type LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult struct {
 }
 
 func LookupDatabaseMigrationsMongoToCosmosDbRUMongoOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsMongoToCosmosDbRUMongoOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput, error) {
-			args := v.(LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datamigration:getDatabaseMigrationsMongoToCosmosDbRUMongo", args, LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput{}, options).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput), nil
-		}).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datamigration:getDatabaseMigrationsMongoToCosmosDbRUMongo", args, LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput{}, options).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput)
 }
 
 type LookupDatabaseMigrationsMongoToCosmosDbRUMongoOutputArgs struct {

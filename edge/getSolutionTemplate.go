@@ -56,12 +56,8 @@ type LookupSolutionTemplateResult struct {
 }
 
 func LookupSolutionTemplateOutput(ctx *pulumi.Context, args LookupSolutionTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSolutionTemplateResultOutput, error) {
-			args := v.(LookupSolutionTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSolutionTemplate", args, LookupSolutionTemplateResultOutput{}, options).(LookupSolutionTemplateResultOutput), nil
-		}).(LookupSolutionTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSolutionTemplate", args, LookupSolutionTemplateResultOutput{}, options).(LookupSolutionTemplateResultOutput)
 }
 
 type LookupSolutionTemplateOutputArgs struct {

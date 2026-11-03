@@ -52,12 +52,8 @@ type LookupEc2SubnetResult struct {
 }
 
 func LookupEc2SubnetOutput(ctx *pulumi.Context, args LookupEc2SubnetOutputArgs, opts ...pulumi.InvokeOption) LookupEc2SubnetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2SubnetResultOutput, error) {
-			args := v.(LookupEc2SubnetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Subnet", args, LookupEc2SubnetResultOutput{}, options).(LookupEc2SubnetResultOutput), nil
-		}).(LookupEc2SubnetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2Subnet", args, LookupEc2SubnetResultOutput{}, options).(LookupEc2SubnetResultOutput)
 }
 
 type LookupEc2SubnetOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupIntegrationAccountSessionResult struct {
 }
 
 func LookupIntegrationAccountSessionOutput(ctx *pulumi.Context, args LookupIntegrationAccountSessionOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountSessionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountSessionResultOutput, error) {
-			args := v.(LookupIntegrationAccountSessionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountSession", args, LookupIntegrationAccountSessionResultOutput{}, options).(LookupIntegrationAccountSessionResultOutput), nil
-		}).(LookupIntegrationAccountSessionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountSession", args, LookupIntegrationAccountSessionResultOutput{}, options).(LookupIntegrationAccountSessionResultOutput)
 }
 
 type LookupIntegrationAccountSessionOutputArgs struct {

@@ -70,12 +70,8 @@ func (val *LookupPipelineRunResult) Defaults() *LookupPipelineRunResult {
 	return &tmp
 }
 func LookupPipelineRunOutput(ctx *pulumi.Context, args LookupPipelineRunOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineRunResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineRunResultOutput, error) {
-			args := v.(LookupPipelineRunArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getPipelineRun", args, LookupPipelineRunResultOutput{}, options).(LookupPipelineRunResultOutput), nil
-		}).(LookupPipelineRunResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getPipelineRun", args, LookupPipelineRunResultOutput{}, options).(LookupPipelineRunResultOutput)
 }
 
 type LookupPipelineRunOutputArgs struct {

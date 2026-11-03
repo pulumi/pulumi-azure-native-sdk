@@ -62,12 +62,8 @@ type LookupCertificateObjectLocalRulestackResult struct {
 }
 
 func LookupCertificateObjectLocalRulestackOutput(ctx *pulumi.Context, args LookupCertificateObjectLocalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateObjectLocalRulestackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCertificateObjectLocalRulestackResultOutput, error) {
-			args := v.(LookupCertificateObjectLocalRulestackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getCertificateObjectLocalRulestack", args, LookupCertificateObjectLocalRulestackResultOutput{}, options).(LookupCertificateObjectLocalRulestackResultOutput), nil
-		}).(LookupCertificateObjectLocalRulestackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getCertificateObjectLocalRulestack", args, LookupCertificateObjectLocalRulestackResultOutput{}, options).(LookupCertificateObjectLocalRulestackResultOutput)
 }
 
 type LookupCertificateObjectLocalRulestackOutputArgs struct {

@@ -80,12 +80,8 @@ func (val *LookupFirmwareResult) Defaults() *LookupFirmwareResult {
 	return &tmp
 }
 func LookupFirmwareOutput(ctx *pulumi.Context, args LookupFirmwareOutputArgs, opts ...pulumi.InvokeOption) LookupFirmwareResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFirmwareResultOutput, error) {
-			args := v.(LookupFirmwareArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotfirmwaredefense:getFirmware", args, LookupFirmwareResultOutput{}, options).(LookupFirmwareResultOutput), nil
-		}).(LookupFirmwareResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotfirmwaredefense:getFirmware", args, LookupFirmwareResultOutput{}, options).(LookupFirmwareResultOutput)
 }
 
 type LookupFirmwareOutputArgs struct {

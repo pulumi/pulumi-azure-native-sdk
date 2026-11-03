@@ -88,12 +88,8 @@ func (val *LookupFrontDoorResult) Defaults() *LookupFrontDoorResult {
 	return &tmp
 }
 func LookupFrontDoorOutput(ctx *pulumi.Context, args LookupFrontDoorOutputArgs, opts ...pulumi.InvokeOption) LookupFrontDoorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFrontDoorResultOutput, error) {
-			args := v.(LookupFrontDoorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:frontdoor:getFrontDoor", args, LookupFrontDoorResultOutput{}, options).(LookupFrontDoorResultOutput), nil
-		}).(LookupFrontDoorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:frontdoor:getFrontDoor", args, LookupFrontDoorResultOutput{}, options).(LookupFrontDoorResultOutput)
 }
 
 type LookupFrontDoorOutputArgs struct {

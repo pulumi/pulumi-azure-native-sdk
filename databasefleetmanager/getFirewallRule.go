@@ -52,12 +52,8 @@ type LookupFirewallRuleResult struct {
 }
 
 func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFirewallRuleResultOutput, error) {
-			args := v.(LookupFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databasefleetmanager:getFirewallRule", args, LookupFirewallRuleResultOutput{}, options).(LookupFirewallRuleResultOutput), nil
-		}).(LookupFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databasefleetmanager:getFirewallRule", args, LookupFirewallRuleResultOutput{}, options).(LookupFirewallRuleResultOutput)
 }
 
 type LookupFirewallRuleOutputArgs struct {

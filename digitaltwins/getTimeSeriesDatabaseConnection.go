@@ -60,12 +60,8 @@ func (val *LookupTimeSeriesDatabaseConnectionResult) Defaults() *LookupTimeSerie
 	return &tmp
 }
 func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTimeSeriesDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupTimeSeriesDatabaseConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTimeSeriesDatabaseConnectionResultOutput, error) {
-			args := v.(LookupTimeSeriesDatabaseConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", args, LookupTimeSeriesDatabaseConnectionResultOutput{}, options).(LookupTimeSeriesDatabaseConnectionResultOutput), nil
-		}).(LookupTimeSeriesDatabaseConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", args, LookupTimeSeriesDatabaseConnectionResultOutput{}, options).(LookupTimeSeriesDatabaseConnectionResultOutput)
 }
 
 type LookupTimeSeriesDatabaseConnectionOutputArgs struct {

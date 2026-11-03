@@ -42,12 +42,8 @@ type GetAppServicePlanServerFarmRdpPasswordResult struct {
 }
 
 func GetAppServicePlanServerFarmRdpPasswordOutput(ctx *pulumi.Context, args GetAppServicePlanServerFarmRdpPasswordOutputArgs, opts ...pulumi.InvokeOption) GetAppServicePlanServerFarmRdpPasswordResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppServicePlanServerFarmRdpPasswordResultOutput, error) {
-			args := v.(GetAppServicePlanServerFarmRdpPasswordArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getAppServicePlanServerFarmRdpPassword", args, GetAppServicePlanServerFarmRdpPasswordResultOutput{}, options).(GetAppServicePlanServerFarmRdpPasswordResultOutput), nil
-		}).(GetAppServicePlanServerFarmRdpPasswordResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getAppServicePlanServerFarmRdpPassword", args, GetAppServicePlanServerFarmRdpPasswordResultOutput{}, options).(GetAppServicePlanServerFarmRdpPasswordResultOutput)
 }
 
 type GetAppServicePlanServerFarmRdpPasswordOutputArgs struct {

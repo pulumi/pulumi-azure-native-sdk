@@ -42,12 +42,8 @@ type ListClientApplicationSecretsResult struct {
 }
 
 func ListClientApplicationSecretsOutput(ctx *pulumi.Context, args ListClientApplicationSecretsOutputArgs, opts ...pulumi.InvokeOption) ListClientApplicationSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClientApplicationSecretsResultOutput, error) {
-			args := v.(ListClientApplicationSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listClientApplicationSecrets", args, ListClientApplicationSecretsResultOutput{}, options).(ListClientApplicationSecretsResultOutput), nil
-		}).(ListClientApplicationSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listClientApplicationSecrets", args, ListClientApplicationSecretsResultOutput{}, options).(ListClientApplicationSecretsResultOutput)
 }
 
 type ListClientApplicationSecretsOutputArgs struct {

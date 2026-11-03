@@ -52,12 +52,8 @@ type LookupHorizonDbReplicaResult struct {
 }
 
 func LookupHorizonDbReplicaOutput(ctx *pulumi.Context, args LookupHorizonDbReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupHorizonDbReplicaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHorizonDbReplicaResultOutput, error) {
-			args := v.(LookupHorizonDbReplicaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbReplica", args, LookupHorizonDbReplicaResultOutput{}, options).(LookupHorizonDbReplicaResultOutput), nil
-		}).(LookupHorizonDbReplicaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbReplica", args, LookupHorizonDbReplicaResultOutput{}, options).(LookupHorizonDbReplicaResultOutput)
 }
 
 type LookupHorizonDbReplicaOutputArgs struct {

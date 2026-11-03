@@ -56,12 +56,8 @@ type LookupBackupsAutomaticAndOnDemandResult struct {
 }
 
 func LookupBackupsAutomaticAndOnDemandOutput(ctx *pulumi.Context, args LookupBackupsAutomaticAndOnDemandOutputArgs, opts ...pulumi.InvokeOption) LookupBackupsAutomaticAndOnDemandResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackupsAutomaticAndOnDemandResultOutput, error) {
-			args := v.(LookupBackupsAutomaticAndOnDemandArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getBackupsAutomaticAndOnDemand", args, LookupBackupsAutomaticAndOnDemandResultOutput{}, options).(LookupBackupsAutomaticAndOnDemandResultOutput), nil
-		}).(LookupBackupsAutomaticAndOnDemandResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getBackupsAutomaticAndOnDemand", args, LookupBackupsAutomaticAndOnDemandResultOutput{}, options).(LookupBackupsAutomaticAndOnDemandResultOutput)
 }
 
 type LookupBackupsAutomaticAndOnDemandOutputArgs struct {

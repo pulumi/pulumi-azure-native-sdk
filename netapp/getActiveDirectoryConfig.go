@@ -58,12 +58,8 @@ type LookupActiveDirectoryConfigResult struct {
 }
 
 func LookupActiveDirectoryConfigOutput(ctx *pulumi.Context, args LookupActiveDirectoryConfigOutputArgs, opts ...pulumi.InvokeOption) LookupActiveDirectoryConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActiveDirectoryConfigResultOutput, error) {
-			args := v.(LookupActiveDirectoryConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getActiveDirectoryConfig", args, LookupActiveDirectoryConfigResultOutput{}, options).(LookupActiveDirectoryConfigResultOutput), nil
-		}).(LookupActiveDirectoryConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getActiveDirectoryConfig", args, LookupActiveDirectoryConfigResultOutput{}, options).(LookupActiveDirectoryConfigResultOutput)
 }
 
 type LookupActiveDirectoryConfigOutputArgs struct {

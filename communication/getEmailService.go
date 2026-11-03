@@ -56,12 +56,8 @@ type LookupEmailServiceResult struct {
 }
 
 func LookupEmailServiceOutput(ctx *pulumi.Context, args LookupEmailServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEmailServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailServiceResultOutput, error) {
-			args := v.(LookupEmailServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:communication:getEmailService", args, LookupEmailServiceResultOutput{}, options).(LookupEmailServiceResultOutput), nil
-		}).(LookupEmailServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:communication:getEmailService", args, LookupEmailServiceResultOutput{}, options).(LookupEmailServiceResultOutput)
 }
 
 type LookupEmailServiceOutputArgs struct {

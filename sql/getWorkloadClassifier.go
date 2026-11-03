@@ -64,12 +64,8 @@ type LookupWorkloadClassifierResult struct {
 }
 
 func LookupWorkloadClassifierOutput(ctx *pulumi.Context, args LookupWorkloadClassifierOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadClassifierResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadClassifierResultOutput, error) {
-			args := v.(LookupWorkloadClassifierArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getWorkloadClassifier", args, LookupWorkloadClassifierResultOutput{}, options).(LookupWorkloadClassifierResultOutput), nil
-		}).(LookupWorkloadClassifierResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getWorkloadClassifier", args, LookupWorkloadClassifierResultOutput{}, options).(LookupWorkloadClassifierResultOutput)
 }
 
 type LookupWorkloadClassifierOutputArgs struct {

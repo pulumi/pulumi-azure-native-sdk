@@ -60,12 +60,8 @@ type LookupApiGatewayHostnameBindingResult struct {
 }
 
 func LookupApiGatewayHostnameBindingOutput(ctx *pulumi.Context, args LookupApiGatewayHostnameBindingOutputArgs, opts ...pulumi.InvokeOption) LookupApiGatewayHostnameBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiGatewayHostnameBindingResultOutput, error) {
-			args := v.(LookupApiGatewayHostnameBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiGatewayHostnameBinding", args, LookupApiGatewayHostnameBindingResultOutput{}, options).(LookupApiGatewayHostnameBindingResultOutput), nil
-		}).(LookupApiGatewayHostnameBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiGatewayHostnameBinding", args, LookupApiGatewayHostnameBindingResultOutput{}, options).(LookupApiGatewayHostnameBindingResultOutput)
 }
 
 type LookupApiGatewayHostnameBindingOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupLabelByWorkspaceResult struct {
 }
 
 func LookupLabelByWorkspaceOutput(ctx *pulumi.Context, args LookupLabelByWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupLabelByWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLabelByWorkspaceResultOutput, error) {
-			args := v.(LookupLabelByWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:easm:getLabelByWorkspace", args, LookupLabelByWorkspaceResultOutput{}, options).(LookupLabelByWorkspaceResultOutput), nil
-		}).(LookupLabelByWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:easm:getLabelByWorkspace", args, LookupLabelByWorkspaceResultOutput{}, options).(LookupLabelByWorkspaceResultOutput)
 }
 
 type LookupLabelByWorkspaceOutputArgs struct {

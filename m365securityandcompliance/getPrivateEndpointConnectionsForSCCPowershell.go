@@ -54,12 +54,8 @@ type LookupPrivateEndpointConnectionsForSCCPowershellResult struct {
 }
 
 func LookupPrivateEndpointConnectionsForSCCPowershellOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsForSCCPowershellOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsForSCCPowershellResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsForSCCPowershellResultOutput, error) {
-			args := v.(LookupPrivateEndpointConnectionsForSCCPowershellArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForSCCPowershell", args, LookupPrivateEndpointConnectionsForSCCPowershellResultOutput{}, options).(LookupPrivateEndpointConnectionsForSCCPowershellResultOutput), nil
-		}).(LookupPrivateEndpointConnectionsForSCCPowershellResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForSCCPowershell", args, LookupPrivateEndpointConnectionsForSCCPowershellResultOutput{}, options).(LookupPrivateEndpointConnectionsForSCCPowershellResultOutput)
 }
 
 type LookupPrivateEndpointConnectionsForSCCPowershellOutputArgs struct {

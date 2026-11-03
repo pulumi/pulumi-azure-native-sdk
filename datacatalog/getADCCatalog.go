@@ -62,12 +62,8 @@ type LookupADCCatalogResult struct {
 }
 
 func LookupADCCatalogOutput(ctx *pulumi.Context, args LookupADCCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupADCCatalogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupADCCatalogResultOutput, error) {
-			args := v.(LookupADCCatalogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datacatalog:getADCCatalog", args, LookupADCCatalogResultOutput{}, options).(LookupADCCatalogResultOutput), nil
-		}).(LookupADCCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datacatalog:getADCCatalog", args, LookupADCCatalogResultOutput{}, options).(LookupADCCatalogResultOutput)
 }
 
 type LookupADCCatalogOutputArgs struct {

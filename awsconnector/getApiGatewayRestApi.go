@@ -52,12 +52,8 @@ type LookupApiGatewayRestApiResult struct {
 }
 
 func LookupApiGatewayRestApiOutput(ctx *pulumi.Context, args LookupApiGatewayRestApiOutputArgs, opts ...pulumi.InvokeOption) LookupApiGatewayRestApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiGatewayRestApiResultOutput, error) {
-			args := v.(LookupApiGatewayRestApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getApiGatewayRestApi", args, LookupApiGatewayRestApiResultOutput{}, options).(LookupApiGatewayRestApiResultOutput), nil
-		}).(LookupApiGatewayRestApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getApiGatewayRestApi", args, LookupApiGatewayRestApiResultOutput{}, options).(LookupApiGatewayRestApiResultOutput)
 }
 
 type LookupApiGatewayRestApiOutputArgs struct {

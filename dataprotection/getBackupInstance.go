@@ -54,12 +54,8 @@ type LookupBackupInstanceResult struct {
 }
 
 func LookupBackupInstanceOutput(ctx *pulumi.Context, args LookupBackupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupBackupInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackupInstanceResultOutput, error) {
-			args := v.(LookupBackupInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dataprotection:getBackupInstance", args, LookupBackupInstanceResultOutput{}, options).(LookupBackupInstanceResultOutput), nil
-		}).(LookupBackupInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dataprotection:getBackupInstance", args, LookupBackupInstanceResultOutput{}, options).(LookupBackupInstanceResultOutput)
 }
 
 type LookupBackupInstanceOutputArgs struct {

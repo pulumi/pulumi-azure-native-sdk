@@ -64,12 +64,8 @@ type LookupIotDpsResourceResult struct {
 }
 
 func LookupIotDpsResourceOutput(ctx *pulumi.Context, args LookupIotDpsResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIotDpsResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotDpsResourceResultOutput, error) {
-			args := v.(LookupIotDpsResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceprovisioningservices:getIotDpsResource", args, LookupIotDpsResourceResultOutput{}, options).(LookupIotDpsResourceResultOutput), nil
-		}).(LookupIotDpsResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceprovisioningservices:getIotDpsResource", args, LookupIotDpsResourceResultOutput{}, options).(LookupIotDpsResourceResultOutput)
 }
 
 type LookupIotDpsResourceOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupRegistryDataVersionResult struct {
 }
 
 func LookupRegistryDataVersionOutput(ctx *pulumi.Context, args LookupRegistryDataVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryDataVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryDataVersionResultOutput, error) {
-			args := v.(LookupRegistryDataVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryDataVersion", args, LookupRegistryDataVersionResultOutput{}, options).(LookupRegistryDataVersionResultOutput), nil
-		}).(LookupRegistryDataVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryDataVersion", args, LookupRegistryDataVersionResultOutput{}, options).(LookupRegistryDataVersionResultOutput)
 }
 
 type LookupRegistryDataVersionOutputArgs struct {

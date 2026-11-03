@@ -52,12 +52,8 @@ type LookupHierarchySettingResult struct {
 }
 
 func LookupHierarchySettingOutput(ctx *pulumi.Context, args LookupHierarchySettingOutputArgs, opts ...pulumi.InvokeOption) LookupHierarchySettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHierarchySettingResultOutput, error) {
-			args := v.(LookupHierarchySettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:management:getHierarchySetting", args, LookupHierarchySettingResultOutput{}, options).(LookupHierarchySettingResultOutput), nil
-		}).(LookupHierarchySettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:management:getHierarchySetting", args, LookupHierarchySettingResultOutput{}, options).(LookupHierarchySettingResultOutput)
 }
 
 type LookupHierarchySettingOutputArgs struct {

@@ -74,12 +74,8 @@ type LookupAccessBridgeResult struct {
 }
 
 func LookupAccessBridgeOutput(ctx *pulumi.Context, args LookupAccessBridgeOutputArgs, opts ...pulumi.InvokeOption) LookupAccessBridgeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessBridgeResultOutput, error) {
-			args := v.(LookupAccessBridgeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getAccessBridge", args, LookupAccessBridgeResultOutput{}, options).(LookupAccessBridgeResultOutput), nil
-		}).(LookupAccessBridgeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getAccessBridge", args, LookupAccessBridgeResultOutput{}, options).(LookupAccessBridgeResultOutput)
 }
 
 type LookupAccessBridgeOutputArgs struct {

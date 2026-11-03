@@ -54,12 +54,8 @@ type LookupRegistryEndpointResult struct {
 }
 
 func LookupRegistryEndpointOutput(ctx *pulumi.Context, args LookupRegistryEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryEndpointResultOutput, error) {
-			args := v.(LookupRegistryEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperations:getRegistryEndpoint", args, LookupRegistryEndpointResultOutput{}, options).(LookupRegistryEndpointResultOutput), nil
-		}).(LookupRegistryEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperations:getRegistryEndpoint", args, LookupRegistryEndpointResultOutput{}, options).(LookupRegistryEndpointResultOutput)
 }
 
 type LookupRegistryEndpointOutputArgs struct {

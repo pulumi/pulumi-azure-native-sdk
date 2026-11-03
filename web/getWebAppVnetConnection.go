@@ -66,12 +66,8 @@ type LookupWebAppVnetConnectionResult struct {
 }
 
 func LookupWebAppVnetConnectionOutput(ctx *pulumi.Context, args LookupWebAppVnetConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppVnetConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppVnetConnectionResultOutput, error) {
-			args := v.(LookupWebAppVnetConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppVnetConnection", args, LookupWebAppVnetConnectionResultOutput{}, options).(LookupWebAppVnetConnectionResultOutput), nil
-		}).(LookupWebAppVnetConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppVnetConnection", args, LookupWebAppVnetConnectionResultOutput{}, options).(LookupWebAppVnetConnectionResultOutput)
 }
 
 type LookupWebAppVnetConnectionOutputArgs struct {

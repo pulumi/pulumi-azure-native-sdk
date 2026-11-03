@@ -60,12 +60,8 @@ type LookupKubernetesVersionResult struct {
 }
 
 func LookupKubernetesVersionOutput(ctx *pulumi.Context, args LookupKubernetesVersionOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesVersionResultOutput, error) {
-			args := v.(LookupKubernetesVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getKubernetesVersion", args, LookupKubernetesVersionResultOutput{}, options).(LookupKubernetesVersionResultOutput), nil
-		}).(LookupKubernetesVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getKubernetesVersion", args, LookupKubernetesVersionResultOutput{}, options).(LookupKubernetesVersionResultOutput)
 }
 
 type LookupKubernetesVersionOutputArgs struct {

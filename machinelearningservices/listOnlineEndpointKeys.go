@@ -44,12 +44,8 @@ type ListOnlineEndpointKeysResult struct {
 }
 
 func ListOnlineEndpointKeysOutput(ctx *pulumi.Context, args ListOnlineEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListOnlineEndpointKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListOnlineEndpointKeysResultOutput, error) {
-			args := v.(ListOnlineEndpointKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listOnlineEndpointKeys", args, ListOnlineEndpointKeysResultOutput{}, options).(ListOnlineEndpointKeysResultOutput), nil
-		}).(ListOnlineEndpointKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listOnlineEndpointKeys", args, ListOnlineEndpointKeysResultOutput{}, options).(ListOnlineEndpointKeysResultOutput)
 }
 
 type ListOnlineEndpointKeysOutputArgs struct {

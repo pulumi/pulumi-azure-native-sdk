@@ -56,12 +56,8 @@ type LookupCloudLinkResult struct {
 }
 
 func LookupCloudLinkOutput(ctx *pulumi.Context, args LookupCloudLinkOutputArgs, opts ...pulumi.InvokeOption) LookupCloudLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudLinkResultOutput, error) {
-			args := v.(LookupCloudLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getCloudLink", args, LookupCloudLinkResultOutput{}, options).(LookupCloudLinkResultOutput), nil
-		}).(LookupCloudLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getCloudLink", args, LookupCloudLinkResultOutput{}, options).(LookupCloudLinkResultOutput)
 }
 
 type LookupCloudLinkOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupElasticAccountResult struct {
 }
 
 func LookupElasticAccountOutput(ctx *pulumi.Context, args LookupElasticAccountOutputArgs, opts ...pulumi.InvokeOption) LookupElasticAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticAccountResultOutput, error) {
-			args := v.(LookupElasticAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getElasticAccount", args, LookupElasticAccountResultOutput{}, options).(LookupElasticAccountResultOutput), nil
-		}).(LookupElasticAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getElasticAccount", args, LookupElasticAccountResultOutput{}, options).(LookupElasticAccountResultOutput)
 }
 
 type LookupElasticAccountOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupPrivateLinkServicesForMIPPolicySyncResult struct {
 }
 
 func LookupPrivateLinkServicesForMIPPolicySyncOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForMIPPolicySyncOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForMIPPolicySyncResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForMIPPolicySyncResultOutput, error) {
-			args := v.(LookupPrivateLinkServicesForMIPPolicySyncArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateLinkServicesForMIPPolicySync", args, LookupPrivateLinkServicesForMIPPolicySyncResultOutput{}, options).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput), nil
-		}).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:m365securityandcompliance:getPrivateLinkServicesForMIPPolicySync", args, LookupPrivateLinkServicesForMIPPolicySyncResultOutput{}, options).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput)
 }
 
 type LookupPrivateLinkServicesForMIPPolicySyncOutputArgs struct {

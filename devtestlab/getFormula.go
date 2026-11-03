@@ -80,12 +80,8 @@ func (val *LookupFormulaResult) Defaults() *LookupFormulaResult {
 	return &tmp
 }
 func LookupFormulaOutput(ctx *pulumi.Context, args LookupFormulaOutputArgs, opts ...pulumi.InvokeOption) LookupFormulaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormulaResultOutput, error) {
-			args := v.(LookupFormulaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getFormula", args, LookupFormulaResultOutput{}, options).(LookupFormulaResultOutput), nil
-		}).(LookupFormulaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getFormula", args, LookupFormulaResultOutput{}, options).(LookupFormulaResultOutput)
 }
 
 type LookupFormulaOutputArgs struct {

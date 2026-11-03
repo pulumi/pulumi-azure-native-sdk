@@ -112,12 +112,8 @@ func (val *LookupAssetResult) Defaults() *LookupAssetResult {
 	return &tmp
 }
 func LookupAssetOutput(ctx *pulumi.Context, args LookupAssetOutputArgs, opts ...pulumi.InvokeOption) LookupAssetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssetResultOutput, error) {
-			args := v.(LookupAssetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:deviceregistry:getAsset", args, LookupAssetResultOutput{}, options).(LookupAssetResultOutput), nil
-		}).(LookupAssetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:deviceregistry:getAsset", args, LookupAssetResultOutput{}, options).(LookupAssetResultOutput)
 }
 
 type LookupAssetOutputArgs struct {

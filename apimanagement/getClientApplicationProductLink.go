@@ -52,12 +52,8 @@ type LookupClientApplicationProductLinkResult struct {
 }
 
 func LookupClientApplicationProductLinkOutput(ctx *pulumi.Context, args LookupClientApplicationProductLinkOutputArgs, opts ...pulumi.InvokeOption) LookupClientApplicationProductLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClientApplicationProductLinkResultOutput, error) {
-			args := v.(LookupClientApplicationProductLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getClientApplicationProductLink", args, LookupClientApplicationProductLinkResultOutput{}, options).(LookupClientApplicationProductLinkResultOutput), nil
-		}).(LookupClientApplicationProductLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getClientApplicationProductLink", args, LookupClientApplicationProductLinkResultOutput{}, options).(LookupClientApplicationProductLinkResultOutput)
 }
 
 type LookupClientApplicationProductLinkOutputArgs struct {

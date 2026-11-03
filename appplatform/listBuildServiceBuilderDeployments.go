@@ -44,12 +44,8 @@ type ListBuildServiceBuilderDeploymentsResult struct {
 }
 
 func ListBuildServiceBuilderDeploymentsOutput(ctx *pulumi.Context, args ListBuildServiceBuilderDeploymentsOutputArgs, opts ...pulumi.InvokeOption) ListBuildServiceBuilderDeploymentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBuildServiceBuilderDeploymentsResultOutput, error) {
-			args := v.(ListBuildServiceBuilderDeploymentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:listBuildServiceBuilderDeployments", args, ListBuildServiceBuilderDeploymentsResultOutput{}, options).(ListBuildServiceBuilderDeploymentsResultOutput), nil
-		}).(ListBuildServiceBuilderDeploymentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:listBuildServiceBuilderDeployments", args, ListBuildServiceBuilderDeploymentsResultOutput{}, options).(ListBuildServiceBuilderDeploymentsResultOutput)
 }
 
 type ListBuildServiceBuilderDeploymentsOutputArgs struct {

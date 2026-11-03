@@ -72,12 +72,8 @@ func (val *LookupDataLakeConnectorTopicMapResult) Defaults() *LookupDataLakeConn
 	return &tmp
 }
 func LookupDataLakeConnectorTopicMapOutput(ctx *pulumi.Context, args LookupDataLakeConnectorTopicMapOutputArgs, opts ...pulumi.InvokeOption) LookupDataLakeConnectorTopicMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDataLakeConnectorTopicMapResultOutput, error) {
-			args := v.(LookupDataLakeConnectorTopicMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsmq:getDataLakeConnectorTopicMap", args, LookupDataLakeConnectorTopicMapResultOutput{}, options).(LookupDataLakeConnectorTopicMapResultOutput), nil
-		}).(LookupDataLakeConnectorTopicMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsmq:getDataLakeConnectorTopicMap", args, LookupDataLakeConnectorTopicMapResultOutput{}, options).(LookupDataLakeConnectorTopicMapResultOutput)
 }
 
 type LookupDataLakeConnectorTopicMapOutputArgs struct {

@@ -64,12 +64,8 @@ type ListPaloAltoNetworksCloudngfwOperationSupportInfoResult struct {
 }
 
 func ListPaloAltoNetworksCloudngfwOperationSupportInfoOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwOperationSupportInfoOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput, error) {
-			args := v.(ListPaloAltoNetworksCloudngfwOperationSupportInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationSupportInfo", args, ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput), nil
-		}).(ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationSupportInfo", args, ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput{}, options).(ListPaloAltoNetworksCloudngfwOperationSupportInfoResultOutput)
 }
 
 type ListPaloAltoNetworksCloudngfwOperationSupportInfoOutputArgs struct {

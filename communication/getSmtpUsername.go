@@ -56,12 +56,8 @@ type LookupSmtpUsernameResult struct {
 }
 
 func LookupSmtpUsernameOutput(ctx *pulumi.Context, args LookupSmtpUsernameOutputArgs, opts ...pulumi.InvokeOption) LookupSmtpUsernameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSmtpUsernameResultOutput, error) {
-			args := v.(LookupSmtpUsernameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:communication:getSmtpUsername", args, LookupSmtpUsernameResultOutput{}, options).(LookupSmtpUsernameResultOutput), nil
-		}).(LookupSmtpUsernameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:communication:getSmtpUsername", args, LookupSmtpUsernameResultOutput{}, options).(LookupSmtpUsernameResultOutput)
 }
 
 type LookupSmtpUsernameOutputArgs struct {

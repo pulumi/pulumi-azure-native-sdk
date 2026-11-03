@@ -48,12 +48,8 @@ type ListFeaturesetVersionFeaturesResult struct {
 }
 
 func ListFeaturesetVersionFeaturesOutput(ctx *pulumi.Context, args ListFeaturesetVersionFeaturesOutputArgs, opts ...pulumi.InvokeOption) ListFeaturesetVersionFeaturesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListFeaturesetVersionFeaturesResultOutput, error) {
-			args := v.(ListFeaturesetVersionFeaturesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listFeaturesetVersionFeatures", args, ListFeaturesetVersionFeaturesResultOutput{}, options).(ListFeaturesetVersionFeaturesResultOutput), nil
-		}).(ListFeaturesetVersionFeaturesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listFeaturesetVersionFeatures", args, ListFeaturesetVersionFeaturesResultOutput{}, options).(ListFeaturesetVersionFeaturesResultOutput)
 }
 
 type ListFeaturesetVersionFeaturesOutputArgs struct {

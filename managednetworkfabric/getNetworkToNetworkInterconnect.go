@@ -96,12 +96,8 @@ func (val *LookupNetworkToNetworkInterconnectResult) Defaults() *LookupNetworkTo
 	return &tmp
 }
 func LookupNetworkToNetworkInterconnectOutput(ctx *pulumi.Context, args LookupNetworkToNetworkInterconnectOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkToNetworkInterconnectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkToNetworkInterconnectResultOutput, error) {
-			args := v.(LookupNetworkToNetworkInterconnectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkToNetworkInterconnect", args, LookupNetworkToNetworkInterconnectResultOutput{}, options).(LookupNetworkToNetworkInterconnectResultOutput), nil
-		}).(LookupNetworkToNetworkInterconnectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkToNetworkInterconnect", args, LookupNetworkToNetworkInterconnectResultOutput{}, options).(LookupNetworkToNetworkInterconnectResultOutput)
 }
 
 type LookupNetworkToNetworkInterconnectOutputArgs struct {

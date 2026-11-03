@@ -50,12 +50,8 @@ type LookupManagedGatewayResult struct {
 }
 
 func LookupManagedGatewayOutput(ctx *pulumi.Context, args LookupManagedGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupManagedGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedGatewayResultOutput, error) {
-			args := v.(LookupManagedGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:scom:getManagedGateway", args, LookupManagedGatewayResultOutput{}, options).(LookupManagedGatewayResultOutput), nil
-		}).(LookupManagedGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:scom:getManagedGateway", args, LookupManagedGatewayResultOutput{}, options).(LookupManagedGatewayResultOutput)
 }
 
 type LookupManagedGatewayOutputArgs struct {

@@ -82,12 +82,8 @@ type LookupScriptExecutionResult struct {
 }
 
 func LookupScriptExecutionOutput(ctx *pulumi.Context, args LookupScriptExecutionOutputArgs, opts ...pulumi.InvokeOption) LookupScriptExecutionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScriptExecutionResultOutput, error) {
-			args := v.(LookupScriptExecutionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getScriptExecution", args, LookupScriptExecutionResultOutput{}, options).(LookupScriptExecutionResultOutput), nil
-		}).(LookupScriptExecutionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getScriptExecution", args, LookupScriptExecutionResultOutput{}, options).(LookupScriptExecutionResultOutput)
 }
 
 type LookupScriptExecutionOutputArgs struct {

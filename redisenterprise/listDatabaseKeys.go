@@ -44,12 +44,8 @@ type ListDatabaseKeysResult struct {
 }
 
 func ListDatabaseKeysOutput(ctx *pulumi.Context, args ListDatabaseKeysOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDatabaseKeysResultOutput, error) {
-			args := v.(ListDatabaseKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:redisenterprise:listDatabaseKeys", args, ListDatabaseKeysResultOutput{}, options).(ListDatabaseKeysResultOutput), nil
-		}).(ListDatabaseKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:redisenterprise:listDatabaseKeys", args, ListDatabaseKeysResultOutput{}, options).(ListDatabaseKeysResultOutput)
 }
 
 type ListDatabaseKeysOutputArgs struct {

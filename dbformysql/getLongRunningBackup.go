@@ -59,12 +59,8 @@ type LookupLongRunningBackupResult struct {
 }
 
 func LookupLongRunningBackupOutput(ctx *pulumi.Context, args LookupLongRunningBackupOutputArgs, opts ...pulumi.InvokeOption) LookupLongRunningBackupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLongRunningBackupResultOutput, error) {
-			args := v.(LookupLongRunningBackupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getLongRunningBackup", args, LookupLongRunningBackupResultOutput{}, options).(LookupLongRunningBackupResultOutput), nil
-		}).(LookupLongRunningBackupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getLongRunningBackup", args, LookupLongRunningBackupResultOutput{}, options).(LookupLongRunningBackupResultOutput)
 }
 
 type LookupLongRunningBackupOutputArgs struct {

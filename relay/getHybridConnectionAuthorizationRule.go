@@ -56,12 +56,8 @@ type LookupHybridConnectionAuthorizationRuleResult struct {
 }
 
 func LookupHybridConnectionAuthorizationRuleOutput(ctx *pulumi.Context, args LookupHybridConnectionAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupHybridConnectionAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHybridConnectionAuthorizationRuleResultOutput, error) {
-			args := v.(LookupHybridConnectionAuthorizationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:relay:getHybridConnectionAuthorizationRule", args, LookupHybridConnectionAuthorizationRuleResultOutput{}, options).(LookupHybridConnectionAuthorizationRuleResultOutput), nil
-		}).(LookupHybridConnectionAuthorizationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:relay:getHybridConnectionAuthorizationRule", args, LookupHybridConnectionAuthorizationRuleResultOutput{}, options).(LookupHybridConnectionAuthorizationRuleResultOutput)
 }
 
 type LookupHybridConnectionAuthorizationRuleOutputArgs struct {

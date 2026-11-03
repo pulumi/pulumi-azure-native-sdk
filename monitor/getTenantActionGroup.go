@@ -75,12 +75,8 @@ func (val *LookupTenantActionGroupResult) Defaults() *LookupTenantActionGroupRes
 	return &tmp
 }
 func LookupTenantActionGroupOutput(ctx *pulumi.Context, args LookupTenantActionGroupOutputArgs, opts ...pulumi.InvokeOption) LookupTenantActionGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTenantActionGroupResultOutput, error) {
-			args := v.(LookupTenantActionGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getTenantActionGroup", args, LookupTenantActionGroupResultOutput{}, options).(LookupTenantActionGroupResultOutput), nil
-		}).(LookupTenantActionGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getTenantActionGroup", args, LookupTenantActionGroupResultOutput{}, options).(LookupTenantActionGroupResultOutput)
 }
 
 type LookupTenantActionGroupOutputArgs struct {

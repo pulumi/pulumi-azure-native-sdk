@@ -42,12 +42,8 @@ type GetManagedAzResiliencyStatusResult struct {
 }
 
 func GetManagedAzResiliencyStatusOutput(ctx *pulumi.Context, args GetManagedAzResiliencyStatusOutputArgs, opts ...pulumi.InvokeOption) GetManagedAzResiliencyStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetManagedAzResiliencyStatusResultOutput, error) {
-			args := v.(GetManagedAzResiliencyStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicefabric:getManagedAzResiliencyStatus", args, GetManagedAzResiliencyStatusResultOutput{}, options).(GetManagedAzResiliencyStatusResultOutput), nil
-		}).(GetManagedAzResiliencyStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicefabric:getManagedAzResiliencyStatus", args, GetManagedAzResiliencyStatusResultOutput{}, options).(GetManagedAzResiliencyStatusResultOutput)
 }
 
 type GetManagedAzResiliencyStatusOutputArgs struct {

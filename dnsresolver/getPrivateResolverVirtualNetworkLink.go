@@ -58,12 +58,8 @@ type LookupPrivateResolverVirtualNetworkLinkResult struct {
 }
 
 func LookupPrivateResolverVirtualNetworkLinkOutput(ctx *pulumi.Context, args LookupPrivateResolverVirtualNetworkLinkOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateResolverVirtualNetworkLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateResolverVirtualNetworkLinkResultOutput, error) {
-			args := v.(LookupPrivateResolverVirtualNetworkLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getPrivateResolverVirtualNetworkLink", args, LookupPrivateResolverVirtualNetworkLinkResultOutput{}, options).(LookupPrivateResolverVirtualNetworkLinkResultOutput), nil
-		}).(LookupPrivateResolverVirtualNetworkLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getPrivateResolverVirtualNetworkLink", args, LookupPrivateResolverVirtualNetworkLinkResultOutput{}, options).(LookupPrivateResolverVirtualNetworkLinkResultOutput)
 }
 
 type LookupPrivateResolverVirtualNetworkLinkOutputArgs struct {

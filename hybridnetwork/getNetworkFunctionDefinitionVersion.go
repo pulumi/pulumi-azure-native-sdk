@@ -58,12 +58,8 @@ type LookupNetworkFunctionDefinitionVersionResult struct {
 }
 
 func LookupNetworkFunctionDefinitionVersionOutput(ctx *pulumi.Context, args LookupNetworkFunctionDefinitionVersionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFunctionDefinitionVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkFunctionDefinitionVersionResultOutput, error) {
-			args := v.(LookupNetworkFunctionDefinitionVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:getNetworkFunctionDefinitionVersion", args, LookupNetworkFunctionDefinitionVersionResultOutput{}, options).(LookupNetworkFunctionDefinitionVersionResultOutput), nil
-		}).(LookupNetworkFunctionDefinitionVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:getNetworkFunctionDefinitionVersion", args, LookupNetworkFunctionDefinitionVersionResultOutput{}, options).(LookupNetworkFunctionDefinitionVersionResultOutput)
 }
 
 type LookupNetworkFunctionDefinitionVersionOutputArgs struct {

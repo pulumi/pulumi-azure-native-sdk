@@ -44,12 +44,8 @@ type GetWebhookCallbackConfigResult struct {
 }
 
 func GetWebhookCallbackConfigOutput(ctx *pulumi.Context, args GetWebhookCallbackConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebhookCallbackConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWebhookCallbackConfigResultOutput, error) {
-			args := v.(GetWebhookCallbackConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getWebhookCallbackConfig", args, GetWebhookCallbackConfigResultOutput{}, options).(GetWebhookCallbackConfigResultOutput), nil
-		}).(GetWebhookCallbackConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getWebhookCallbackConfig", args, GetWebhookCallbackConfigResultOutput{}, options).(GetWebhookCallbackConfigResultOutput)
 }
 
 type GetWebhookCallbackConfigOutputArgs struct {

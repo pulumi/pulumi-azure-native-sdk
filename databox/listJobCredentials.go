@@ -42,12 +42,8 @@ type ListJobCredentialsResult struct {
 }
 
 func ListJobCredentialsOutput(ctx *pulumi.Context, args ListJobCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListJobCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListJobCredentialsResultOutput, error) {
-			args := v.(ListJobCredentialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databox:listJobCredentials", args, ListJobCredentialsResultOutput{}, options).(ListJobCredentialsResultOutput), nil
-		}).(ListJobCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databox:listJobCredentials", args, ListJobCredentialsResultOutput{}, options).(ListJobCredentialsResultOutput)
 }
 
 type ListJobCredentialsOutputArgs struct {

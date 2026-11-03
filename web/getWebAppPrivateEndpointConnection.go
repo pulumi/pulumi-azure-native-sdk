@@ -59,12 +59,8 @@ type LookupWebAppPrivateEndpointConnectionResult struct {
 }
 
 func LookupWebAppPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupWebAppPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupWebAppPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppPrivateEndpointConnection", args, LookupWebAppPrivateEndpointConnectionResultOutput{}, options).(LookupWebAppPrivateEndpointConnectionResultOutput), nil
-		}).(LookupWebAppPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppPrivateEndpointConnection", args, LookupWebAppPrivateEndpointConnectionResultOutput{}, options).(LookupWebAppPrivateEndpointConnectionResultOutput)
 }
 
 type LookupWebAppPrivateEndpointConnectionOutputArgs struct {

@@ -36,12 +36,8 @@ type GetProviderActionOverviewStatusResult struct {
 }
 
 func GetProviderActionOverviewStatusOutput(ctx *pulumi.Context, args GetProviderActionOverviewStatusOutputArgs, opts ...pulumi.InvokeOption) GetProviderActionOverviewStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProviderActionOverviewStatusResultOutput, error) {
-			args := v.(GetProviderActionOverviewStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appcomplianceautomation:getProviderActionOverviewStatus", args, GetProviderActionOverviewStatusResultOutput{}, options).(GetProviderActionOverviewStatusResultOutput), nil
-		}).(GetProviderActionOverviewStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appcomplianceautomation:getProviderActionOverviewStatus", args, GetProviderActionOverviewStatusResultOutput{}, options).(GetProviderActionOverviewStatusResultOutput)
 }
 
 type GetProviderActionOverviewStatusOutputArgs struct {

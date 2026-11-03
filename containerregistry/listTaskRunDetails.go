@@ -71,12 +71,8 @@ func (val *ListTaskRunDetailsResult) Defaults() *ListTaskRunDetailsResult {
 	return &tmp
 }
 func ListTaskRunDetailsOutput(ctx *pulumi.Context, args ListTaskRunDetailsOutputArgs, opts ...pulumi.InvokeOption) ListTaskRunDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListTaskRunDetailsResultOutput, error) {
-			args := v.(ListTaskRunDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:listTaskRunDetails", args, ListTaskRunDetailsResultOutput{}, options).(ListTaskRunDetailsResultOutput), nil
-		}).(ListTaskRunDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:listTaskRunDetails", args, ListTaskRunDetailsResultOutput{}, options).(ListTaskRunDetailsResultOutput)
 }
 
 type ListTaskRunDetailsOutputArgs struct {

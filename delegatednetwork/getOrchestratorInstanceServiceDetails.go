@@ -70,12 +70,8 @@ type LookupOrchestratorInstanceServiceDetailsResult struct {
 }
 
 func LookupOrchestratorInstanceServiceDetailsOutput(ctx *pulumi.Context, args LookupOrchestratorInstanceServiceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorInstanceServiceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrchestratorInstanceServiceDetailsResultOutput, error) {
-			args := v.(LookupOrchestratorInstanceServiceDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails", args, LookupOrchestratorInstanceServiceDetailsResultOutput{}, options).(LookupOrchestratorInstanceServiceDetailsResultOutput), nil
-		}).(LookupOrchestratorInstanceServiceDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails", args, LookupOrchestratorInstanceServiceDetailsResultOutput{}, options).(LookupOrchestratorInstanceServiceDetailsResultOutput)
 }
 
 type LookupOrchestratorInstanceServiceDetailsOutputArgs struct {

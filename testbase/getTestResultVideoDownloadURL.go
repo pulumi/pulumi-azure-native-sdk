@@ -46,12 +46,8 @@ type GetTestResultVideoDownloadURLResult struct {
 }
 
 func GetTestResultVideoDownloadURLOutput(ctx *pulumi.Context, args GetTestResultVideoDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetTestResultVideoDownloadURLResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTestResultVideoDownloadURLResultOutput, error) {
-			args := v.(GetTestResultVideoDownloadURLArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getTestResultVideoDownloadURL", args, GetTestResultVideoDownloadURLResultOutput{}, options).(GetTestResultVideoDownloadURLResultOutput), nil
-		}).(GetTestResultVideoDownloadURLResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getTestResultVideoDownloadURL", args, GetTestResultVideoDownloadURLResultOutput{}, options).(GetTestResultVideoDownloadURLResultOutput)
 }
 
 type GetTestResultVideoDownloadURLOutputArgs struct {

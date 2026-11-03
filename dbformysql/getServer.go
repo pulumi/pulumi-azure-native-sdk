@@ -100,12 +100,8 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 	return &tmp
 }
 func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerResultOutput, error) {
-			args := v.(LookupServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput), nil
-		}).(LookupServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput)
 }
 
 type LookupServerOutputArgs struct {

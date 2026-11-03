@@ -44,12 +44,8 @@ type GetSqlServerInstanceJobsStatusResult struct {
 }
 
 func GetSqlServerInstanceJobsStatusOutput(ctx *pulumi.Context, args GetSqlServerInstanceJobsStatusOutputArgs, opts ...pulumi.InvokeOption) GetSqlServerInstanceJobsStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSqlServerInstanceJobsStatusResultOutput, error) {
-			args := v.(GetSqlServerInstanceJobsStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerInstanceJobsStatus", args, GetSqlServerInstanceJobsStatusResultOutput{}, options).(GetSqlServerInstanceJobsStatusResultOutput), nil
-		}).(GetSqlServerInstanceJobsStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerInstanceJobsStatus", args, GetSqlServerInstanceJobsStatusResultOutput{}, options).(GetSqlServerInstanceJobsStatusResultOutput)
 }
 
 type GetSqlServerInstanceJobsStatusOutputArgs struct {

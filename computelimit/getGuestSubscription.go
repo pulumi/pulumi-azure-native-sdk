@@ -50,12 +50,8 @@ type LookupGuestSubscriptionResult struct {
 }
 
 func LookupGuestSubscriptionOutput(ctx *pulumi.Context, args LookupGuestSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupGuestSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGuestSubscriptionResultOutput, error) {
-			args := v.(LookupGuestSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:computelimit:getGuestSubscription", args, LookupGuestSubscriptionResultOutput{}, options).(LookupGuestSubscriptionResultOutput), nil
-		}).(LookupGuestSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:computelimit:getGuestSubscription", args, LookupGuestSubscriptionResultOutput{}, options).(LookupGuestSubscriptionResultOutput)
 }
 
 type LookupGuestSubscriptionOutputArgs struct {

@@ -46,12 +46,8 @@ type GetAccountChangeKeyVaultInformationResult struct {
 }
 
 func GetAccountChangeKeyVaultInformationOutput(ctx *pulumi.Context, args GetAccountChangeKeyVaultInformationOutputArgs, opts ...pulumi.InvokeOption) GetAccountChangeKeyVaultInformationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountChangeKeyVaultInformationResultOutput, error) {
-			args := v.(GetAccountChangeKeyVaultInformationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getAccountChangeKeyVaultInformation", args, GetAccountChangeKeyVaultInformationResultOutput{}, options).(GetAccountChangeKeyVaultInformationResultOutput), nil
-		}).(GetAccountChangeKeyVaultInformationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getAccountChangeKeyVaultInformation", args, GetAccountChangeKeyVaultInformationResultOutput{}, options).(GetAccountChangeKeyVaultInformationResultOutput)
 }
 
 type GetAccountChangeKeyVaultInformationOutputArgs struct {
