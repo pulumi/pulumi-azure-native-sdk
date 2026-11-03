@@ -68,12 +68,8 @@ type LookupDatabaseSecurityAlertPolicyResult struct {
 }
 
 func LookupDatabaseSecurityAlertPolicyOutput(ctx *pulumi.Context, args LookupDatabaseSecurityAlertPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseSecurityAlertPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseSecurityAlertPolicyResultOutput, error) {
-			args := v.(LookupDatabaseSecurityAlertPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getDatabaseSecurityAlertPolicy", args, LookupDatabaseSecurityAlertPolicyResultOutput{}, options).(LookupDatabaseSecurityAlertPolicyResultOutput), nil
-		}).(LookupDatabaseSecurityAlertPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getDatabaseSecurityAlertPolicy", args, LookupDatabaseSecurityAlertPolicyResultOutput{}, options).(LookupDatabaseSecurityAlertPolicyResultOutput)
 }
 
 type LookupDatabaseSecurityAlertPolicyOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupConnectedEnvironmentsCertificateResult struct {
 }
 
 func LookupConnectedEnvironmentsCertificateOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentsCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentsCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectedEnvironmentsCertificateResultOutput, error) {
-			args := v.(LookupConnectedEnvironmentsCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsCertificate", args, LookupConnectedEnvironmentsCertificateResultOutput{}, options).(LookupConnectedEnvironmentsCertificateResultOutput), nil
-		}).(LookupConnectedEnvironmentsCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsCertificate", args, LookupConnectedEnvironmentsCertificateResultOutput{}, options).(LookupConnectedEnvironmentsCertificateResultOutput)
 }
 
 type LookupConnectedEnvironmentsCertificateOutputArgs struct {

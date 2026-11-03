@@ -119,12 +119,8 @@ type LookupBareMetalMachineResult struct {
 }
 
 func LookupBareMetalMachineOutput(ctx *pulumi.Context, args LookupBareMetalMachineOutputArgs, opts ...pulumi.InvokeOption) LookupBareMetalMachineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBareMetalMachineResultOutput, error) {
-			args := v.(LookupBareMetalMachineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getBareMetalMachine", args, LookupBareMetalMachineResultOutput{}, options).(LookupBareMetalMachineResultOutput), nil
-		}).(LookupBareMetalMachineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getBareMetalMachine", args, LookupBareMetalMachineResultOutput{}, options).(LookupBareMetalMachineResultOutput)
 }
 
 type LookupBareMetalMachineOutputArgs struct {

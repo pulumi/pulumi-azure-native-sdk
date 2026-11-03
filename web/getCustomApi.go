@@ -54,12 +54,8 @@ type LookupCustomApiResult struct {
 }
 
 func LookupCustomApiOutput(ctx *pulumi.Context, args LookupCustomApiOutputArgs, opts ...pulumi.InvokeOption) LookupCustomApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomApiResultOutput, error) {
-			args := v.(LookupCustomApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getCustomApi", args, LookupCustomApiResultOutput{}, options).(LookupCustomApiResultOutput), nil
-		}).(LookupCustomApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getCustomApi", args, LookupCustomApiResultOutput{}, options).(LookupCustomApiResultOutput)
 }
 
 type LookupCustomApiOutputArgs struct {

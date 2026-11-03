@@ -48,12 +48,8 @@ type GetTestResultConsoleLogDownloadURLResult struct {
 }
 
 func GetTestResultConsoleLogDownloadURLOutput(ctx *pulumi.Context, args GetTestResultConsoleLogDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetTestResultConsoleLogDownloadURLResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTestResultConsoleLogDownloadURLResultOutput, error) {
-			args := v.(GetTestResultConsoleLogDownloadURLArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:testbase:getTestResultConsoleLogDownloadURL", args, GetTestResultConsoleLogDownloadURLResultOutput{}, options).(GetTestResultConsoleLogDownloadURLResultOutput), nil
-		}).(GetTestResultConsoleLogDownloadURLResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:testbase:getTestResultConsoleLogDownloadURL", args, GetTestResultConsoleLogDownloadURLResultOutput{}, options).(GetTestResultConsoleLogDownloadURLResultOutput)
 }
 
 type GetTestResultConsoleLogDownloadURLOutputArgs struct {

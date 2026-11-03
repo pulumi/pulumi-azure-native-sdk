@@ -69,12 +69,8 @@ func (val *LookupInferencePoolResult) Defaults() *LookupInferencePoolResult {
 	return &tmp
 }
 func LookupInferencePoolOutput(ctx *pulumi.Context, args LookupInferencePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInferencePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInferencePoolResultOutput, error) {
-			args := v.(LookupInferencePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getInferencePool", args, LookupInferencePoolResultOutput{}, options).(LookupInferencePoolResultOutput), nil
-		}).(LookupInferencePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getInferencePool", args, LookupInferencePoolResultOutput{}, options).(LookupInferencePoolResultOutput)
 }
 
 type LookupInferencePoolOutputArgs struct {

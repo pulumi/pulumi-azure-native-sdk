@@ -64,12 +64,8 @@ type LookupApiIssueResult struct {
 }
 
 func LookupApiIssueOutput(ctx *pulumi.Context, args LookupApiIssueOutputArgs, opts ...pulumi.InvokeOption) LookupApiIssueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiIssueResultOutput, error) {
-			args := v.(LookupApiIssueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiIssue", args, LookupApiIssueResultOutput{}, options).(LookupApiIssueResultOutput), nil
-		}).(LookupApiIssueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiIssue", args, LookupApiIssueResultOutput{}, options).(LookupApiIssueResultOutput)
 }
 
 type LookupApiIssueOutputArgs struct {

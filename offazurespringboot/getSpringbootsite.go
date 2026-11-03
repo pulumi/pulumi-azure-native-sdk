@@ -56,12 +56,8 @@ type LookupSpringbootsiteResult struct {
 }
 
 func LookupSpringbootsiteOutput(ctx *pulumi.Context, args LookupSpringbootsiteOutputArgs, opts ...pulumi.InvokeOption) LookupSpringbootsiteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpringbootsiteResultOutput, error) {
-			args := v.(LookupSpringbootsiteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazurespringboot:getSpringbootsite", args, LookupSpringbootsiteResultOutput{}, options).(LookupSpringbootsiteResultOutput), nil
-		}).(LookupSpringbootsiteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazurespringboot:getSpringbootsite", args, LookupSpringbootsiteResultOutput{}, options).(LookupSpringbootsiteResultOutput)
 }
 
 type LookupSpringbootsiteOutputArgs struct {

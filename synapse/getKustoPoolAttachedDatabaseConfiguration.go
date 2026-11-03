@@ -64,12 +64,8 @@ type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 }
 
 func LookupKustoPoolAttachedDatabaseConfigurationOutput(ctx *pulumi.Context, args LookupKustoPoolAttachedDatabaseConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolAttachedDatabaseConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKustoPoolAttachedDatabaseConfigurationResultOutput, error) {
-			args := v.(LookupKustoPoolAttachedDatabaseConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getKustoPoolAttachedDatabaseConfiguration", args, LookupKustoPoolAttachedDatabaseConfigurationResultOutput{}, options).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput), nil
-		}).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getKustoPoolAttachedDatabaseConfiguration", args, LookupKustoPoolAttachedDatabaseConfigurationResultOutput{}, options).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput)
 }
 
 type LookupKustoPoolAttachedDatabaseConfigurationOutputArgs struct {

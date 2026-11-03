@@ -56,12 +56,8 @@ type LookupPureStoragePolicyResult struct {
 }
 
 func LookupPureStoragePolicyOutput(ctx *pulumi.Context, args LookupPureStoragePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPureStoragePolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPureStoragePolicyResultOutput, error) {
-			args := v.(LookupPureStoragePolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getPureStoragePolicy", args, LookupPureStoragePolicyResultOutput{}, options).(LookupPureStoragePolicyResultOutput), nil
-		}).(LookupPureStoragePolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getPureStoragePolicy", args, LookupPureStoragePolicyResultOutput{}, options).(LookupPureStoragePolicyResultOutput)
 }
 
 type LookupPureStoragePolicyOutputArgs struct {

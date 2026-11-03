@@ -49,12 +49,8 @@ type LookupOutboundFirewallRuleResult struct {
 }
 
 func LookupOutboundFirewallRuleOutput(ctx *pulumi.Context, args LookupOutboundFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOutboundFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOutboundFirewallRuleResultOutput, error) {
-			args := v.(LookupOutboundFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getOutboundFirewallRule", args, LookupOutboundFirewallRuleResultOutput{}, options).(LookupOutboundFirewallRuleResultOutput), nil
-		}).(LookupOutboundFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getOutboundFirewallRule", args, LookupOutboundFirewallRuleResultOutput{}, options).(LookupOutboundFirewallRuleResultOutput)
 }
 
 type LookupOutboundFirewallRuleOutputArgs struct {

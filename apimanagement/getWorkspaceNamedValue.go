@@ -62,12 +62,8 @@ type LookupWorkspaceNamedValueResult struct {
 }
 
 func LookupWorkspaceNamedValueOutput(ctx *pulumi.Context, args LookupWorkspaceNamedValueOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceNamedValueResultOutput, error) {
-			args := v.(LookupWorkspaceNamedValueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceNamedValue", args, LookupWorkspaceNamedValueResultOutput{}, options).(LookupWorkspaceNamedValueResultOutput), nil
-		}).(LookupWorkspaceNamedValueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceNamedValue", args, LookupWorkspaceNamedValueResultOutput{}, options).(LookupWorkspaceNamedValueResultOutput)
 }
 
 type LookupWorkspaceNamedValueOutputArgs struct {

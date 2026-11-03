@@ -67,12 +67,8 @@ func (val *LookupSharedLimitResult) Defaults() *LookupSharedLimitResult {
 	return &tmp
 }
 func LookupSharedLimitOutput(ctx *pulumi.Context, args LookupSharedLimitOutputArgs, opts ...pulumi.InvokeOption) LookupSharedLimitResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSharedLimitResultOutput, error) {
-			args := v.(LookupSharedLimitArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:computelimit:getSharedLimit", args, LookupSharedLimitResultOutput{}, options).(LookupSharedLimitResultOutput), nil
-		}).(LookupSharedLimitResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:computelimit:getSharedLimit", args, LookupSharedLimitResultOutput{}, options).(LookupSharedLimitResultOutput)
 }
 
 type LookupSharedLimitOutputArgs struct {

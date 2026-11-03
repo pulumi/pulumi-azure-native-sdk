@@ -52,12 +52,8 @@ type LookupAcmCertificateSummaryResult struct {
 }
 
 func LookupAcmCertificateSummaryOutput(ctx *pulumi.Context, args LookupAcmCertificateSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupAcmCertificateSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAcmCertificateSummaryResultOutput, error) {
-			args := v.(LookupAcmCertificateSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getAcmCertificateSummary", args, LookupAcmCertificateSummaryResultOutput{}, options).(LookupAcmCertificateSummaryResultOutput), nil
-		}).(LookupAcmCertificateSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getAcmCertificateSummary", args, LookupAcmCertificateSummaryResultOutput{}, options).(LookupAcmCertificateSummaryResultOutput)
 }
 
 type LookupAcmCertificateSummaryOutputArgs struct {

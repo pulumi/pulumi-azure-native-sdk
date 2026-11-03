@@ -52,12 +52,8 @@ type LookupRdsExportTaskResult struct {
 }
 
 func LookupRdsExportTaskOutput(ctx *pulumi.Context, args LookupRdsExportTaskOutputArgs, opts ...pulumi.InvokeOption) LookupRdsExportTaskResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRdsExportTaskResultOutput, error) {
-			args := v.(LookupRdsExportTaskArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRdsExportTask", args, LookupRdsExportTaskResultOutput{}, options).(LookupRdsExportTaskResultOutput), nil
-		}).(LookupRdsExportTaskResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRdsExportTask", args, LookupRdsExportTaskResultOutput{}, options).(LookupRdsExportTaskResultOutput)
 }
 
 type LookupRdsExportTaskOutputArgs struct {

@@ -68,12 +68,8 @@ func (val *LookupWorkspacePolicyResult) Defaults() *LookupWorkspacePolicyResult 
 	return &tmp
 }
 func LookupWorkspacePolicyOutput(ctx *pulumi.Context, args LookupWorkspacePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspacePolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspacePolicyResultOutput, error) {
-			args := v.(LookupWorkspacePolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspacePolicy", args, LookupWorkspacePolicyResultOutput{}, options).(LookupWorkspacePolicyResultOutput), nil
-		}).(LookupWorkspacePolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspacePolicy", args, LookupWorkspacePolicyResultOutput{}, options).(LookupWorkspacePolicyResultOutput)
 }
 
 type LookupWorkspacePolicyOutputArgs struct {

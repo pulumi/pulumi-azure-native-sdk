@@ -38,12 +38,8 @@ type ListPrivateStoreStopSellOffersPlansNotificationsResult struct {
 }
 
 func ListPrivateStoreStopSellOffersPlansNotificationsOutput(ctx *pulumi.Context, args ListPrivateStoreStopSellOffersPlansNotificationsOutputArgs, opts ...pulumi.InvokeOption) ListPrivateStoreStopSellOffersPlansNotificationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListPrivateStoreStopSellOffersPlansNotificationsResultOutput, error) {
-			args := v.(ListPrivateStoreStopSellOffersPlansNotificationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:marketplace:listPrivateStoreStopSellOffersPlansNotifications", args, ListPrivateStoreStopSellOffersPlansNotificationsResultOutput{}, options).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput), nil
-		}).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:marketplace:listPrivateStoreStopSellOffersPlansNotifications", args, ListPrivateStoreStopSellOffersPlansNotificationsResultOutput{}, options).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput)
 }
 
 type ListPrivateStoreStopSellOffersPlansNotificationsOutputArgs struct {

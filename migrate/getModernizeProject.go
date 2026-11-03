@@ -54,12 +54,8 @@ type LookupModernizeProjectResult struct {
 }
 
 func LookupModernizeProjectOutput(ctx *pulumi.Context, args LookupModernizeProjectOutputArgs, opts ...pulumi.InvokeOption) LookupModernizeProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupModernizeProjectResultOutput, error) {
-			args := v.(LookupModernizeProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getModernizeProject", args, LookupModernizeProjectResultOutput{}, options).(LookupModernizeProjectResultOutput), nil
-		}).(LookupModernizeProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getModernizeProject", args, LookupModernizeProjectResultOutput{}, options).(LookupModernizeProjectResultOutput)
 }
 
 type LookupModernizeProjectOutputArgs struct {

@@ -40,12 +40,8 @@ type ListSaasSubscriptionLevelAccessTokenResult struct {
 }
 
 func ListSaasSubscriptionLevelAccessTokenOutput(ctx *pulumi.Context, args ListSaasSubscriptionLevelAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListSaasSubscriptionLevelAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSaasSubscriptionLevelAccessTokenResultOutput, error) {
-			args := v.(ListSaasSubscriptionLevelAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:saas:listSaasSubscriptionLevelAccessToken", args, ListSaasSubscriptionLevelAccessTokenResultOutput{}, options).(ListSaasSubscriptionLevelAccessTokenResultOutput), nil
-		}).(ListSaasSubscriptionLevelAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:saas:listSaasSubscriptionLevelAccessToken", args, ListSaasSubscriptionLevelAccessTokenResultOutput{}, options).(ListSaasSubscriptionLevelAccessTokenResultOutput)
 }
 
 type ListSaasSubscriptionLevelAccessTokenOutputArgs struct {

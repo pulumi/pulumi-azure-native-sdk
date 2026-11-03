@@ -52,12 +52,8 @@ type LookupServiceRegistryResult struct {
 }
 
 func LookupServiceRegistryOutput(ctx *pulumi.Context, args LookupServiceRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupServiceRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceRegistryResultOutput, error) {
-			args := v.(LookupServiceRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getServiceRegistry", args, LookupServiceRegistryResultOutput{}, options).(LookupServiceRegistryResultOutput), nil
-		}).(LookupServiceRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getServiceRegistry", args, LookupServiceRegistryResultOutput{}, options).(LookupServiceRegistryResultOutput)
 }
 
 type LookupServiceRegistryOutputArgs struct {

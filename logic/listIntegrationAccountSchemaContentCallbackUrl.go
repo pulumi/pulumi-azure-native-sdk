@@ -56,12 +56,8 @@ type ListIntegrationAccountSchemaContentCallbackUrlResult struct {
 }
 
 func ListIntegrationAccountSchemaContentCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountSchemaContentCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountSchemaContentCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountSchemaContentCallbackUrlResultOutput, error) {
-			args := v.(ListIntegrationAccountSchemaContentCallbackUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountSchemaContentCallbackUrl", args, ListIntegrationAccountSchemaContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountSchemaContentCallbackUrlResultOutput), nil
-		}).(ListIntegrationAccountSchemaContentCallbackUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountSchemaContentCallbackUrl", args, ListIntegrationAccountSchemaContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountSchemaContentCallbackUrlResultOutput)
 }
 
 type ListIntegrationAccountSchemaContentCallbackUrlOutputArgs struct {

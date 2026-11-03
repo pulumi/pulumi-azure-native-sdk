@@ -52,12 +52,8 @@ type LookupClusterJobResult struct {
 }
 
 func LookupClusterJobOutput(ctx *pulumi.Context, args LookupClusterJobOutputArgs, opts ...pulumi.InvokeOption) LookupClusterJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterJobResultOutput, error) {
-			args := v.(LookupClusterJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getClusterJob", args, LookupClusterJobResultOutput{}, options).(LookupClusterJobResultOutput), nil
-		}).(LookupClusterJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getClusterJob", args, LookupClusterJobResultOutput{}, options).(LookupClusterJobResultOutput)
 }
 
 type LookupClusterJobOutputArgs struct {

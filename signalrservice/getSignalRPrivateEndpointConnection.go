@@ -58,12 +58,8 @@ type LookupSignalRPrivateEndpointConnectionResult struct {
 }
 
 func LookupSignalRPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupSignalRPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalRPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupSignalRPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:signalrservice:getSignalRPrivateEndpointConnection", args, LookupSignalRPrivateEndpointConnectionResultOutput{}, options).(LookupSignalRPrivateEndpointConnectionResultOutput), nil
-		}).(LookupSignalRPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:signalrservice:getSignalRPrivateEndpointConnection", args, LookupSignalRPrivateEndpointConnectionResultOutput{}, options).(LookupSignalRPrivateEndpointConnectionResultOutput)
 }
 
 type LookupSignalRPrivateEndpointConnectionOutputArgs struct {

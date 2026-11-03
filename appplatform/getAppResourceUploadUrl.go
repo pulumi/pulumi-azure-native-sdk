@@ -44,12 +44,8 @@ type GetAppResourceUploadUrlResult struct {
 }
 
 func GetAppResourceUploadUrlOutput(ctx *pulumi.Context, args GetAppResourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetAppResourceUploadUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppResourceUploadUrlResultOutput, error) {
-			args := v.(GetAppResourceUploadUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getAppResourceUploadUrl", args, GetAppResourceUploadUrlResultOutput{}, options).(GetAppResourceUploadUrlResultOutput), nil
-		}).(GetAppResourceUploadUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getAppResourceUploadUrl", args, GetAppResourceUploadUrlResultOutput{}, options).(GetAppResourceUploadUrlResultOutput)
 }
 
 type GetAppResourceUploadUrlOutputArgs struct {

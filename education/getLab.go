@@ -72,12 +72,8 @@ type LookupLabResult struct {
 }
 
 func LookupLabOutput(ctx *pulumi.Context, args LookupLabOutputArgs, opts ...pulumi.InvokeOption) LookupLabResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLabResultOutput, error) {
-			args := v.(LookupLabArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:education:getLab", args, LookupLabResultOutput{}, options).(LookupLabResultOutput), nil
-		}).(LookupLabResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:education:getLab", args, LookupLabResultOutput{}, options).(LookupLabResultOutput)
 }
 
 type LookupLabOutputArgs struct {

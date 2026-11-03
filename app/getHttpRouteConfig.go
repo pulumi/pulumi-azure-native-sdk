@@ -52,12 +52,8 @@ type LookupHttpRouteConfigResult struct {
 }
 
 func LookupHttpRouteConfigOutput(ctx *pulumi.Context, args LookupHttpRouteConfigOutputArgs, opts ...pulumi.InvokeOption) LookupHttpRouteConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHttpRouteConfigResultOutput, error) {
-			args := v.(LookupHttpRouteConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getHttpRouteConfig", args, LookupHttpRouteConfigResultOutput{}, options).(LookupHttpRouteConfigResultOutput), nil
-		}).(LookupHttpRouteConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getHttpRouteConfig", args, LookupHttpRouteConfigResultOutput{}, options).(LookupHttpRouteConfigResultOutput)
 }
 
 type LookupHttpRouteConfigOutputArgs struct {

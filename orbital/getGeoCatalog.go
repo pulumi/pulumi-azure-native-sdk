@@ -66,12 +66,8 @@ func (val *LookupGeoCatalogResult) Defaults() *LookupGeoCatalogResult {
 	return &tmp
 }
 func LookupGeoCatalogOutput(ctx *pulumi.Context, args LookupGeoCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupGeoCatalogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGeoCatalogResultOutput, error) {
-			args := v.(LookupGeoCatalogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:orbital:getGeoCatalog", args, LookupGeoCatalogResultOutput{}, options).(LookupGeoCatalogResultOutput), nil
-		}).(LookupGeoCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:orbital:getGeoCatalog", args, LookupGeoCatalogResultOutput{}, options).(LookupGeoCatalogResultOutput)
 }
 
 type LookupGeoCatalogOutputArgs struct {

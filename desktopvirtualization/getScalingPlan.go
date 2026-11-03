@@ -89,12 +89,8 @@ func (val *LookupScalingPlanResult) Defaults() *LookupScalingPlanResult {
 	return &tmp
 }
 func LookupScalingPlanOutput(ctx *pulumi.Context, args LookupScalingPlanOutputArgs, opts ...pulumi.InvokeOption) LookupScalingPlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScalingPlanResultOutput, error) {
-			args := v.(LookupScalingPlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:getScalingPlan", args, LookupScalingPlanResultOutput{}, options).(LookupScalingPlanResultOutput), nil
-		}).(LookupScalingPlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:getScalingPlan", args, LookupScalingPlanResultOutput{}, options).(LookupScalingPlanResultOutput)
 }
 
 type LookupScalingPlanOutputArgs struct {

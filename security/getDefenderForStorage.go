@@ -48,12 +48,8 @@ type LookupDefenderForStorageResult struct {
 }
 
 func LookupDefenderForStorageOutput(ctx *pulumi.Context, args LookupDefenderForStorageOutputArgs, opts ...pulumi.InvokeOption) LookupDefenderForStorageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDefenderForStorageResultOutput, error) {
-			args := v.(LookupDefenderForStorageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getDefenderForStorage", args, LookupDefenderForStorageResultOutput{}, options).(LookupDefenderForStorageResultOutput), nil
-		}).(LookupDefenderForStorageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getDefenderForStorage", args, LookupDefenderForStorageResultOutput{}, options).(LookupDefenderForStorageResultOutput)
 }
 
 type LookupDefenderForStorageOutputArgs struct {

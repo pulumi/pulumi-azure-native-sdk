@@ -68,12 +68,8 @@ func (val *LookupWebAppDiagnosticLogsConfigurationResult) Defaults() *LookupWebA
 	return &tmp
 }
 func LookupWebAppDiagnosticLogsConfigurationOutput(ctx *pulumi.Context, args LookupWebAppDiagnosticLogsConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDiagnosticLogsConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDiagnosticLogsConfigurationResultOutput, error) {
-			args := v.(LookupWebAppDiagnosticLogsConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppDiagnosticLogsConfiguration", args, LookupWebAppDiagnosticLogsConfigurationResultOutput{}, options).(LookupWebAppDiagnosticLogsConfigurationResultOutput), nil
-		}).(LookupWebAppDiagnosticLogsConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppDiagnosticLogsConfiguration", args, LookupWebAppDiagnosticLogsConfigurationResultOutput{}, options).(LookupWebAppDiagnosticLogsConfigurationResultOutput)
 }
 
 type LookupWebAppDiagnosticLogsConfigurationOutputArgs struct {

@@ -50,12 +50,8 @@ type GetSAPSupportedSkuResult struct {
 }
 
 func GetSAPSupportedSkuOutput(ctx *pulumi.Context, args GetSAPSupportedSkuOutputArgs, opts ...pulumi.InvokeOption) GetSAPSupportedSkuResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSAPSupportedSkuResultOutput, error) {
-			args := v.(GetSAPSupportedSkuArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSAPSupportedSku", args, GetSAPSupportedSkuResultOutput{}, options).(GetSAPSupportedSkuResultOutput), nil
-		}).(GetSAPSupportedSkuResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSAPSupportedSku", args, GetSAPSupportedSkuResultOutput{}, options).(GetSAPSupportedSkuResultOutput)
 }
 
 type GetSAPSupportedSkuOutputArgs struct {

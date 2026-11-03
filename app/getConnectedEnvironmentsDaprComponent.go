@@ -84,12 +84,8 @@ func (val *LookupConnectedEnvironmentsDaprComponentResult) Defaults() *LookupCon
 	return &tmp
 }
 func LookupConnectedEnvironmentsDaprComponentOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentsDaprComponentOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentsDaprComponentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectedEnvironmentsDaprComponentResultOutput, error) {
-			args := v.(LookupConnectedEnvironmentsDaprComponentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsDaprComponent", args, LookupConnectedEnvironmentsDaprComponentResultOutput{}, options).(LookupConnectedEnvironmentsDaprComponentResultOutput), nil
-		}).(LookupConnectedEnvironmentsDaprComponentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getConnectedEnvironmentsDaprComponent", args, LookupConnectedEnvironmentsDaprComponentResultOutput{}, options).(LookupConnectedEnvironmentsDaprComponentResultOutput)
 }
 
 type LookupConnectedEnvironmentsDaprComponentOutputArgs struct {

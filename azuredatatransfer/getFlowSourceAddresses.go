@@ -42,12 +42,8 @@ type GetFlowSourceAddressesResult struct {
 }
 
 func GetFlowSourceAddressesOutput(ctx *pulumi.Context, args GetFlowSourceAddressesOutputArgs, opts ...pulumi.InvokeOption) GetFlowSourceAddressesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFlowSourceAddressesResultOutput, error) {
-			args := v.(GetFlowSourceAddressesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowSourceAddresses", args, GetFlowSourceAddressesResultOutput{}, options).(GetFlowSourceAddressesResultOutput), nil
-		}).(GetFlowSourceAddressesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowSourceAddresses", args, GetFlowSourceAddressesResultOutput{}, options).(GetFlowSourceAddressesResultOutput)
 }
 
 type GetFlowSourceAddressesOutputArgs struct {

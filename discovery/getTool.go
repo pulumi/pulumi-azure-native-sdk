@@ -54,12 +54,8 @@ type LookupToolResult struct {
 }
 
 func LookupToolOutput(ctx *pulumi.Context, args LookupToolOutputArgs, opts ...pulumi.InvokeOption) LookupToolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupToolResultOutput, error) {
-			args := v.(LookupToolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getTool", args, LookupToolResultOutput{}, options).(LookupToolResultOutput), nil
-		}).(LookupToolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getTool", args, LookupToolResultOutput{}, options).(LookupToolResultOutput)
 }
 
 type LookupToolOutputArgs struct {

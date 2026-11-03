@@ -52,12 +52,8 @@ type LookupDiscoveryRuleResult struct {
 }
 
 func LookupDiscoveryRuleOutput(ctx *pulumi.Context, args LookupDiscoveryRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDiscoveryRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscoveryRuleResultOutput, error) {
-			args := v.(LookupDiscoveryRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getDiscoveryRule", args, LookupDiscoveryRuleResultOutput{}, options).(LookupDiscoveryRuleResultOutput), nil
-		}).(LookupDiscoveryRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getDiscoveryRule", args, LookupDiscoveryRuleResultOutput{}, options).(LookupDiscoveryRuleResultOutput)
 }
 
 type LookupDiscoveryRuleOutputArgs struct {

@@ -42,12 +42,8 @@ type GetTriggerEventSubscriptionStatusResult struct {
 }
 
 func GetTriggerEventSubscriptionStatusOutput(ctx *pulumi.Context, args GetTriggerEventSubscriptionStatusOutputArgs, opts ...pulumi.InvokeOption) GetTriggerEventSubscriptionStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTriggerEventSubscriptionStatusResultOutput, error) {
-			args := v.(GetTriggerEventSubscriptionStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getTriggerEventSubscriptionStatus", args, GetTriggerEventSubscriptionStatusResultOutput{}, options).(GetTriggerEventSubscriptionStatusResultOutput), nil
-		}).(GetTriggerEventSubscriptionStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getTriggerEventSubscriptionStatus", args, GetTriggerEventSubscriptionStatusResultOutput{}, options).(GetTriggerEventSubscriptionStatusResultOutput)
 }
 
 type GetTriggerEventSubscriptionStatusOutputArgs struct {

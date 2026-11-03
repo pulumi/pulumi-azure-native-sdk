@@ -102,12 +102,8 @@ func (val *LookupBatchAccountResult) Defaults() *LookupBatchAccountResult {
 	return &tmp
 }
 func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutputArgs, opts ...pulumi.InvokeOption) LookupBatchAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBatchAccountResultOutput, error) {
-			args := v.(LookupBatchAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:batch:getBatchAccount", args, LookupBatchAccountResultOutput{}, options).(LookupBatchAccountResultOutput), nil
-		}).(LookupBatchAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:batch:getBatchAccount", args, LookupBatchAccountResultOutput{}, options).(LookupBatchAccountResultOutput)
 }
 
 type LookupBatchAccountOutputArgs struct {

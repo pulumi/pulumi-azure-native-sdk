@@ -60,12 +60,8 @@ type LookupReferenceDataSetResult struct {
 }
 
 func LookupReferenceDataSetOutput(ctx *pulumi.Context, args LookupReferenceDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupReferenceDataSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReferenceDataSetResultOutput, error) {
-			args := v.(LookupReferenceDataSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:timeseriesinsights:getReferenceDataSet", args, LookupReferenceDataSetResultOutput{}, options).(LookupReferenceDataSetResultOutput), nil
-		}).(LookupReferenceDataSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:timeseriesinsights:getReferenceDataSet", args, LookupReferenceDataSetResultOutput{}, options).(LookupReferenceDataSetResultOutput)
 }
 
 type LookupReferenceDataSetOutputArgs struct {

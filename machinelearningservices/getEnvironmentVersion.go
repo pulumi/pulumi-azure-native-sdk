@@ -64,12 +64,8 @@ func (val *LookupEnvironmentVersionResult) Defaults() *LookupEnvironmentVersionR
 	return &tmp
 }
 func LookupEnvironmentVersionOutput(ctx *pulumi.Context, args LookupEnvironmentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentVersionResultOutput, error) {
-			args := v.(LookupEnvironmentVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getEnvironmentVersion", args, LookupEnvironmentVersionResultOutput{}, options).(LookupEnvironmentVersionResultOutput), nil
-		}).(LookupEnvironmentVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getEnvironmentVersion", args, LookupEnvironmentVersionResultOutput{}, options).(LookupEnvironmentVersionResultOutput)
 }
 
 type LookupEnvironmentVersionOutputArgs struct {

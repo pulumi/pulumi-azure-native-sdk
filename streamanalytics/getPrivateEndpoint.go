@@ -52,12 +52,8 @@ type LookupPrivateEndpointResult struct {
 }
 
 func LookupPrivateEndpointOutput(ctx *pulumi.Context, args LookupPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointResultOutput, error) {
-			args := v.(LookupPrivateEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:streamanalytics:getPrivateEndpoint", args, LookupPrivateEndpointResultOutput{}, options).(LookupPrivateEndpointResultOutput), nil
-		}).(LookupPrivateEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:streamanalytics:getPrivateEndpoint", args, LookupPrivateEndpointResultOutput{}, options).(LookupPrivateEndpointResultOutput)
 }
 
 type LookupPrivateEndpointOutputArgs struct {

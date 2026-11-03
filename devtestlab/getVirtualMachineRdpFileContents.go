@@ -40,12 +40,8 @@ type GetVirtualMachineRdpFileContentsResult struct {
 }
 
 func GetVirtualMachineRdpFileContentsOutput(ctx *pulumi.Context, args GetVirtualMachineRdpFileContentsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualMachineRdpFileContentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVirtualMachineRdpFileContentsResultOutput, error) {
-			args := v.(GetVirtualMachineRdpFileContentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getVirtualMachineRdpFileContents", args, GetVirtualMachineRdpFileContentsResultOutput{}, options).(GetVirtualMachineRdpFileContentsResultOutput), nil
-		}).(GetVirtualMachineRdpFileContentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getVirtualMachineRdpFileContents", args, GetVirtualMachineRdpFileContentsResultOutput{}, options).(GetVirtualMachineRdpFileContentsResultOutput)
 }
 
 type GetVirtualMachineRdpFileContentsOutputArgs struct {

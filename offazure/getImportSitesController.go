@@ -60,12 +60,8 @@ type LookupImportSitesControllerResult struct {
 }
 
 func LookupImportSitesControllerOutput(ctx *pulumi.Context, args LookupImportSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupImportSitesControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImportSitesControllerResultOutput, error) {
-			args := v.(LookupImportSitesControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getImportSitesController", args, LookupImportSitesControllerResultOutput{}, options).(LookupImportSitesControllerResultOutput), nil
-		}).(LookupImportSitesControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getImportSitesController", args, LookupImportSitesControllerResultOutput{}, options).(LookupImportSitesControllerResultOutput)
 }
 
 type LookupImportSitesControllerOutputArgs struct {

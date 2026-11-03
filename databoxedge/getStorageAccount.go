@@ -62,12 +62,8 @@ type LookupStorageAccountResult struct {
 }
 
 func LookupStorageAccountOutput(ctx *pulumi.Context, args LookupStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStorageAccountResultOutput, error) {
-			args := v.(LookupStorageAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databoxedge:getStorageAccount", args, LookupStorageAccountResultOutput{}, options).(LookupStorageAccountResultOutput), nil
-		}).(LookupStorageAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databoxedge:getStorageAccount", args, LookupStorageAccountResultOutput{}, options).(LookupStorageAccountResultOutput)
 }
 
 type LookupStorageAccountOutputArgs struct {

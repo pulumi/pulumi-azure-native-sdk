@@ -50,12 +50,8 @@ type LookupAccountConnectionResult struct {
 }
 
 func LookupAccountConnectionOutput(ctx *pulumi.Context, args LookupAccountConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAccountConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountConnectionResultOutput, error) {
-			args := v.(LookupAccountConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getAccountConnection", args, LookupAccountConnectionResultOutput{}, options).(LookupAccountConnectionResultOutput), nil
-		}).(LookupAccountConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getAccountConnection", args, LookupAccountConnectionResultOutput{}, options).(LookupAccountConnectionResultOutput)
 }
 
 type LookupAccountConnectionOutputArgs struct {

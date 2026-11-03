@@ -52,12 +52,8 @@ type LookupSingleServerServerAdministratorResult struct {
 }
 
 func LookupSingleServerServerAdministratorOutput(ctx *pulumi.Context, args LookupSingleServerServerAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerServerAdministratorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerServerAdministratorResultOutput, error) {
-			args := v.(LookupSingleServerServerAdministratorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerServerAdministrator", args, LookupSingleServerServerAdministratorResultOutput{}, options).(LookupSingleServerServerAdministratorResultOutput), nil
-		}).(LookupSingleServerServerAdministratorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerServerAdministrator", args, LookupSingleServerServerAdministratorResultOutput{}, options).(LookupSingleServerServerAdministratorResultOutput)
 }
 
 type LookupSingleServerServerAdministratorOutputArgs struct {

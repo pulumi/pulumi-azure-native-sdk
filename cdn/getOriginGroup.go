@@ -64,12 +64,8 @@ type LookupOriginGroupResult struct {
 }
 
 func LookupOriginGroupOutput(ctx *pulumi.Context, args LookupOriginGroupOutputArgs, opts ...pulumi.InvokeOption) LookupOriginGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOriginGroupResultOutput, error) {
-			args := v.(LookupOriginGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getOriginGroup", args, LookupOriginGroupResultOutput{}, options).(LookupOriginGroupResultOutput), nil
-		}).(LookupOriginGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getOriginGroup", args, LookupOriginGroupResultOutput{}, options).(LookupOriginGroupResultOutput)
 }
 
 type LookupOriginGroupOutputArgs struct {

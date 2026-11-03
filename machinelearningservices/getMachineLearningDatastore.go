@@ -66,12 +66,8 @@ func (val *LookupMachineLearningDatastoreResult) Defaults() *LookupMachineLearni
 	return &tmp
 }
 func LookupMachineLearningDatastoreOutput(ctx *pulumi.Context, args LookupMachineLearningDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupMachineLearningDatastoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMachineLearningDatastoreResultOutput, error) {
-			args := v.(LookupMachineLearningDatastoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getMachineLearningDatastore", args, LookupMachineLearningDatastoreResultOutput{}, options).(LookupMachineLearningDatastoreResultOutput), nil
-		}).(LookupMachineLearningDatastoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getMachineLearningDatastore", args, LookupMachineLearningDatastoreResultOutput{}, options).(LookupMachineLearningDatastoreResultOutput)
 }
 
 type LookupMachineLearningDatastoreOutputArgs struct {

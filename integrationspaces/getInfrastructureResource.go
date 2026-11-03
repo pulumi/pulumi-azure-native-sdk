@@ -54,12 +54,8 @@ type LookupInfrastructureResourceResult struct {
 }
 
 func LookupInfrastructureResourceOutput(ctx *pulumi.Context, args LookupInfrastructureResourceOutputArgs, opts ...pulumi.InvokeOption) LookupInfrastructureResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfrastructureResourceResultOutput, error) {
-			args := v.(LookupInfrastructureResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:integrationspaces:getInfrastructureResource", args, LookupInfrastructureResourceResultOutput{}, options).(LookupInfrastructureResourceResultOutput), nil
-		}).(LookupInfrastructureResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:integrationspaces:getInfrastructureResource", args, LookupInfrastructureResourceResultOutput{}, options).(LookupInfrastructureResourceResultOutput)
 }
 
 type LookupInfrastructureResourceOutputArgs struct {

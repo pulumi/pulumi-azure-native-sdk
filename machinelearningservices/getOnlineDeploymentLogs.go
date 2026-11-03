@@ -60,12 +60,13 @@ type GetOnlineDeploymentLogsResult struct {
 }
 
 func GetOnlineDeploymentLogsOutput(ctx *pulumi.Context, args GetOnlineDeploymentLogsOutputArgs, opts ...pulumi.InvokeOption) GetOnlineDeploymentLogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOnlineDeploymentLogsResultOutput, error) {
+	outputArgs := pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) *GetOnlineDeploymentLogsArgs {
 			args := v.(GetOnlineDeploymentLogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getOnlineDeploymentLogs", args.Defaults(), GetOnlineDeploymentLogsResultOutput{}, options).(GetOnlineDeploymentLogsResultOutput), nil
-		}).(GetOnlineDeploymentLogsResultOutput)
+			return args.Defaults()
+		})
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getOnlineDeploymentLogs", outputArgs, GetOnlineDeploymentLogsResultOutput{}, options).(GetOnlineDeploymentLogsResultOutput)
 }
 
 type GetOnlineDeploymentLogsOutputArgs struct {

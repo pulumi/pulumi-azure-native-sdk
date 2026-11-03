@@ -61,12 +61,8 @@ type LookupWorkspaceLoggerResult struct {
 }
 
 func LookupWorkspaceLoggerOutput(ctx *pulumi.Context, args LookupWorkspaceLoggerOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceLoggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceLoggerResultOutput, error) {
-			args := v.(LookupWorkspaceLoggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceLogger", args, LookupWorkspaceLoggerResultOutput{}, options).(LookupWorkspaceLoggerResultOutput), nil
-		}).(LookupWorkspaceLoggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceLogger", args, LookupWorkspaceLoggerResultOutput{}, options).(LookupWorkspaceLoggerResultOutput)
 }
 
 type LookupWorkspaceLoggerOutputArgs struct {

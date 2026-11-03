@@ -40,12 +40,8 @@ type GetFileShareProvisioningRecommendationResult struct {
 }
 
 func GetFileShareProvisioningRecommendationOutput(ctx *pulumi.Context, args GetFileShareProvisioningRecommendationOutputArgs, opts ...pulumi.InvokeOption) GetFileShareProvisioningRecommendationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileShareProvisioningRecommendationResultOutput, error) {
-			args := v.(GetFileShareProvisioningRecommendationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fileshares:getFileShareProvisioningRecommendation", args, GetFileShareProvisioningRecommendationResultOutput{}, options).(GetFileShareProvisioningRecommendationResultOutput), nil
-		}).(GetFileShareProvisioningRecommendationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fileshares:getFileShareProvisioningRecommendation", args, GetFileShareProvisioningRecommendationResultOutput{}, options).(GetFileShareProvisioningRecommendationResultOutput)
 }
 
 type GetFileShareProvisioningRecommendationOutputArgs struct {

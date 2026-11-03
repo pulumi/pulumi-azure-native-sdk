@@ -66,12 +66,8 @@ type LookupMHSMPrivateEndpointConnectionResult struct {
 }
 
 func LookupMHSMPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupMHSMPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupMHSMPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMHSMPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupMHSMPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:keyvault:getMHSMPrivateEndpointConnection", args, LookupMHSMPrivateEndpointConnectionResultOutput{}, options).(LookupMHSMPrivateEndpointConnectionResultOutput), nil
-		}).(LookupMHSMPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:keyvault:getMHSMPrivateEndpointConnection", args, LookupMHSMPrivateEndpointConnectionResultOutput{}, options).(LookupMHSMPrivateEndpointConnectionResultOutput)
 }
 
 type LookupMHSMPrivateEndpointConnectionOutputArgs struct {

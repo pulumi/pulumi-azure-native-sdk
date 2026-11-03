@@ -107,12 +107,8 @@ func (val *LookupL3NetworkResult) Defaults() *LookupL3NetworkResult {
 	return &tmp
 }
 func LookupL3NetworkOutput(ctx *pulumi.Context, args LookupL3NetworkOutputArgs, opts ...pulumi.InvokeOption) LookupL3NetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupL3NetworkResultOutput, error) {
-			args := v.(LookupL3NetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getL3Network", args, LookupL3NetworkResultOutput{}, options).(LookupL3NetworkResultOutput), nil
-		}).(LookupL3NetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getL3Network", args, LookupL3NetworkResultOutput{}, options).(LookupL3NetworkResultOutput)
 }
 
 type LookupL3NetworkOutputArgs struct {

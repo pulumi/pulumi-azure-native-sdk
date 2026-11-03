@@ -78,12 +78,8 @@ type LookupPrivateRecordSetResult struct {
 }
 
 func LookupPrivateRecordSetOutput(ctx *pulumi.Context, args LookupPrivateRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateRecordSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateRecordSetResultOutput, error) {
-			args := v.(LookupPrivateRecordSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:privatedns:getPrivateRecordSet", args, LookupPrivateRecordSetResultOutput{}, options).(LookupPrivateRecordSetResultOutput), nil
-		}).(LookupPrivateRecordSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:privatedns:getPrivateRecordSet", args, LookupPrivateRecordSetResultOutput{}, options).(LookupPrivateRecordSetResultOutput)
 }
 
 type LookupPrivateRecordSetOutputArgs struct {

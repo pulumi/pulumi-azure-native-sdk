@@ -58,12 +58,8 @@ type LookupPrivateLinkServicesForEDMUploadResult struct {
 }
 
 func LookupPrivateLinkServicesForEDMUploadOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForEDMUploadOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForEDMUploadResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForEDMUploadResultOutput, error) {
-			args := v.(LookupPrivateLinkServicesForEDMUploadArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityandcompliance:getPrivateLinkServicesForEDMUpload", args, LookupPrivateLinkServicesForEDMUploadResultOutput{}, options).(LookupPrivateLinkServicesForEDMUploadResultOutput), nil
-		}).(LookupPrivateLinkServicesForEDMUploadResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityandcompliance:getPrivateLinkServicesForEDMUpload", args, LookupPrivateLinkServicesForEDMUploadResultOutput{}, options).(LookupPrivateLinkServicesForEDMUploadResultOutput)
 }
 
 type LookupPrivateLinkServicesForEDMUploadOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupBackupLongTermRetentionPolicyResult struct {
 }
 
 func LookupBackupLongTermRetentionPolicyOutput(ctx *pulumi.Context, args LookupBackupLongTermRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackupLongTermRetentionPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBackupLongTermRetentionPolicyResultOutput, error) {
-			args := v.(LookupBackupLongTermRetentionPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getBackupLongTermRetentionPolicy", args, LookupBackupLongTermRetentionPolicyResultOutput{}, options).(LookupBackupLongTermRetentionPolicyResultOutput), nil
-		}).(LookupBackupLongTermRetentionPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getBackupLongTermRetentionPolicy", args, LookupBackupLongTermRetentionPolicyResultOutput{}, options).(LookupBackupLongTermRetentionPolicyResultOutput)
 }
 
 type LookupBackupLongTermRetentionPolicyOutputArgs struct {

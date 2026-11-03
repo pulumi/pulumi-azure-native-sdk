@@ -84,12 +84,8 @@ type LookupKpiResult struct {
 }
 
 func LookupKpiOutput(ctx *pulumi.Context, args LookupKpiOutputArgs, opts ...pulumi.InvokeOption) LookupKpiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKpiResultOutput, error) {
-			args := v.(LookupKpiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:customerinsights:getKpi", args, LookupKpiResultOutput{}, options).(LookupKpiResultOutput), nil
-		}).(LookupKpiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:customerinsights:getKpi", args, LookupKpiResultOutput{}, options).(LookupKpiResultOutput)
 }
 
 type LookupKpiOutputArgs struct {

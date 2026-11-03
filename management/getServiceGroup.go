@@ -50,12 +50,8 @@ type LookupServiceGroupResult struct {
 }
 
 func LookupServiceGroupOutput(ctx *pulumi.Context, args LookupServiceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServiceGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceGroupResultOutput, error) {
-			args := v.(LookupServiceGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:management:getServiceGroup", args, LookupServiceGroupResultOutput{}, options).(LookupServiceGroupResultOutput), nil
-		}).(LookupServiceGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:management:getServiceGroup", args, LookupServiceGroupResultOutput{}, options).(LookupServiceGroupResultOutput)
 }
 
 type LookupServiceGroupOutputArgs struct {

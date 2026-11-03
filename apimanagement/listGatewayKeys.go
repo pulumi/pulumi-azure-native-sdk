@@ -44,12 +44,8 @@ type ListGatewayKeysResult struct {
 }
 
 func ListGatewayKeysOutput(ctx *pulumi.Context, args ListGatewayKeysOutputArgs, opts ...pulumi.InvokeOption) ListGatewayKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGatewayKeysResultOutput, error) {
-			args := v.(ListGatewayKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listGatewayKeys", args, ListGatewayKeysResultOutput{}, options).(ListGatewayKeysResultOutput), nil
-		}).(ListGatewayKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listGatewayKeys", args, ListGatewayKeysResultOutput{}, options).(ListGatewayKeysResultOutput)
 }
 
 type ListGatewayKeysOutputArgs struct {

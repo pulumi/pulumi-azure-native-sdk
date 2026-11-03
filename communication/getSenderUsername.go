@@ -60,12 +60,8 @@ type LookupSenderUsernameResult struct {
 }
 
 func LookupSenderUsernameOutput(ctx *pulumi.Context, args LookupSenderUsernameOutputArgs, opts ...pulumi.InvokeOption) LookupSenderUsernameResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSenderUsernameResultOutput, error) {
-			args := v.(LookupSenderUsernameArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:communication:getSenderUsername", args, LookupSenderUsernameResultOutput{}, options).(LookupSenderUsernameResultOutput), nil
-		}).(LookupSenderUsernameResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:communication:getSenderUsername", args, LookupSenderUsernameResultOutput{}, options).(LookupSenderUsernameResultOutput)
 }
 
 type LookupSenderUsernameOutputArgs struct {

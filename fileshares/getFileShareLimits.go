@@ -38,12 +38,8 @@ type GetFileShareLimitsResult struct {
 }
 
 func GetFileShareLimitsOutput(ctx *pulumi.Context, args GetFileShareLimitsOutputArgs, opts ...pulumi.InvokeOption) GetFileShareLimitsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileShareLimitsResultOutput, error) {
-			args := v.(GetFileShareLimitsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fileshares:getFileShareLimits", args, GetFileShareLimitsResultOutput{}, options).(GetFileShareLimitsResultOutput), nil
-		}).(GetFileShareLimitsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fileshares:getFileShareLimits", args, GetFileShareLimitsResultOutput{}, options).(GetFileShareLimitsResultOutput)
 }
 
 type GetFileShareLimitsOutputArgs struct {

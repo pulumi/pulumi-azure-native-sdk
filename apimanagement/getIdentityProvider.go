@@ -68,12 +68,8 @@ type LookupIdentityProviderResult struct {
 }
 
 func LookupIdentityProviderOutput(ctx *pulumi.Context, args LookupIdentityProviderOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdentityProviderResultOutput, error) {
-			args := v.(LookupIdentityProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getIdentityProvider", args, LookupIdentityProviderResultOutput{}, options).(LookupIdentityProviderResultOutput), nil
-		}).(LookupIdentityProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getIdentityProvider", args, LookupIdentityProviderResultOutput{}, options).(LookupIdentityProviderResultOutput)
 }
 
 type LookupIdentityProviderOutputArgs struct {

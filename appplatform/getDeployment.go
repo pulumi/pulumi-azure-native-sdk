@@ -68,12 +68,8 @@ func (val *LookupDeploymentResult) Defaults() *LookupDeploymentResult {
 	return &tmp
 }
 func LookupDeploymentOutput(ctx *pulumi.Context, args LookupDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDeploymentResultOutput, error) {
-			args := v.(LookupDeploymentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getDeployment", args, LookupDeploymentResultOutput{}, options).(LookupDeploymentResultOutput), nil
-		}).(LookupDeploymentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getDeployment", args, LookupDeploymentResultOutput{}, options).(LookupDeploymentResultOutput)
 }
 
 type LookupDeploymentOutputArgs struct {

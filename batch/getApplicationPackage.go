@@ -66,12 +66,8 @@ type LookupApplicationPackageResult struct {
 }
 
 func LookupApplicationPackageOutput(ctx *pulumi.Context, args LookupApplicationPackageOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApplicationPackageResultOutput, error) {
-			args := v.(LookupApplicationPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:batch:getApplicationPackage", args, LookupApplicationPackageResultOutput{}, options).(LookupApplicationPackageResultOutput), nil
-		}).(LookupApplicationPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:batch:getApplicationPackage", args, LookupApplicationPackageResultOutput{}, options).(LookupApplicationPackageResultOutput)
 }
 
 type LookupApplicationPackageOutputArgs struct {

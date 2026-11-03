@@ -68,12 +68,8 @@ type LookupWCFRelayResult struct {
 }
 
 func LookupWCFRelayOutput(ctx *pulumi.Context, args LookupWCFRelayOutputArgs, opts ...pulumi.InvokeOption) LookupWCFRelayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWCFRelayResultOutput, error) {
-			args := v.(LookupWCFRelayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:relay:getWCFRelay", args, LookupWCFRelayResultOutput{}, options).(LookupWCFRelayResultOutput), nil
-		}).(LookupWCFRelayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:relay:getWCFRelay", args, LookupWCFRelayResultOutput{}, options).(LookupWCFRelayResultOutput)
 }
 
 type LookupWCFRelayOutputArgs struct {

@@ -72,12 +72,8 @@ func (val *ListBotConnectionWithSecretsResult) Defaults() *ListBotConnectionWith
 	return &tmp
 }
 func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnectionWithSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionWithSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBotConnectionWithSecretsResultOutput, error) {
-			args := v.(ListBotConnectionWithSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:botservice:listBotConnectionWithSecrets", args, ListBotConnectionWithSecretsResultOutput{}, options).(ListBotConnectionWithSecretsResultOutput), nil
-		}).(ListBotConnectionWithSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:botservice:listBotConnectionWithSecrets", args, ListBotConnectionWithSecretsResultOutput{}, options).(ListBotConnectionWithSecretsResultOutput)
 }
 
 type ListBotConnectionWithSecretsOutputArgs struct {

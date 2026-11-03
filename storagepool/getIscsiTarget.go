@@ -70,12 +70,8 @@ type LookupIscsiTargetResult struct {
 }
 
 func LookupIscsiTargetOutput(ctx *pulumi.Context, args LookupIscsiTargetOutputArgs, opts ...pulumi.InvokeOption) LookupIscsiTargetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIscsiTargetResultOutput, error) {
-			args := v.(LookupIscsiTargetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagepool:getIscsiTarget", args, LookupIscsiTargetResultOutput{}, options).(LookupIscsiTargetResultOutput), nil
-		}).(LookupIscsiTargetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagepool:getIscsiTarget", args, LookupIscsiTargetResultOutput{}, options).(LookupIscsiTargetResultOutput)
 }
 
 type LookupIscsiTargetOutputArgs struct {

@@ -62,12 +62,8 @@ func (val *LookupEnvironmentContainerResult) Defaults() *LookupEnvironmentContai
 	return &tmp
 }
 func LookupEnvironmentContainerOutput(ctx *pulumi.Context, args LookupEnvironmentContainerOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentContainerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentContainerResultOutput, error) {
-			args := v.(LookupEnvironmentContainerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getEnvironmentContainer", args, LookupEnvironmentContainerResultOutput{}, options).(LookupEnvironmentContainerResultOutput), nil
-		}).(LookupEnvironmentContainerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getEnvironmentContainer", args, LookupEnvironmentContainerResultOutput{}, options).(LookupEnvironmentContainerResultOutput)
 }
 
 type LookupEnvironmentContainerOutputArgs struct {

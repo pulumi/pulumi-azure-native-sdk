@@ -62,12 +62,8 @@ type LookupRuntimeEnvironmentResult struct {
 }
 
 func LookupRuntimeEnvironmentOutput(ctx *pulumi.Context, args LookupRuntimeEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupRuntimeEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuntimeEnvironmentResultOutput, error) {
-			args := v.(LookupRuntimeEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getRuntimeEnvironment", args, LookupRuntimeEnvironmentResultOutput{}, options).(LookupRuntimeEnvironmentResultOutput), nil
-		}).(LookupRuntimeEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getRuntimeEnvironment", args, LookupRuntimeEnvironmentResultOutput{}, options).(LookupRuntimeEnvironmentResultOutput)
 }
 
 type LookupRuntimeEnvironmentOutputArgs struct {

@@ -102,12 +102,8 @@ func (val *LookupBrokerResult) Defaults() *LookupBrokerResult {
 	return &tmp
 }
 func LookupBrokerOutput(ctx *pulumi.Context, args LookupBrokerOutputArgs, opts ...pulumi.InvokeOption) LookupBrokerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBrokerResultOutput, error) {
-			args := v.(LookupBrokerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsmq:getBroker", args, LookupBrokerResultOutput{}, options).(LookupBrokerResultOutput), nil
-		}).(LookupBrokerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsmq:getBroker", args, LookupBrokerResultOutput{}, options).(LookupBrokerResultOutput)
 }
 
 type LookupBrokerOutputArgs struct {

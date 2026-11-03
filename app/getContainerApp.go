@@ -102,12 +102,8 @@ func (val *LookupContainerAppResult) Defaults() *LookupContainerAppResult {
 	return &tmp
 }
 func LookupContainerAppOutput(ctx *pulumi.Context, args LookupContainerAppOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerAppResultOutput, error) {
-			args := v.(LookupContainerAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getContainerApp", args, LookupContainerAppResultOutput{}, options).(LookupContainerAppResultOutput), nil
-		}).(LookupContainerAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getContainerApp", args, LookupContainerAppResultOutput{}, options).(LookupContainerAppResultOutput)
 }
 
 type LookupContainerAppOutputArgs struct {

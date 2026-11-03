@@ -68,12 +68,8 @@ type LookupDiskPoolResult struct {
 }
 
 func LookupDiskPoolOutput(ctx *pulumi.Context, args LookupDiskPoolOutputArgs, opts ...pulumi.InvokeOption) LookupDiskPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiskPoolResultOutput, error) {
-			args := v.(LookupDiskPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagepool:getDiskPool", args, LookupDiskPoolResultOutput{}, options).(LookupDiskPoolResultOutput), nil
-		}).(LookupDiskPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagepool:getDiskPool", args, LookupDiskPoolResultOutput{}, options).(LookupDiskPoolResultOutput)
 }
 
 type LookupDiskPoolOutputArgs struct {

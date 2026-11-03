@@ -52,12 +52,8 @@ type LookupHorizonDbClusterResult struct {
 }
 
 func LookupHorizonDbClusterOutput(ctx *pulumi.Context, args LookupHorizonDbClusterOutputArgs, opts ...pulumi.InvokeOption) LookupHorizonDbClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHorizonDbClusterResultOutput, error) {
-			args := v.(LookupHorizonDbClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbCluster", args, LookupHorizonDbClusterResultOutput{}, options).(LookupHorizonDbClusterResultOutput), nil
-		}).(LookupHorizonDbClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbCluster", args, LookupHorizonDbClusterResultOutput{}, options).(LookupHorizonDbClusterResultOutput)
 }
 
 type LookupHorizonDbClusterOutputArgs struct {

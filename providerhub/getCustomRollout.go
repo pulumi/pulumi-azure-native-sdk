@@ -58,12 +58,8 @@ func (val *LookupCustomRolloutResult) Defaults() *LookupCustomRolloutResult {
 	return &tmp
 }
 func LookupCustomRolloutOutput(ctx *pulumi.Context, args LookupCustomRolloutOutputArgs, opts ...pulumi.InvokeOption) LookupCustomRolloutResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomRolloutResultOutput, error) {
-			args := v.(LookupCustomRolloutArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getCustomRollout", args, LookupCustomRolloutResultOutput{}, options).(LookupCustomRolloutResultOutput), nil
-		}).(LookupCustomRolloutResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getCustomRollout", args, LookupCustomRolloutResultOutput{}, options).(LookupCustomRolloutResultOutput)
 }
 
 type LookupCustomRolloutOutputArgs struct {

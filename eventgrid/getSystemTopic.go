@@ -62,12 +62,8 @@ type LookupSystemTopicResult struct {
 }
 
 func LookupSystemTopicOutput(ctx *pulumi.Context, args LookupSystemTopicOutputArgs, opts ...pulumi.InvokeOption) LookupSystemTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSystemTopicResultOutput, error) {
-			args := v.(LookupSystemTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:getSystemTopic", args, LookupSystemTopicResultOutput{}, options).(LookupSystemTopicResultOutput), nil
-		}).(LookupSystemTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:getSystemTopic", args, LookupSystemTopicResultOutput{}, options).(LookupSystemTopicResultOutput)
 }
 
 type LookupSystemTopicOutputArgs struct {

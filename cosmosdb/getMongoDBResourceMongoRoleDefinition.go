@@ -56,12 +56,8 @@ type LookupMongoDBResourceMongoRoleDefinitionResult struct {
 }
 
 func LookupMongoDBResourceMongoRoleDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoRoleDefinitionResultOutput, error) {
-			args := v.(LookupMongoDBResourceMongoRoleDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getMongoDBResourceMongoRoleDefinition", args, LookupMongoDBResourceMongoRoleDefinitionResultOutput{}, options).(LookupMongoDBResourceMongoRoleDefinitionResultOutput), nil
-		}).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getMongoDBResourceMongoRoleDefinition", args, LookupMongoDBResourceMongoRoleDefinitionResultOutput{}, options).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
 }
 
 type LookupMongoDBResourceMongoRoleDefinitionOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupSapLandscapeMonitorResult struct {
 }
 
 func LookupSapLandscapeMonitorOutput(ctx *pulumi.Context, args LookupSapLandscapeMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupSapLandscapeMonitorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSapLandscapeMonitorResultOutput, error) {
-			args := v.(LookupSapLandscapeMonitorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapLandscapeMonitor", args, LookupSapLandscapeMonitorResultOutput{}, options).(LookupSapLandscapeMonitorResultOutput), nil
-		}).(LookupSapLandscapeMonitorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapLandscapeMonitor", args, LookupSapLandscapeMonitorResultOutput{}, options).(LookupSapLandscapeMonitorResultOutput)
 }
 
 type LookupSapLandscapeMonitorOutputArgs struct {

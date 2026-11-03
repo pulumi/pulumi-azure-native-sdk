@@ -56,12 +56,8 @@ type ListIntegrationAccountMapContentCallbackUrlResult struct {
 }
 
 func ListIntegrationAccountMapContentCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountMapContentCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountMapContentCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountMapContentCallbackUrlResultOutput, error) {
-			args := v.(ListIntegrationAccountMapContentCallbackUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountMapContentCallbackUrl", args, ListIntegrationAccountMapContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountMapContentCallbackUrlResultOutput), nil
-		}).(ListIntegrationAccountMapContentCallbackUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountMapContentCallbackUrl", args, ListIntegrationAccountMapContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountMapContentCallbackUrlResultOutput)
 }
 
 type ListIntegrationAccountMapContentCallbackUrlOutputArgs struct {

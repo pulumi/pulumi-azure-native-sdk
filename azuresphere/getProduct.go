@@ -52,12 +52,8 @@ type LookupProductResult struct {
 }
 
 func LookupProductOutput(ctx *pulumi.Context, args LookupProductOutputArgs, opts ...pulumi.InvokeOption) LookupProductResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProductResultOutput, error) {
-			args := v.(LookupProductArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuresphere:getProduct", args, LookupProductResultOutput{}, options).(LookupProductResultOutput), nil
-		}).(LookupProductResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuresphere:getProduct", args, LookupProductResultOutput{}, options).(LookupProductResultOutput)
 }
 
 type LookupProductOutputArgs struct {

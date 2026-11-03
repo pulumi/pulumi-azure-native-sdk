@@ -42,12 +42,8 @@ type ListOpenIdConnectProviderSecretsResult struct {
 }
 
 func ListOpenIdConnectProviderSecretsOutput(ctx *pulumi.Context, args ListOpenIdConnectProviderSecretsOutputArgs, opts ...pulumi.InvokeOption) ListOpenIdConnectProviderSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListOpenIdConnectProviderSecretsResultOutput, error) {
-			args := v.(ListOpenIdConnectProviderSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listOpenIdConnectProviderSecrets", args, ListOpenIdConnectProviderSecretsResultOutput{}, options).(ListOpenIdConnectProviderSecretsResultOutput), nil
-		}).(ListOpenIdConnectProviderSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listOpenIdConnectProviderSecrets", args, ListOpenIdConnectProviderSecretsResultOutput{}, options).(ListOpenIdConnectProviderSecretsResultOutput)
 }
 
 type ListOpenIdConnectProviderSecretsOutputArgs struct {

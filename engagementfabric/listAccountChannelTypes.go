@@ -38,12 +38,8 @@ type ListAccountChannelTypesResult struct {
 }
 
 func ListAccountChannelTypesOutput(ctx *pulumi.Context, args ListAccountChannelTypesOutputArgs, opts ...pulumi.InvokeOption) ListAccountChannelTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccountChannelTypesResultOutput, error) {
-			args := v.(ListAccountChannelTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:engagementfabric:listAccountChannelTypes", args, ListAccountChannelTypesResultOutput{}, options).(ListAccountChannelTypesResultOutput), nil
-		}).(ListAccountChannelTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:engagementfabric:listAccountChannelTypes", args, ListAccountChannelTypesResultOutput{}, options).(ListAccountChannelTypesResultOutput)
 }
 
 type ListAccountChannelTypesOutputArgs struct {

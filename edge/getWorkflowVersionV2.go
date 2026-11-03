@@ -54,12 +54,8 @@ type LookupWorkflowVersionV2Result struct {
 }
 
 func LookupWorkflowVersionV2Output(ctx *pulumi.Context, args LookupWorkflowVersionV2OutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowVersionV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowVersionV2ResultOutput, error) {
-			args := v.(LookupWorkflowVersionV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getWorkflowVersionV2", args, LookupWorkflowVersionV2ResultOutput{}, options).(LookupWorkflowVersionV2ResultOutput), nil
-		}).(LookupWorkflowVersionV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getWorkflowVersionV2", args, LookupWorkflowVersionV2ResultOutput{}, options).(LookupWorkflowVersionV2ResultOutput)
 }
 
 type LookupWorkflowVersionV2OutputArgs struct {

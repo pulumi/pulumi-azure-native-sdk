@@ -52,12 +52,8 @@ type LookupProductGroupLinkResult struct {
 }
 
 func LookupProductGroupLinkOutput(ctx *pulumi.Context, args LookupProductGroupLinkOutputArgs, opts ...pulumi.InvokeOption) LookupProductGroupLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProductGroupLinkResultOutput, error) {
-			args := v.(LookupProductGroupLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getProductGroupLink", args, LookupProductGroupLinkResultOutput{}, options).(LookupProductGroupLinkResultOutput), nil
-		}).(LookupProductGroupLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getProductGroupLink", args, LookupProductGroupLinkResultOutput{}, options).(LookupProductGroupLinkResultOutput)
 }
 
 type LookupProductGroupLinkOutputArgs struct {

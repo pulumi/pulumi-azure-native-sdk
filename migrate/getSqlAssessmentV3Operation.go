@@ -50,12 +50,8 @@ type LookupSqlAssessmentV3OperationResult struct {
 }
 
 func LookupSqlAssessmentV3OperationOutput(ctx *pulumi.Context, args LookupSqlAssessmentV3OperationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlAssessmentV3OperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlAssessmentV3OperationResultOutput, error) {
-			args := v.(LookupSqlAssessmentV3OperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getSqlAssessmentV3Operation", args, LookupSqlAssessmentV3OperationResultOutput{}, options).(LookupSqlAssessmentV3OperationResultOutput), nil
-		}).(LookupSqlAssessmentV3OperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getSqlAssessmentV3Operation", args, LookupSqlAssessmentV3OperationResultOutput{}, options).(LookupSqlAssessmentV3OperationResultOutput)
 }
 
 type LookupSqlAssessmentV3OperationOutputArgs struct {

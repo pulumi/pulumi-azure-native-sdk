@@ -42,12 +42,8 @@ type ListNamespaceSharedAccessKeysResult struct {
 }
 
 func ListNamespaceSharedAccessKeysOutput(ctx *pulumi.Context, args ListNamespaceSharedAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceSharedAccessKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNamespaceSharedAccessKeysResultOutput, error) {
-			args := v.(ListNamespaceSharedAccessKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventgrid:listNamespaceSharedAccessKeys", args, ListNamespaceSharedAccessKeysResultOutput{}, options).(ListNamespaceSharedAccessKeysResultOutput), nil
-		}).(ListNamespaceSharedAccessKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventgrid:listNamespaceSharedAccessKeys", args, ListNamespaceSharedAccessKeysResultOutput{}, options).(ListNamespaceSharedAccessKeysResultOutput)
 }
 
 type ListNamespaceSharedAccessKeysOutputArgs struct {

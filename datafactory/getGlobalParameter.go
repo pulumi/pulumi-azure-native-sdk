@@ -52,12 +52,8 @@ type LookupGlobalParameterResult struct {
 }
 
 func LookupGlobalParameterOutput(ctx *pulumi.Context, args LookupGlobalParameterOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalParameterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlobalParameterResultOutput, error) {
-			args := v.(LookupGlobalParameterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getGlobalParameter", args, LookupGlobalParameterResultOutput{}, options).(LookupGlobalParameterResultOutput), nil
-		}).(LookupGlobalParameterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getGlobalParameter", args, LookupGlobalParameterResultOutput{}, options).(LookupGlobalParameterResultOutput)
 }
 
 type LookupGlobalParameterOutputArgs struct {

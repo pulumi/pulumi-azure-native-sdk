@@ -114,12 +114,8 @@ func (val *LookupServerEndpointResult) Defaults() *LookupServerEndpointResult {
 	return &tmp
 }
 func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerEndpointResultOutput, error) {
-			args := v.(LookupServerEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagesync:getServerEndpoint", args, LookupServerEndpointResultOutput{}, options).(LookupServerEndpointResultOutput), nil
-		}).(LookupServerEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagesync:getServerEndpoint", args, LookupServerEndpointResultOutput{}, options).(LookupServerEndpointResultOutput)
 }
 
 type LookupServerEndpointOutputArgs struct {

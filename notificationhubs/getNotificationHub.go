@@ -79,12 +79,8 @@ type LookupNotificationHubResult struct {
 }
 
 func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHubOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotificationHubResultOutput, error) {
-			args := v.(LookupNotificationHubArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:notificationhubs:getNotificationHub", args, LookupNotificationHubResultOutput{}, options).(LookupNotificationHubResultOutput), nil
-		}).(LookupNotificationHubResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:notificationhubs:getNotificationHub", args, LookupNotificationHubResultOutput{}, options).(LookupNotificationHubResultOutput)
 }
 
 type LookupNotificationHubOutputArgs struct {

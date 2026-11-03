@@ -60,12 +60,8 @@ type LookupScopeMapResult struct {
 }
 
 func LookupScopeMapOutput(ctx *pulumi.Context, args LookupScopeMapOutputArgs, opts ...pulumi.InvokeOption) LookupScopeMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScopeMapResultOutput, error) {
-			args := v.(LookupScopeMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerregistry:getScopeMap", args, LookupScopeMapResultOutput{}, options).(LookupScopeMapResultOutput), nil
-		}).(LookupScopeMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerregistry:getScopeMap", args, LookupScopeMapResultOutput{}, options).(LookupScopeMapResultOutput)
 }
 
 type LookupScopeMapOutputArgs struct {

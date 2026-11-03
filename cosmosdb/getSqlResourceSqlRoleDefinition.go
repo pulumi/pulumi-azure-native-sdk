@@ -54,12 +54,8 @@ type LookupSqlResourceSqlRoleDefinitionResult struct {
 }
 
 func LookupSqlResourceSqlRoleDefinitionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlRoleDefinitionResultOutput, error) {
-			args := v.(LookupSqlResourceSqlRoleDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlRoleDefinition", args, LookupSqlResourceSqlRoleDefinitionResultOutput{}, options).(LookupSqlResourceSqlRoleDefinitionResultOutput), nil
-		}).(LookupSqlResourceSqlRoleDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlRoleDefinition", args, LookupSqlResourceSqlRoleDefinitionResultOutput{}, options).(LookupSqlResourceSqlRoleDefinitionResultOutput)
 }
 
 type LookupSqlResourceSqlRoleDefinitionOutputArgs struct {

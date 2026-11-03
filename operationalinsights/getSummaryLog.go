@@ -62,12 +62,8 @@ type LookupSummaryLogResult struct {
 }
 
 func LookupSummaryLogOutput(ctx *pulumi.Context, args LookupSummaryLogOutputArgs, opts ...pulumi.InvokeOption) LookupSummaryLogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSummaryLogResultOutput, error) {
-			args := v.(LookupSummaryLogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationalinsights:getSummaryLog", args, LookupSummaryLogResultOutput{}, options).(LookupSummaryLogResultOutput), nil
-		}).(LookupSummaryLogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationalinsights:getSummaryLog", args, LookupSummaryLogResultOutput{}, options).(LookupSummaryLogResultOutput)
 }
 
 type LookupSummaryLogOutputArgs struct {

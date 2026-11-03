@@ -55,12 +55,8 @@ type LookupIntegrationFabricResult struct {
 }
 
 func LookupIntegrationFabricOutput(ctx *pulumi.Context, args LookupIntegrationFabricOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationFabricResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationFabricResultOutput, error) {
-			args := v.(LookupIntegrationFabricArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dashboard:getIntegrationFabric", args, LookupIntegrationFabricResultOutput{}, options).(LookupIntegrationFabricResultOutput), nil
-		}).(LookupIntegrationFabricResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dashboard:getIntegrationFabric", args, LookupIntegrationFabricResultOutput{}, options).(LookupIntegrationFabricResultOutput)
 }
 
 type LookupIntegrationFabricOutputArgs struct {

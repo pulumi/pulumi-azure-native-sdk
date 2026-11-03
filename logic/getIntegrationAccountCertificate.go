@@ -62,12 +62,8 @@ type LookupIntegrationAccountCertificateResult struct {
 }
 
 func LookupIntegrationAccountCertificateOutput(ctx *pulumi.Context, args LookupIntegrationAccountCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountCertificateResultOutput, error) {
-			args := v.(LookupIntegrationAccountCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountCertificate", args, LookupIntegrationAccountCertificateResultOutput{}, options).(LookupIntegrationAccountCertificateResultOutput), nil
-		}).(LookupIntegrationAccountCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountCertificate", args, LookupIntegrationAccountCertificateResultOutput{}, options).(LookupIntegrationAccountCertificateResultOutput)
 }
 
 type LookupIntegrationAccountCertificateOutputArgs struct {

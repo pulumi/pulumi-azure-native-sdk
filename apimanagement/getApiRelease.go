@@ -58,12 +58,8 @@ type LookupApiReleaseResult struct {
 }
 
 func LookupApiReleaseOutput(ctx *pulumi.Context, args LookupApiReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupApiReleaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiReleaseResultOutput, error) {
-			args := v.(LookupApiReleaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiRelease", args, LookupApiReleaseResultOutput{}, options).(LookupApiReleaseResultOutput), nil
-		}).(LookupApiReleaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiRelease", args, LookupApiReleaseResultOutput{}, options).(LookupApiReleaseResultOutput)
 }
 
 type LookupApiReleaseOutputArgs struct {

@@ -72,12 +72,8 @@ type LookupAssignmentResult struct {
 }
 
 func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssignmentResultOutput, error) {
-			args := v.(LookupAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getAssignment", args, LookupAssignmentResultOutput{}, options).(LookupAssignmentResultOutput), nil
-		}).(LookupAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getAssignment", args, LookupAssignmentResultOutput{}, options).(LookupAssignmentResultOutput)
 }
 
 type LookupAssignmentOutputArgs struct {

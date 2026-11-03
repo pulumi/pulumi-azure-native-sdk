@@ -54,12 +54,8 @@ type LookupDynamicConfigurationVersionResult struct {
 }
 
 func LookupDynamicConfigurationVersionOutput(ctx *pulumi.Context, args LookupDynamicConfigurationVersionOutputArgs, opts ...pulumi.InvokeOption) LookupDynamicConfigurationVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDynamicConfigurationVersionResultOutput, error) {
-			args := v.(LookupDynamicConfigurationVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getDynamicConfigurationVersion", args, LookupDynamicConfigurationVersionResultOutput{}, options).(LookupDynamicConfigurationVersionResultOutput), nil
-		}).(LookupDynamicConfigurationVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getDynamicConfigurationVersion", args, LookupDynamicConfigurationVersionResultOutput{}, options).(LookupDynamicConfigurationVersionResultOutput)
 }
 
 type LookupDynamicConfigurationVersionOutputArgs struct {

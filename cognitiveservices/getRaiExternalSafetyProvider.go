@@ -52,12 +52,8 @@ type LookupRaiExternalSafetyProviderResult struct {
 }
 
 func LookupRaiExternalSafetyProviderOutput(ctx *pulumi.Context, args LookupRaiExternalSafetyProviderOutputArgs, opts ...pulumi.InvokeOption) LookupRaiExternalSafetyProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRaiExternalSafetyProviderResultOutput, error) {
-			args := v.(LookupRaiExternalSafetyProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiExternalSafetyProvider", args, LookupRaiExternalSafetyProviderResultOutput{}, options).(LookupRaiExternalSafetyProviderResultOutput), nil
-		}).(LookupRaiExternalSafetyProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiExternalSafetyProvider", args, LookupRaiExternalSafetyProviderResultOutput{}, options).(LookupRaiExternalSafetyProviderResultOutput)
 }
 
 type LookupRaiExternalSafetyProviderOutputArgs struct {
