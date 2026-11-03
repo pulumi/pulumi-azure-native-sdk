@@ -38,12 +38,8 @@ type ListBitLockerKeyResult struct {
 }
 
 func ListBitLockerKeyOutput(ctx *pulumi.Context, args ListBitLockerKeyOutputArgs, opts ...pulumi.InvokeOption) ListBitLockerKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBitLockerKeyResultOutput, error) {
-			args := v.(ListBitLockerKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:importexport:listBitLockerKey", args, ListBitLockerKeyResultOutput{}, options).(ListBitLockerKeyResultOutput), nil
-		}).(ListBitLockerKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:importexport:listBitLockerKey", args, ListBitLockerKeyResultOutput{}, options).(ListBitLockerKeyResultOutput)
 }
 
 type ListBitLockerKeyOutputArgs struct {

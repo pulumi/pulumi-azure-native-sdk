@@ -52,12 +52,8 @@ type LookupAppSyncGraphqlApiResult struct {
 }
 
 func LookupAppSyncGraphqlApiOutput(ctx *pulumi.Context, args LookupAppSyncGraphqlApiOutputArgs, opts ...pulumi.InvokeOption) LookupAppSyncGraphqlApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppSyncGraphqlApiResultOutput, error) {
-			args := v.(LookupAppSyncGraphqlApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getAppSyncGraphqlApi", args, LookupAppSyncGraphqlApiResultOutput{}, options).(LookupAppSyncGraphqlApiResultOutput), nil
-		}).(LookupAppSyncGraphqlApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getAppSyncGraphqlApi", args, LookupAppSyncGraphqlApiResultOutput{}, options).(LookupAppSyncGraphqlApiResultOutput)
 }
 
 type LookupAppSyncGraphqlApiOutputArgs struct {

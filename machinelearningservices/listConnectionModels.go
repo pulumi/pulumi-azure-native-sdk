@@ -37,12 +37,8 @@ type ListConnectionModelsResult struct {
 }
 
 func ListConnectionModelsOutput(ctx *pulumi.Context, args ListConnectionModelsOutputArgs, opts ...pulumi.InvokeOption) ListConnectionModelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListConnectionModelsResultOutput, error) {
-			args := v.(ListConnectionModelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listConnectionModels", args, ListConnectionModelsResultOutput{}, options).(ListConnectionModelsResultOutput), nil
-		}).(ListConnectionModelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listConnectionModels", args, ListConnectionModelsResultOutput{}, options).(ListConnectionModelsResultOutput)
 }
 
 type ListConnectionModelsOutputArgs struct {

@@ -64,12 +64,8 @@ func (val *LookupRegistryCodeVersionResult) Defaults() *LookupRegistryCodeVersio
 	return &tmp
 }
 func LookupRegistryCodeVersionOutput(ctx *pulumi.Context, args LookupRegistryCodeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryCodeVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryCodeVersionResultOutput, error) {
-			args := v.(LookupRegistryCodeVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryCodeVersion", args, LookupRegistryCodeVersionResultOutput{}, options).(LookupRegistryCodeVersionResultOutput), nil
-		}).(LookupRegistryCodeVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryCodeVersion", args, LookupRegistryCodeVersionResultOutput{}, options).(LookupRegistryCodeVersionResultOutput)
 }
 
 type LookupRegistryCodeVersionOutputArgs struct {

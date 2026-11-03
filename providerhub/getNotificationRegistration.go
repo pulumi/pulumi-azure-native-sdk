@@ -49,12 +49,8 @@ type LookupNotificationRegistrationResult struct {
 }
 
 func LookupNotificationRegistrationOutput(ctx *pulumi.Context, args LookupNotificationRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationRegistrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotificationRegistrationResultOutput, error) {
-			args := v.(LookupNotificationRegistrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:providerhub:getNotificationRegistration", args, LookupNotificationRegistrationResultOutput{}, options).(LookupNotificationRegistrationResultOutput), nil
-		}).(LookupNotificationRegistrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:providerhub:getNotificationRegistration", args, LookupNotificationRegistrationResultOutput{}, options).(LookupNotificationRegistrationResultOutput)
 }
 
 type LookupNotificationRegistrationOutputArgs struct {

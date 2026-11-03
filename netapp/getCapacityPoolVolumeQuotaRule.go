@@ -66,12 +66,8 @@ type LookupCapacityPoolVolumeQuotaRuleResult struct {
 }
 
 func LookupCapacityPoolVolumeQuotaRuleOutput(ctx *pulumi.Context, args LookupCapacityPoolVolumeQuotaRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityPoolVolumeQuotaRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCapacityPoolVolumeQuotaRuleResultOutput, error) {
-			args := v.(LookupCapacityPoolVolumeQuotaRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolVolumeQuotaRule", args, LookupCapacityPoolVolumeQuotaRuleResultOutput{}, options).(LookupCapacityPoolVolumeQuotaRuleResultOutput), nil
-		}).(LookupCapacityPoolVolumeQuotaRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getCapacityPoolVolumeQuotaRule", args, LookupCapacityPoolVolumeQuotaRuleResultOutput{}, options).(LookupCapacityPoolVolumeQuotaRuleResultOutput)
 }
 
 type LookupCapacityPoolVolumeQuotaRuleOutputArgs struct {

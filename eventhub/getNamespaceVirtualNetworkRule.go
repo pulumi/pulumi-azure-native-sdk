@@ -48,12 +48,8 @@ type LookupNamespaceVirtualNetworkRuleResult struct {
 }
 
 func LookupNamespaceVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupNamespaceVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceVirtualNetworkRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceVirtualNetworkRuleResultOutput, error) {
-			args := v.(LookupNamespaceVirtualNetworkRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventhub:getNamespaceVirtualNetworkRule", args, LookupNamespaceVirtualNetworkRuleResultOutput{}, options).(LookupNamespaceVirtualNetworkRuleResultOutput), nil
-		}).(LookupNamespaceVirtualNetworkRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventhub:getNamespaceVirtualNetworkRule", args, LookupNamespaceVirtualNetworkRuleResultOutput{}, options).(LookupNamespaceVirtualNetworkRuleResultOutput)
 }
 
 type LookupNamespaceVirtualNetworkRuleOutputArgs struct {

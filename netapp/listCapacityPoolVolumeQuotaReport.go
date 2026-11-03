@@ -46,12 +46,8 @@ type ListCapacityPoolVolumeQuotaReportResult struct {
 }
 
 func ListCapacityPoolVolumeQuotaReportOutput(ctx *pulumi.Context, args ListCapacityPoolVolumeQuotaReportOutputArgs, opts ...pulumi.InvokeOption) ListCapacityPoolVolumeQuotaReportResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListCapacityPoolVolumeQuotaReportResultOutput, error) {
-			args := v.(ListCapacityPoolVolumeQuotaReportArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolVolumeQuotaReport", args, ListCapacityPoolVolumeQuotaReportResultOutput{}, options).(ListCapacityPoolVolumeQuotaReportResultOutput), nil
-		}).(ListCapacityPoolVolumeQuotaReportResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:listCapacityPoolVolumeQuotaReport", args, ListCapacityPoolVolumeQuotaReportResultOutput{}, options).(ListCapacityPoolVolumeQuotaReportResultOutput)
 }
 
 type ListCapacityPoolVolumeQuotaReportOutputArgs struct {

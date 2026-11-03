@@ -52,12 +52,8 @@ type LookupFleetDatabaseResult struct {
 }
 
 func LookupFleetDatabaseOutput(ctx *pulumi.Context, args LookupFleetDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupFleetDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFleetDatabaseResultOutput, error) {
-			args := v.(LookupFleetDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:databasefleetmanager:getFleetDatabase", args, LookupFleetDatabaseResultOutput{}, options).(LookupFleetDatabaseResultOutput), nil
-		}).(LookupFleetDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:databasefleetmanager:getFleetDatabase", args, LookupFleetDatabaseResultOutput{}, options).(LookupFleetDatabaseResultOutput)
 }
 
 type LookupFleetDatabaseOutputArgs struct {

@@ -106,12 +106,8 @@ type LookupManagedEnvironmentResult struct {
 }
 
 func LookupManagedEnvironmentOutput(ctx *pulumi.Context, args LookupManagedEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedEnvironmentResultOutput, error) {
-			args := v.(LookupManagedEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getManagedEnvironment", args, LookupManagedEnvironmentResultOutput{}, options).(LookupManagedEnvironmentResultOutput), nil
-		}).(LookupManagedEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getManagedEnvironment", args, LookupManagedEnvironmentResultOutput{}, options).(LookupManagedEnvironmentResultOutput)
 }
 
 type LookupManagedEnvironmentOutputArgs struct {

@@ -98,12 +98,8 @@ func (val *LookupVirtualEnclaveResult) Defaults() *LookupVirtualEnclaveResult {
 	return &tmp
 }
 func LookupVirtualEnclaveOutput(ctx *pulumi.Context, args LookupVirtualEnclaveOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualEnclaveResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualEnclaveResultOutput, error) {
-			args := v.(LookupVirtualEnclaveArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mission:getVirtualEnclave", args, LookupVirtualEnclaveResultOutput{}, options).(LookupVirtualEnclaveResultOutput), nil
-		}).(LookupVirtualEnclaveResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mission:getVirtualEnclave", args, LookupVirtualEnclaveResultOutput{}, options).(LookupVirtualEnclaveResultOutput)
 }
 
 type LookupVirtualEnclaveOutputArgs struct {

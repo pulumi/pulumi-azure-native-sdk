@@ -70,12 +70,8 @@ type LookupUpdateSummaryResult struct {
 }
 
 func LookupUpdateSummaryOutput(ctx *pulumi.Context, args LookupUpdateSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupUpdateSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUpdateSummaryResultOutput, error) {
-			args := v.(LookupUpdateSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getUpdateSummary", args, LookupUpdateSummaryResultOutput{}, options).(LookupUpdateSummaryResultOutput), nil
-		}).(LookupUpdateSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getUpdateSummary", args, LookupUpdateSummaryResultOutput{}, options).(LookupUpdateSummaryResultOutput)
 }
 
 type LookupUpdateSummaryOutputArgs struct {

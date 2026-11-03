@@ -54,12 +54,8 @@ type LookupTableResourceTableResult struct {
 }
 
 func LookupTableResourceTableOutput(ctx *pulumi.Context, args LookupTableResourceTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResourceTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTableResourceTableResultOutput, error) {
-			args := v.(LookupTableResourceTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getTableResourceTable", args, LookupTableResourceTableResultOutput{}, options).(LookupTableResourceTableResultOutput), nil
-		}).(LookupTableResourceTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getTableResourceTable", args, LookupTableResourceTableResultOutput{}, options).(LookupTableResourceTableResultOutput)
 }
 
 type LookupTableResourceTableOutputArgs struct {

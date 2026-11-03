@@ -52,12 +52,8 @@ type LookupEc2ImageResult struct {
 }
 
 func LookupEc2ImageOutput(ctx *pulumi.Context, args LookupEc2ImageOutputArgs, opts ...pulumi.InvokeOption) LookupEc2ImageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2ImageResultOutput, error) {
-			args := v.(LookupEc2ImageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Image", args, LookupEc2ImageResultOutput{}, options).(LookupEc2ImageResultOutput), nil
-		}).(LookupEc2ImageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2Image", args, LookupEc2ImageResultOutput{}, options).(LookupEc2ImageResultOutput)
 }
 
 type LookupEc2ImageOutputArgs struct {

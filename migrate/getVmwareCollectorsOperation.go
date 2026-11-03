@@ -60,12 +60,8 @@ type LookupVmwareCollectorsOperationResult struct {
 }
 
 func LookupVmwareCollectorsOperationOutput(ctx *pulumi.Context, args LookupVmwareCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupVmwareCollectorsOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVmwareCollectorsOperationResultOutput, error) {
-			args := v.(LookupVmwareCollectorsOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getVmwareCollectorsOperation", args, LookupVmwareCollectorsOperationResultOutput{}, options).(LookupVmwareCollectorsOperationResultOutput), nil
-		}).(LookupVmwareCollectorsOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getVmwareCollectorsOperation", args, LookupVmwareCollectorsOperationResultOutput{}, options).(LookupVmwareCollectorsOperationResultOutput)
 }
 
 type LookupVmwareCollectorsOperationOutputArgs struct {

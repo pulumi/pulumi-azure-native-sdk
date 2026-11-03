@@ -52,12 +52,8 @@ type LookupInvoiceSectionResult struct {
 }
 
 func LookupInvoiceSectionOutput(ctx *pulumi.Context, args LookupInvoiceSectionOutputArgs, opts ...pulumi.InvokeOption) LookupInvoiceSectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInvoiceSectionResultOutput, error) {
-			args := v.(LookupInvoiceSectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billing:getInvoiceSection", args, LookupInvoiceSectionResultOutput{}, options).(LookupInvoiceSectionResultOutput), nil
-		}).(LookupInvoiceSectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billing:getInvoiceSection", args, LookupInvoiceSectionResultOutput{}, options).(LookupInvoiceSectionResultOutput)
 }
 
 type LookupInvoiceSectionOutputArgs struct {

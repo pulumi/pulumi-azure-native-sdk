@@ -52,12 +52,8 @@ type LookupS3ControlMultiRegionAccessPointPolicyDocumentResult struct {
 }
 
 func LookupS3ControlMultiRegionAccessPointPolicyDocumentOutput(ctx *pulumi.Context, args LookupS3ControlMultiRegionAccessPointPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput, error) {
-			args := v.(LookupS3ControlMultiRegionAccessPointPolicyDocumentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getS3ControlMultiRegionAccessPointPolicyDocument", args, LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput{}, options).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput), nil
-		}).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getS3ControlMultiRegionAccessPointPolicyDocument", args, LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput{}, options).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput)
 }
 
 type LookupS3ControlMultiRegionAccessPointPolicyDocumentOutputArgs struct {

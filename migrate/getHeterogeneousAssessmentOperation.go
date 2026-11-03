@@ -50,12 +50,8 @@ type LookupHeterogeneousAssessmentOperationResult struct {
 }
 
 func LookupHeterogeneousAssessmentOperationOutput(ctx *pulumi.Context, args LookupHeterogeneousAssessmentOperationOutputArgs, opts ...pulumi.InvokeOption) LookupHeterogeneousAssessmentOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHeterogeneousAssessmentOperationResultOutput, error) {
-			args := v.(LookupHeterogeneousAssessmentOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getHeterogeneousAssessmentOperation", args, LookupHeterogeneousAssessmentOperationResultOutput{}, options).(LookupHeterogeneousAssessmentOperationResultOutput), nil
-		}).(LookupHeterogeneousAssessmentOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getHeterogeneousAssessmentOperation", args, LookupHeterogeneousAssessmentOperationResultOutput{}, options).(LookupHeterogeneousAssessmentOperationResultOutput)
 }
 
 type LookupHeterogeneousAssessmentOperationOutputArgs struct {

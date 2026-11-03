@@ -64,12 +64,8 @@ type GetProjectCatalogImageDefinitionBuildDetailsResult struct {
 }
 
 func GetProjectCatalogImageDefinitionBuildDetailsOutput(ctx *pulumi.Context, args GetProjectCatalogImageDefinitionBuildDetailsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCatalogImageDefinitionBuildDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectCatalogImageDefinitionBuildDetailsResultOutput, error) {
-			args := v.(GetProjectCatalogImageDefinitionBuildDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devcenter:getProjectCatalogImageDefinitionBuildDetails", args, GetProjectCatalogImageDefinitionBuildDetailsResultOutput{}, options).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput), nil
-		}).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devcenter:getProjectCatalogImageDefinitionBuildDetails", args, GetProjectCatalogImageDefinitionBuildDetailsResultOutput{}, options).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput)
 }
 
 type GetProjectCatalogImageDefinitionBuildDetailsOutputArgs struct {

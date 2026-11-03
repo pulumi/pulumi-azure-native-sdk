@@ -63,12 +63,8 @@ type LookupMachineGroupResult struct {
 }
 
 func LookupMachineGroupOutput(ctx *pulumi.Context, args LookupMachineGroupOutputArgs, opts ...pulumi.InvokeOption) LookupMachineGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMachineGroupResultOutput, error) {
-			args := v.(LookupMachineGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:operationalinsights:getMachineGroup", args, LookupMachineGroupResultOutput{}, options).(LookupMachineGroupResultOutput), nil
-		}).(LookupMachineGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:operationalinsights:getMachineGroup", args, LookupMachineGroupResultOutput{}, options).(LookupMachineGroupResultOutput)
 }
 
 type LookupMachineGroupOutputArgs struct {

@@ -62,12 +62,8 @@ func (val *LookupCloudFrontDistributionResult) Defaults() *LookupCloudFrontDistr
 	return &tmp
 }
 func LookupCloudFrontDistributionOutput(ctx *pulumi.Context, args LookupCloudFrontDistributionOutputArgs, opts ...pulumi.InvokeOption) LookupCloudFrontDistributionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudFrontDistributionResultOutput, error) {
-			args := v.(LookupCloudFrontDistributionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getCloudFrontDistribution", args, LookupCloudFrontDistributionResultOutput{}, options).(LookupCloudFrontDistributionResultOutput), nil
-		}).(LookupCloudFrontDistributionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getCloudFrontDistribution", args, LookupCloudFrontDistributionResultOutput{}, options).(LookupCloudFrontDistributionResultOutput)
 }
 
 type LookupCloudFrontDistributionOutputArgs struct {

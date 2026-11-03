@@ -86,12 +86,8 @@ func (val *LookupL3IsolationDomainResult) Defaults() *LookupL3IsolationDomainRes
 	return &tmp
 }
 func LookupL3IsolationDomainOutput(ctx *pulumi.Context, args LookupL3IsolationDomainOutputArgs, opts ...pulumi.InvokeOption) LookupL3IsolationDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupL3IsolationDomainResultOutput, error) {
-			args := v.(LookupL3IsolationDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getL3IsolationDomain", args, LookupL3IsolationDomainResultOutput{}, options).(LookupL3IsolationDomainResultOutput), nil
-		}).(LookupL3IsolationDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getL3IsolationDomain", args, LookupL3IsolationDomainResultOutput{}, options).(LookupL3IsolationDomainResultOutput)
 }
 
 type LookupL3IsolationDomainOutputArgs struct {

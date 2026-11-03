@@ -59,12 +59,8 @@ type LookupControllerResult struct {
 }
 
 func LookupControllerOutput(ctx *pulumi.Context, args LookupControllerOutputArgs, opts ...pulumi.InvokeOption) LookupControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupControllerResultOutput, error) {
-			args := v.(LookupControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devspaces:getController", args, LookupControllerResultOutput{}, options).(LookupControllerResultOutput), nil
-		}).(LookupControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devspaces:getController", args, LookupControllerResultOutput{}, options).(LookupControllerResultOutput)
 }
 
 type LookupControllerOutputArgs struct {

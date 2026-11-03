@@ -52,12 +52,8 @@ type LookupDatabaseMigrationServiceReplicationInstanceResult struct {
 }
 
 func LookupDatabaseMigrationServiceReplicationInstanceOutput(ctx *pulumi.Context, args LookupDatabaseMigrationServiceReplicationInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationServiceReplicationInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMigrationServiceReplicationInstanceResultOutput, error) {
-			args := v.(LookupDatabaseMigrationServiceReplicationInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getDatabaseMigrationServiceReplicationInstance", args, LookupDatabaseMigrationServiceReplicationInstanceResultOutput{}, options).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput), nil
-		}).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getDatabaseMigrationServiceReplicationInstance", args, LookupDatabaseMigrationServiceReplicationInstanceResultOutput{}, options).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput)
 }
 
 type LookupDatabaseMigrationServiceReplicationInstanceOutputArgs struct {

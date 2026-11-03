@@ -58,12 +58,8 @@ type LookupGremlinResourceGremlinRoleAssignmentResult struct {
 }
 
 func LookupGremlinResourceGremlinRoleAssignmentOutput(ctx *pulumi.Context, args LookupGremlinResourceGremlinRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGremlinResourceGremlinRoleAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinRoleAssignmentResultOutput, error) {
-			args := v.(LookupGremlinResourceGremlinRoleAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getGremlinResourceGremlinRoleAssignment", args, LookupGremlinResourceGremlinRoleAssignmentResultOutput{}, options).(LookupGremlinResourceGremlinRoleAssignmentResultOutput), nil
-		}).(LookupGremlinResourceGremlinRoleAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getGremlinResourceGremlinRoleAssignment", args, LookupGremlinResourceGremlinRoleAssignmentResultOutput{}, options).(LookupGremlinResourceGremlinRoleAssignmentResultOutput)
 }
 
 type LookupGremlinResourceGremlinRoleAssignmentOutputArgs struct {

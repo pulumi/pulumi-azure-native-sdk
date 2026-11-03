@@ -82,12 +82,8 @@ func (val *LookupZoneResult) Defaults() *LookupZoneResult {
 	return &tmp
 }
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneResultOutput, error) {
-			args := v.(LookupZoneArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dns:getZone", args, LookupZoneResultOutput{}, options).(LookupZoneResultOutput), nil
-		}).(LookupZoneResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dns:getZone", args, LookupZoneResultOutput{}, options).(LookupZoneResultOutput)
 }
 
 type LookupZoneOutputArgs struct {

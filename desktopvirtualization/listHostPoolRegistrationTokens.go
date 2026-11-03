@@ -42,12 +42,8 @@ type ListHostPoolRegistrationTokensResult struct {
 }
 
 func ListHostPoolRegistrationTokensOutput(ctx *pulumi.Context, args ListHostPoolRegistrationTokensOutputArgs, opts ...pulumi.InvokeOption) ListHostPoolRegistrationTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListHostPoolRegistrationTokensResultOutput, error) {
-			args := v.(ListHostPoolRegistrationTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:listHostPoolRegistrationTokens", args, ListHostPoolRegistrationTokensResultOutput{}, options).(ListHostPoolRegistrationTokensResultOutput), nil
-		}).(ListHostPoolRegistrationTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:listHostPoolRegistrationTokens", args, ListHostPoolRegistrationTokensResultOutput{}, options).(ListHostPoolRegistrationTokensResultOutput)
 }
 
 type ListHostPoolRegistrationTokensOutputArgs struct {

@@ -64,12 +64,8 @@ type LookupPrometheusRuleGroupResult struct {
 }
 
 func LookupPrometheusRuleGroupOutput(ctx *pulumi.Context, args LookupPrometheusRuleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPrometheusRuleGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrometheusRuleGroupResultOutput, error) {
-			args := v.(LookupPrometheusRuleGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:alertsmanagement:getPrometheusRuleGroup", args, LookupPrometheusRuleGroupResultOutput{}, options).(LookupPrometheusRuleGroupResultOutput), nil
-		}).(LookupPrometheusRuleGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:alertsmanagement:getPrometheusRuleGroup", args, LookupPrometheusRuleGroupResultOutput{}, options).(LookupPrometheusRuleGroupResultOutput)
 }
 
 type LookupPrometheusRuleGroupOutputArgs struct {

@@ -56,12 +56,8 @@ type LookupRaiTopicResult struct {
 }
 
 func LookupRaiTopicOutput(ctx *pulumi.Context, args LookupRaiTopicOutputArgs, opts ...pulumi.InvokeOption) LookupRaiTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRaiTopicResultOutput, error) {
-			args := v.(LookupRaiTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiTopic", args, LookupRaiTopicResultOutput{}, options).(LookupRaiTopicResultOutput), nil
-		}).(LookupRaiTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiTopic", args, LookupRaiTopicResultOutput{}, options).(LookupRaiTopicResultOutput)
 }
 
 type LookupRaiTopicOutputArgs struct {

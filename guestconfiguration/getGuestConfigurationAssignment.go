@@ -64,12 +64,8 @@ func (val *LookupGuestConfigurationAssignmentResult) Defaults() *LookupGuestConf
 	return &tmp
 }
 func LookupGuestConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupGuestConfigurationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGuestConfigurationAssignmentResultOutput, error) {
-			args := v.(LookupGuestConfigurationAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:guestconfiguration:getGuestConfigurationAssignment", args, LookupGuestConfigurationAssignmentResultOutput{}, options).(LookupGuestConfigurationAssignmentResultOutput), nil
-		}).(LookupGuestConfigurationAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:guestconfiguration:getGuestConfigurationAssignment", args, LookupGuestConfigurationAssignmentResultOutput{}, options).(LookupGuestConfigurationAssignmentResultOutput)
 }
 
 type LookupGuestConfigurationAssignmentOutputArgs struct {

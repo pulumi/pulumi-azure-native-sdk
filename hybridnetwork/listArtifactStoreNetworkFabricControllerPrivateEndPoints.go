@@ -42,12 +42,8 @@ type ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult struct {
 }
 
 func ListArtifactStoreNetworkFabricControllerPrivateEndPointsOutput(ctx *pulumi.Context, args ListArtifactStoreNetworkFabricControllerPrivateEndPointsOutputArgs, opts ...pulumi.InvokeOption) ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput, error) {
-			args := v.(ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:listArtifactStoreNetworkFabricControllerPrivateEndPoints", args, ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput{}, options).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput), nil
-		}).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:listArtifactStoreNetworkFabricControllerPrivateEndPoints", args, ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput{}, options).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput)
 }
 
 type ListArtifactStoreNetworkFabricControllerPrivateEndPointsOutputArgs struct {

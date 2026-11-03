@@ -52,12 +52,8 @@ type LookupSsmResourceComplianceSummaryItemResult struct {
 }
 
 func LookupSsmResourceComplianceSummaryItemOutput(ctx *pulumi.Context, args LookupSsmResourceComplianceSummaryItemOutputArgs, opts ...pulumi.InvokeOption) LookupSsmResourceComplianceSummaryItemResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSsmResourceComplianceSummaryItemResultOutput, error) {
-			args := v.(LookupSsmResourceComplianceSummaryItemArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSsmResourceComplianceSummaryItem", args, LookupSsmResourceComplianceSummaryItemResultOutput{}, options).(LookupSsmResourceComplianceSummaryItemResultOutput), nil
-		}).(LookupSsmResourceComplianceSummaryItemResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSsmResourceComplianceSummaryItem", args, LookupSsmResourceComplianceSummaryItemResultOutput{}, options).(LookupSsmResourceComplianceSummaryItemResultOutput)
 }
 
 type LookupSsmResourceComplianceSummaryItemOutputArgs struct {

@@ -72,12 +72,8 @@ type LookupCloudEndpointResult struct {
 }
 
 func LookupCloudEndpointOutput(ctx *pulumi.Context, args LookupCloudEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupCloudEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudEndpointResultOutput, error) {
-			args := v.(LookupCloudEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:storagesync:getCloudEndpoint", args, LookupCloudEndpointResultOutput{}, options).(LookupCloudEndpointResultOutput), nil
-		}).(LookupCloudEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:storagesync:getCloudEndpoint", args, LookupCloudEndpointResultOutput{}, options).(LookupCloudEndpointResultOutput)
 }
 
 type LookupCloudEndpointOutputArgs struct {

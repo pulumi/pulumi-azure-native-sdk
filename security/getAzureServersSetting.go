@@ -49,12 +49,8 @@ type LookupAzureServersSettingResult struct {
 }
 
 func LookupAzureServersSettingOutput(ctx *pulumi.Context, args LookupAzureServersSettingOutputArgs, opts ...pulumi.InvokeOption) LookupAzureServersSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureServersSettingResultOutput, error) {
-			args := v.(LookupAzureServersSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getAzureServersSetting", args, LookupAzureServersSettingResultOutput{}, options).(LookupAzureServersSettingResultOutput), nil
-		}).(LookupAzureServersSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getAzureServersSetting", args, LookupAzureServersSettingResultOutput{}, options).(LookupAzureServersSettingResultOutput)
 }
 
 type LookupAzureServersSettingOutputArgs struct {

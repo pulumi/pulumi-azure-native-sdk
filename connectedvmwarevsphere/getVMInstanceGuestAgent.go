@@ -64,12 +64,8 @@ type LookupVMInstanceGuestAgentResult struct {
 }
 
 func LookupVMInstanceGuestAgentOutput(ctx *pulumi.Context, args LookupVMInstanceGuestAgentOutputArgs, opts ...pulumi.InvokeOption) LookupVMInstanceGuestAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVMInstanceGuestAgentResultOutput, error) {
-			args := v.(LookupVMInstanceGuestAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVMInstanceGuestAgent", args, LookupVMInstanceGuestAgentResultOutput{}, options).(LookupVMInstanceGuestAgentResultOutput), nil
-		}).(LookupVMInstanceGuestAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVMInstanceGuestAgent", args, LookupVMInstanceGuestAgentResultOutput{}, options).(LookupVMInstanceGuestAgentResultOutput)
 }
 
 type LookupVMInstanceGuestAgentOutputArgs struct {

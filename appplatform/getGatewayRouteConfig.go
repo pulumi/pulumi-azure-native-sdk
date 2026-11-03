@@ -64,12 +64,8 @@ func (val *LookupGatewayRouteConfigResult) Defaults() *LookupGatewayRouteConfigR
 	return &tmp
 }
 func LookupGatewayRouteConfigOutput(ctx *pulumi.Context, args LookupGatewayRouteConfigOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayRouteConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGatewayRouteConfigResultOutput, error) {
-			args := v.(LookupGatewayRouteConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getGatewayRouteConfig", args, LookupGatewayRouteConfigResultOutput{}, options).(LookupGatewayRouteConfigResultOutput), nil
-		}).(LookupGatewayRouteConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getGatewayRouteConfig", args, LookupGatewayRouteConfigResultOutput{}, options).(LookupGatewayRouteConfigResultOutput)
 }
 
 type LookupGatewayRouteConfigOutputArgs struct {

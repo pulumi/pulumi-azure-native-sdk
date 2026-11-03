@@ -60,12 +60,8 @@ type LookupJobAgentResult struct {
 }
 
 func LookupJobAgentOutput(ctx *pulumi.Context, args LookupJobAgentOutputArgs, opts ...pulumi.InvokeOption) LookupJobAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJobAgentResultOutput, error) {
-			args := v.(LookupJobAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getJobAgent", args, LookupJobAgentResultOutput{}, options).(LookupJobAgentResultOutput), nil
-		}).(LookupJobAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getJobAgent", args, LookupJobAgentResultOutput{}, options).(LookupJobAgentResultOutput)
 }
 
 type LookupJobAgentOutputArgs struct {

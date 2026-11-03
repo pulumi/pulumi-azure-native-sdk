@@ -38,12 +38,8 @@ type ListListTenantConfigurationViolationResult struct {
 }
 
 func ListListTenantConfigurationViolationOutput(ctx *pulumi.Context, args ListListTenantConfigurationViolationOutputArgs, opts ...pulumi.InvokeOption) ListListTenantConfigurationViolationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListListTenantConfigurationViolationResultOutput, error) {
-			args := v.(ListListTenantConfigurationViolationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:portal:listListTenantConfigurationViolation", args, ListListTenantConfigurationViolationResultOutput{}, options).(ListListTenantConfigurationViolationResultOutput), nil
-		}).(ListListTenantConfigurationViolationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:portal:listListTenantConfigurationViolation", args, ListListTenantConfigurationViolationResultOutput{}, options).(ListListTenantConfigurationViolationResultOutput)
 }
 
 type ListListTenantConfigurationViolationOutputArgs struct {

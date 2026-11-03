@@ -53,12 +53,8 @@ type LookupAFDTargetGroupResult struct {
 }
 
 func LookupAFDTargetGroupOutput(ctx *pulumi.Context, args LookupAFDTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAFDTargetGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAFDTargetGroupResultOutput, error) {
-			args := v.(LookupAFDTargetGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cdn:getAFDTargetGroup", args, LookupAFDTargetGroupResultOutput{}, options).(LookupAFDTargetGroupResultOutput), nil
-		}).(LookupAFDTargetGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cdn:getAFDTargetGroup", args, LookupAFDTargetGroupResultOutput{}, options).(LookupAFDTargetGroupResultOutput)
 }
 
 type LookupAFDTargetGroupOutputArgs struct {

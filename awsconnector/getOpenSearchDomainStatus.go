@@ -52,12 +52,8 @@ type LookupOpenSearchDomainStatusResult struct {
 }
 
 func LookupOpenSearchDomainStatusOutput(ctx *pulumi.Context, args LookupOpenSearchDomainStatusOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchDomainStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchDomainStatusResultOutput, error) {
-			args := v.(LookupOpenSearchDomainStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getOpenSearchDomainStatus", args, LookupOpenSearchDomainStatusResultOutput{}, options).(LookupOpenSearchDomainStatusResultOutput), nil
-		}).(LookupOpenSearchDomainStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getOpenSearchDomainStatus", args, LookupOpenSearchDomainStatusResultOutput{}, options).(LookupOpenSearchDomainStatusResultOutput)
 }
 
 type LookupOpenSearchDomainStatusOutputArgs struct {

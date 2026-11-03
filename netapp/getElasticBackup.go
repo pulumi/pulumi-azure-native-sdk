@@ -64,12 +64,8 @@ func (val *LookupElasticBackupResult) Defaults() *LookupElasticBackupResult {
 	return &tmp
 }
 func LookupElasticBackupOutput(ctx *pulumi.Context, args LookupElasticBackupOutputArgs, opts ...pulumi.InvokeOption) LookupElasticBackupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticBackupResultOutput, error) {
-			args := v.(LookupElasticBackupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getElasticBackup", args, LookupElasticBackupResultOutput{}, options).(LookupElasticBackupResultOutput), nil
-		}).(LookupElasticBackupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getElasticBackup", args, LookupElasticBackupResultOutput{}, options).(LookupElasticBackupResultOutput)
 }
 
 type LookupElasticBackupOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupEventHubConnectionResult struct {
 }
 
 func LookupEventHubConnectionOutput(ctx *pulumi.Context, args LookupEventHubConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEventHubConnectionResultOutput, error) {
-			args := v.(LookupEventHubConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getEventHubConnection", args, LookupEventHubConnectionResultOutput{}, options).(LookupEventHubConnectionResultOutput), nil
-		}).(LookupEventHubConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getEventHubConnection", args, LookupEventHubConnectionResultOutput{}, options).(LookupEventHubConnectionResultOutput)
 }
 
 type LookupEventHubConnectionOutputArgs struct {

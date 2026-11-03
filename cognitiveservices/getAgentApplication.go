@@ -54,12 +54,8 @@ type LookupAgentApplicationResult struct {
 }
 
 func LookupAgentApplicationOutput(ctx *pulumi.Context, args LookupAgentApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupAgentApplicationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAgentApplicationResultOutput, error) {
-			args := v.(LookupAgentApplicationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getAgentApplication", args, LookupAgentApplicationResultOutput{}, options).(LookupAgentApplicationResultOutput), nil
-		}).(LookupAgentApplicationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getAgentApplication", args, LookupAgentApplicationResultOutput{}, options).(LookupAgentApplicationResultOutput)
 }
 
 type LookupAgentApplicationOutputArgs struct {

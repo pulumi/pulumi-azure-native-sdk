@@ -36,12 +36,8 @@ type GetUploadServiceUploadTokenResult struct {
 }
 
 func GetUploadServiceUploadTokenOutput(ctx *pulumi.Context, args GetUploadServiceUploadTokenOutputArgs, opts ...pulumi.InvokeOption) GetUploadServiceUploadTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUploadServiceUploadTokenResultOutput, error) {
-			args := v.(GetUploadServiceUploadTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:impact:getUploadServiceUploadToken", args, GetUploadServiceUploadTokenResultOutput{}, options).(GetUploadServiceUploadTokenResultOutput), nil
-		}).(GetUploadServiceUploadTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:impact:getUploadServiceUploadToken", args, GetUploadServiceUploadTokenResultOutput{}, options).(GetUploadServiceUploadTokenResultOutput)
 }
 
 type GetUploadServiceUploadTokenOutputArgs struct {

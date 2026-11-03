@@ -99,12 +99,8 @@ func (val *LookupPreRuleResult) Defaults() *LookupPreRuleResult {
 	return &tmp
 }
 func LookupPreRuleOutput(ctx *pulumi.Context, args LookupPreRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPreRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPreRuleResultOutput, error) {
-			args := v.(LookupPreRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:getPreRule", args, LookupPreRuleResultOutput{}, options).(LookupPreRuleResultOutput), nil
-		}).(LookupPreRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:getPreRule", args, LookupPreRuleResultOutput{}, options).(LookupPreRuleResultOutput)
 }
 
 type LookupPreRuleOutputArgs struct {

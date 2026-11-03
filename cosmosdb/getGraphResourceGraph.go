@@ -56,12 +56,8 @@ type LookupGraphResourceGraphResult struct {
 }
 
 func LookupGraphResourceGraphOutput(ctx *pulumi.Context, args LookupGraphResourceGraphOutputArgs, opts ...pulumi.InvokeOption) LookupGraphResourceGraphResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGraphResourceGraphResultOutput, error) {
-			args := v.(LookupGraphResourceGraphArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getGraphResourceGraph", args, LookupGraphResourceGraphResultOutput{}, options).(LookupGraphResourceGraphResultOutput), nil
-		}).(LookupGraphResourceGraphResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getGraphResourceGraph", args, LookupGraphResourceGraphResultOutput{}, options).(LookupGraphResourceGraphResultOutput)
 }
 
 type LookupGraphResourceGraphOutputArgs struct {

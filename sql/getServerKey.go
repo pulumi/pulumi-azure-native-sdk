@@ -60,12 +60,8 @@ type LookupServerKeyResult struct {
 }
 
 func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, opts ...pulumi.InvokeOption) LookupServerKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerKeyResultOutput, error) {
-			args := v.(LookupServerKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getServerKey", args, LookupServerKeyResultOutput{}, options).(LookupServerKeyResultOutput), nil
-		}).(LookupServerKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getServerKey", args, LookupServerKeyResultOutput{}, options).(LookupServerKeyResultOutput)
 }
 
 type LookupServerKeyOutputArgs struct {

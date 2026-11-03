@@ -60,12 +60,8 @@ type LookupSignalRSharedPrivateLinkResourceResult struct {
 }
 
 func LookupSignalRSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupSignalRSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalRSharedPrivateLinkResourceResultOutput, error) {
-			args := v.(LookupSignalRSharedPrivateLinkResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:signalrservice:getSignalRSharedPrivateLinkResource", args, LookupSignalRSharedPrivateLinkResourceResultOutput{}, options).(LookupSignalRSharedPrivateLinkResourceResultOutput), nil
-		}).(LookupSignalRSharedPrivateLinkResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:signalrservice:getSignalRSharedPrivateLinkResource", args, LookupSignalRSharedPrivateLinkResourceResultOutput{}, options).(LookupSignalRSharedPrivateLinkResourceResultOutput)
 }
 
 type LookupSignalRSharedPrivateLinkResourceOutputArgs struct {

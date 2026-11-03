@@ -62,12 +62,8 @@ func (val *LookupRdsEventSubscriptionResult) Defaults() *LookupRdsEventSubscript
 	return &tmp
 }
 func LookupRdsEventSubscriptionOutput(ctx *pulumi.Context, args LookupRdsEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupRdsEventSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRdsEventSubscriptionResultOutput, error) {
-			args := v.(LookupRdsEventSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRdsEventSubscription", args, LookupRdsEventSubscriptionResultOutput{}, options).(LookupRdsEventSubscriptionResultOutput), nil
-		}).(LookupRdsEventSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRdsEventSubscription", args, LookupRdsEventSubscriptionResultOutput{}, options).(LookupRdsEventSubscriptionResultOutput)
 }
 
 type LookupRdsEventSubscriptionOutputArgs struct {

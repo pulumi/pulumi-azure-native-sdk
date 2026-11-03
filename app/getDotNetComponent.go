@@ -58,12 +58,8 @@ type LookupDotNetComponentResult struct {
 }
 
 func LookupDotNetComponentOutput(ctx *pulumi.Context, args LookupDotNetComponentOutputArgs, opts ...pulumi.InvokeOption) LookupDotNetComponentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDotNetComponentResultOutput, error) {
-			args := v.(LookupDotNetComponentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getDotNetComponent", args, LookupDotNetComponentResultOutput{}, options).(LookupDotNetComponentResultOutput), nil
-		}).(LookupDotNetComponentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getDotNetComponent", args, LookupDotNetComponentResultOutput{}, options).(LookupDotNetComponentResultOutput)
 }
 
 type LookupDotNetComponentOutputArgs struct {

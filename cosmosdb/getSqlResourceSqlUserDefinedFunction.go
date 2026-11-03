@@ -57,12 +57,8 @@ type LookupSqlResourceSqlUserDefinedFunctionResult struct {
 }
 
 func LookupSqlResourceSqlUserDefinedFunctionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlUserDefinedFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlUserDefinedFunctionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlUserDefinedFunctionResultOutput, error) {
-			args := v.(LookupSqlResourceSqlUserDefinedFunctionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlUserDefinedFunction", args, LookupSqlResourceSqlUserDefinedFunctionResultOutput{}, options).(LookupSqlResourceSqlUserDefinedFunctionResultOutput), nil
-		}).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getSqlResourceSqlUserDefinedFunction", args, LookupSqlResourceSqlUserDefinedFunctionResultOutput{}, options).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
 }
 
 type LookupSqlResourceSqlUserDefinedFunctionOutputArgs struct {

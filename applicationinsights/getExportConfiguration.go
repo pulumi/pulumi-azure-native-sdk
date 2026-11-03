@@ -78,12 +78,8 @@ type LookupExportConfigurationResult struct {
 }
 
 func LookupExportConfigurationOutput(ctx *pulumi.Context, args LookupExportConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupExportConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExportConfigurationResultOutput, error) {
-			args := v.(LookupExportConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:applicationinsights:getExportConfiguration", args, LookupExportConfigurationResultOutput{}, options).(LookupExportConfigurationResultOutput), nil
-		}).(LookupExportConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:applicationinsights:getExportConfiguration", args, LookupExportConfigurationResultOutput{}, options).(LookupExportConfigurationResultOutput)
 }
 
 type LookupExportConfigurationOutputArgs struct {

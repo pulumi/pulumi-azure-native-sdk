@@ -42,12 +42,8 @@ type ListGlobalRulestackPredefinedUrlCategoriesResult struct {
 }
 
 func ListGlobalRulestackPredefinedUrlCategoriesOutput(ctx *pulumi.Context, args ListGlobalRulestackPredefinedUrlCategoriesOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackPredefinedUrlCategoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGlobalRulestackPredefinedUrlCategoriesResultOutput, error) {
-			args := v.(ListGlobalRulestackPredefinedUrlCategoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackPredefinedUrlCategories", args, ListGlobalRulestackPredefinedUrlCategoriesResultOutput{}, options).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput), nil
-		}).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudngfw:listGlobalRulestackPredefinedUrlCategories", args, ListGlobalRulestackPredefinedUrlCategoriesResultOutput{}, options).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput)
 }
 
 type ListGlobalRulestackPredefinedUrlCategoriesOutputArgs struct {

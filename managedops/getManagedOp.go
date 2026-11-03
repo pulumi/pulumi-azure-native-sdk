@@ -46,12 +46,8 @@ type LookupManagedOpResult struct {
 }
 
 func LookupManagedOpOutput(ctx *pulumi.Context, args LookupManagedOpOutputArgs, opts ...pulumi.InvokeOption) LookupManagedOpResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedOpResultOutput, error) {
-			args := v.(LookupManagedOpArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managedops:getManagedOp", args, LookupManagedOpResultOutput{}, options).(LookupManagedOpResultOutput), nil
-		}).(LookupManagedOpResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managedops:getManagedOp", args, LookupManagedOpResultOutput{}, options).(LookupManagedOpResultOutput)
 }
 
 type LookupManagedOpOutputArgs struct {

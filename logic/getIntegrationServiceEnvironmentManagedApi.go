@@ -76,12 +76,8 @@ type LookupIntegrationServiceEnvironmentManagedApiResult struct {
 }
 
 func LookupIntegrationServiceEnvironmentManagedApiOutput(ctx *pulumi.Context, args LookupIntegrationServiceEnvironmentManagedApiOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationServiceEnvironmentManagedApiResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentManagedApiResultOutput, error) {
-			args := v.(LookupIntegrationServiceEnvironmentManagedApiArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getIntegrationServiceEnvironmentManagedApi", args, LookupIntegrationServiceEnvironmentManagedApiResultOutput{}, options).(LookupIntegrationServiceEnvironmentManagedApiResultOutput), nil
-		}).(LookupIntegrationServiceEnvironmentManagedApiResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getIntegrationServiceEnvironmentManagedApi", args, LookupIntegrationServiceEnvironmentManagedApiResultOutput{}, options).(LookupIntegrationServiceEnvironmentManagedApiResultOutput)
 }
 
 type LookupIntegrationServiceEnvironmentManagedApiOutputArgs struct {

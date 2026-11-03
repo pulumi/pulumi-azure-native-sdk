@@ -52,12 +52,8 @@ type LookupElasticLoadBalancingV2LoadBalancerResult struct {
 }
 
 func LookupElasticLoadBalancingV2LoadBalancerOutput(ctx *pulumi.Context, args LookupElasticLoadBalancingV2LoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupElasticLoadBalancingV2LoadBalancerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticLoadBalancingV2LoadBalancerResultOutput, error) {
-			args := v.(LookupElasticLoadBalancingV2LoadBalancerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getElasticLoadBalancingV2LoadBalancer", args, LookupElasticLoadBalancingV2LoadBalancerResultOutput{}, options).(LookupElasticLoadBalancingV2LoadBalancerResultOutput), nil
-		}).(LookupElasticLoadBalancingV2LoadBalancerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getElasticLoadBalancingV2LoadBalancer", args, LookupElasticLoadBalancingV2LoadBalancerResultOutput{}, options).(LookupElasticLoadBalancingV2LoadBalancerResultOutput)
 }
 
 type LookupElasticLoadBalancingV2LoadBalancerOutputArgs struct {

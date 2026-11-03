@@ -60,12 +60,8 @@ type LookupManagementGroupDiagnosticSettingResult struct {
 }
 
 func LookupManagementGroupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupManagementGroupDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupDiagnosticSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagementGroupDiagnosticSettingResultOutput, error) {
-			args := v.(LookupManagementGroupDiagnosticSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getManagementGroupDiagnosticSetting", args, LookupManagementGroupDiagnosticSettingResultOutput{}, options).(LookupManagementGroupDiagnosticSettingResultOutput), nil
-		}).(LookupManagementGroupDiagnosticSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getManagementGroupDiagnosticSetting", args, LookupManagementGroupDiagnosticSettingResultOutput{}, options).(LookupManagementGroupDiagnosticSettingResultOutput)
 }
 
 type LookupManagementGroupDiagnosticSettingOutputArgs struct {

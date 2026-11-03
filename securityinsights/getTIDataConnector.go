@@ -59,12 +59,8 @@ type LookupTIDataConnectorResult struct {
 }
 
 func LookupTIDataConnectorOutput(ctx *pulumi.Context, args LookupTIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTIDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTIDataConnectorResultOutput, error) {
-			args := v.(LookupTIDataConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getTIDataConnector", args, LookupTIDataConnectorResultOutput{}, options).(LookupTIDataConnectorResultOutput), nil
-		}).(LookupTIDataConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getTIDataConnector", args, LookupTIDataConnectorResultOutput{}, options).(LookupTIDataConnectorResultOutput)
 }
 
 type LookupTIDataConnectorOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupDynamicConfigurationResult struct {
 }
 
 func LookupDynamicConfigurationOutput(ctx *pulumi.Context, args LookupDynamicConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDynamicConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDynamicConfigurationResultOutput, error) {
-			args := v.(LookupDynamicConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getDynamicConfiguration", args, LookupDynamicConfigurationResultOutput{}, options).(LookupDynamicConfigurationResultOutput), nil
-		}).(LookupDynamicConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getDynamicConfiguration", args, LookupDynamicConfigurationResultOutput{}, options).(LookupDynamicConfigurationResultOutput)
 }
 
 type LookupDynamicConfigurationOutputArgs struct {

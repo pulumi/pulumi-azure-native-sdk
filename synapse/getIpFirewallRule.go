@@ -54,12 +54,8 @@ type LookupIpFirewallRuleResult struct {
 }
 
 func LookupIpFirewallRuleOutput(ctx *pulumi.Context, args LookupIpFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupIpFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIpFirewallRuleResultOutput, error) {
-			args := v.(LookupIpFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getIpFirewallRule", args, LookupIpFirewallRuleResultOutput{}, options).(LookupIpFirewallRuleResultOutput), nil
-		}).(LookupIpFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getIpFirewallRule", args, LookupIpFirewallRuleResultOutput{}, options).(LookupIpFirewallRuleResultOutput)
 }
 
 type LookupIpFirewallRuleOutputArgs struct {

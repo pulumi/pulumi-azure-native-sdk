@@ -58,12 +58,8 @@ type LookupOnlineExperimentationWorkspaceResult struct {
 }
 
 func LookupOnlineExperimentationWorkspaceOutput(ctx *pulumi.Context, args LookupOnlineExperimentationWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineExperimentationWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOnlineExperimentationWorkspaceResultOutput, error) {
-			args := v.(LookupOnlineExperimentationWorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:onlineexperimentation:getOnlineExperimentationWorkspace", args, LookupOnlineExperimentationWorkspaceResultOutput{}, options).(LookupOnlineExperimentationWorkspaceResultOutput), nil
-		}).(LookupOnlineExperimentationWorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:onlineexperimentation:getOnlineExperimentationWorkspace", args, LookupOnlineExperimentationWorkspaceResultOutput{}, options).(LookupOnlineExperimentationWorkspaceResultOutput)
 }
 
 type LookupOnlineExperimentationWorkspaceOutputArgs struct {

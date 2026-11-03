@@ -60,12 +60,8 @@ type LookupSpacecraftResult struct {
 }
 
 func LookupSpacecraftOutput(ctx *pulumi.Context, args LookupSpacecraftOutputArgs, opts ...pulumi.InvokeOption) LookupSpacecraftResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpacecraftResultOutput, error) {
-			args := v.(LookupSpacecraftArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:orbital:getSpacecraft", args, LookupSpacecraftResultOutput{}, options).(LookupSpacecraftResultOutput), nil
-		}).(LookupSpacecraftResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:orbital:getSpacecraft", args, LookupSpacecraftResultOutput{}, options).(LookupSpacecraftResultOutput)
 }
 
 type LookupSpacecraftOutputArgs struct {

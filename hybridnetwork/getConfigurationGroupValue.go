@@ -54,12 +54,8 @@ type LookupConfigurationGroupValueResult struct {
 }
 
 func LookupConfigurationGroupValueOutput(ctx *pulumi.Context, args LookupConfigurationGroupValueOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationGroupValueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationGroupValueResultOutput, error) {
-			args := v.(LookupConfigurationGroupValueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:getConfigurationGroupValue", args, LookupConfigurationGroupValueResultOutput{}, options).(LookupConfigurationGroupValueResultOutput), nil
-		}).(LookupConfigurationGroupValueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:getConfigurationGroupValue", args, LookupConfigurationGroupValueResultOutput{}, options).(LookupConfigurationGroupValueResultOutput)
 }
 
 type LookupConfigurationGroupValueOutputArgs struct {

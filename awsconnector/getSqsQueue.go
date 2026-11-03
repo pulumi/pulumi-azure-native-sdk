@@ -52,12 +52,8 @@ type LookupSqsQueueResult struct {
 }
 
 func LookupSqsQueueOutput(ctx *pulumi.Context, args LookupSqsQueueOutputArgs, opts ...pulumi.InvokeOption) LookupSqsQueueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqsQueueResultOutput, error) {
-			args := v.(LookupSqsQueueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSqsQueue", args, LookupSqsQueueResultOutput{}, options).(LookupSqsQueueResultOutput), nil
-		}).(LookupSqsQueueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSqsQueue", args, LookupSqsQueueResultOutput{}, options).(LookupSqsQueueResultOutput)
 }
 
 type LookupSqsQueueOutputArgs struct {

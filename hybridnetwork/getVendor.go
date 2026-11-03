@@ -48,12 +48,8 @@ type LookupVendorResult struct {
 }
 
 func LookupVendorOutput(ctx *pulumi.Context, args LookupVendorOutputArgs, opts ...pulumi.InvokeOption) LookupVendorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVendorResultOutput, error) {
-			args := v.(LookupVendorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:getVendor", args, LookupVendorResultOutput{}, options).(LookupVendorResultOutput), nil
-		}).(LookupVendorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:getVendor", args, LookupVendorResultOutput{}, options).(LookupVendorResultOutput)
 }
 
 type LookupVendorOutputArgs struct {

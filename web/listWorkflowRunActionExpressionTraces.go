@@ -48,12 +48,8 @@ type ListWorkflowRunActionExpressionTracesResult struct {
 }
 
 func ListWorkflowRunActionExpressionTracesOutput(ctx *pulumi.Context, args ListWorkflowRunActionExpressionTracesOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowRunActionExpressionTracesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWorkflowRunActionExpressionTracesResultOutput, error) {
-			args := v.(ListWorkflowRunActionExpressionTracesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWorkflowRunActionExpressionTraces", args, ListWorkflowRunActionExpressionTracesResultOutput{}, options).(ListWorkflowRunActionExpressionTracesResultOutput), nil
-		}).(ListWorkflowRunActionExpressionTracesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWorkflowRunActionExpressionTraces", args, ListWorkflowRunActionExpressionTracesResultOutput{}, options).(ListWorkflowRunActionExpressionTracesResultOutput)
 }
 
 type ListWorkflowRunActionExpressionTracesOutputArgs struct {

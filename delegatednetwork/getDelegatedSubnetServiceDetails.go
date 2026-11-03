@@ -61,12 +61,8 @@ type LookupDelegatedSubnetServiceDetailsResult struct {
 }
 
 func LookupDelegatedSubnetServiceDetailsOutput(ctx *pulumi.Context, args LookupDelegatedSubnetServiceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupDelegatedSubnetServiceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDelegatedSubnetServiceDetailsResultOutput, error) {
-			args := v.(LookupDelegatedSubnetServiceDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:delegatednetwork:getDelegatedSubnetServiceDetails", args, LookupDelegatedSubnetServiceDetailsResultOutput{}, options).(LookupDelegatedSubnetServiceDetailsResultOutput), nil
-		}).(LookupDelegatedSubnetServiceDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:delegatednetwork:getDelegatedSubnetServiceDetails", args, LookupDelegatedSubnetServiceDetailsResultOutput{}, options).(LookupDelegatedSubnetServiceDetailsResultOutput)
 }
 
 type LookupDelegatedSubnetServiceDetailsOutputArgs struct {

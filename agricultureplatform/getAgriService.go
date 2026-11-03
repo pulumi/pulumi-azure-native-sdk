@@ -56,12 +56,8 @@ type LookupAgriServiceResult struct {
 }
 
 func LookupAgriServiceOutput(ctx *pulumi.Context, args LookupAgriServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAgriServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAgriServiceResultOutput, error) {
-			args := v.(LookupAgriServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:agricultureplatform:getAgriService", args, LookupAgriServiceResultOutput{}, options).(LookupAgriServiceResultOutput), nil
-		}).(LookupAgriServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:agricultureplatform:getAgriService", args, LookupAgriServiceResultOutput{}, options).(LookupAgriServiceResultOutput)
 }
 
 type LookupAgriServiceOutputArgs struct {

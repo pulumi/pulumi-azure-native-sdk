@@ -48,12 +48,8 @@ type ListCatalogDeploymentsResult struct {
 }
 
 func ListCatalogDeploymentsOutput(ctx *pulumi.Context, args ListCatalogDeploymentsOutputArgs, opts ...pulumi.InvokeOption) ListCatalogDeploymentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListCatalogDeploymentsResultOutput, error) {
-			args := v.(ListCatalogDeploymentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuresphere:listCatalogDeployments", args, ListCatalogDeploymentsResultOutput{}, options).(ListCatalogDeploymentsResultOutput), nil
-		}).(ListCatalogDeploymentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuresphere:listCatalogDeployments", args, ListCatalogDeploymentsResultOutput{}, options).(ListCatalogDeploymentsResultOutput)
 }
 
 type ListCatalogDeploymentsOutputArgs struct {

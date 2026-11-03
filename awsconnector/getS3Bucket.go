@@ -62,12 +62,8 @@ func (val *LookupS3BucketResult) Defaults() *LookupS3BucketResult {
 	return &tmp
 }
 func LookupS3BucketOutput(ctx *pulumi.Context, args LookupS3BucketOutputArgs, opts ...pulumi.InvokeOption) LookupS3BucketResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupS3BucketResultOutput, error) {
-			args := v.(LookupS3BucketArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getS3Bucket", args, LookupS3BucketResultOutput{}, options).(LookupS3BucketResultOutput), nil
-		}).(LookupS3BucketResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getS3Bucket", args, LookupS3BucketResultOutput{}, options).(LookupS3BucketResultOutput)
 }
 
 type LookupS3BucketOutputArgs struct {

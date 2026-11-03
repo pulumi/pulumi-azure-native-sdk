@@ -79,12 +79,8 @@ type LookupAssessmentProjectsOperationResult struct {
 }
 
 func LookupAssessmentProjectsOperationOutput(ctx *pulumi.Context, args LookupAssessmentProjectsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentProjectsOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAssessmentProjectsOperationResultOutput, error) {
-			args := v.(LookupAssessmentProjectsOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getAssessmentProjectsOperation", args, LookupAssessmentProjectsOperationResultOutput{}, options).(LookupAssessmentProjectsOperationResultOutput), nil
-		}).(LookupAssessmentProjectsOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getAssessmentProjectsOperation", args, LookupAssessmentProjectsOperationResultOutput{}, options).(LookupAssessmentProjectsOperationResultOutput)
 }
 
 type LookupAssessmentProjectsOperationOutputArgs struct {

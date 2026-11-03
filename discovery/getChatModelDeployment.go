@@ -56,12 +56,8 @@ type LookupChatModelDeploymentResult struct {
 }
 
 func LookupChatModelDeploymentOutput(ctx *pulumi.Context, args LookupChatModelDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupChatModelDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupChatModelDeploymentResultOutput, error) {
-			args := v.(LookupChatModelDeploymentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getChatModelDeployment", args, LookupChatModelDeploymentResultOutput{}, options).(LookupChatModelDeploymentResultOutput), nil
-		}).(LookupChatModelDeploymentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getChatModelDeployment", args, LookupChatModelDeploymentResultOutput{}, options).(LookupChatModelDeploymentResultOutput)
 }
 
 type LookupChatModelDeploymentOutputArgs struct {

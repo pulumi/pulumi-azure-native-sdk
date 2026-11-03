@@ -75,12 +75,8 @@ func (val *LookupMultipleActivationKeyResult) Defaults() *LookupMultipleActivati
 	return &tmp
 }
 func LookupMultipleActivationKeyOutput(ctx *pulumi.Context, args LookupMultipleActivationKeyOutputArgs, opts ...pulumi.InvokeOption) LookupMultipleActivationKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMultipleActivationKeyResultOutput, error) {
-			args := v.(LookupMultipleActivationKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:windowsesu:getMultipleActivationKey", args, LookupMultipleActivationKeyResultOutput{}, options).(LookupMultipleActivationKeyResultOutput), nil
-		}).(LookupMultipleActivationKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:windowsesu:getMultipleActivationKey", args, LookupMultipleActivationKeyResultOutput{}, options).(LookupMultipleActivationKeyResultOutput)
 }
 
 type LookupMultipleActivationKeyOutputArgs struct {

@@ -62,12 +62,8 @@ type LookupNeighborGroupResult struct {
 }
 
 func LookupNeighborGroupOutput(ctx *pulumi.Context, args LookupNeighborGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNeighborGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNeighborGroupResultOutput, error) {
-			args := v.(LookupNeighborGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNeighborGroup", args, LookupNeighborGroupResultOutput{}, options).(LookupNeighborGroupResultOutput), nil
-		}).(LookupNeighborGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNeighborGroup", args, LookupNeighborGroupResultOutput{}, options).(LookupNeighborGroupResultOutput)
 }
 
 type LookupNeighborGroupOutputArgs struct {

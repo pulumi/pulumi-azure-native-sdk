@@ -62,12 +62,8 @@ type LookupConnectionMonitorTestResult struct {
 }
 
 func LookupConnectionMonitorTestOutput(ctx *pulumi.Context, args LookupConnectionMonitorTestOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionMonitorTestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionMonitorTestResultOutput, error) {
-			args := v.(LookupConnectionMonitorTestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:peering:getConnectionMonitorTest", args, LookupConnectionMonitorTestResultOutput{}, options).(LookupConnectionMonitorTestResultOutput), nil
-		}).(LookupConnectionMonitorTestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:peering:getConnectionMonitorTest", args, LookupConnectionMonitorTestResultOutput{}, options).(LookupConnectionMonitorTestResultOutput)
 }
 
 type LookupConnectionMonitorTestOutputArgs struct {

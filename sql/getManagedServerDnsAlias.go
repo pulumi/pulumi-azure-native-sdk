@@ -51,12 +51,8 @@ type LookupManagedServerDnsAliasResult struct {
 }
 
 func LookupManagedServerDnsAliasOutput(ctx *pulumi.Context, args LookupManagedServerDnsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupManagedServerDnsAliasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedServerDnsAliasResultOutput, error) {
-			args := v.(LookupManagedServerDnsAliasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getManagedServerDnsAlias", args, LookupManagedServerDnsAliasResultOutput{}, options).(LookupManagedServerDnsAliasResultOutput), nil
-		}).(LookupManagedServerDnsAliasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getManagedServerDnsAlias", args, LookupManagedServerDnsAliasResultOutput{}, options).(LookupManagedServerDnsAliasResultOutput)
 }
 
 type LookupManagedServerDnsAliasOutputArgs struct {

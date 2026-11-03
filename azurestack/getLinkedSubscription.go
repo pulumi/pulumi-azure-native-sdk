@@ -68,12 +68,8 @@ type LookupLinkedSubscriptionResult struct {
 }
 
 func LookupLinkedSubscriptionOutput(ctx *pulumi.Context, args LookupLinkedSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLinkedSubscriptionResultOutput, error) {
-			args := v.(LookupLinkedSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestack:getLinkedSubscription", args, LookupLinkedSubscriptionResultOutput{}, options).(LookupLinkedSubscriptionResultOutput), nil
-		}).(LookupLinkedSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestack:getLinkedSubscription", args, LookupLinkedSubscriptionResultOutput{}, options).(LookupLinkedSubscriptionResultOutput)
 }
 
 type LookupLinkedSubscriptionOutputArgs struct {

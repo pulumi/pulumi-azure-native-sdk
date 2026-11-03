@@ -58,12 +58,8 @@ type LookupSchedulerPrivateEndpointConnectionResult struct {
 }
 
 func LookupSchedulerPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupSchedulerPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupSchedulerPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchedulerPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupSchedulerPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:durabletask:getSchedulerPrivateEndpointConnection", args, LookupSchedulerPrivateEndpointConnectionResultOutput{}, options).(LookupSchedulerPrivateEndpointConnectionResultOutput), nil
-		}).(LookupSchedulerPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:durabletask:getSchedulerPrivateEndpointConnection", args, LookupSchedulerPrivateEndpointConnectionResultOutput{}, options).(LookupSchedulerPrivateEndpointConnectionResultOutput)
 }
 
 type LookupSchedulerPrivateEndpointConnectionOutputArgs struct {

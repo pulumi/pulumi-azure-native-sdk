@@ -60,12 +60,8 @@ type LookupAksAssessmentOperationResult struct {
 }
 
 func LookupAksAssessmentOperationOutput(ctx *pulumi.Context, args LookupAksAssessmentOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAksAssessmentOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAksAssessmentOperationResultOutput, error) {
-			args := v.(LookupAksAssessmentOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getAksAssessmentOperation", args, LookupAksAssessmentOperationResultOutput{}, options).(LookupAksAssessmentOperationResultOutput), nil
-		}).(LookupAksAssessmentOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getAksAssessmentOperation", args, LookupAksAssessmentOperationResultOutput{}, options).(LookupAksAssessmentOperationResultOutput)
 }
 
 type LookupAksAssessmentOperationOutputArgs struct {

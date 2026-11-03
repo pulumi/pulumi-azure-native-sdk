@@ -42,12 +42,8 @@ type ListFeatureAccountResult struct {
 }
 
 func ListFeatureAccountOutput(ctx *pulumi.Context, args ListFeatureAccountOutputArgs, opts ...pulumi.InvokeOption) ListFeatureAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListFeatureAccountResultOutput, error) {
-			args := v.(ListFeatureAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:purview:listFeatureAccount", args, ListFeatureAccountResultOutput{}, options).(ListFeatureAccountResultOutput), nil
-		}).(ListFeatureAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:purview:listFeatureAccount", args, ListFeatureAccountResultOutput{}, options).(ListFeatureAccountResultOutput)
 }
 
 type ListFeatureAccountOutputArgs struct {

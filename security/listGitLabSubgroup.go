@@ -44,12 +44,8 @@ type ListGitLabSubgroupResult struct {
 }
 
 func ListGitLabSubgroupOutput(ctx *pulumi.Context, args ListGitLabSubgroupOutputArgs, opts ...pulumi.InvokeOption) ListGitLabSubgroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListGitLabSubgroupResultOutput, error) {
-			args := v.(ListGitLabSubgroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:listGitLabSubgroup", args, ListGitLabSubgroupResultOutput{}, options).(ListGitLabSubgroupResultOutput), nil
-		}).(ListGitLabSubgroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:listGitLabSubgroup", args, ListGitLabSubgroupResultOutput{}, options).(ListGitLabSubgroupResultOutput)
 }
 
 type ListGitLabSubgroupOutputArgs struct {

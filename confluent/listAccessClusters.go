@@ -46,12 +46,8 @@ type ListAccessClustersResult struct {
 }
 
 func ListAccessClustersOutput(ctx *pulumi.Context, args ListAccessClustersOutputArgs, opts ...pulumi.InvokeOption) ListAccessClustersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccessClustersResultOutput, error) {
-			args := v.(ListAccessClustersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:listAccessClusters", args, ListAccessClustersResultOutput{}, options).(ListAccessClustersResultOutput), nil
-		}).(ListAccessClustersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:listAccessClusters", args, ListAccessClustersResultOutput{}, options).(ListAccessClustersResultOutput)
 }
 
 type ListAccessClustersOutputArgs struct {

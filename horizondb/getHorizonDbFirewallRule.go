@@ -52,12 +52,8 @@ type LookupHorizonDbFirewallRuleResult struct {
 }
 
 func LookupHorizonDbFirewallRuleOutput(ctx *pulumi.Context, args LookupHorizonDbFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupHorizonDbFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHorizonDbFirewallRuleResultOutput, error) {
-			args := v.(LookupHorizonDbFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbFirewallRule", args, LookupHorizonDbFirewallRuleResultOutput{}, options).(LookupHorizonDbFirewallRuleResultOutput), nil
-		}).(LookupHorizonDbFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:horizondb:getHorizonDbFirewallRule", args, LookupHorizonDbFirewallRuleResultOutput{}, options).(LookupHorizonDbFirewallRuleResultOutput)
 }
 
 type LookupHorizonDbFirewallRuleOutputArgs struct {

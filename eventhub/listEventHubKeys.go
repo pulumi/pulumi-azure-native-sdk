@@ -56,12 +56,8 @@ type ListEventHubKeysResult struct {
 }
 
 func ListEventHubKeysOutput(ctx *pulumi.Context, args ListEventHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListEventHubKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListEventHubKeysResultOutput, error) {
-			args := v.(ListEventHubKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventhub:listEventHubKeys", args, ListEventHubKeysResultOutput{}, options).(ListEventHubKeysResultOutput), nil
-		}).(ListEventHubKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventhub:listEventHubKeys", args, ListEventHubKeysResultOutput{}, options).(ListEventHubKeysResultOutput)
 }
 
 type ListEventHubKeysOutputArgs struct {

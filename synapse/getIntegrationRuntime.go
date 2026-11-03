@@ -52,12 +52,8 @@ type LookupIntegrationRuntimeResult struct {
 }
 
 func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationRuntimeOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationRuntimeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationRuntimeResultOutput, error) {
-			args := v.(LookupIntegrationRuntimeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getIntegrationRuntime", args, LookupIntegrationRuntimeResultOutput{}, options).(LookupIntegrationRuntimeResultOutput), nil
-		}).(LookupIntegrationRuntimeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getIntegrationRuntime", args, LookupIntegrationRuntimeResultOutput{}, options).(LookupIntegrationRuntimeResultOutput)
 }
 
 type LookupIntegrationRuntimeOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupHypervCollectorsOperationResult struct {
 }
 
 func LookupHypervCollectorsOperationOutput(ctx *pulumi.Context, args LookupHypervCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupHypervCollectorsOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHypervCollectorsOperationResultOutput, error) {
-			args := v.(LookupHypervCollectorsOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getHypervCollectorsOperation", args, LookupHypervCollectorsOperationResultOutput{}, options).(LookupHypervCollectorsOperationResultOutput), nil
-		}).(LookupHypervCollectorsOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getHypervCollectorsOperation", args, LookupHypervCollectorsOperationResultOutput{}, options).(LookupHypervCollectorsOperationResultOutput)
 }
 
 type LookupHypervCollectorsOperationOutputArgs struct {

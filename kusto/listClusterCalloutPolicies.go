@@ -41,12 +41,8 @@ type ListClusterCalloutPoliciesResult struct {
 }
 
 func ListClusterCalloutPoliciesOutput(ctx *pulumi.Context, args ListClusterCalloutPoliciesOutputArgs, opts ...pulumi.InvokeOption) ListClusterCalloutPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClusterCalloutPoliciesResultOutput, error) {
-			args := v.(ListClusterCalloutPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:listClusterCalloutPolicies", args, ListClusterCalloutPoliciesResultOutput{}, options).(ListClusterCalloutPoliciesResultOutput), nil
-		}).(ListClusterCalloutPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:listClusterCalloutPolicies", args, ListClusterCalloutPoliciesResultOutput{}, options).(ListClusterCalloutPoliciesResultOutput)
 }
 
 type ListClusterCalloutPoliciesOutputArgs struct {

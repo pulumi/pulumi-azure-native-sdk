@@ -70,12 +70,8 @@ type LookupRosettaNetProcessConfigurationResult struct {
 }
 
 func LookupRosettaNetProcessConfigurationOutput(ctx *pulumi.Context, args LookupRosettaNetProcessConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupRosettaNetProcessConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRosettaNetProcessConfigurationResultOutput, error) {
-			args := v.(LookupRosettaNetProcessConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:getRosettaNetProcessConfiguration", args, LookupRosettaNetProcessConfigurationResultOutput{}, options).(LookupRosettaNetProcessConfigurationResultOutput), nil
-		}).(LookupRosettaNetProcessConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:getRosettaNetProcessConfiguration", args, LookupRosettaNetProcessConfigurationResultOutput{}, options).(LookupRosettaNetProcessConfigurationResultOutput)
 }
 
 type LookupRosettaNetProcessConfigurationOutputArgs struct {

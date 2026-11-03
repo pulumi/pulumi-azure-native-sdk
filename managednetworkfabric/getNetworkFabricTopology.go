@@ -44,12 +44,8 @@ type GetNetworkFabricTopologyResult struct {
 }
 
 func GetNetworkFabricTopologyOutput(ctx *pulumi.Context, args GetNetworkFabricTopologyOutputArgs, opts ...pulumi.InvokeOption) GetNetworkFabricTopologyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkFabricTopologyResultOutput, error) {
-			args := v.(GetNetworkFabricTopologyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkFabricTopology", args, GetNetworkFabricTopologyResultOutput{}, options).(GetNetworkFabricTopologyResultOutput), nil
-		}).(GetNetworkFabricTopologyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkFabricTopology", args, GetNetworkFabricTopologyResultOutput{}, options).(GetNetworkFabricTopologyResultOutput)
 }
 
 type GetNetworkFabricTopologyOutputArgs struct {

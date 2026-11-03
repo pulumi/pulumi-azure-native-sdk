@@ -60,12 +60,8 @@ type LookupSingleServerServerSecurityAlertPolicyResult struct {
 }
 
 func LookupSingleServerServerSecurityAlertPolicyOutput(ctx *pulumi.Context, args LookupSingleServerServerSecurityAlertPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerServerSecurityAlertPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerServerSecurityAlertPolicyResultOutput, error) {
-			args := v.(LookupSingleServerServerSecurityAlertPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getSingleServerServerSecurityAlertPolicy", args, LookupSingleServerServerSecurityAlertPolicyResultOutput{}, options).(LookupSingleServerServerSecurityAlertPolicyResultOutput), nil
-		}).(LookupSingleServerServerSecurityAlertPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getSingleServerServerSecurityAlertPolicy", args, LookupSingleServerServerSecurityAlertPolicyResultOutput{}, options).(LookupSingleServerServerSecurityAlertPolicyResultOutput)
 }
 
 type LookupSingleServerServerSecurityAlertPolicyOutputArgs struct {

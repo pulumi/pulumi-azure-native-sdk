@@ -54,12 +54,8 @@ type GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult str
 }
 
 func GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutput(ctx *pulumi.Context, args GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput, error) {
-			args := v.(GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory", args, GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput{}, options).(GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput), nil
-		}).(GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory", args, GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput{}, options).(GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResultOutput)
 }
 
 type GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutputArgs struct {

@@ -42,12 +42,8 @@ type GetFlowStreamConnectionStringResult struct {
 }
 
 func GetFlowStreamConnectionStringOutput(ctx *pulumi.Context, args GetFlowStreamConnectionStringOutputArgs, opts ...pulumi.InvokeOption) GetFlowStreamConnectionStringResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFlowStreamConnectionStringResultOutput, error) {
-			args := v.(GetFlowStreamConnectionStringArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowStreamConnectionString", args, GetFlowStreamConnectionStringResultOutput{}, options).(GetFlowStreamConnectionStringResultOutput), nil
-		}).(GetFlowStreamConnectionStringResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowStreamConnectionString", args, GetFlowStreamConnectionStringResultOutput{}, options).(GetFlowStreamConnectionStringResultOutput)
 }
 
 type GetFlowStreamConnectionStringOutputArgs struct {

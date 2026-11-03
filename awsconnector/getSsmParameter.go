@@ -52,12 +52,8 @@ type LookupSsmParameterResult struct {
 }
 
 func LookupSsmParameterOutput(ctx *pulumi.Context, args LookupSsmParameterOutputArgs, opts ...pulumi.InvokeOption) LookupSsmParameterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSsmParameterResultOutput, error) {
-			args := v.(LookupSsmParameterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSsmParameter", args, LookupSsmParameterResultOutput{}, options).(LookupSsmParameterResultOutput), nil
-		}).(LookupSsmParameterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSsmParameter", args, LookupSsmParameterResultOutput{}, options).(LookupSsmParameterResultOutput)
 }
 
 type LookupSsmParameterOutputArgs struct {

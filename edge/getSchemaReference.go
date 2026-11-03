@@ -52,12 +52,8 @@ type LookupSchemaReferenceResult struct {
 }
 
 func LookupSchemaReferenceOutput(ctx *pulumi.Context, args LookupSchemaReferenceOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaReferenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaReferenceResultOutput, error) {
-			args := v.(LookupSchemaReferenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSchemaReference", args, LookupSchemaReferenceResultOutput{}, options).(LookupSchemaReferenceResultOutput), nil
-		}).(LookupSchemaReferenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSchemaReference", args, LookupSchemaReferenceResultOutput{}, options).(LookupSchemaReferenceResultOutput)
 }
 
 type LookupSchemaReferenceOutputArgs struct {

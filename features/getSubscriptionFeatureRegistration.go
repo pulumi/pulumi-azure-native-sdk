@@ -55,12 +55,8 @@ func (val *LookupSubscriptionFeatureRegistrationResult) Defaults() *LookupSubscr
 	return &tmp
 }
 func LookupSubscriptionFeatureRegistrationOutput(ctx *pulumi.Context, args LookupSubscriptionFeatureRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionFeatureRegistrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubscriptionFeatureRegistrationResultOutput, error) {
-			args := v.(LookupSubscriptionFeatureRegistrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:features:getSubscriptionFeatureRegistration", args, LookupSubscriptionFeatureRegistrationResultOutput{}, options).(LookupSubscriptionFeatureRegistrationResultOutput), nil
-		}).(LookupSubscriptionFeatureRegistrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:features:getSubscriptionFeatureRegistration", args, LookupSubscriptionFeatureRegistrationResultOutput{}, options).(LookupSubscriptionFeatureRegistrationResultOutput)
 }
 
 type LookupSubscriptionFeatureRegistrationOutputArgs struct {

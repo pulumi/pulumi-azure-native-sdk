@@ -48,12 +48,8 @@ type LookupDependencyOfRelationshipResult struct {
 }
 
 func LookupDependencyOfRelationshipOutput(ctx *pulumi.Context, args LookupDependencyOfRelationshipOutputArgs, opts ...pulumi.InvokeOption) LookupDependencyOfRelationshipResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDependencyOfRelationshipResultOutput, error) {
-			args := v.(LookupDependencyOfRelationshipArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:relationships:getDependencyOfRelationship", args, LookupDependencyOfRelationshipResultOutput{}, options).(LookupDependencyOfRelationshipResultOutput), nil
-		}).(LookupDependencyOfRelationshipResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:relationships:getDependencyOfRelationship", args, LookupDependencyOfRelationshipResultOutput{}, options).(LookupDependencyOfRelationshipResultOutput)
 }
 
 type LookupDependencyOfRelationshipOutputArgs struct {

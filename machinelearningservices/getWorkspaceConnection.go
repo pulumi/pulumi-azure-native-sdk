@@ -51,12 +51,8 @@ type LookupWorkspaceConnectionResult struct {
 }
 
 func LookupWorkspaceConnectionOutput(ctx *pulumi.Context, args LookupWorkspaceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceConnectionResultOutput, error) {
-			args := v.(LookupWorkspaceConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getWorkspaceConnection", args, LookupWorkspaceConnectionResultOutput{}, options).(LookupWorkspaceConnectionResultOutput), nil
-		}).(LookupWorkspaceConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getWorkspaceConnection", args, LookupWorkspaceConnectionResultOutput{}, options).(LookupWorkspaceConnectionResultOutput)
 }
 
 type LookupWorkspaceConnectionOutputArgs struct {

@@ -58,12 +58,8 @@ type GetExperimentExecutionDetailsResult struct {
 }
 
 func GetExperimentExecutionDetailsOutput(ctx *pulumi.Context, args GetExperimentExecutionDetailsOutputArgs, opts ...pulumi.InvokeOption) GetExperimentExecutionDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetExperimentExecutionDetailsResultOutput, error) {
-			args := v.(GetExperimentExecutionDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:chaos:getExperimentExecutionDetails", args, GetExperimentExecutionDetailsResultOutput{}, options).(GetExperimentExecutionDetailsResultOutput), nil
-		}).(GetExperimentExecutionDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:chaos:getExperimentExecutionDetails", args, GetExperimentExecutionDetailsResultOutput{}, options).(GetExperimentExecutionDetailsResultOutput)
 }
 
 type GetExperimentExecutionDetailsOutputArgs struct {

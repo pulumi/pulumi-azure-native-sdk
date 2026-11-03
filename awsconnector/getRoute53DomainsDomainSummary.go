@@ -52,12 +52,8 @@ type LookupRoute53DomainsDomainSummaryResult struct {
 }
 
 func LookupRoute53DomainsDomainSummaryOutput(ctx *pulumi.Context, args LookupRoute53DomainsDomainSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupRoute53DomainsDomainSummaryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoute53DomainsDomainSummaryResultOutput, error) {
-			args := v.(LookupRoute53DomainsDomainSummaryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRoute53DomainsDomainSummary", args, LookupRoute53DomainsDomainSummaryResultOutput{}, options).(LookupRoute53DomainsDomainSummaryResultOutput), nil
-		}).(LookupRoute53DomainsDomainSummaryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRoute53DomainsDomainSummary", args, LookupRoute53DomainsDomainSummaryResultOutput{}, options).(LookupRoute53DomainsDomainSummaryResultOutput)
 }
 
 type LookupRoute53DomainsDomainSummaryOutputArgs struct {

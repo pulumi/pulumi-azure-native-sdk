@@ -52,12 +52,8 @@ type LookupWebAppScmAllowedResult struct {
 }
 
 func LookupWebAppScmAllowedOutput(ctx *pulumi.Context, args LookupWebAppScmAllowedOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppScmAllowedResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppScmAllowedResultOutput, error) {
-			args := v.(LookupWebAppScmAllowedArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:getWebAppScmAllowed", args, LookupWebAppScmAllowedResultOutput{}, options).(LookupWebAppScmAllowedResultOutput), nil
-		}).(LookupWebAppScmAllowedResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:getWebAppScmAllowed", args, LookupWebAppScmAllowedResultOutput{}, options).(LookupWebAppScmAllowedResultOutput)
 }
 
 type LookupWebAppScmAllowedOutputArgs struct {

@@ -72,12 +72,8 @@ type LookupOuContainerResult struct {
 }
 
 func LookupOuContainerOutput(ctx *pulumi.Context, args LookupOuContainerOutputArgs, opts ...pulumi.InvokeOption) LookupOuContainerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOuContainerResultOutput, error) {
-			args := v.(LookupOuContainerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:aad:getOuContainer", args, LookupOuContainerResultOutput{}, options).(LookupOuContainerResultOutput), nil
-		}).(LookupOuContainerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:aad:getOuContainer", args, LookupOuContainerResultOutput{}, options).(LookupOuContainerResultOutput)
 }
 
 type LookupOuContainerOutputArgs struct {

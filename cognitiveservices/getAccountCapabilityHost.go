@@ -50,12 +50,8 @@ type LookupAccountCapabilityHostResult struct {
 }
 
 func LookupAccountCapabilityHostOutput(ctx *pulumi.Context, args LookupAccountCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupAccountCapabilityHostResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountCapabilityHostResultOutput, error) {
-			args := v.(LookupAccountCapabilityHostArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getAccountCapabilityHost", args, LookupAccountCapabilityHostResultOutput{}, options).(LookupAccountCapabilityHostResultOutput), nil
-		}).(LookupAccountCapabilityHostResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getAccountCapabilityHost", args, LookupAccountCapabilityHostResultOutput{}, options).(LookupAccountCapabilityHostResultOutput)
 }
 
 type LookupAccountCapabilityHostOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupDrillResult struct {
 }
 
 func LookupDrillOutput(ctx *pulumi.Context, args LookupDrillOutputArgs, opts ...pulumi.InvokeOption) LookupDrillResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDrillResultOutput, error) {
-			args := v.(LookupDrillArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getDrill", args, LookupDrillResultOutput{}, options).(LookupDrillResultOutput), nil
-		}).(LookupDrillResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getDrill", args, LookupDrillResultOutput{}, options).(LookupDrillResultOutput)
 }
 
 type LookupDrillOutputArgs struct {

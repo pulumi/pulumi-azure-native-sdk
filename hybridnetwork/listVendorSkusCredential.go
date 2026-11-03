@@ -46,12 +46,8 @@ type ListVendorSkusCredentialResult struct {
 }
 
 func ListVendorSkusCredentialOutput(ctx *pulumi.Context, args ListVendorSkusCredentialOutputArgs, opts ...pulumi.InvokeOption) ListVendorSkusCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListVendorSkusCredentialResultOutput, error) {
-			args := v.(ListVendorSkusCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:listVendorSkusCredential", args, ListVendorSkusCredentialResultOutput{}, options).(ListVendorSkusCredentialResultOutput), nil
-		}).(ListVendorSkusCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:listVendorSkusCredential", args, ListVendorSkusCredentialResultOutput{}, options).(ListVendorSkusCredentialResultOutput)
 }
 
 type ListVendorSkusCredentialOutputArgs struct {

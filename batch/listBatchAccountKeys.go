@@ -44,12 +44,8 @@ type ListBatchAccountKeysResult struct {
 }
 
 func ListBatchAccountKeysOutput(ctx *pulumi.Context, args ListBatchAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListBatchAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBatchAccountKeysResultOutput, error) {
-			args := v.(ListBatchAccountKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:batch:listBatchAccountKeys", args, ListBatchAccountKeysResultOutput{}, options).(ListBatchAccountKeysResultOutput), nil
-		}).(ListBatchAccountKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:batch:listBatchAccountKeys", args, ListBatchAccountKeysResultOutput{}, options).(ListBatchAccountKeysResultOutput)
 }
 
 type ListBatchAccountKeysOutputArgs struct {

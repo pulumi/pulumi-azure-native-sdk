@@ -105,12 +105,8 @@ func (val *LookupCGProfileResult) Defaults() *LookupCGProfileResult {
 	return &tmp
 }
 func LookupCGProfileOutput(ctx *pulumi.Context, args LookupCGProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCGProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCGProfileResultOutput, error) {
-			args := v.(LookupCGProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerinstance:getCGProfile", args, LookupCGProfileResultOutput{}, options).(LookupCGProfileResultOutput), nil
-		}).(LookupCGProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerinstance:getCGProfile", args, LookupCGProfileResultOutput{}, options).(LookupCGProfileResultOutput)
 }
 
 type LookupCGProfileOutputArgs struct {

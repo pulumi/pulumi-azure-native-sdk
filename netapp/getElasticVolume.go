@@ -72,12 +72,8 @@ func (val *LookupElasticVolumeResult) Defaults() *LookupElasticVolumeResult {
 	return &tmp
 }
 func LookupElasticVolumeOutput(ctx *pulumi.Context, args LookupElasticVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupElasticVolumeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupElasticVolumeResultOutput, error) {
-			args := v.(LookupElasticVolumeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:netapp:getElasticVolume", args, LookupElasticVolumeResultOutput{}, options).(LookupElasticVolumeResultOutput), nil
-		}).(LookupElasticVolumeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:netapp:getElasticVolume", args, LookupElasticVolumeResultOutput{}, options).(LookupElasticVolumeResultOutput)
 }
 
 type LookupElasticVolumeOutputArgs struct {

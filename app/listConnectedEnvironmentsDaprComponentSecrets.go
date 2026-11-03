@@ -42,12 +42,8 @@ type ListConnectedEnvironmentsDaprComponentSecretsResult struct {
 }
 
 func ListConnectedEnvironmentsDaprComponentSecretsOutput(ctx *pulumi.Context, args ListConnectedEnvironmentsDaprComponentSecretsOutputArgs, opts ...pulumi.InvokeOption) ListConnectedEnvironmentsDaprComponentSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListConnectedEnvironmentsDaprComponentSecretsResultOutput, error) {
-			args := v.(ListConnectedEnvironmentsDaprComponentSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:listConnectedEnvironmentsDaprComponentSecrets", args, ListConnectedEnvironmentsDaprComponentSecretsResultOutput{}, options).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput), nil
-		}).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:listConnectedEnvironmentsDaprComponentSecrets", args, ListConnectedEnvironmentsDaprComponentSecretsResultOutput{}, options).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput)
 }
 
 type ListConnectedEnvironmentsDaprComponentSecretsOutputArgs struct {

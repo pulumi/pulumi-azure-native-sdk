@@ -52,12 +52,8 @@ type GetEntitySignalHistoryResult struct {
 }
 
 func GetEntitySignalHistoryOutput(ctx *pulumi.Context, args GetEntitySignalHistoryOutputArgs, opts ...pulumi.InvokeOption) GetEntitySignalHistoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEntitySignalHistoryResultOutput, error) {
-			args := v.(GetEntitySignalHistoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cloudhealth:getEntitySignalHistory", args, GetEntitySignalHistoryResultOutput{}, options).(GetEntitySignalHistoryResultOutput), nil
-		}).(GetEntitySignalHistoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cloudhealth:getEntitySignalHistory", args, GetEntitySignalHistoryResultOutput{}, options).(GetEntitySignalHistoryResultOutput)
 }
 
 type GetEntitySignalHistoryOutputArgs struct {

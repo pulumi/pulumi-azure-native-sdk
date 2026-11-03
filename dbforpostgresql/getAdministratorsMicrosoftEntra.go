@@ -58,12 +58,8 @@ type LookupAdministratorsMicrosoftEntraResult struct {
 }
 
 func LookupAdministratorsMicrosoftEntraOutput(ctx *pulumi.Context, args LookupAdministratorsMicrosoftEntraOutputArgs, opts ...pulumi.InvokeOption) LookupAdministratorsMicrosoftEntraResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAdministratorsMicrosoftEntraResultOutput, error) {
-			args := v.(LookupAdministratorsMicrosoftEntraArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getAdministratorsMicrosoftEntra", args, LookupAdministratorsMicrosoftEntraResultOutput{}, options).(LookupAdministratorsMicrosoftEntraResultOutput), nil
-		}).(LookupAdministratorsMicrosoftEntraResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getAdministratorsMicrosoftEntra", args, LookupAdministratorsMicrosoftEntraResultOutput{}, options).(LookupAdministratorsMicrosoftEntraResultOutput)
 }
 
 type LookupAdministratorsMicrosoftEntraOutputArgs struct {

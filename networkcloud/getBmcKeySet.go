@@ -75,12 +75,8 @@ type LookupBmcKeySetResult struct {
 }
 
 func LookupBmcKeySetOutput(ctx *pulumi.Context, args LookupBmcKeySetOutputArgs, opts ...pulumi.InvokeOption) LookupBmcKeySetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBmcKeySetResultOutput, error) {
-			args := v.(LookupBmcKeySetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:networkcloud:getBmcKeySet", args, LookupBmcKeySetResultOutput{}, options).(LookupBmcKeySetResultOutput), nil
-		}).(LookupBmcKeySetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:networkcloud:getBmcKeySet", args, LookupBmcKeySetResultOutput{}, options).(LookupBmcKeySetResultOutput)
 }
 
 type LookupBmcKeySetOutputArgs struct {

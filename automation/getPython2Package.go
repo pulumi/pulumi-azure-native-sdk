@@ -78,12 +78,8 @@ type LookupPython2PackageResult struct {
 }
 
 func LookupPython2PackageOutput(ctx *pulumi.Context, args LookupPython2PackageOutputArgs, opts ...pulumi.InvokeOption) LookupPython2PackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPython2PackageResultOutput, error) {
-			args := v.(LookupPython2PackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:getPython2Package", args, LookupPython2PackageResultOutput{}, options).(LookupPython2PackageResultOutput), nil
-		}).(LookupPython2PackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:getPython2Package", args, LookupPython2PackageResultOutput{}, options).(LookupPython2PackageResultOutput)
 }
 
 type LookupPython2PackageOutputArgs struct {

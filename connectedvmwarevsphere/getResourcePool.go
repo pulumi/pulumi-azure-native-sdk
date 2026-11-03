@@ -102,12 +102,8 @@ type LookupResourcePoolResult struct {
 }
 
 func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourcePoolResultOutput, error) {
-			args := v.(LookupResourcePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getResourcePool", args, LookupResourcePoolResultOutput{}, options).(LookupResourcePoolResultOutput), nil
-		}).(LookupResourcePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getResourcePool", args, LookupResourcePoolResultOutput{}, options).(LookupResourcePoolResultOutput)
 }
 
 type LookupResourcePoolOutputArgs struct {

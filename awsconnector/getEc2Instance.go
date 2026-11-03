@@ -56,12 +56,8 @@ func (val *LookupEc2InstanceResult) Defaults() *LookupEc2InstanceResult {
 	return &tmp
 }
 func LookupEc2InstanceOutput(ctx *pulumi.Context, args LookupEc2InstanceOutputArgs, opts ...pulumi.InvokeOption) LookupEc2InstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2InstanceResultOutput, error) {
-			args := v.(LookupEc2InstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Instance", args, LookupEc2InstanceResultOutput{}, options).(LookupEc2InstanceResultOutput), nil
-		}).(LookupEc2InstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2Instance", args, LookupEc2InstanceResultOutput{}, options).(LookupEc2InstanceResultOutput)
 }
 
 type LookupEc2InstanceOutputArgs struct {

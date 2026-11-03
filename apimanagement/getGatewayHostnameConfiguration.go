@@ -62,12 +62,8 @@ type LookupGatewayHostnameConfigurationResult struct {
 }
 
 func LookupGatewayHostnameConfigurationOutput(ctx *pulumi.Context, args LookupGatewayHostnameConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayHostnameConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGatewayHostnameConfigurationResultOutput, error) {
-			args := v.(LookupGatewayHostnameConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getGatewayHostnameConfiguration", args, LookupGatewayHostnameConfigurationResultOutput{}, options).(LookupGatewayHostnameConfigurationResultOutput), nil
-		}).(LookupGatewayHostnameConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getGatewayHostnameConfiguration", args, LookupGatewayHostnameConfigurationResultOutput{}, options).(LookupGatewayHostnameConfigurationResultOutput)
 }
 
 type LookupGatewayHostnameConfigurationOutputArgs struct {

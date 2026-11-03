@@ -62,12 +62,8 @@ func (val *LookupRdsDbInstanceResult) Defaults() *LookupRdsDbInstanceResult {
 	return &tmp
 }
 func LookupRdsDbInstanceOutput(ctx *pulumi.Context, args LookupRdsDbInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupRdsDbInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRdsDbInstanceResultOutput, error) {
-			args := v.(LookupRdsDbInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getRdsDbInstance", args, LookupRdsDbInstanceResultOutput{}, options).(LookupRdsDbInstanceResultOutput), nil
-		}).(LookupRdsDbInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getRdsDbInstance", args, LookupRdsDbInstanceResultOutput{}, options).(LookupRdsDbInstanceResultOutput)
 }
 
 type LookupRdsDbInstanceOutputArgs struct {

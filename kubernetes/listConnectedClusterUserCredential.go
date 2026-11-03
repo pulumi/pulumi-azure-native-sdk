@@ -46,12 +46,8 @@ type ListConnectedClusterUserCredentialResult struct {
 }
 
 func ListConnectedClusterUserCredentialOutput(ctx *pulumi.Context, args ListConnectedClusterUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListConnectedClusterUserCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListConnectedClusterUserCredentialResultOutput, error) {
-			args := v.(ListConnectedClusterUserCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kubernetes:listConnectedClusterUserCredential", args, ListConnectedClusterUserCredentialResultOutput{}, options).(ListConnectedClusterUserCredentialResultOutput), nil
-		}).(ListConnectedClusterUserCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kubernetes:listConnectedClusterUserCredential", args, ListConnectedClusterUserCredentialResultOutput{}, options).(ListConnectedClusterUserCredentialResultOutput)
 }
 
 type ListConnectedClusterUserCredentialOutputArgs struct {

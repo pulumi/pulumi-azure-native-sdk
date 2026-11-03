@@ -64,12 +64,8 @@ type LookupIotConnectorResult struct {
 }
 
 func LookupIotConnectorOutput(ctx *pulumi.Context, args LookupIotConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupIotConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotConnectorResultOutput, error) {
-			args := v.(LookupIotConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:healthcareapis:getIotConnector", args, LookupIotConnectorResultOutput{}, options).(LookupIotConnectorResultOutput), nil
-		}).(LookupIotConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:healthcareapis:getIotConnector", args, LookupIotConnectorResultOutput{}, options).(LookupIotConnectorResultOutput)
 }
 
 type LookupIotConnectorOutputArgs struct {

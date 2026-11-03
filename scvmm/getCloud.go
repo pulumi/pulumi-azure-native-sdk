@@ -68,12 +68,8 @@ type LookupCloudResult struct {
 }
 
 func LookupCloudOutput(ctx *pulumi.Context, args LookupCloudOutputArgs, opts ...pulumi.InvokeOption) LookupCloudResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudResultOutput, error) {
-			args := v.(LookupCloudArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:scvmm:getCloud", args, LookupCloudResultOutput{}, options).(LookupCloudResultOutput), nil
-		}).(LookupCloudResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:scvmm:getCloud", args, LookupCloudResultOutput{}, options).(LookupCloudResultOutput)
 }
 
 type LookupCloudOutputArgs struct {

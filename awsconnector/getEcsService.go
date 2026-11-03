@@ -62,12 +62,8 @@ func (val *LookupEcsServiceResult) Defaults() *LookupEcsServiceResult {
 	return &tmp
 }
 func LookupEcsServiceOutput(ctx *pulumi.Context, args LookupEcsServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEcsServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEcsServiceResultOutput, error) {
-			args := v.(LookupEcsServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEcsService", args, LookupEcsServiceResultOutput{}, options).(LookupEcsServiceResultOutput), nil
-		}).(LookupEcsServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEcsService", args, LookupEcsServiceResultOutput{}, options).(LookupEcsServiceResultOutput)
 }
 
 type LookupEcsServiceOutputArgs struct {
