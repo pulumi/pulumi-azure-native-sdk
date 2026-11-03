@@ -42,12 +42,8 @@ type GetComputeAllowedResizeSizesResult struct {
 }
 
 func GetComputeAllowedResizeSizesOutput(ctx *pulumi.Context, args GetComputeAllowedResizeSizesOutputArgs, opts ...pulumi.InvokeOption) GetComputeAllowedResizeSizesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetComputeAllowedResizeSizesResultOutput, error) {
-			args := v.(GetComputeAllowedResizeSizesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getComputeAllowedResizeSizes", args, GetComputeAllowedResizeSizesResultOutput{}, options).(GetComputeAllowedResizeSizesResultOutput), nil
-		}).(GetComputeAllowedResizeSizesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getComputeAllowedResizeSizes", args, GetComputeAllowedResizeSizesResultOutput{}, options).(GetComputeAllowedResizeSizesResultOutput)
 }
 
 type GetComputeAllowedResizeSizesOutputArgs struct {

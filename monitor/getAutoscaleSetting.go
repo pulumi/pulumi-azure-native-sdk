@@ -62,12 +62,8 @@ func (val *LookupAutoscaleSettingResult) Defaults() *LookupAutoscaleSettingResul
 	return &tmp
 }
 func LookupAutoscaleSettingOutput(ctx *pulumi.Context, args LookupAutoscaleSettingOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscaleSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAutoscaleSettingResultOutput, error) {
-			args := v.(LookupAutoscaleSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:monitor:getAutoscaleSetting", args, LookupAutoscaleSettingResultOutput{}, options).(LookupAutoscaleSettingResultOutput), nil
-		}).(LookupAutoscaleSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:monitor:getAutoscaleSetting", args, LookupAutoscaleSettingResultOutput{}, options).(LookupAutoscaleSettingResultOutput)
 }
 
 type LookupAutoscaleSettingOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupEnterpriseCustomerOperationResult struct {
 }
 
 func LookupEnterpriseCustomerOperationOutput(ctx *pulumi.Context, args LookupEnterpriseCustomerOperationOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseCustomerOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnterpriseCustomerOperationResultOutput, error) {
-			args := v.(LookupEnterpriseCustomerOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseCustomerOperation", args, LookupEnterpriseCustomerOperationResultOutput{}, options).(LookupEnterpriseCustomerOperationResultOutput), nil
-		}).(LookupEnterpriseCustomerOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseCustomerOperation", args, LookupEnterpriseCustomerOperationResultOutput{}, options).(LookupEnterpriseCustomerOperationResultOutput)
 }
 
 type LookupEnterpriseCustomerOperationOutputArgs struct {

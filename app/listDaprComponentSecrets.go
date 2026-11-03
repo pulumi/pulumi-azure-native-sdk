@@ -42,12 +42,8 @@ type ListDaprComponentSecretsResult struct {
 }
 
 func ListDaprComponentSecretsOutput(ctx *pulumi.Context, args ListDaprComponentSecretsOutputArgs, opts ...pulumi.InvokeOption) ListDaprComponentSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDaprComponentSecretsResultOutput, error) {
-			args := v.(ListDaprComponentSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:listDaprComponentSecrets", args, ListDaprComponentSecretsResultOutput{}, options).(ListDaprComponentSecretsResultOutput), nil
-		}).(ListDaprComponentSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:listDaprComponentSecrets", args, ListDaprComponentSecretsResultOutput{}, options).(ListDaprComponentSecretsResultOutput)
 }
 
 type ListDaprComponentSecretsOutputArgs struct {

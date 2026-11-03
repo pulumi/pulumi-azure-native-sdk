@@ -84,12 +84,8 @@ func (val *LookupLabPlanResult) Defaults() *LookupLabPlanResult {
 	return &tmp
 }
 func LookupLabPlanOutput(ctx *pulumi.Context, args LookupLabPlanOutputArgs, opts ...pulumi.InvokeOption) LookupLabPlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLabPlanResultOutput, error) {
-			args := v.(LookupLabPlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:labservices:getLabPlan", args, LookupLabPlanResultOutput{}, options).(LookupLabPlanResultOutput), nil
-		}).(LookupLabPlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:labservices:getLabPlan", args, LookupLabPlanResultOutput{}, options).(LookupLabPlanResultOutput)
 }
 
 type LookupLabPlanOutputArgs struct {

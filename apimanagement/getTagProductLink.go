@@ -52,12 +52,8 @@ type LookupTagProductLinkResult struct {
 }
 
 func LookupTagProductLinkOutput(ctx *pulumi.Context, args LookupTagProductLinkOutputArgs, opts ...pulumi.InvokeOption) LookupTagProductLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagProductLinkResultOutput, error) {
-			args := v.(LookupTagProductLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getTagProductLink", args, LookupTagProductLinkResultOutput{}, options).(LookupTagProductLinkResultOutput), nil
-		}).(LookupTagProductLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getTagProductLink", args, LookupTagProductLinkResultOutput{}, options).(LookupTagProductLinkResultOutput)
 }
 
 type LookupTagProductLinkOutputArgs struct {

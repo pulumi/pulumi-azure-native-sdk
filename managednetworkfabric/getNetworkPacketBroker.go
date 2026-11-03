@@ -64,12 +64,8 @@ type LookupNetworkPacketBrokerResult struct {
 }
 
 func LookupNetworkPacketBrokerOutput(ctx *pulumi.Context, args LookupNetworkPacketBrokerOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPacketBrokerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkPacketBrokerResultOutput, error) {
-			args := v.(LookupNetworkPacketBrokerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkPacketBroker", args, LookupNetworkPacketBrokerResultOutput{}, options).(LookupNetworkPacketBrokerResultOutput), nil
-		}).(LookupNetworkPacketBrokerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkPacketBroker", args, LookupNetworkPacketBrokerResultOutput{}, options).(LookupNetworkPacketBrokerResultOutput)
 }
 
 type LookupNetworkPacketBrokerOutputArgs struct {

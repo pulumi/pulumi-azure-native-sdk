@@ -44,12 +44,8 @@ type GetMonitorDefaultApplicationKeyResult struct {
 }
 
 func GetMonitorDefaultApplicationKeyOutput(ctx *pulumi.Context, args GetMonitorDefaultApplicationKeyOutputArgs, opts ...pulumi.InvokeOption) GetMonitorDefaultApplicationKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMonitorDefaultApplicationKeyResultOutput, error) {
-			args := v.(GetMonitorDefaultApplicationKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datadog:getMonitorDefaultApplicationKey", args, GetMonitorDefaultApplicationKeyResultOutput{}, options).(GetMonitorDefaultApplicationKeyResultOutput), nil
-		}).(GetMonitorDefaultApplicationKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datadog:getMonitorDefaultApplicationKey", args, GetMonitorDefaultApplicationKeyResultOutput{}, options).(GetMonitorDefaultApplicationKeyResultOutput)
 }
 
 type GetMonitorDefaultApplicationKeyOutputArgs struct {

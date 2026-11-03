@@ -66,12 +66,8 @@ type ListShareSynchronizationDetailsResult struct {
 }
 
 func ListShareSynchronizationDetailsOutput(ctx *pulumi.Context, args ListShareSynchronizationDetailsOutputArgs, opts ...pulumi.InvokeOption) ListShareSynchronizationDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListShareSynchronizationDetailsResultOutput, error) {
-			args := v.(ListShareSynchronizationDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:listShareSynchronizationDetails", args, ListShareSynchronizationDetailsResultOutput{}, options).(ListShareSynchronizationDetailsResultOutput), nil
-		}).(ListShareSynchronizationDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:listShareSynchronizationDetails", args, ListShareSynchronizationDetailsResultOutput{}, options).(ListShareSynchronizationDetailsResultOutput)
 }
 
 type ListShareSynchronizationDetailsOutputArgs struct {

@@ -50,12 +50,8 @@ type LookupDashboardDefinitionResult struct {
 }
 
 func LookupDashboardDefinitionOutput(ctx *pulumi.Context, args LookupDashboardDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupDashboardDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDashboardDefinitionResultOutput, error) {
-			args := v.(LookupDashboardDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dashboard:getDashboardDefinition", args, LookupDashboardDefinitionResultOutput{}, options).(LookupDashboardDefinitionResultOutput), nil
-		}).(LookupDashboardDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dashboard:getDashboardDefinition", args, LookupDashboardDefinitionResultOutput{}, options).(LookupDashboardDefinitionResultOutput)
 }
 
 type LookupDashboardDefinitionOutputArgs struct {

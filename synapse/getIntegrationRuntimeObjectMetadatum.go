@@ -46,12 +46,8 @@ type GetIntegrationRuntimeObjectMetadatumResult struct {
 }
 
 func GetIntegrationRuntimeObjectMetadatumOutput(ctx *pulumi.Context, args GetIntegrationRuntimeObjectMetadatumOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeObjectMetadatumResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIntegrationRuntimeObjectMetadatumResultOutput, error) {
-			args := v.(GetIntegrationRuntimeObjectMetadatumArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:synapse:getIntegrationRuntimeObjectMetadatum", args, GetIntegrationRuntimeObjectMetadatumResultOutput{}, options).(GetIntegrationRuntimeObjectMetadatumResultOutput), nil
-		}).(GetIntegrationRuntimeObjectMetadatumResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:synapse:getIntegrationRuntimeObjectMetadatum", args, GetIntegrationRuntimeObjectMetadatumResultOutput{}, options).(GetIntegrationRuntimeObjectMetadatumResultOutput)
 }
 
 type GetIntegrationRuntimeObjectMetadatumOutputArgs struct {

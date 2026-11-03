@@ -52,12 +52,8 @@ type LookupSageMakerAppResult struct {
 }
 
 func LookupSageMakerAppOutput(ctx *pulumi.Context, args LookupSageMakerAppOutputArgs, opts ...pulumi.InvokeOption) LookupSageMakerAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSageMakerAppResultOutput, error) {
-			args := v.(LookupSageMakerAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSageMakerApp", args, LookupSageMakerAppResultOutput{}, options).(LookupSageMakerAppResultOutput), nil
-		}).(LookupSageMakerAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSageMakerApp", args, LookupSageMakerAppResultOutput{}, options).(LookupSageMakerAppResultOutput)
 }
 
 type LookupSageMakerAppOutputArgs struct {

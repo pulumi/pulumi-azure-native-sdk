@@ -59,12 +59,8 @@ type LookupB2CTenantResult struct {
 }
 
 func LookupB2CTenantOutput(ctx *pulumi.Context, args LookupB2CTenantOutputArgs, opts ...pulumi.InvokeOption) LookupB2CTenantResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupB2CTenantResultOutput, error) {
-			args := v.(LookupB2CTenantArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureactivedirectory:getB2CTenant", args, LookupB2CTenantResultOutput{}, options).(LookupB2CTenantResultOutput), nil
-		}).(LookupB2CTenantResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureactivedirectory:getB2CTenant", args, LookupB2CTenantResultOutput{}, options).(LookupB2CTenantResultOutput)
 }
 
 type LookupB2CTenantOutputArgs struct {

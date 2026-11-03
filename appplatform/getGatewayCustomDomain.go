@@ -54,12 +54,8 @@ type LookupGatewayCustomDomainResult struct {
 }
 
 func LookupGatewayCustomDomainOutput(ctx *pulumi.Context, args LookupGatewayCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGatewayCustomDomainResultOutput, error) {
-			args := v.(LookupGatewayCustomDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:appplatform:getGatewayCustomDomain", args, LookupGatewayCustomDomainResultOutput{}, options).(LookupGatewayCustomDomainResultOutput), nil
-		}).(LookupGatewayCustomDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:appplatform:getGatewayCustomDomain", args, LookupGatewayCustomDomainResultOutput{}, options).(LookupGatewayCustomDomainResultOutput)
 }
 
 type LookupGatewayCustomDomainOutputArgs struct {

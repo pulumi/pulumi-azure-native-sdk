@@ -76,12 +76,8 @@ type LookupNetworkDeviceResult struct {
 }
 
 func LookupNetworkDeviceOutput(ctx *pulumi.Context, args LookupNetworkDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkDeviceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkDeviceResultOutput, error) {
-			args := v.(LookupNetworkDeviceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkDevice", args, LookupNetworkDeviceResultOutput{}, options).(LookupNetworkDeviceResultOutput), nil
-		}).(LookupNetworkDeviceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkDevice", args, LookupNetworkDeviceResultOutput{}, options).(LookupNetworkDeviceResultOutput)
 }
 
 type LookupNetworkDeviceOutputArgs struct {

@@ -54,12 +54,8 @@ type LookupConfigurationProfileHCIAssignmentResult struct {
 }
 
 func LookupConfigurationProfileHCIAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileHCIAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileHCIAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationProfileHCIAssignmentResultOutput, error) {
-			args := v.(LookupConfigurationProfileHCIAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfileHCIAssignment", args, LookupConfigurationProfileHCIAssignmentResultOutput{}, options).(LookupConfigurationProfileHCIAssignmentResultOutput), nil
-		}).(LookupConfigurationProfileHCIAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfileHCIAssignment", args, LookupConfigurationProfileHCIAssignmentResultOutput{}, options).(LookupConfigurationProfileHCIAssignmentResultOutput)
 }
 
 type LookupConfigurationProfileHCIAssignmentOutputArgs struct {

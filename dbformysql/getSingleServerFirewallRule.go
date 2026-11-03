@@ -50,12 +50,8 @@ type LookupSingleServerFirewallRuleResult struct {
 }
 
 func LookupSingleServerFirewallRuleOutput(ctx *pulumi.Context, args LookupSingleServerFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerFirewallRuleResultOutput, error) {
-			args := v.(LookupSingleServerFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerFirewallRule", args, LookupSingleServerFirewallRuleResultOutput{}, options).(LookupSingleServerFirewallRuleResultOutput), nil
-		}).(LookupSingleServerFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getSingleServerFirewallRule", args, LookupSingleServerFirewallRuleResultOutput{}, options).(LookupSingleServerFirewallRuleResultOutput)
 }
 
 type LookupSingleServerFirewallRuleOutputArgs struct {

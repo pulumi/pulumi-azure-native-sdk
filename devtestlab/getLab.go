@@ -106,12 +106,8 @@ func (val *LookupLabResult) Defaults() *LookupLabResult {
 	return &tmp
 }
 func LookupLabOutput(ctx *pulumi.Context, args LookupLabOutputArgs, opts ...pulumi.InvokeOption) LookupLabResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLabResultOutput, error) {
-			args := v.(LookupLabArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:devtestlab:getLab", args, LookupLabResultOutput{}, options).(LookupLabResultOutput), nil
-		}).(LookupLabResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:devtestlab:getLab", args, LookupLabResultOutput{}, options).(LookupLabResultOutput)
 }
 
 type LookupLabOutputArgs struct {

@@ -39,12 +39,8 @@ type ListKeyByAutomationAccountResult struct {
 }
 
 func ListKeyByAutomationAccountOutput(ctx *pulumi.Context, args ListKeyByAutomationAccountOutputArgs, opts ...pulumi.InvokeOption) ListKeyByAutomationAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListKeyByAutomationAccountResultOutput, error) {
-			args := v.(ListKeyByAutomationAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:automation:listKeyByAutomationAccount", args, ListKeyByAutomationAccountResultOutput{}, options).(ListKeyByAutomationAccountResultOutput), nil
-		}).(ListKeyByAutomationAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:automation:listKeyByAutomationAccount", args, ListKeyByAutomationAccountResultOutput{}, options).(ListKeyByAutomationAccountResultOutput)
 }
 
 type ListKeyByAutomationAccountOutputArgs struct {

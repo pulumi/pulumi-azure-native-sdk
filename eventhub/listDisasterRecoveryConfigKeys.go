@@ -56,12 +56,8 @@ type ListDisasterRecoveryConfigKeysResult struct {
 }
 
 func ListDisasterRecoveryConfigKeysOutput(ctx *pulumi.Context, args ListDisasterRecoveryConfigKeysOutputArgs, opts ...pulumi.InvokeOption) ListDisasterRecoveryConfigKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDisasterRecoveryConfigKeysResultOutput, error) {
-			args := v.(ListDisasterRecoveryConfigKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:eventhub:listDisasterRecoveryConfigKeys", args, ListDisasterRecoveryConfigKeysResultOutput{}, options).(ListDisasterRecoveryConfigKeysResultOutput), nil
-		}).(ListDisasterRecoveryConfigKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:eventhub:listDisasterRecoveryConfigKeys", args, ListDisasterRecoveryConfigKeysResultOutput{}, options).(ListDisasterRecoveryConfigKeysResultOutput)
 }
 
 type ListDisasterRecoveryConfigKeysOutputArgs struct {

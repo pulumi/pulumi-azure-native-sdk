@@ -46,12 +46,8 @@ type ListApplianceKeysResult struct {
 }
 
 func ListApplianceKeysOutput(ctx *pulumi.Context, args ListApplianceKeysOutputArgs, opts ...pulumi.InvokeOption) ListApplianceKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListApplianceKeysResultOutput, error) {
-			args := v.(ListApplianceKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:resourceconnector:listApplianceKeys", args, ListApplianceKeysResultOutput{}, options).(ListApplianceKeysResultOutput), nil
-		}).(ListApplianceKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:resourceconnector:listApplianceKeys", args, ListApplianceKeysResultOutput{}, options).(ListApplianceKeysResultOutput)
 }
 
 type ListApplianceKeysOutputArgs struct {

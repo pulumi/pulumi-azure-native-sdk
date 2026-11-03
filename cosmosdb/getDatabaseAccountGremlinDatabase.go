@@ -58,12 +58,8 @@ type LookupDatabaseAccountGremlinDatabaseResult struct {
 }
 
 func LookupDatabaseAccountGremlinDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseAccountGremlinDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountGremlinDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAccountGremlinDatabaseResultOutput, error) {
-			args := v.(LookupDatabaseAccountGremlinDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountGremlinDatabase", args, LookupDatabaseAccountGremlinDatabaseResultOutput{}, options).(LookupDatabaseAccountGremlinDatabaseResultOutput), nil
-		}).(LookupDatabaseAccountGremlinDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountGremlinDatabase", args, LookupDatabaseAccountGremlinDatabaseResultOutput{}, options).(LookupDatabaseAccountGremlinDatabaseResultOutput)
 }
 
 type LookupDatabaseAccountGremlinDatabaseOutputArgs struct {

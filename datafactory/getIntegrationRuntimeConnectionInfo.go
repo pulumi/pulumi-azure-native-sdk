@@ -50,12 +50,8 @@ type GetIntegrationRuntimeConnectionInfoResult struct {
 }
 
 func GetIntegrationRuntimeConnectionInfoOutput(ctx *pulumi.Context, args GetIntegrationRuntimeConnectionInfoOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeConnectionInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIntegrationRuntimeConnectionInfoResultOutput, error) {
-			args := v.(GetIntegrationRuntimeConnectionInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getIntegrationRuntimeConnectionInfo", args, GetIntegrationRuntimeConnectionInfoResultOutput{}, options).(GetIntegrationRuntimeConnectionInfoResultOutput), nil
-		}).(GetIntegrationRuntimeConnectionInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getIntegrationRuntimeConnectionInfo", args, GetIntegrationRuntimeConnectionInfoResultOutput{}, options).(GetIntegrationRuntimeConnectionInfoResultOutput)
 }
 
 type GetIntegrationRuntimeConnectionInfoOutputArgs struct {

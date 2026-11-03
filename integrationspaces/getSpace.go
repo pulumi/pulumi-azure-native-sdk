@@ -54,12 +54,8 @@ type LookupSpaceResult struct {
 }
 
 func LookupSpaceOutput(ctx *pulumi.Context, args LookupSpaceOutputArgs, opts ...pulumi.InvokeOption) LookupSpaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpaceResultOutput, error) {
-			args := v.(LookupSpaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:integrationspaces:getSpace", args, LookupSpaceResultOutput{}, options).(LookupSpaceResultOutput), nil
-		}).(LookupSpaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:integrationspaces:getSpace", args, LookupSpaceResultOutput{}, options).(LookupSpaceResultOutput)
 }
 
 type LookupSpaceOutputArgs struct {

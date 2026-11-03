@@ -52,12 +52,8 @@ type LookupIamGroupResult struct {
 }
 
 func LookupIamGroupOutput(ctx *pulumi.Context, args LookupIamGroupOutputArgs, opts ...pulumi.InvokeOption) LookupIamGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamGroupResultOutput, error) {
-			args := v.(LookupIamGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getIamGroup", args, LookupIamGroupResultOutput{}, options).(LookupIamGroupResultOutput), nil
-		}).(LookupIamGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getIamGroup", args, LookupIamGroupResultOutput{}, options).(LookupIamGroupResultOutput)
 }
 
 type LookupIamGroupOutputArgs struct {

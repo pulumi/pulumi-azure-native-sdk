@@ -70,12 +70,8 @@ func (val *LookupServerGroupRoleResult) Defaults() *LookupServerGroupRoleResult 
 	return &tmp
 }
 func LookupServerGroupRoleOutput(ctx *pulumi.Context, args LookupServerGroupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupRoleResultOutput, error) {
-			args := v.(LookupServerGroupRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupRole", args, LookupServerGroupRoleResultOutput{}, options).(LookupServerGroupRoleResultOutput), nil
-		}).(LookupServerGroupRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbforpostgresql:getServerGroupRole", args, LookupServerGroupRoleResultOutput{}, options).(LookupServerGroupRoleResultOutput)
 }
 
 type LookupServerGroupRoleOutputArgs struct {

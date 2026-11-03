@@ -58,12 +58,8 @@ type LookupSolutionVersionResult struct {
 }
 
 func LookupSolutionVersionOutput(ctx *pulumi.Context, args LookupSolutionVersionOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSolutionVersionResultOutput, error) {
-			args := v.(LookupSolutionVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:edge:getSolutionVersion", args, LookupSolutionVersionResultOutput{}, options).(LookupSolutionVersionResultOutput), nil
-		}).(LookupSolutionVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:edge:getSolutionVersion", args, LookupSolutionVersionResultOutput{}, options).(LookupSolutionVersionResultOutput)
 }
 
 type LookupSolutionVersionOutputArgs struct {

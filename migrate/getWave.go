@@ -54,12 +54,8 @@ type LookupWaveResult struct {
 }
 
 func LookupWaveOutput(ctx *pulumi.Context, args LookupWaveOutputArgs, opts ...pulumi.InvokeOption) LookupWaveResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWaveResultOutput, error) {
-			args := v.(LookupWaveArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getWave", args, LookupWaveResultOutput{}, options).(LookupWaveResultOutput), nil
-		}).(LookupWaveResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getWave", args, LookupWaveResultOutput{}, options).(LookupWaveResultOutput)
 }
 
 type LookupWaveOutputArgs struct {

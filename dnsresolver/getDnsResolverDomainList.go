@@ -60,12 +60,8 @@ type LookupDnsResolverDomainListResult struct {
 }
 
 func LookupDnsResolverDomainListOutput(ctx *pulumi.Context, args LookupDnsResolverDomainListOutputArgs, opts ...pulumi.InvokeOption) LookupDnsResolverDomainListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsResolverDomainListResultOutput, error) {
-			args := v.(LookupDnsResolverDomainListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dnsresolver:getDnsResolverDomainList", args, LookupDnsResolverDomainListResultOutput{}, options).(LookupDnsResolverDomainListResultOutput), nil
-		}).(LookupDnsResolverDomainListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dnsresolver:getDnsResolverDomainList", args, LookupDnsResolverDomainListResultOutput{}, options).(LookupDnsResolverDomainListResultOutput)
 }
 
 type LookupDnsResolverDomainListOutputArgs struct {

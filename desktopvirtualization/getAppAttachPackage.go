@@ -54,12 +54,8 @@ type LookupAppAttachPackageResult struct {
 }
 
 func LookupAppAttachPackageOutput(ctx *pulumi.Context, args LookupAppAttachPackageOutputArgs, opts ...pulumi.InvokeOption) LookupAppAttachPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppAttachPackageResultOutput, error) {
-			args := v.(LookupAppAttachPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:desktopvirtualization:getAppAttachPackage", args, LookupAppAttachPackageResultOutput{}, options).(LookupAppAttachPackageResultOutput), nil
-		}).(LookupAppAttachPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:desktopvirtualization:getAppAttachPackage", args, LookupAppAttachPackageResultOutput{}, options).(LookupAppAttachPackageResultOutput)
 }
 
 type LookupAppAttachPackageOutputArgs struct {

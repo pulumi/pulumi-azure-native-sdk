@@ -46,12 +46,8 @@ type LookupSubscriptionTarDirectoryResult struct {
 }
 
 func LookupSubscriptionTarDirectoryOutput(ctx *pulumi.Context, args LookupSubscriptionTarDirectoryOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionTarDirectoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubscriptionTarDirectoryResultOutput, error) {
-			args := v.(LookupSubscriptionTarDirectoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:subscription:getSubscriptionTarDirectory", args, LookupSubscriptionTarDirectoryResultOutput{}, options).(LookupSubscriptionTarDirectoryResultOutput), nil
-		}).(LookupSubscriptionTarDirectoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:subscription:getSubscriptionTarDirectory", args, LookupSubscriptionTarDirectoryResultOutput{}, options).(LookupSubscriptionTarDirectoryResultOutput)
 }
 
 type LookupSubscriptionTarDirectoryOutputArgs struct {

@@ -46,12 +46,8 @@ type LookupUserSolutionResult struct {
 }
 
 func LookupUserSolutionOutput(ctx *pulumi.Context, args LookupUserSolutionOutputArgs, opts ...pulumi.InvokeOption) LookupUserSolutionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserSolutionResultOutput, error) {
-			args := v.(LookupUserSolutionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:marketplace:getUserSolution", args, LookupUserSolutionResultOutput{}, options).(LookupUserSolutionResultOutput), nil
-		}).(LookupUserSolutionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:marketplace:getUserSolution", args, LookupUserSolutionResultOutput{}, options).(LookupUserSolutionResultOutput)
 }
 
 type LookupUserSolutionOutputArgs struct {

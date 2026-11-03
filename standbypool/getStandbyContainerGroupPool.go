@@ -58,12 +58,8 @@ type LookupStandbyContainerGroupPoolResult struct {
 }
 
 func LookupStandbyContainerGroupPoolOutput(ctx *pulumi.Context, args LookupStandbyContainerGroupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupStandbyContainerGroupPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStandbyContainerGroupPoolResultOutput, error) {
-			args := v.(LookupStandbyContainerGroupPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:standbypool:getStandbyContainerGroupPool", args, LookupStandbyContainerGroupPoolResultOutput{}, options).(LookupStandbyContainerGroupPoolResultOutput), nil
-		}).(LookupStandbyContainerGroupPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:standbypool:getStandbyContainerGroupPool", args, LookupStandbyContainerGroupPoolResultOutput{}, options).(LookupStandbyContainerGroupPoolResultOutput)
 }
 
 type LookupStandbyContainerGroupPoolOutputArgs struct {

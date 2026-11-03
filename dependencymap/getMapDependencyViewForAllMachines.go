@@ -52,12 +52,8 @@ type GetMapDependencyViewForAllMachinesResult struct {
 }
 
 func GetMapDependencyViewForAllMachinesOutput(ctx *pulumi.Context, args GetMapDependencyViewForAllMachinesOutputArgs, opts ...pulumi.InvokeOption) GetMapDependencyViewForAllMachinesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMapDependencyViewForAllMachinesResultOutput, error) {
-			args := v.(GetMapDependencyViewForAllMachinesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dependencymap:getMapDependencyViewForAllMachines", args, GetMapDependencyViewForAllMachinesResultOutput{}, options).(GetMapDependencyViewForAllMachinesResultOutput), nil
-		}).(GetMapDependencyViewForAllMachinesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dependencymap:getMapDependencyViewForAllMachines", args, GetMapDependencyViewForAllMachinesResultOutput{}, options).(GetMapDependencyViewForAllMachinesResultOutput)
 }
 
 type GetMapDependencyViewForAllMachinesOutputArgs struct {

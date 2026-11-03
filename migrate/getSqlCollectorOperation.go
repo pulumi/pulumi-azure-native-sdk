@@ -60,12 +60,8 @@ type LookupSqlCollectorOperationResult struct {
 }
 
 func LookupSqlCollectorOperationOutput(ctx *pulumi.Context, args LookupSqlCollectorOperationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlCollectorOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlCollectorOperationResultOutput, error) {
-			args := v.(LookupSqlCollectorOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getSqlCollectorOperation", args, LookupSqlCollectorOperationResultOutput{}, options).(LookupSqlCollectorOperationResultOutput), nil
-		}).(LookupSqlCollectorOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getSqlCollectorOperation", args, LookupSqlCollectorOperationResultOutput{}, options).(LookupSqlCollectorOperationResultOutput)
 }
 
 type LookupSqlCollectorOperationOutputArgs struct {

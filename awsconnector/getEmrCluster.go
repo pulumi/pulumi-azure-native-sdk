@@ -52,12 +52,8 @@ type LookupEmrClusterResult struct {
 }
 
 func LookupEmrClusterOutput(ctx *pulumi.Context, args LookupEmrClusterOutputArgs, opts ...pulumi.InvokeOption) LookupEmrClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmrClusterResultOutput, error) {
-			args := v.(LookupEmrClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEmrCluster", args, LookupEmrClusterResultOutput{}, options).(LookupEmrClusterResultOutput), nil
-		}).(LookupEmrClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEmrCluster", args, LookupEmrClusterResultOutput{}, options).(LookupEmrClusterResultOutput)
 }
 
 type LookupEmrClusterOutputArgs struct {

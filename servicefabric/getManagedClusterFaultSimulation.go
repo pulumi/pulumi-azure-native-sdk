@@ -50,12 +50,8 @@ type GetManagedClusterFaultSimulationResult struct {
 }
 
 func GetManagedClusterFaultSimulationOutput(ctx *pulumi.Context, args GetManagedClusterFaultSimulationOutputArgs, opts ...pulumi.InvokeOption) GetManagedClusterFaultSimulationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetManagedClusterFaultSimulationResultOutput, error) {
-			args := v.(GetManagedClusterFaultSimulationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicefabric:getManagedClusterFaultSimulation", args, GetManagedClusterFaultSimulationResultOutput{}, options).(GetManagedClusterFaultSimulationResultOutput), nil
-		}).(GetManagedClusterFaultSimulationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicefabric:getManagedClusterFaultSimulation", args, GetManagedClusterFaultSimulationResultOutput{}, options).(GetManagedClusterFaultSimulationResultOutput)
 }
 
 type GetManagedClusterFaultSimulationOutputArgs struct {

@@ -58,12 +58,8 @@ type LookupNetworkFunctionResult struct {
 }
 
 func LookupNetworkFunctionOutput(ctx *pulumi.Context, args LookupNetworkFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFunctionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkFunctionResultOutput, error) {
-			args := v.(LookupNetworkFunctionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hybridnetwork:getNetworkFunction", args, LookupNetworkFunctionResultOutput{}, options).(LookupNetworkFunctionResultOutput), nil
-		}).(LookupNetworkFunctionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hybridnetwork:getNetworkFunction", args, LookupNetworkFunctionResultOutput{}, options).(LookupNetworkFunctionResultOutput)
 }
 
 type LookupNetworkFunctionOutputArgs struct {

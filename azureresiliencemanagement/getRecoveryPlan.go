@@ -52,12 +52,8 @@ type LookupRecoveryPlanResult struct {
 }
 
 func LookupRecoveryPlanOutput(ctx *pulumi.Context, args LookupRecoveryPlanOutputArgs, opts ...pulumi.InvokeOption) LookupRecoveryPlanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRecoveryPlanResultOutput, error) {
-			args := v.(LookupRecoveryPlanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getRecoveryPlan", args, LookupRecoveryPlanResultOutput{}, options).(LookupRecoveryPlanResultOutput), nil
-		}).(LookupRecoveryPlanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azureresiliencemanagement:getRecoveryPlan", args, LookupRecoveryPlanResultOutput{}, options).(LookupRecoveryPlanResultOutput)
 }
 
 type LookupRecoveryPlanOutputArgs struct {

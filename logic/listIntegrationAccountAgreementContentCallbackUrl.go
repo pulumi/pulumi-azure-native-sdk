@@ -56,12 +56,8 @@ type ListIntegrationAccountAgreementContentCallbackUrlResult struct {
 }
 
 func ListIntegrationAccountAgreementContentCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountAgreementContentCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountAgreementContentCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountAgreementContentCallbackUrlResultOutput, error) {
-			args := v.(ListIntegrationAccountAgreementContentCallbackUrlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountAgreementContentCallbackUrl", args, ListIntegrationAccountAgreementContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountAgreementContentCallbackUrlResultOutput), nil
-		}).(ListIntegrationAccountAgreementContentCallbackUrlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:logic:listIntegrationAccountAgreementContentCallbackUrl", args, ListIntegrationAccountAgreementContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountAgreementContentCallbackUrlResultOutput)
 }
 
 type ListIntegrationAccountAgreementContentCallbackUrlOutputArgs struct {

@@ -42,12 +42,8 @@ type ListClusterZonesResult struct {
 }
 
 func ListClusterZonesOutput(ctx *pulumi.Context, args ListClusterZonesOutputArgs, opts ...pulumi.InvokeOption) ListClusterZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListClusterZonesResultOutput, error) {
-			args := v.(ListClusterZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:listClusterZones", args, ListClusterZonesResultOutput{}, options).(ListClusterZonesResultOutput), nil
-		}).(ListClusterZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:listClusterZones", args, ListClusterZonesResultOutput{}, options).(ListClusterZonesResultOutput)
 }
 
 type ListClusterZonesOutputArgs struct {

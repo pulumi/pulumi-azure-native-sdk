@@ -52,12 +52,8 @@ type LookupDocumentProcessorResult struct {
 }
 
 func LookupDocumentProcessorOutput(ctx *pulumi.Context, args LookupDocumentProcessorOutputArgs, opts ...pulumi.InvokeOption) LookupDocumentProcessorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDocumentProcessorResultOutput, error) {
-			args := v.(LookupDocumentProcessorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:syntex:getDocumentProcessor", args, LookupDocumentProcessorResultOutput{}, options).(LookupDocumentProcessorResultOutput), nil
-		}).(LookupDocumentProcessorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:syntex:getDocumentProcessor", args, LookupDocumentProcessorResultOutput{}, options).(LookupDocumentProcessorResultOutput)
 }
 
 type LookupDocumentProcessorOutputArgs struct {

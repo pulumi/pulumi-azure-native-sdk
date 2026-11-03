@@ -50,12 +50,8 @@ type LookupImportSqlCollectorOperationResult struct {
 }
 
 func LookupImportSqlCollectorOperationOutput(ctx *pulumi.Context, args LookupImportSqlCollectorOperationOutputArgs, opts ...pulumi.InvokeOption) LookupImportSqlCollectorOperationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImportSqlCollectorOperationResultOutput, error) {
-			args := v.(LookupImportSqlCollectorOperationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:migrate:getImportSqlCollectorOperation", args, LookupImportSqlCollectorOperationResultOutput{}, options).(LookupImportSqlCollectorOperationResultOutput), nil
-		}).(LookupImportSqlCollectorOperationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:migrate:getImportSqlCollectorOperation", args, LookupImportSqlCollectorOperationResultOutput{}, options).(LookupImportSqlCollectorOperationResultOutput)
 }
 
 type LookupImportSqlCollectorOperationOutputArgs struct {

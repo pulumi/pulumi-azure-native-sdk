@@ -80,12 +80,8 @@ type LookupPredictionResult struct {
 }
 
 func LookupPredictionOutput(ctx *pulumi.Context, args LookupPredictionOutputArgs, opts ...pulumi.InvokeOption) LookupPredictionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPredictionResultOutput, error) {
-			args := v.(LookupPredictionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:customerinsights:getPrediction", args, LookupPredictionResultOutput{}, options).(LookupPredictionResultOutput), nil
-		}).(LookupPredictionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:customerinsights:getPrediction", args, LookupPredictionResultOutput{}, options).(LookupPredictionResultOutput)
 }
 
 type LookupPredictionOutputArgs struct {

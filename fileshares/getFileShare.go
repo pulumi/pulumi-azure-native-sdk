@@ -54,12 +54,8 @@ type LookupFileShareResult struct {
 }
 
 func LookupFileShareOutput(ctx *pulumi.Context, args LookupFileShareOutputArgs, opts ...pulumi.InvokeOption) LookupFileShareResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFileShareResultOutput, error) {
-			args := v.(LookupFileShareArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:fileshares:getFileShare", args, LookupFileShareResultOutput{}, options).(LookupFileShareResultOutput), nil
-		}).(LookupFileShareResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:fileshares:getFileShare", args, LookupFileShareResultOutput{}, options).(LookupFileShareResultOutput)
 }
 
 type LookupFileShareOutputArgs struct {

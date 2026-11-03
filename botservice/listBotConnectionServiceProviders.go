@@ -38,12 +38,8 @@ type ListBotConnectionServiceProvidersResult struct {
 }
 
 func ListBotConnectionServiceProvidersOutput(ctx *pulumi.Context, args ListBotConnectionServiceProvidersOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionServiceProvidersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListBotConnectionServiceProvidersResultOutput, error) {
-			args := v.(ListBotConnectionServiceProvidersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:botservice:listBotConnectionServiceProviders", args, ListBotConnectionServiceProvidersResultOutput{}, options).(ListBotConnectionServiceProvidersResultOutput), nil
-		}).(ListBotConnectionServiceProvidersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:botservice:listBotConnectionServiceProviders", args, ListBotConnectionServiceProvidersResultOutput{}, options).(ListBotConnectionServiceProvidersResultOutput)
 }
 
 type ListBotConnectionServiceProvidersOutputArgs struct {

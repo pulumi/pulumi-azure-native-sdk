@@ -76,12 +76,8 @@ type LookupWorkspaceSubscriptionResult struct {
 }
 
 func LookupWorkspaceSubscriptionOutput(ctx *pulumi.Context, args LookupWorkspaceSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceSubscriptionResultOutput, error) {
-			args := v.(LookupWorkspaceSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceSubscription", args, LookupWorkspaceSubscriptionResultOutput{}, options).(LookupWorkspaceSubscriptionResultOutput), nil
-		}).(LookupWorkspaceSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getWorkspaceSubscription", args, LookupWorkspaceSubscriptionResultOutput{}, options).(LookupWorkspaceSubscriptionResultOutput)
 }
 
 type LookupWorkspaceSubscriptionOutputArgs struct {

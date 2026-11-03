@@ -52,12 +52,8 @@ type LookupEc2AccountAttributeResult struct {
 }
 
 func LookupEc2AccountAttributeOutput(ctx *pulumi.Context, args LookupEc2AccountAttributeOutputArgs, opts ...pulumi.InvokeOption) LookupEc2AccountAttributeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2AccountAttributeResultOutput, error) {
-			args := v.(LookupEc2AccountAttributeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2AccountAttribute", args, LookupEc2AccountAttributeResultOutput{}, options).(LookupEc2AccountAttributeResultOutput), nil
-		}).(LookupEc2AccountAttributeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2AccountAttribute", args, LookupEc2AccountAttributeResultOutput{}, options).(LookupEc2AccountAttributeResultOutput)
 }
 
 type LookupEc2AccountAttributeOutputArgs struct {

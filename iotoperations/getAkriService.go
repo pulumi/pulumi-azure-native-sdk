@@ -54,12 +54,8 @@ type LookupAkriServiceResult struct {
 }
 
 func LookupAkriServiceOutput(ctx *pulumi.Context, args LookupAkriServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAkriServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAkriServiceResultOutput, error) {
-			args := v.(LookupAkriServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperations:getAkriService", args, LookupAkriServiceResultOutput{}, options).(LookupAkriServiceResultOutput), nil
-		}).(LookupAkriServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperations:getAkriService", args, LookupAkriServiceResultOutput{}, options).(LookupAkriServiceResultOutput)
 }
 
 type LookupAkriServiceOutputArgs struct {

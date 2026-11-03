@@ -56,12 +56,8 @@ type LookupStorageAssetResult struct {
 }
 
 func LookupStorageAssetOutput(ctx *pulumi.Context, args LookupStorageAssetOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAssetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStorageAssetResultOutput, error) {
-			args := v.(LookupStorageAssetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:discovery:getStorageAsset", args, LookupStorageAssetResultOutput{}, options).(LookupStorageAssetResultOutput), nil
-		}).(LookupStorageAssetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:discovery:getStorageAsset", args, LookupStorageAssetResultOutput{}, options).(LookupStorageAssetResultOutput)
 }
 
 type LookupStorageAssetOutputArgs struct {

@@ -60,12 +60,8 @@ type LookupNamedValueResult struct {
 }
 
 func LookupNamedValueOutput(ctx *pulumi.Context, args LookupNamedValueOutputArgs, opts ...pulumi.InvokeOption) LookupNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamedValueResultOutput, error) {
-			args := v.(LookupNamedValueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getNamedValue", args, LookupNamedValueResultOutput{}, options).(LookupNamedValueResultOutput), nil
-		}).(LookupNamedValueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getNamedValue", args, LookupNamedValueResultOutput{}, options).(LookupNamedValueResultOutput)
 }
 
 type LookupNamedValueOutputArgs struct {

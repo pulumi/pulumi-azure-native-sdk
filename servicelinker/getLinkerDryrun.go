@@ -56,12 +56,8 @@ type LookupLinkerDryrunResult struct {
 }
 
 func LookupLinkerDryrunOutput(ctx *pulumi.Context, args LookupLinkerDryrunOutputArgs, opts ...pulumi.InvokeOption) LookupLinkerDryrunResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLinkerDryrunResultOutput, error) {
-			args := v.(LookupLinkerDryrunArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicelinker:getLinkerDryrun", args, LookupLinkerDryrunResultOutput{}, options).(LookupLinkerDryrunResultOutput), nil
-		}).(LookupLinkerDryrunResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicelinker:getLinkerDryrun", args, LookupLinkerDryrunResultOutput{}, options).(LookupLinkerDryrunResultOutput)
 }
 
 type LookupLinkerDryrunOutputArgs struct {

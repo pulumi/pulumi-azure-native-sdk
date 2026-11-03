@@ -60,12 +60,8 @@ type LookupSqlSitesControllerResult struct {
 }
 
 func LookupSqlSitesControllerOutput(ctx *pulumi.Context, args LookupSqlSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlSitesControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlSitesControllerResultOutput, error) {
-			args := v.(LookupSqlSitesControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getSqlSitesController", args, LookupSqlSitesControllerResultOutput{}, options).(LookupSqlSitesControllerResultOutput), nil
-		}).(LookupSqlSitesControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getSqlSitesController", args, LookupSqlSitesControllerResultOutput{}, options).(LookupSqlSitesControllerResultOutput)
 }
 
 type LookupSqlSitesControllerOutputArgs struct {

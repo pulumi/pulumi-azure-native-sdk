@@ -66,12 +66,8 @@ type LookupNGroupResult struct {
 }
 
 func LookupNGroupOutput(ctx *pulumi.Context, args LookupNGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNGroupResultOutput, error) {
-			args := v.(LookupNGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:containerinstance:getNGroup", args, LookupNGroupResultOutput{}, options).(LookupNGroupResultOutput), nil
-		}).(LookupNGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:containerinstance:getNGroup", args, LookupNGroupResultOutput{}, options).(LookupNGroupResultOutput)
 }
 
 type LookupNGroupOutputArgs struct {

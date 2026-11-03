@@ -44,12 +44,8 @@ type ListSubscriptionSecretsResult struct {
 }
 
 func ListSubscriptionSecretsOutput(ctx *pulumi.Context, args ListSubscriptionSecretsOutputArgs, opts ...pulumi.InvokeOption) ListSubscriptionSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListSubscriptionSecretsResultOutput, error) {
-			args := v.(ListSubscriptionSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:listSubscriptionSecrets", args, ListSubscriptionSecretsResultOutput{}, options).(ListSubscriptionSecretsResultOutput), nil
-		}).(ListSubscriptionSecretsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:listSubscriptionSecrets", args, ListSubscriptionSecretsResultOutput{}, options).(ListSubscriptionSecretsResultOutput)
 }
 
 type ListSubscriptionSecretsOutputArgs struct {

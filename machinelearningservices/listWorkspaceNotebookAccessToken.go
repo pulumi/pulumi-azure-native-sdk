@@ -45,12 +45,8 @@ type ListWorkspaceNotebookAccessTokenResult struct {
 }
 
 func ListWorkspaceNotebookAccessTokenOutput(ctx *pulumi.Context, args ListWorkspaceNotebookAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceNotebookAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceNotebookAccessTokenResultOutput, error) {
-			args := v.(ListWorkspaceNotebookAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listWorkspaceNotebookAccessToken", args, ListWorkspaceNotebookAccessTokenResultOutput{}, options).(ListWorkspaceNotebookAccessTokenResultOutput), nil
-		}).(ListWorkspaceNotebookAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listWorkspaceNotebookAccessToken", args, ListWorkspaceNotebookAccessTokenResultOutput{}, options).(ListWorkspaceNotebookAccessTokenResultOutput)
 }
 
 type ListWorkspaceNotebookAccessTokenOutputArgs struct {

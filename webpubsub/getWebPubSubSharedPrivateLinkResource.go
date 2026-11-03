@@ -60,12 +60,8 @@ type LookupWebPubSubSharedPrivateLinkResourceResult struct {
 }
 
 func LookupWebPubSubSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupWebPubSubSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubSharedPrivateLinkResourceResultOutput, error) {
-			args := v.(LookupWebPubSubSharedPrivateLinkResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSubSharedPrivateLinkResource", args, LookupWebPubSubSharedPrivateLinkResourceResultOutput{}, options).(LookupWebPubSubSharedPrivateLinkResourceResultOutput), nil
-		}).(LookupWebPubSubSharedPrivateLinkResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSubSharedPrivateLinkResource", args, LookupWebPubSubSharedPrivateLinkResourceResultOutput{}, options).(LookupWebPubSubSharedPrivateLinkResourceResultOutput)
 }
 
 type LookupWebPubSubSharedPrivateLinkResourceOutputArgs struct {

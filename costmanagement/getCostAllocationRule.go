@@ -48,12 +48,8 @@ type LookupCostAllocationRuleResult struct {
 }
 
 func LookupCostAllocationRuleOutput(ctx *pulumi.Context, args LookupCostAllocationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCostAllocationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCostAllocationRuleResultOutput, error) {
-			args := v.(LookupCostAllocationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:costmanagement:getCostAllocationRule", args, LookupCostAllocationRuleResultOutput{}, options).(LookupCostAllocationRuleResultOutput), nil
-		}).(LookupCostAllocationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:costmanagement:getCostAllocationRule", args, LookupCostAllocationRuleResultOutput{}, options).(LookupCostAllocationRuleResultOutput)
 }
 
 type LookupCostAllocationRuleOutputArgs struct {

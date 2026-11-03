@@ -56,12 +56,8 @@ type LookupWebAppDiscoverySiteDataSourcesControllerResult struct {
 }
 
 func LookupWebAppDiscoverySiteDataSourcesControllerOutput(ctx *pulumi.Context, args LookupWebAppDiscoverySiteDataSourcesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDiscoverySiteDataSourcesControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDiscoverySiteDataSourcesControllerResultOutput, error) {
-			args := v.(LookupWebAppDiscoverySiteDataSourcesControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getWebAppDiscoverySiteDataSourcesController", args, LookupWebAppDiscoverySiteDataSourcesControllerResultOutput{}, options).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput), nil
-		}).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getWebAppDiscoverySiteDataSourcesController", args, LookupWebAppDiscoverySiteDataSourcesControllerResultOutput{}, options).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput)
 }
 
 type LookupWebAppDiscoverySiteDataSourcesControllerOutputArgs struct {

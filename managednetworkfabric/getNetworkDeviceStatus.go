@@ -42,12 +42,8 @@ type GetNetworkDeviceStatusResult struct {
 }
 
 func GetNetworkDeviceStatusOutput(ctx *pulumi.Context, args GetNetworkDeviceStatusOutputArgs, opts ...pulumi.InvokeOption) GetNetworkDeviceStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkDeviceStatusResultOutput, error) {
-			args := v.(GetNetworkDeviceStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkDeviceStatus", args, GetNetworkDeviceStatusResultOutput{}, options).(GetNetworkDeviceStatusResultOutput), nil
-		}).(GetNetworkDeviceStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetworkfabric:getNetworkDeviceStatus", args, GetNetworkDeviceStatusResultOutput{}, options).(GetNetworkDeviceStatusResultOutput)
 }
 
 type GetNetworkDeviceStatusOutputArgs struct {

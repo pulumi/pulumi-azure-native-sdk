@@ -54,12 +54,8 @@ type LookupMongoClusterResult struct {
 }
 
 func LookupMongoClusterOutput(ctx *pulumi.Context, args LookupMongoClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMongoClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongoClusterResultOutput, error) {
-			args := v.(LookupMongoClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mongocluster:getMongoCluster", args, LookupMongoClusterResultOutput{}, options).(LookupMongoClusterResultOutput), nil
-		}).(LookupMongoClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mongocluster:getMongoCluster", args, LookupMongoClusterResultOutput{}, options).(LookupMongoClusterResultOutput)
 }
 
 type LookupMongoClusterOutputArgs struct {

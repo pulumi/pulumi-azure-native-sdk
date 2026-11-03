@@ -60,12 +60,8 @@ type LookupConnectorDryrunResult struct {
 }
 
 func LookupConnectorDryrunOutput(ctx *pulumi.Context, args LookupConnectorDryrunOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorDryrunResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorDryrunResultOutput, error) {
-			args := v.(LookupConnectorDryrunArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:servicelinker:getConnectorDryrun", args, LookupConnectorDryrunResultOutput{}, options).(LookupConnectorDryrunResultOutput), nil
-		}).(LookupConnectorDryrunResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:servicelinker:getConnectorDryrun", args, LookupConnectorDryrunResultOutput{}, options).(LookupConnectorDryrunResultOutput)
 }
 
 type LookupConnectorDryrunOutputArgs struct {

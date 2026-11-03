@@ -151,12 +151,8 @@ func (val *LookupSignalRResult) Defaults() *LookupSignalRResult {
 	return &tmp
 }
 func LookupSignalROutput(ctx *pulumi.Context, args LookupSignalROutputArgs, opts ...pulumi.InvokeOption) LookupSignalRResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSignalRResultOutput, error) {
-			args := v.(LookupSignalRArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:signalrservice:getSignalR", args, LookupSignalRResultOutput{}, options).(LookupSignalRResultOutput), nil
-		}).(LookupSignalRResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:signalrservice:getSignalR", args, LookupSignalRResultOutput{}, options).(LookupSignalRResultOutput)
 }
 
 type LookupSignalROutputArgs struct {

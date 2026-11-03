@@ -52,12 +52,8 @@ type LookupSharedPrivateLinkResourceResult struct {
 }
 
 func LookupSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSharedPrivateLinkResourceResultOutput, error) {
-			args := v.(LookupSharedPrivateLinkResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:search:getSharedPrivateLinkResource", args, LookupSharedPrivateLinkResourceResultOutput{}, options).(LookupSharedPrivateLinkResourceResultOutput), nil
-		}).(LookupSharedPrivateLinkResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:search:getSharedPrivateLinkResource", args, LookupSharedPrivateLinkResourceResultOutput{}, options).(LookupSharedPrivateLinkResourceResultOutput)
 }
 
 type LookupSharedPrivateLinkResourceOutputArgs struct {

@@ -74,12 +74,8 @@ type LookupMySQLServerResult struct {
 }
 
 func LookupMySQLServerOutput(ctx *pulumi.Context, args LookupMySQLServerOutputArgs, opts ...pulumi.InvokeOption) LookupMySQLServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMySQLServerResultOutput, error) {
-			args := v.(LookupMySQLServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:mysqldiscovery:getMySQLServer", args, LookupMySQLServerResultOutput{}, options).(LookupMySQLServerResultOutput), nil
-		}).(LookupMySQLServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:mysqldiscovery:getMySQLServer", args, LookupMySQLServerResultOutput{}, options).(LookupMySQLServerResultOutput)
 }
 
 type LookupMySQLServerOutputArgs struct {

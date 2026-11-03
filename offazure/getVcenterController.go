@@ -72,12 +72,8 @@ type LookupVcenterControllerResult struct {
 }
 
 func LookupVcenterControllerOutput(ctx *pulumi.Context, args LookupVcenterControllerOutputArgs, opts ...pulumi.InvokeOption) LookupVcenterControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVcenterControllerResultOutput, error) {
-			args := v.(LookupVcenterControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:offazure:getVcenterController", args, LookupVcenterControllerResultOutput{}, options).(LookupVcenterControllerResultOutput), nil
-		}).(LookupVcenterControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:offazure:getVcenterController", args, LookupVcenterControllerResultOutput{}, options).(LookupVcenterControllerResultOutput)
 }
 
 type LookupVcenterControllerOutputArgs struct {

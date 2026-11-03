@@ -67,12 +67,8 @@ type LookupScheduledTriggerResult struct {
 }
 
 func LookupScheduledTriggerOutput(ctx *pulumi.Context, args LookupScheduledTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledTriggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScheduledTriggerResultOutput, error) {
-			args := v.(LookupScheduledTriggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datashare:getScheduledTrigger", args, LookupScheduledTriggerResultOutput{}, options).(LookupScheduledTriggerResultOutput), nil
-		}).(LookupScheduledTriggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datashare:getScheduledTrigger", args, LookupScheduledTriggerResultOutput{}, options).(LookupScheduledTriggerResultOutput)
 }
 
 type LookupScheduledTriggerOutputArgs struct {

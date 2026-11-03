@@ -70,12 +70,8 @@ type LookupServerInstanceResult struct {
 }
 
 func LookupServerInstanceOutput(ctx *pulumi.Context, args LookupServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerInstanceResultOutput, error) {
-			args := v.(LookupServerInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getServerInstance", args, LookupServerInstanceResultOutput{}, options).(LookupServerInstanceResultOutput), nil
-		}).(LookupServerInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getServerInstance", args, LookupServerInstanceResultOutput{}, options).(LookupServerInstanceResultOutput)
 }
 
 type LookupServerInstanceOutputArgs struct {

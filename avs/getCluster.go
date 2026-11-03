@@ -62,12 +62,8 @@ type LookupClusterResult struct {
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterResultOutput, error) {
-			args := v.(LookupClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:avs:getCluster", args, LookupClusterResultOutput{}, options).(LookupClusterResultOutput), nil
-		}).(LookupClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:avs:getCluster", args, LookupClusterResultOutput{}, options).(LookupClusterResultOutput)
 }
 
 type LookupClusterOutputArgs struct {

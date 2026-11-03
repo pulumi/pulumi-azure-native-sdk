@@ -52,12 +52,8 @@ type LookupSnsSubscriptionResult struct {
 }
 
 func LookupSnsSubscriptionOutput(ctx *pulumi.Context, args LookupSnsSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSnsSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSnsSubscriptionResultOutput, error) {
-			args := v.(LookupSnsSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getSnsSubscription", args, LookupSnsSubscriptionResultOutput{}, options).(LookupSnsSubscriptionResultOutput), nil
-		}).(LookupSnsSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getSnsSubscription", args, LookupSnsSubscriptionResultOutput{}, options).(LookupSnsSubscriptionResultOutput)
 }
 
 type LookupSnsSubscriptionOutputArgs struct {

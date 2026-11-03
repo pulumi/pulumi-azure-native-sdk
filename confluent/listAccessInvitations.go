@@ -46,12 +46,8 @@ type ListAccessInvitationsResult struct {
 }
 
 func ListAccessInvitationsOutput(ctx *pulumi.Context, args ListAccessInvitationsOutputArgs, opts ...pulumi.InvokeOption) ListAccessInvitationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListAccessInvitationsResultOutput, error) {
-			args := v.(ListAccessInvitationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:confluent:listAccessInvitations", args, ListAccessInvitationsResultOutput{}, options).(ListAccessInvitationsResultOutput), nil
-		}).(ListAccessInvitationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:confluent:listAccessInvitations", args, ListAccessInvitationsResultOutput{}, options).(ListAccessInvitationsResultOutput)
 }
 
 type ListAccessInvitationsOutputArgs struct {

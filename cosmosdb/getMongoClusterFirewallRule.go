@@ -56,12 +56,8 @@ type LookupMongoClusterFirewallRuleResult struct {
 }
 
 func LookupMongoClusterFirewallRuleOutput(ctx *pulumi.Context, args LookupMongoClusterFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMongoClusterFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongoClusterFirewallRuleResultOutput, error) {
-			args := v.(LookupMongoClusterFirewallRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getMongoClusterFirewallRule", args, LookupMongoClusterFirewallRuleResultOutput{}, options).(LookupMongoClusterFirewallRuleResultOutput), nil
-		}).(LookupMongoClusterFirewallRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getMongoClusterFirewallRule", args, LookupMongoClusterFirewallRuleResultOutput{}, options).(LookupMongoClusterFirewallRuleResultOutput)
 }
 
 type LookupMongoClusterFirewallRuleOutputArgs struct {

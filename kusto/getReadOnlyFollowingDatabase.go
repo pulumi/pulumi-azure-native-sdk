@@ -73,12 +73,8 @@ type LookupReadOnlyFollowingDatabaseResult struct {
 }
 
 func LookupReadOnlyFollowingDatabaseOutput(ctx *pulumi.Context, args LookupReadOnlyFollowingDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupReadOnlyFollowingDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReadOnlyFollowingDatabaseResultOutput, error) {
-			args := v.(LookupReadOnlyFollowingDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:kusto:getReadOnlyFollowingDatabase", args, LookupReadOnlyFollowingDatabaseResultOutput{}, options).(LookupReadOnlyFollowingDatabaseResultOutput), nil
-		}).(LookupReadOnlyFollowingDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:kusto:getReadOnlyFollowingDatabase", args, LookupReadOnlyFollowingDatabaseResultOutput{}, options).(LookupReadOnlyFollowingDatabaseResultOutput)
 }
 
 type LookupReadOnlyFollowingDatabaseOutputArgs struct {

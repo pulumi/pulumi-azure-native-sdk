@@ -131,12 +131,8 @@ type LookupManagedInstanceResult struct {
 }
 
 func LookupManagedInstanceOutput(ctx *pulumi.Context, args LookupManagedInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstanceResultOutput, error) {
-			args := v.(LookupManagedInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getManagedInstance", args, LookupManagedInstanceResultOutput{}, options).(LookupManagedInstanceResultOutput), nil
-		}).(LookupManagedInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getManagedInstance", args, LookupManagedInstanceResultOutput{}, options).(LookupManagedInstanceResultOutput)
 }
 
 type LookupManagedInstanceOutputArgs struct {

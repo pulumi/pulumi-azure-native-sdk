@@ -62,12 +62,8 @@ type LookupMqttBridgeTopicMapResult struct {
 }
 
 func LookupMqttBridgeTopicMapOutput(ctx *pulumi.Context, args LookupMqttBridgeTopicMapOutputArgs, opts ...pulumi.InvokeOption) LookupMqttBridgeTopicMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMqttBridgeTopicMapResultOutput, error) {
-			args := v.(LookupMqttBridgeTopicMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iotoperationsmq:getMqttBridgeTopicMap", args, LookupMqttBridgeTopicMapResultOutput{}, options).(LookupMqttBridgeTopicMapResultOutput), nil
-		}).(LookupMqttBridgeTopicMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iotoperationsmq:getMqttBridgeTopicMap", args, LookupMqttBridgeTopicMapResultOutput{}, options).(LookupMqttBridgeTopicMapResultOutput)
 }
 
 type LookupMqttBridgeTopicMapOutputArgs struct {

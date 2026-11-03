@@ -63,12 +63,13 @@ type ListDatastoreSecretsResult struct {
 }
 
 func ListDatastoreSecretsOutput(ctx *pulumi.Context, args ListDatastoreSecretsOutputArgs, opts ...pulumi.InvokeOption) ListDatastoreSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListDatastoreSecretsResultOutput, error) {
+	outputArgs := pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) *ListDatastoreSecretsArgs {
 			args := v.(ListDatastoreSecretsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listDatastoreSecrets", args.Defaults(), ListDatastoreSecretsResultOutput{}, options).(ListDatastoreSecretsResultOutput), nil
-		}).(ListDatastoreSecretsResultOutput)
+			return args.Defaults()
+		})
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:listDatastoreSecrets", outputArgs, ListDatastoreSecretsResultOutput{}, options).(ListDatastoreSecretsResultOutput)
 }
 
 type ListDatastoreSecretsOutputArgs struct {

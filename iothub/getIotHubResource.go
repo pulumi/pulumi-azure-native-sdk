@@ -70,12 +70,8 @@ func (val *LookupIotHubResourceResult) Defaults() *LookupIotHubResourceResult {
 	return &tmp
 }
 func LookupIotHubResourceOutput(ctx *pulumi.Context, args LookupIotHubResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIotHubResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIotHubResourceResultOutput, error) {
-			args := v.(LookupIotHubResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:iothub:getIotHubResource", args, LookupIotHubResourceResultOutput{}, options).(LookupIotHubResourceResultOutput), nil
-		}).(LookupIotHubResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:iothub:getIotHubResource", args, LookupIotHubResourceResultOutput{}, options).(LookupIotHubResourceResultOutput)
 }
 
 type LookupIotHubResourceOutputArgs struct {

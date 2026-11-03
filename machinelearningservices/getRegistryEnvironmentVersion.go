@@ -64,12 +64,8 @@ func (val *LookupRegistryEnvironmentVersionResult) Defaults() *LookupRegistryEnv
 	return &tmp
 }
 func LookupRegistryEnvironmentVersionOutput(ctx *pulumi.Context, args LookupRegistryEnvironmentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryEnvironmentVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryEnvironmentVersionResultOutput, error) {
-			args := v.(LookupRegistryEnvironmentVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryEnvironmentVersion", args, LookupRegistryEnvironmentVersionResultOutput{}, options).(LookupRegistryEnvironmentVersionResultOutput), nil
-		}).(LookupRegistryEnvironmentVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getRegistryEnvironmentVersion", args, LookupRegistryEnvironmentVersionResultOutput{}, options).(LookupRegistryEnvironmentVersionResultOutput)
 }
 
 type LookupRegistryEnvironmentVersionOutputArgs struct {

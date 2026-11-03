@@ -56,12 +56,8 @@ type LookupRaiBlocklistResult struct {
 }
 
 func LookupRaiBlocklistOutput(ctx *pulumi.Context, args LookupRaiBlocklistOutputArgs, opts ...pulumi.InvokeOption) LookupRaiBlocklistResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRaiBlocklistResultOutput, error) {
-			args := v.(LookupRaiBlocklistArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiBlocklist", args, LookupRaiBlocklistResultOutput{}, options).(LookupRaiBlocklistResultOutput), nil
-		}).(LookupRaiBlocklistResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cognitiveservices:getRaiBlocklist", args, LookupRaiBlocklistResultOutput{}, options).(LookupRaiBlocklistResultOutput)
 }
 
 type LookupRaiBlocklistOutputArgs struct {

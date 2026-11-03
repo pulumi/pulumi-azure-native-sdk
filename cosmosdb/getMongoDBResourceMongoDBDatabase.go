@@ -54,12 +54,8 @@ type LookupMongoDBResourceMongoDBDatabaseResult struct {
 }
 
 func LookupMongoDBResourceMongoDBDatabaseOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoDBDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoDBDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoDBDatabaseResultOutput, error) {
-			args := v.(LookupMongoDBResourceMongoDBDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getMongoDBResourceMongoDBDatabase", args, LookupMongoDBResourceMongoDBDatabaseResultOutput{}, options).(LookupMongoDBResourceMongoDBDatabaseResultOutput), nil
-		}).(LookupMongoDBResourceMongoDBDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getMongoDBResourceMongoDBDatabase", args, LookupMongoDBResourceMongoDBDatabaseResultOutput{}, options).(LookupMongoDBResourceMongoDBDatabaseResultOutput)
 }
 
 type LookupMongoDBResourceMongoDBDatabaseOutputArgs struct {

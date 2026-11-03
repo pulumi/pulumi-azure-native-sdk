@@ -61,12 +61,8 @@ type LookupPremiumMicrosoftDefenderForThreatIntelligenceResult struct {
 }
 
 func LookupPremiumMicrosoftDefenderForThreatIntelligenceOutput(ctx *pulumi.Context, args LookupPremiumMicrosoftDefenderForThreatIntelligenceOutputArgs, opts ...pulumi.InvokeOption) LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput, error) {
-			args := v.(LookupPremiumMicrosoftDefenderForThreatIntelligenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:securityinsights:getPremiumMicrosoftDefenderForThreatIntelligence", args, LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput{}, options).(LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput), nil
-		}).(LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:securityinsights:getPremiumMicrosoftDefenderForThreatIntelligence", args, LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput{}, options).(LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput)
 }
 
 type LookupPremiumMicrosoftDefenderForThreatIntelligenceOutputArgs struct {

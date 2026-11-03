@@ -54,12 +54,8 @@ type LookupReplicationProtectionClusterResult struct {
 }
 
 func LookupReplicationProtectionClusterOutput(ctx *pulumi.Context, args LookupReplicationProtectionClusterOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationProtectionClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReplicationProtectionClusterResultOutput, error) {
-			args := v.(LookupReplicationProtectionClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationProtectionCluster", args, LookupReplicationProtectionClusterResultOutput{}, options).(LookupReplicationProtectionClusterResultOutput), nil
-		}).(LookupReplicationProtectionClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:recoveryservices:getReplicationProtectionCluster", args, LookupReplicationProtectionClusterResultOutput{}, options).(LookupReplicationProtectionClusterResultOutput)
 }
 
 type LookupReplicationProtectionClusterOutputArgs struct {

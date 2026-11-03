@@ -52,12 +52,8 @@ type LookupScopeAssignmentResult struct {
 }
 
 func LookupScopeAssignmentOutput(ctx *pulumi.Context, args LookupScopeAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupScopeAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScopeAssignmentResultOutput, error) {
-			args := v.(LookupScopeAssignmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:managednetwork:getScopeAssignment", args, LookupScopeAssignmentResultOutput{}, options).(LookupScopeAssignmentResultOutput), nil
-		}).(LookupScopeAssignmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:managednetwork:getScopeAssignment", args, LookupScopeAssignmentResultOutput{}, options).(LookupScopeAssignmentResultOutput)
 }
 
 type LookupScopeAssignmentOutputArgs struct {

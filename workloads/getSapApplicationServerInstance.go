@@ -84,12 +84,8 @@ type LookupSapApplicationServerInstanceResult struct {
 }
 
 func LookupSapApplicationServerInstanceOutput(ctx *pulumi.Context, args LookupSapApplicationServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSapApplicationServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSapApplicationServerInstanceResultOutput, error) {
-			args := v.(LookupSapApplicationServerInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:workloads:getSapApplicationServerInstance", args, LookupSapApplicationServerInstanceResultOutput{}, options).(LookupSapApplicationServerInstanceResultOutput), nil
-		}).(LookupSapApplicationServerInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:workloads:getSapApplicationServerInstance", args, LookupSapApplicationServerInstanceResultOutput{}, options).(LookupSapApplicationServerInstanceResultOutput)
 }
 
 type LookupSapApplicationServerInstanceOutputArgs struct {

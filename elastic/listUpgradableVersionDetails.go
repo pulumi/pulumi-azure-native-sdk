@@ -42,12 +42,8 @@ type ListUpgradableVersionDetailsResult struct {
 }
 
 func ListUpgradableVersionDetailsOutput(ctx *pulumi.Context, args ListUpgradableVersionDetailsOutputArgs, opts ...pulumi.InvokeOption) ListUpgradableVersionDetailsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListUpgradableVersionDetailsResultOutput, error) {
-			args := v.(ListUpgradableVersionDetailsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:elastic:listUpgradableVersionDetails", args, ListUpgradableVersionDetailsResultOutput{}, options).(ListUpgradableVersionDetailsResultOutput), nil
-		}).(ListUpgradableVersionDetailsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:elastic:listUpgradableVersionDetails", args, ListUpgradableVersionDetailsResultOutput{}, options).(ListUpgradableVersionDetailsResultOutput)
 }
 
 type ListUpgradableVersionDetailsOutputArgs struct {

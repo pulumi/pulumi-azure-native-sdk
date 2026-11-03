@@ -84,12 +84,8 @@ func (val *LookupDatabaseAccountSqlContainerResult) Defaults() *LookupDatabaseAc
 	return &tmp
 }
 func LookupDatabaseAccountSqlContainerOutput(ctx *pulumi.Context, args LookupDatabaseAccountSqlContainerOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountSqlContainerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAccountSqlContainerResultOutput, error) {
-			args := v.(LookupDatabaseAccountSqlContainerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountSqlContainer", args, LookupDatabaseAccountSqlContainerResultOutput{}, options).(LookupDatabaseAccountSqlContainerResultOutput), nil
-		}).(LookupDatabaseAccountSqlContainerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:cosmosdb:getDatabaseAccountSqlContainer", args, LookupDatabaseAccountSqlContainerResultOutput{}, options).(LookupDatabaseAccountSqlContainerResultOutput)
 }
 
 type LookupDatabaseAccountSqlContainerOutputArgs struct {

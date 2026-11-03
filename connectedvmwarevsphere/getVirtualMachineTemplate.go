@@ -96,12 +96,8 @@ type LookupVirtualMachineTemplateResult struct {
 }
 
 func LookupVirtualMachineTemplateOutput(ctx *pulumi.Context, args LookupVirtualMachineTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineTemplateResultOutput, error) {
-			args := v.(LookupVirtualMachineTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVirtualMachineTemplate", args, LookupVirtualMachineTemplateResultOutput{}, options).(LookupVirtualMachineTemplateResultOutput), nil
-		}).(LookupVirtualMachineTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getVirtualMachineTemplate", args, LookupVirtualMachineTemplateResultOutput{}, options).(LookupVirtualMachineTemplateResultOutput)
 }
 
 type LookupVirtualMachineTemplateOutputArgs struct {

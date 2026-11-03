@@ -52,12 +52,8 @@ type ListWebAppWorkflowsConnectionsResult struct {
 }
 
 func ListWebAppWorkflowsConnectionsOutput(ctx *pulumi.Context, args ListWebAppWorkflowsConnectionsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppWorkflowsConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListWebAppWorkflowsConnectionsResultOutput, error) {
-			args := v.(ListWebAppWorkflowsConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:web:listWebAppWorkflowsConnections", args, ListWebAppWorkflowsConnectionsResultOutput{}, options).(ListWebAppWorkflowsConnectionsResultOutput), nil
-		}).(ListWebAppWorkflowsConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:web:listWebAppWorkflowsConnections", args, ListWebAppWorkflowsConnectionsResultOutput{}, options).(ListWebAppWorkflowsConnectionsResultOutput)
 }
 
 type ListWebAppWorkflowsConnectionsOutputArgs struct {

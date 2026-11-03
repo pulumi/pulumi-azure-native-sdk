@@ -52,12 +52,8 @@ type LookupMaintenanceConfigurationResult struct {
 }
 
 func LookupMaintenanceConfigurationOutput(ctx *pulumi.Context, args LookupMaintenanceConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupMaintenanceConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMaintenanceConfigurationResultOutput, error) {
-			args := v.(LookupMaintenanceConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getMaintenanceConfiguration", args, LookupMaintenanceConfigurationResultOutput{}, options).(LookupMaintenanceConfigurationResultOutput), nil
-		}).(LookupMaintenanceConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getMaintenanceConfiguration", args, LookupMaintenanceConfigurationResultOutput{}, options).(LookupMaintenanceConfigurationResultOutput)
 }
 
 type LookupMaintenanceConfigurationOutputArgs struct {

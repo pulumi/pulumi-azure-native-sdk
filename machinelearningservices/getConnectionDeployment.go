@@ -50,12 +50,8 @@ type LookupConnectionDeploymentResult struct {
 }
 
 func LookupConnectionDeploymentOutput(ctx *pulumi.Context, args LookupConnectionDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionDeploymentResultOutput, error) {
-			args := v.(LookupConnectionDeploymentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getConnectionDeployment", args, LookupConnectionDeploymentResultOutput{}, options).(LookupConnectionDeploymentResultOutput), nil
-		}).(LookupConnectionDeploymentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getConnectionDeployment", args, LookupConnectionDeploymentResultOutput{}, options).(LookupConnectionDeploymentResultOutput)
 }
 
 type LookupConnectionDeploymentOutputArgs struct {

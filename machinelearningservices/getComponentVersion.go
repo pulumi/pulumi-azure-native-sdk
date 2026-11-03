@@ -64,12 +64,8 @@ func (val *LookupComponentVersionResult) Defaults() *LookupComponentVersionResul
 	return &tmp
 }
 func LookupComponentVersionOutput(ctx *pulumi.Context, args LookupComponentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupComponentVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupComponentVersionResultOutput, error) {
-			args := v.(LookupComponentVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getComponentVersion", args, LookupComponentVersionResultOutput{}, options).(LookupComponentVersionResultOutput), nil
-		}).(LookupComponentVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getComponentVersion", args, LookupComponentVersionResultOutput{}, options).(LookupComponentVersionResultOutput)
 }
 
 type LookupComponentVersionOutputArgs struct {

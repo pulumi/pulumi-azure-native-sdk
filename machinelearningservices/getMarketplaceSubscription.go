@@ -52,12 +52,8 @@ type LookupMarketplaceSubscriptionResult struct {
 }
 
 func LookupMarketplaceSubscriptionOutput(ctx *pulumi.Context, args LookupMarketplaceSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupMarketplaceSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMarketplaceSubscriptionResultOutput, error) {
-			args := v.(LookupMarketplaceSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:getMarketplaceSubscription", args, LookupMarketplaceSubscriptionResultOutput{}, options).(LookupMarketplaceSubscriptionResultOutput), nil
-		}).(LookupMarketplaceSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:machinelearningservices:getMarketplaceSubscription", args, LookupMarketplaceSubscriptionResultOutput{}, options).(LookupMarketplaceSubscriptionResultOutput)
 }
 
 type LookupMarketplaceSubscriptionOutputArgs struct {

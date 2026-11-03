@@ -52,12 +52,8 @@ type LookupEc2VpcPeeringConnectionResult struct {
 }
 
 func LookupEc2VpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupEc2VpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEc2VpcPeeringConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEc2VpcPeeringConnectionResultOutput, error) {
-			args := v.(LookupEc2VpcPeeringConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:awsconnector:getEc2VpcPeeringConnection", args, LookupEc2VpcPeeringConnectionResultOutput{}, options).(LookupEc2VpcPeeringConnectionResultOutput), nil
-		}).(LookupEc2VpcPeeringConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:awsconnector:getEc2VpcPeeringConnection", args, LookupEc2VpcPeeringConnectionResultOutput{}, options).(LookupEc2VpcPeeringConnectionResultOutput)
 }
 
 type LookupEc2VpcPeeringConnectionOutputArgs struct {

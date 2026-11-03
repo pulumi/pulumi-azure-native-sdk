@@ -60,12 +60,8 @@ type LookupCloudHsmClusterPrivateEndpointConnectionResult struct {
 }
 
 func LookupCloudHsmClusterPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupCloudHsmClusterPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCloudHsmClusterPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudHsmClusterPrivateEndpointConnectionResultOutput, error) {
-			args := v.(LookupCloudHsmClusterPrivateEndpointConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hardwaresecuritymodules:getCloudHsmClusterPrivateEndpointConnection", args, LookupCloudHsmClusterPrivateEndpointConnectionResultOutput{}, options).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput), nil
-		}).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hardwaresecuritymodules:getCloudHsmClusterPrivateEndpointConnection", args, LookupCloudHsmClusterPrivateEndpointConnectionResultOutput{}, options).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput)
 }
 
 type LookupCloudHsmClusterPrivateEndpointConnectionOutputArgs struct {

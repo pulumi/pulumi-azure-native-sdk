@@ -42,12 +42,8 @@ type GetIntegrationRuntimeStatusResult struct {
 }
 
 func GetIntegrationRuntimeStatusOutput(ctx *pulumi.Context, args GetIntegrationRuntimeStatusOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIntegrationRuntimeStatusResultOutput, error) {
-			args := v.(GetIntegrationRuntimeStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datafactory:getIntegrationRuntimeStatus", args, GetIntegrationRuntimeStatusResultOutput{}, options).(GetIntegrationRuntimeStatusResultOutput), nil
-		}).(GetIntegrationRuntimeStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datafactory:getIntegrationRuntimeStatus", args, GetIntegrationRuntimeStatusResultOutput{}, options).(GetIntegrationRuntimeStatusResultOutput)
 }
 
 type GetIntegrationRuntimeStatusOutputArgs struct {

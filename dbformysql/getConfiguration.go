@@ -72,12 +72,8 @@ type LookupConfigurationResult struct {
 }
 
 func LookupConfigurationOutput(ctx *pulumi.Context, args LookupConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationResultOutput, error) {
-			args := v.(LookupConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getConfiguration", args, LookupConfigurationResultOutput{}, options).(LookupConfigurationResultOutput), nil
-		}).(LookupConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getConfiguration", args, LookupConfigurationResultOutput{}, options).(LookupConfigurationResultOutput)
 }
 
 type LookupConfigurationOutputArgs struct {

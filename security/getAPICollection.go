@@ -50,12 +50,8 @@ type LookupAPICollectionResult struct {
 }
 
 func LookupAPICollectionOutput(ctx *pulumi.Context, args LookupAPICollectionOutputArgs, opts ...pulumi.InvokeOption) LookupAPICollectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAPICollectionResultOutput, error) {
-			args := v.(LookupAPICollectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:security:getAPICollection", args, LookupAPICollectionResultOutput{}, options).(LookupAPICollectionResultOutput), nil
-		}).(LookupAPICollectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:security:getAPICollection", args, LookupAPICollectionResultOutput{}, options).(LookupAPICollectionResultOutput)
 }
 
 type LookupAPICollectionOutputArgs struct {

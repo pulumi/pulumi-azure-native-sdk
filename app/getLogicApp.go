@@ -50,12 +50,8 @@ type LookupLogicAppResult struct {
 }
 
 func LookupLogicAppOutput(ctx *pulumi.Context, args LookupLogicAppOutputArgs, opts ...pulumi.InvokeOption) LookupLogicAppResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogicAppResultOutput, error) {
-			args := v.(LookupLogicAppArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:app:getLogicApp", args, LookupLogicAppResultOutput{}, options).(LookupLogicAppResultOutput), nil
-		}).(LookupLogicAppResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:app:getLogicApp", args, LookupLogicAppResultOutput{}, options).(LookupLogicAppResultOutput)
 }
 
 type LookupLogicAppOutputArgs struct {

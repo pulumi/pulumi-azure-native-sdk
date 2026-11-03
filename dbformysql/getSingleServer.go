@@ -82,12 +82,8 @@ type LookupSingleServerResult struct {
 }
 
 func LookupSingleServerOutput(ctx *pulumi.Context, args LookupSingleServerOutputArgs, opts ...pulumi.InvokeOption) LookupSingleServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSingleServerResultOutput, error) {
-			args := v.(LookupSingleServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:dbformysql:getSingleServer", args, LookupSingleServerResultOutput{}, options).(LookupSingleServerResultOutput), nil
-		}).(LookupSingleServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:dbformysql:getSingleServer", args, LookupSingleServerResultOutput{}, options).(LookupSingleServerResultOutput)
 }
 
 type LookupSingleServerOutputArgs struct {

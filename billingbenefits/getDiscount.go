@@ -66,12 +66,8 @@ type LookupDiscountResult struct {
 }
 
 func LookupDiscountOutput(ctx *pulumi.Context, args LookupDiscountOutputArgs, opts ...pulumi.InvokeOption) LookupDiscountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscountResultOutput, error) {
-			args := v.(LookupDiscountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:billingbenefits:getDiscount", args, LookupDiscountResultOutput{}, options).(LookupDiscountResultOutput), nil
-		}).(LookupDiscountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:billingbenefits:getDiscount", args, LookupDiscountResultOutput{}, options).(LookupDiscountResultOutput)
 }
 
 type LookupDiscountOutputArgs struct {

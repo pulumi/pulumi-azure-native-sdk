@@ -54,12 +54,8 @@ type GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult struct {
 }
 
 func GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryOutput(ctx *pulumi.Context, args GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryOutputArgs, opts ...pulumi.InvokeOption) GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput, error) {
-			args := v.(GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:connectedcache:getIspCacheNodesOperationCacheNodeAutoUpdateHistory", args, GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput{}, options).(GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput), nil
-		}).(GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:connectedcache:getIspCacheNodesOperationCacheNodeAutoUpdateHistory", args, GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput{}, options).(GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResultOutput)
 }
 
 type GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryOutputArgs struct {

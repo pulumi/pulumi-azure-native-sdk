@@ -66,12 +66,8 @@ func (val *LookupEdgeMachineResult) Defaults() *LookupEdgeMachineResult {
 	return &tmp
 }
 func LookupEdgeMachineOutput(ctx *pulumi.Context, args LookupEdgeMachineOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeMachineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEdgeMachineResultOutput, error) {
-			args := v.(LookupEdgeMachineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:azurestackhci:getEdgeMachine", args, LookupEdgeMachineResultOutput{}, options).(LookupEdgeMachineResultOutput), nil
-		}).(LookupEdgeMachineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:azurestackhci:getEdgeMachine", args, LookupEdgeMachineResultOutput{}, options).(LookupEdgeMachineResultOutput)
 }
 
 type LookupEdgeMachineOutputArgs struct {

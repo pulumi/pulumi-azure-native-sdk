@@ -50,12 +50,8 @@ type ListNamespaceKeysResult struct {
 }
 
 func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (ListNamespaceKeysResultOutput, error) {
-			args := v.(ListNamespaceKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:relay:listNamespaceKeys", args, ListNamespaceKeysResultOutput{}, options).(ListNamespaceKeysResultOutput), nil
-		}).(ListNamespaceKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:relay:listNamespaceKeys", args, ListNamespaceKeysResultOutput{}, options).(ListNamespaceKeysResultOutput)
 }
 
 type ListNamespaceKeysOutputArgs struct {

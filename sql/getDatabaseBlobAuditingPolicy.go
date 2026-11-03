@@ -141,12 +141,8 @@ type LookupDatabaseBlobAuditingPolicyResult struct {
 }
 
 func LookupDatabaseBlobAuditingPolicyOutput(ctx *pulumi.Context, args LookupDatabaseBlobAuditingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseBlobAuditingPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseBlobAuditingPolicyResultOutput, error) {
-			args := v.(LookupDatabaseBlobAuditingPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:sql:getDatabaseBlobAuditingPolicy", args, LookupDatabaseBlobAuditingPolicyResultOutput{}, options).(LookupDatabaseBlobAuditingPolicyResultOutput), nil
-		}).(LookupDatabaseBlobAuditingPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:sql:getDatabaseBlobAuditingPolicy", args, LookupDatabaseBlobAuditingPolicyResultOutput{}, options).(LookupDatabaseBlobAuditingPolicyResultOutput)
 }
 
 type LookupDatabaseBlobAuditingPolicyOutputArgs struct {

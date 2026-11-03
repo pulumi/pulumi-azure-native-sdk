@@ -50,12 +50,8 @@ type LookupMonitoredSubscriptionResult struct {
 }
 
 func LookupMonitoredSubscriptionOutput(ctx *pulumi.Context, args LookupMonitoredSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoredSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitoredSubscriptionResultOutput, error) {
-			args := v.(LookupMonitoredSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:datadog:getMonitoredSubscription", args, LookupMonitoredSubscriptionResultOutput{}, options).(LookupMonitoredSubscriptionResultOutput), nil
-		}).(LookupMonitoredSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:datadog:getMonitoredSubscription", args, LookupMonitoredSubscriptionResultOutput{}, options).(LookupMonitoredSubscriptionResultOutput)
 }
 
 type LookupMonitoredSubscriptionOutputArgs struct {

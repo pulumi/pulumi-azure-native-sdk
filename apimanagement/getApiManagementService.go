@@ -164,12 +164,8 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 	return &tmp
 }
 func LookupApiManagementServiceOutput(ctx *pulumi.Context, args LookupApiManagementServiceOutputArgs, opts ...pulumi.InvokeOption) LookupApiManagementServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiManagementServiceResultOutput, error) {
-			args := v.(LookupApiManagementServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementService", args, LookupApiManagementServiceResultOutput{}, options).(LookupApiManagementServiceResultOutput), nil
-		}).(LookupApiManagementServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getApiManagementService", args, LookupApiManagementServiceResultOutput{}, options).(LookupApiManagementServiceResultOutput)
 }
 
 type LookupApiManagementServiceOutputArgs struct {

@@ -52,12 +52,8 @@ type LookupGatewayCertificateAuthorityResult struct {
 }
 
 func LookupGatewayCertificateAuthorityOutput(ctx *pulumi.Context, args LookupGatewayCertificateAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCertificateAuthorityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGatewayCertificateAuthorityResultOutput, error) {
-			args := v.(LookupGatewayCertificateAuthorityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:apimanagement:getGatewayCertificateAuthority", args, LookupGatewayCertificateAuthorityResultOutput{}, options).(LookupGatewayCertificateAuthorityResultOutput), nil
-		}).(LookupGatewayCertificateAuthorityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:apimanagement:getGatewayCertificateAuthority", args, LookupGatewayCertificateAuthorityResultOutput{}, options).(LookupGatewayCertificateAuthorityResultOutput)
 }
 
 type LookupGatewayCertificateAuthorityOutputArgs struct {

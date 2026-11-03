@@ -44,12 +44,8 @@ type GetClusterGatewaySettingsResult struct {
 }
 
 func GetClusterGatewaySettingsOutput(ctx *pulumi.Context, args GetClusterGatewaySettingsOutputArgs, opts ...pulumi.InvokeOption) GetClusterGatewaySettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClusterGatewaySettingsResultOutput, error) {
-			args := v.(GetClusterGatewaySettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:hdinsight:getClusterGatewaySettings", args, GetClusterGatewaySettingsResultOutput{}, options).(GetClusterGatewaySettingsResultOutput), nil
-		}).(GetClusterGatewaySettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azure-native:hdinsight:getClusterGatewaySettings", args, GetClusterGatewaySettingsResultOutput{}, options).(GetClusterGatewaySettingsResultOutput)
 }
 
 type GetClusterGatewaySettingsOutputArgs struct {
