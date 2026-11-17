@@ -14,13 +14,13 @@ import (
 
 // Workspace data table definition.
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2026-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-12-01-preview, 2022-10-01, 2023-09-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Table struct {
 	pulumi.CustomResourceState
 
-	// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+	// The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
 	ArchiveRetentionInDays pulumi.IntOutput `pulumi:"archiveRetentionInDays"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
@@ -30,13 +30,15 @@ type Table struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Instruct the system how to handle and charge the logs ingested to this table.
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
+	// The protection level of the table. Determines the default data access isolation behavior.
+	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
 	// Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Parameters of the restore operation that initiated this table.
 	RestoredLogs RestoredLogsResponsePtrOutput `pulumi:"restoredLogs"`
 	// Search job execution statistics.
 	ResultStatistics ResultStatisticsResponseOutput `pulumi:"resultStatistics"`
-	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+	// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
 	RetentionInDays pulumi.IntPtrOutput `pulumi:"retentionInDays"`
 	// True - Value originates from workspace retention in days, False - Customer specific.
 	RetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"retentionInDaysAsDefault"`
@@ -44,9 +46,9 @@ type Table struct {
 	Schema SchemaResponsePtrOutput `pulumi:"schema"`
 	// Parameters of the search job that initiated this table.
 	SearchResults SearchResultsResponsePtrOutput `pulumi:"searchResults"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
 	TotalRetentionInDays pulumi.IntPtrOutput `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
 	TotalRetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"totalRetentionInDaysAsDefault"`
@@ -82,6 +84,9 @@ func NewTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20250701:Table"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20260301:Table"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -120,11 +125,13 @@ func (TableState) ElementType() reflect.Type {
 type tableArgs struct {
 	// Instruct the system how to handle and charge the logs ingested to this table.
 	Plan *string `pulumi:"plan"`
+	// The protection level of the table. Determines the default data access isolation behavior.
+	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Parameters of the restore operation that initiated this table.
 	RestoredLogs *RestoredLogs `pulumi:"restoredLogs"`
-	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+	// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
 	RetentionInDays *int `pulumi:"retentionInDays"`
 	// Table schema.
 	Schema *Schema `pulumi:"schema"`
@@ -132,7 +139,7 @@ type tableArgs struct {
 	SearchResults *SearchResults `pulumi:"searchResults"`
 	// The name of the table.
 	TableName *string `pulumi:"tableName"`
-	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -142,11 +149,13 @@ type tableArgs struct {
 type TableArgs struct {
 	// Instruct the system how to handle and charge the logs ingested to this table.
 	Plan pulumi.StringPtrInput
+	// The protection level of the table. Determines the default data access isolation behavior.
+	ProtectionLevel pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Parameters of the restore operation that initiated this table.
 	RestoredLogs RestoredLogsPtrInput
-	// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+	// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
 	RetentionInDays pulumi.IntPtrInput
 	// Table schema.
 	Schema SchemaPtrInput
@@ -154,7 +163,7 @@ type TableArgs struct {
 	SearchResults SearchResultsPtrInput
 	// The name of the table.
 	TableName pulumi.StringPtrInput
-	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
 	TotalRetentionInDays pulumi.IntPtrInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
@@ -197,7 +206,7 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+// The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
 func (o TableOutput) ArchiveRetentionInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.ArchiveRetentionInDays }).(pulumi.IntOutput)
 }
@@ -222,6 +231,11 @@ func (o TableOutput) Plan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
 }
 
+// The protection level of the table. Determines the default data access isolation behavior.
+func (o TableOutput) ProtectionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
+}
+
 // Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
 func (o TableOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -237,7 +251,7 @@ func (o TableOutput) ResultStatistics() ResultStatisticsResponseOutput {
 	return o.ApplyT(func(v *Table) ResultStatisticsResponseOutput { return v.ResultStatistics }).(ResultStatisticsResponseOutput)
 }
 
-// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+// In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
 func (o TableOutput) RetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntPtrOutput { return v.RetentionInDays }).(pulumi.IntPtrOutput)
 }
@@ -257,12 +271,12 @@ func (o TableOutput) SearchResults() SearchResultsResponsePtrOutput {
 	return o.ApplyT(func(v *Table) SearchResultsResponsePtrOutput { return v.SearchResults }).(SearchResultsResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o TableOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Table) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
 func (o TableOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntPtrOutput { return v.TotalRetentionInDays }).(pulumi.IntPtrOutput)
 }
