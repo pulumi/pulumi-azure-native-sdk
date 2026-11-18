@@ -14,6 +14,8 @@ import (
 // Gets Log Analytics workspace Summary rules.
 //
 // Uses Azure REST API version 2025-07-01.
+//
+// Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSummaryLog(ctx *pulumi.Context, args *LookupSummaryLogArgs, opts ...pulumi.InvokeOption) (*LookupSummaryLogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSummaryLogResult
