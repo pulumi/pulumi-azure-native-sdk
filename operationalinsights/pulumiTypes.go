@@ -399,7 +399,7 @@ type Column struct {
 	DataTypeHint *string `pulumi:"dataTypeHint"`
 	// Column description.
 	Description *string `pulumi:"description"`
-	// Column display name.
+	// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
 	DisplayName *string `pulumi:"displayName"`
 	// Column name.
 	Name *string `pulumi:"name"`
@@ -424,7 +424,7 @@ type ColumnArgs struct {
 	DataTypeHint pulumi.StringPtrInput `pulumi:"dataTypeHint"`
 	// Column description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Column display name.
+	// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Column name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -494,7 +494,7 @@ func (o ColumnOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Column) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Column display name.
+// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
 func (o ColumnOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Column) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -535,7 +535,7 @@ type ColumnResponse struct {
 	DataTypeHint *string `pulumi:"dataTypeHint"`
 	// Column description.
 	Description *string `pulumi:"description"`
-	// Column display name.
+	// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
 	DisplayName *string `pulumi:"displayName"`
 	// Is displayed by default.
 	IsDefaultDisplay bool `pulumi:"isDefaultDisplay"`
@@ -572,7 +572,7 @@ func (o ColumnResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ColumnResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Column display name.
+// Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name.
 func (o ColumnResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ColumnResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
