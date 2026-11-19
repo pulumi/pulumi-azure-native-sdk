@@ -15,6 +15,8 @@ import (
 // Workspace data summary rules definition.
 //
 // Uses Azure REST API version 2025-07-01.
+//
+// Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SummaryLog struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +60,9 @@ func NewSummaryLog(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20250701:SummaryLog"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20260301:SummaryLog"),
 		},
 	})
 	opts = append(opts, aliases)
