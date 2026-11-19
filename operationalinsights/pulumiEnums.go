@@ -352,6 +352,8 @@ const (
 	ColumnDataTypeHintEnumArmPath = ColumnDataTypeHintEnum("armPath")
 	// A standard V4/V6 ip address following the standard shape, x.x.x.x/y:y:y:y:y:y:y:y
 	ColumnDataTypeHintEnumIp = ColumnDataTypeHintEnum("ip")
+	// A vector of single-precision floating-point values used for semantic / similarity search.
+	ColumnDataTypeHintEnumVector16 = ColumnDataTypeHintEnum("vector16")
 )
 
 func (ColumnDataTypeHintEnum) ElementType() reflect.Type {
@@ -480,6 +482,7 @@ func (o ColumnDataTypeHintEnumPtrOutput) ToStringPtrOutputWithContext(ctx contex
 //	ColumnDataTypeHintEnumGuid
 //	ColumnDataTypeHintEnumArmPath
 //	ColumnDataTypeHintEnumIp
+//	ColumnDataTypeHintEnumVector16
 type ColumnDataTypeHintEnumInput interface {
 	pulumi.Input
 
@@ -518,14 +521,22 @@ func (in *columnDataTypeHintEnumPtr) ToColumnDataTypeHintEnumPtrOutputWithContex
 type ColumnTypeEnum string
 
 const (
-	ColumnTypeEnumString   = ColumnTypeEnum("string")
-	ColumnTypeEnumInt      = ColumnTypeEnum("int")
-	ColumnTypeEnumLong     = ColumnTypeEnum("long")
-	ColumnTypeEnumReal     = ColumnTypeEnum("real")
-	ColumnTypeEnumBoolean  = ColumnTypeEnum("boolean")
+	// string
+	ColumnTypeEnumString = ColumnTypeEnum("string")
+	// int
+	ColumnTypeEnumInt = ColumnTypeEnum("int")
+	// long
+	ColumnTypeEnumLong = ColumnTypeEnum("long")
+	// real
+	ColumnTypeEnumReal = ColumnTypeEnum("real")
+	// boolean
+	ColumnTypeEnumBoolean = ColumnTypeEnum("boolean")
+	// dateTime
 	ColumnTypeEnumDateTime = ColumnTypeEnum("dateTime")
-	ColumnTypeEnumGuid     = ColumnTypeEnum("guid")
-	ColumnTypeEnumDynamic  = ColumnTypeEnum("dynamic")
+	// guid
+	ColumnTypeEnumGuid = ColumnTypeEnum("guid")
+	// dynamic
+	ColumnTypeEnumDynamic = ColumnTypeEnum("dynamic")
 )
 
 func (ColumnTypeEnum) ElementType() reflect.Type {
@@ -1937,10 +1948,12 @@ func (in *ruleTypeEnumPtr) ToRuleTypeEnumPtrOutputWithContext(ctx context.Contex
 type TablePlanEnum string
 
 const (
-	// Logs that are adjusted to support high volume low value verbose logs.
+	// Medium-touch logs needed for troubleshooting and incident response.
 	TablePlanEnumBasic = TablePlanEnum("Basic")
-	// Logs  that allow monitoring and analytics.
+	// High-value logs used for continuous monitoring, real-time detection, and performance analytics.
 	TablePlanEnumAnalytics = TablePlanEnum("Analytics")
+	// Low-touch logs, such as verbose logs, and data required for auditing and compliance.
+	TablePlanEnumAuxiliary = TablePlanEnum("Auxiliary")
 )
 
 func (TablePlanEnum) ElementType() reflect.Type {
@@ -2067,6 +2080,7 @@ func (o TablePlanEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //
 //	TablePlanEnumBasic
 //	TablePlanEnumAnalytics
+//	TablePlanEnumAuxiliary
 type TablePlanEnumInput interface {
 	pulumi.Input
 
@@ -2099,6 +2113,174 @@ func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutput() TablePlanEnumPtrOutput {
 
 func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutputWithContext(ctx context.Context) TablePlanEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TablePlanEnumPtrOutput)
+}
+
+// The protection level of the table. Determines the default data access isolation behavior.
+type TableProtectionLevelEnum string
+
+const (
+	// The default protection level. Table data is accessible through standard permissions.
+	TableProtectionLevelEnumGeneral = TableProtectionLevelEnum("General")
+	// Table data is isolated by default. Accessing or exporting data requires explicit, scoped authorization.
+	TableProtectionLevelEnumProtected = TableProtectionLevelEnum("Protected")
+)
+
+func (TableProtectionLevelEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableProtectionLevelEnum)(nil)).Elem()
+}
+
+func (e TableProtectionLevelEnum) ToTableProtectionLevelEnumOutput() TableProtectionLevelEnumOutput {
+	return pulumi.ToOutput(e).(TableProtectionLevelEnumOutput)
+}
+
+func (e TableProtectionLevelEnum) ToTableProtectionLevelEnumOutputWithContext(ctx context.Context) TableProtectionLevelEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TableProtectionLevelEnumOutput)
+}
+
+func (e TableProtectionLevelEnum) ToTableProtectionLevelEnumPtrOutput() TableProtectionLevelEnumPtrOutput {
+	return e.ToTableProtectionLevelEnumPtrOutputWithContext(context.Background())
+}
+
+func (e TableProtectionLevelEnum) ToTableProtectionLevelEnumPtrOutputWithContext(ctx context.Context) TableProtectionLevelEnumPtrOutput {
+	return TableProtectionLevelEnum(e).ToTableProtectionLevelEnumOutputWithContext(ctx).ToTableProtectionLevelEnumPtrOutputWithContext(ctx)
+}
+
+func (e TableProtectionLevelEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableProtectionLevelEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableProtectionLevelEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TableProtectionLevelEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TableProtectionLevelEnumOutput struct{ *pulumi.OutputState }
+
+func (TableProtectionLevelEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableProtectionLevelEnum)(nil)).Elem()
+}
+
+func (o TableProtectionLevelEnumOutput) ToTableProtectionLevelEnumOutput() TableProtectionLevelEnumOutput {
+	return o
+}
+
+func (o TableProtectionLevelEnumOutput) ToTableProtectionLevelEnumOutputWithContext(ctx context.Context) TableProtectionLevelEnumOutput {
+	return o
+}
+
+func (o TableProtectionLevelEnumOutput) ToTableProtectionLevelEnumPtrOutput() TableProtectionLevelEnumPtrOutput {
+	return o.ToTableProtectionLevelEnumPtrOutputWithContext(context.Background())
+}
+
+func (o TableProtectionLevelEnumOutput) ToTableProtectionLevelEnumPtrOutputWithContext(ctx context.Context) TableProtectionLevelEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableProtectionLevelEnum) *TableProtectionLevelEnum {
+		return &v
+	}).(TableProtectionLevelEnumPtrOutput)
+}
+
+func (o TableProtectionLevelEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TableProtectionLevelEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableProtectionLevelEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TableProtectionLevelEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableProtectionLevelEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableProtectionLevelEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableProtectionLevelEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (TableProtectionLevelEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableProtectionLevelEnum)(nil)).Elem()
+}
+
+func (o TableProtectionLevelEnumPtrOutput) ToTableProtectionLevelEnumPtrOutput() TableProtectionLevelEnumPtrOutput {
+	return o
+}
+
+func (o TableProtectionLevelEnumPtrOutput) ToTableProtectionLevelEnumPtrOutputWithContext(ctx context.Context) TableProtectionLevelEnumPtrOutput {
+	return o
+}
+
+func (o TableProtectionLevelEnumPtrOutput) Elem() TableProtectionLevelEnumOutput {
+	return o.ApplyT(func(v *TableProtectionLevelEnum) TableProtectionLevelEnum {
+		if v != nil {
+			return *v
+		}
+		var ret TableProtectionLevelEnum
+		return ret
+	}).(TableProtectionLevelEnumOutput)
+}
+
+func (o TableProtectionLevelEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableProtectionLevelEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TableProtectionLevelEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TableProtectionLevelEnumInput is an input type that accepts values of the TableProtectionLevelEnum enum
+// A concrete instance of `TableProtectionLevelEnumInput` can be one of the following:
+//
+//	TableProtectionLevelEnumGeneral
+//	TableProtectionLevelEnumProtected
+type TableProtectionLevelEnumInput interface {
+	pulumi.Input
+
+	ToTableProtectionLevelEnumOutput() TableProtectionLevelEnumOutput
+	ToTableProtectionLevelEnumOutputWithContext(context.Context) TableProtectionLevelEnumOutput
+}
+
+var tableProtectionLevelEnumPtrType = reflect.TypeOf((**TableProtectionLevelEnum)(nil)).Elem()
+
+type TableProtectionLevelEnumPtrInput interface {
+	pulumi.Input
+
+	ToTableProtectionLevelEnumPtrOutput() TableProtectionLevelEnumPtrOutput
+	ToTableProtectionLevelEnumPtrOutputWithContext(context.Context) TableProtectionLevelEnumPtrOutput
+}
+
+type tableProtectionLevelEnumPtr string
+
+func TableProtectionLevelEnumPtr(v string) TableProtectionLevelEnumPtrInput {
+	return (*tableProtectionLevelEnumPtr)(&v)
+}
+
+func (*tableProtectionLevelEnumPtr) ElementType() reflect.Type {
+	return tableProtectionLevelEnumPtrType
+}
+
+func (in *tableProtectionLevelEnumPtr) ToTableProtectionLevelEnumPtrOutput() TableProtectionLevelEnumPtrOutput {
+	return pulumi.ToOutput(in).(TableProtectionLevelEnumPtrOutput)
+}
+
+func (in *tableProtectionLevelEnumPtr) ToTableProtectionLevelEnumPtrOutputWithContext(ctx context.Context) TableProtectionLevelEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TableProtectionLevelEnumPtrOutput)
 }
 
 // The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
@@ -2469,6 +2651,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleTypeEnumPtrOutput{})
 	pulumi.RegisterOutputType(TablePlanEnumOutput{})
 	pulumi.RegisterOutputType(TablePlanEnumPtrOutput{})
+	pulumi.RegisterOutputType(TableProtectionLevelEnumOutput{})
+	pulumi.RegisterOutputType(TableProtectionLevelEnumPtrOutput{})
 	pulumi.RegisterOutputType(TimeSelectorEnumOutput{})
 	pulumi.RegisterOutputType(TimeSelectorEnumPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceSkuNameEnumOutput{})
